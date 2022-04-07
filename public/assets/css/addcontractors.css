@@ -1,0 +1,48 @@
+/* addd contractors */
+
+.addcontractor .add {
+  background: #407c1e;
+  padding: 20px;
+}
+
+.addcontractor .add span {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.addform input,
+.addform select {
+  border: none;
+  border-bottom: 2px solid #407c1e;
+  border-radius: 0px;
+}
+
+.addform .Working {
+  border: none;
+  border-bottom: 2px solid #407c1e;
+  border-radius: 0px;
+}
+
+.addform .Certificate {
+  font-family: Helvetica;
+  font-weight: bold;
+  color: #407c1e;
+}
+
+::-webkit-file-upload-button {
+  background: rgb(255, 255, 255);
+  color: #407c1e;
+  border: 1px solid #407c1e;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+.addform .btn-green{
+  border-radius: 10px;
+  width: 100%;
+  background-color: #407c1e;
+  color: white;
+  padding: 10px;
+}

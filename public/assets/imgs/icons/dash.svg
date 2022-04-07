@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="63" height="61.324" viewBox="0 0 63 61.324">
+  <g id="Group_1387" data-name="Group 1387" transform="translate(-72 -198.633)">
+    <g id="Group_1386" data-name="Group 1386">
+      <g id="Group_1352" data-name="Group 1352" transform="translate(83 198.633)">
+        <rect id="Rectangle_822" data-name="Rectangle 822" width="19.874" height="19.874" rx="3" fill="#407c1e"/>
+        <rect id="Rectangle_824" data-name="Rectangle 824" width="19.874" height="19.874" rx="3" transform="translate(0 21.681)" fill="#407c1e"/>
+        <rect id="Rectangle_823" data-name="Rectangle 823" width="19.874" height="19.874" rx="3" transform="translate(21.681)" fill="#407c1e"/>
+        <path id="Union_16" data-name="Union 16" d="M17.791,19.543l-2.436-2.455A9.536,9.536,0,0,1,0,9.534,9.534,9.534,0,0,1,16.276,2.793a9.537,9.537,0,0,1,.806,12.57l2.436,2.455a1.22,1.22,0,0,1-1.727,1.725ZM2.44,9.534a7.09,7.09,0,0,0,12.026,5.094q.036-.044.077-.085t.085-.078A7.093,7.093,0,1,0,2.44,9.534Z" transform="translate(21.681 21.681)" fill="#407c1e"/>
+      </g>
+      <text id="Dashboard" transform="translate(72 256.957)" fill="#407c1e" font-size="12" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Dashboard</tspan></text>
+    </g>
+  </g>
+</svg>

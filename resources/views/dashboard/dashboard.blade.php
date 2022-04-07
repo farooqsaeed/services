@@ -1,0 +1,363 @@
+@extends('layouts.master')
+@section('content')
+<link rel="stylesheet" href="{{URL::asset('assets/css/jobs.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/compliance.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
+
+
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+      <div class=" Header d-none  d-sm-block">
+        <div class="row  ">
+          <div class="col-lg-3 p-3">
+            <h2>Map View</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
+      <div class="card py-0 my-0 border-0  BreadCrumb_card">
+        <div class="card-body py-0 my-0">
+          <div class="d-flex justify-content-between my-0 align-self-center">
+            <span class="card-title my-0">Dashboard</span>
+            <div class="notification mt-3">
+              <div class="fa fa-bell mr-2 mt-1">
+                <p class="mt-1">Notification</p>
+              </div>
+              <div class="mt-1 ">
+                <div class="fa fa-sign-out" aria-hidden="true">
+                  <p class="mt-1">Logout</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-text p-0 mb-0 mt-0">
+            <ol class="breadcrumb bg-white">
+              <li class="breadcrumb-item ml-lg-n3">
+                <a href='/' >Overview </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
+    <div class="cards d-lg-flex justify-content-lg-around align-self-center">
+      <div class="card card1 w-100">
+        <div class="card-body">
+          <div class="fa fa-suitcase fa-2x"></div>
+          <h4 class="card-title">10,345</h4>
+          <p class="card-text">New Jobs</p>
+        </div>
+      </div>
+      <div class="card card2 w-100">
+        <div class="card-body">
+          <div class="fa fa-comment fa-2x"></div>
+          <h4 class="card-title">103</h4>
+          <p class="card-text">New Messages </p>
+        </div>
+      </div>
+      <div class="card card3 w-100">
+        <div class="card-body">
+          <div class="fa fa-calendar fa-2x"></div>
+          <h4 class="card-title">215</h4>
+          <p class="card-text"> Calendar events</p>
+        </div>
+      </div>
+      <div class="card card4 w-100">
+        <div class="card-body">
+          <div class="fa fa-exclamation-triangle fa-2x"></div>
+          <h4 class="card-title">215</h4>
+          <p class="card-text">Compliance</p>
+        </div>
+      </div>
+      <div class="card card5 w-100">
+        <div class="card-body">
+          <div class="fa fa-home fa-2x"></div>
+          <br />
+          <p>
+            <span>Property:</span> <span class="card-title">3674</span>
+          </p>
+          <p>
+            <span>Contactors:</span> <span class="card-title">159</span>
+          </p>
+          <p class="card-text">Assets</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
+    <div class="jobs d-lg-flex justify-content-lg-between  ">
+      <div class="col-lg-3 my-2 p-1 ">
+        <div class="card1 card shadow">
+          <div class="card-header">Open Jobs</div>
+          <div class="card-body">
+            <p>
+              <span class="card-text">Awaiting Contractor:</span>
+              <span class="card-title"> 159</span>
+            </p>
+            <p>
+              <span class="card-text">Awaiting Tenant:</span>
+              <span class="card-title">159</span>
+            </p>
+            <p>
+              <span class="card-text">Action Required:</span>
+              <span class="card-title">159</span>
+            </p>
+            <p>
+              <span class="card-text">Engineer Visit Due:</span>
+              <span class="card-title">159</span>
+            </p>
+            <p>
+              <span class="card-text">Resolved:</span>
+              <span class="card-title">159</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 my-2 p-1 ">
+        <div class="card2  card shadow pb-2">
+          <div class="card-header">
+            Job Age <small>(Emergency / Non-Emergency)</small>
+          </div>
+          <div class="card-body p-2 mt-3  ">
+            <div class="Emergency w-50 text-center ">
+              <p>Emergency</p>
+            </div>
+            <h4 class="days">&nbsp;&nbsp;&nbsp; 7 days</h4>
+
+            <hr class="divider mt-lg-4 mb-5" />
+            <div class="NonEmergency     ">
+              <p>Non Emergency</p>
+            </div>
+            <h4 class="days">&nbsp;&nbsp;&nbsp;25 days</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 my-2 p-1">
+        <div class="card3 card shadow">
+          <div class="card-header">
+            Avg. Response Time <small>(24 hrs)</small>
+          </div>
+          <div class="card-body pt-0 pb-2">
+            <p class="mb-0 p-0 align-items-center">
+              <span class="card-text   align-self-center">
+                <img src="{{URL::asset('assets/imgs/icons/hour.svg')}}" class="w-75" alt="" />
+              </span>
+              <span class="card-title mt-2  ">4 hrs</span>
+            </p>
+          </div>
+        </div>
+        <div class="card33 card mt-4 shadow pb-1">
+          <div class="card-header">
+            Avg. Job Close Time<small>(Days)</small>
+          </div>
+          <div class="card-body px-2">
+            <div class="pb-0 mb-0 d-flex justify-content-between">
+              <div class="Emergency   pb-0 ">
+                <p class="pb-0 mb-0">Emergency</p>
+              </div>
+              <div class="NonEmergency   pb-0  ">
+                <p class="mb-0 ">NoEmergency</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-around text-center px-2">
+            <div class="days  ">
+              3<sub class="subscript">(14 days)</sub>
+            </div>
+            <div class=" ">
+              <div class="vr"></div>
+            </div>
+            <div class=" ">
+              <p class=" days">
+                5 <sub class="subscript">(25 days)</sub>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 my-2 p-1">
+        <div class="card1 card shadow">
+          <div class="card-header">Job Categories</div>
+          <div class="card-body p-0 mb-0">
+            <div class="donut">
+              <article class="pl-3 graph_label">
+                <span>
+                  <i class="fa fa-circle mr-2 text-info" aria-hidden="true"></i>
+                  Electrician
+                </span>
+                <br />
+                <span>
+                  <i class="fa fa-circle mr-2 text-success" aria-hidden="true"></i>
+                  Plumber
+                </span>
+                <br />
+                <span>
+                  <i class="fa fa-circle mr-2 text-warning" aria-hidden="true"></i>
+                  Handyman
+                </span>
+                <br />
+                <span>
+                  <i class="fa fa-circle mr-2 text-danger" aria-hidden="true"></i>
+                  Gas & Heating
+                </span>
+                <br />
+                <span>
+                  <i class="fa fa-circle mr-2 text-purple" aria-hidden="true"></i>
+                  Locksmith
+                </span>
+                <br />
+                <span>
+                  <i class="fa fa-circle mr-2 text-info" aria-hidden="true"></i>
+                  Drainage
+                </span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
+    <div class="compliance d-lg-flex justify-content-lg-between">
+      <div class="col-lg-6   my-2 p-1">
+        <div class="card1 card shadow">
+          <div class="card-header">Compliance</div>
+          <div class="card-body">
+            <div class="clocks d-flex justify-content-between">
+              <div class="w-100  p-1 text-center  ">
+                <div class="w-100">
+
+                </div>
+                <div class="progress  mt-3">
+                  <div class=" progress-bar  bg-success" role="progressbar" style='width: 100%' aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <article class="compliance_text mt-4">
+                  Electrical Safety Check
+                </article>
+                <span class="compliance_data">Data not available</span>
+              </div>
+              <div class="w-100  p-1 text-center">
+                <div class="w-100">
+
+                </div>
+
+                <div class="progress   mt-3 ">
+                  <div class="progress-bar  bg-success" role="progressbar" style='width: 60%' aria-valuenow="15"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar  bg-warning" role="progressbar" style='width: 40%' aria-valuenow="30"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <article class="compliance_text mt-4">
+                  GAS Safety Check
+                </article>
+                <span class="compliance_data">2 certs about to expire</span>
+              </div>
+              <div class="w-100 p-1 text-center">
+                <div class="w-100">
+
+                </div>
+                <div class="progress    mt-3">
+                  <div class="progress-bar  bg-success" role="progressbar" style='width: 33%' aria-valuenow="15"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar  bg-warning" role="progressbar" style='width: 33%' aria-valuenow="30"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar  bg-danger" role="progressbar" style='width: 33%' aria-valuenow="30"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="text-center mt-4">
+                  <article class="compliance_text">
+                    Fire safety risk assessment
+                  </article>
+                  <span class="compliance_data">
+                    Not Compliant (2 certs expired)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 my-2 p-1">
+        <div class="message_card card shadow">
+          <div class="card-header">Messages</div>
+          <div class="card-body w-100 p-3 ">
+            <div class="message1  p-1">
+              <div class="  text-center">
+                <img src="{{URL::asset('assets/imgs/img/user/user1.png')}}" class="message_img mt-1" alt="" srcSet="" />
+              </div>
+              <div class="pl-2 mb-0">
+                <p class="  msg_info pb-0 mb-0">
+                  <span class="sender mb-0">Tenant 1 </span>
+                  <span class="small">5min</span>
+                </p>
+                <p class="pb-0 mb-0">
+                <article class="message pl-1 pt-0 mt-0 pb-0 mb-0">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                </article>
+                <small class="rounded">5</small>
+                </p>
+                <p class="minutes mb-0">2 minutes ago</p>
+              </div>
+            </div>
+            <div class="message2 mt-1 p-1">
+              <div class="text-center">
+                <img src="{{URL::asset('assets/imgs/img/user/user3.png')}}" class="message_img mt-1" alt="" srcSet="" />
+              </div>
+              <div class="pl-2 mb-0">
+                <p class="  msg_info pb-0 mb-0">
+                  <span class="sender mb-0">Tenant 3 </span>
+                  <small>50min</small>
+                </p>
+                <p class="pb-0 mb-0">
+                <article class="message pl-1 pt-0 mt-0 pb-0 mb-0">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                </article>
+                </p>
+                <p class="minutes mb-0">2 minutes ago</p>
+              </div>
+            </div>
+            <div class="message3 mt-1 p-1">
+              <div class="  text-center">
+                <img src="{{URL::asset('assets/imgs/img/user/user2.png')}}" class="message_img mt-1" alt="" srcSet="" />
+              </div>
+              <div class="pl-2 mb-0">
+                <p class="msg_info pb-0 mb-0">
+                  <span class="sender mb-0">Tenant 3 </span>
+                  <small>50min</small>
+                </p>
+                <p class="pb-0 mb-0">
+                <article class="message pl-1 pt-0 mt-0 pb-0 mb-0">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                </article>
+                <small class="rounded">2</small>
+                </p>
+                <p class="minutes mb-0">2 minutes ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 my-2 p-1">
+        <div class="card1 card shadow">
+          <div class="card-header">Open Jobs</div>
+          <div class="card-body">
+            <Calendar />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+@endsection

@@ -1,0 +1,47 @@
+/* plumber */
+
+
+.Contractor_header .add {
+  background: #407c1e;
+  padding: 20px;
+}
+
+.Contractor_header .add span {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+.fa-chevron-circle-up{
+  color: #407c1e;
+} 
+
+.BreadCrumb_card .card-title{
+    color: #407C1E;
+    font-size: 35px;
+  }
+
+.breadcrumb-item,.breadcrumb-item a{
+    color: #407C1E;
+    font-family: Helvetica;
+    font-weight:600;
+    margin-top: 0px;
+}
+
+.BreadCrumb_card .notification{
+color: #407C1E;
+text-align: center;
+ }
+
+.BreadCrumb_card .notification small{
+    font-size: 10px;
+    margin-top: -100px !important;
+}
+
+.BreadCrumb_card .border-bottom{
+    border: none;
+    border-bottom: 2px solid #407C1E !important;
+}
+
+.notification .btn-primary{
+  color: #407c1e;
+}

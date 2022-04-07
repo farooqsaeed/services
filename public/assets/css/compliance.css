@@ -1,0 +1,132 @@
+/* compliance */
+
+.compliance p,
+.compliance h1,
+.compliance h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.compliance .card-header {
+  background-color: #333333;
+  text-align: left;
+  color: white;
+  border-radius: 16px 16px 16px 16px !important;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.compliance .card {
+  border-radius: 16px;
+}
+
+.compliance .card1 .card-title {
+  font-size: 1.3em;
+  color: #407c1e;
+}
+
+.compliance .card .card-body p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress {
+  height: 10px !important;
+  border: 1px solid black;
+  padding: 0px;
+}
+.progress-bar{
+    border-radius: 10px !important;
+}
+
+.compliance_text {
+  color: #407c1e;
+  font-size: 10px;
+  font-weight: 600;
+}
+.compliance_data {
+  color: #de0303;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.message_card .card-header{
+  border-radius: 16px ;
+}
+
+.message_img {
+  width: 53px;
+  height: 53px;
+  border-radius: 14px;
+}
+
+.message_card .msg_info .sender{
+color: #407C1E;
+font-size: 14px !important;
+font-weight: 600 !important;
+}
+.message_card .msg_info small{
+font-size: 8px;
+}
+
+
+.message_card .message{
+font-size: 7px;
+}
+
+.message1{
+  width: 100%;  
+  display: flex;
+  background-color: #E6FCDA;
+  border-radius: 6px;
+}
+
+.message1 div:nth-of-type(1) {flex-grow: 1;}
+.message1 div:nth-of-type(2) {flex-grow: 3;}
+
+
+.message_card .rounded{
+  background-color: #407c1e;
+  border-radius: 100%;
+  color: white;
+  padding: 4px;
+  font-size: 10px;
+  float: right;
+  margin-top: -15px;
+}
+
+.message_card .minutes{
+  font-size: 10px;
+  padding-top: 0% !important;
+  margin-top: -10px;
+}
+
+/* msg2 */
+.message2{
+  width: 100%;  
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
+
+.message2 div:nth-of-type(1) {flex-grow: 1;}
+.message2 div:nth-of-type(2) {flex-grow: 3;}
+
+/* msg3 */
+.message3{
+  width: 100%;  
+  display: flex;
+  background-color: #E6FCDA;
+  border-radius: 6px;
+}
+
+.message3 div:nth-of-type(1) {flex-grow: 1;}
+.message3  div:nth-of-type(2) {flex-grow: 3;}
+
+ 

@@ -1,0 +1,146 @@
+/* job css */
+.jobs p,
+.jobs h1,
+.jobs h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.jobs .card-header {
+  background-color: #333333;
+  text-align: left;
+  color: white;
+  border-radius: 16px 16px 16px 16px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 16px !important;
+}
+.jobs .card-header small {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.jobs .card {
+  border-radius: 16px !important;
+}
+
+.jobs .card1 .card-title {
+  font-size: 1.3em;
+  color: #407c1e;
+}
+.jobs .card1 .card-text {
+  font-weight: bold !important;
+  color: black !important;
+}
+
+.jobs .card .card-body p {
+  display: flex;
+  justify-content: space-between;
+}
+.jobs .card2 .Emergency {
+  margin-left: 10px;
+  background-color: #e6fcda;
+  border-radius: 21px;
+  font-weight: Bold;
+  color: #333333;
+  box-shadow: 0px 0px 9px #00000058;
+}
+.jobs .card2 .Emergency p {
+  margin-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Emergency,
+.NonEmergency {
+  font-size: 14px;
+}
+.jobs .card2 .NonEmergency {
+  margin-left: 10px;
+  background-color: #e6fcda;
+  border-radius: 21px;
+  width: 55%;
+  color: #333333;
+  box-shadow: 0px 0px 9px #00000058;
+}
+.jobs .card2 .NonEmergency p {
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: Bold;
+}
+
+.jobs .card2 .days {
+  font-weight: bold;
+  font-size: 33px;
+  padding: 10px 15px;
+  color: #407c1e;
+}
+
+hr.divider {
+  border-top: 1px solid #407c1e;
+  color: #407c1e;
+}
+.fa-clock-o {
+  color: #407c1e;
+}
+
+.jobs .card3 .card-title {
+  font-size: 30px;
+  color: #407c1e;
+}
+
+.jobs .card33 .Emergency,
+.jobs .card33 .NonEmergency {
+  background-color: #e6fcda;
+  border-radius: 21px;
+  box-shadow: 0px 0px 9px #00000058;
+}
+
+.jobs .card33 .Emergency p,
+.jobs .card33 .NonEmergency p {
+  font-weight: Bold;
+  color: #333333;
+  margin-left: 5px;
+  padding: 5px 3px !important;
+}
+
+.vr {
+  border-left: 2px solid #407c1e;
+  height: 90%;
+}
+
+.card33 .days {
+  text-align: center;
+  font-size: 33px !important;
+  color: #407c1e;
+  font-weight: 600;
+  font-family: Helvetica;
+}
+
+.subscript {
+  font-size: 10px;
+}
+
+/* apechart */
+
+.apexcharts-legend {
+  display: none !important;
+}
+
+.graph_label span {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 10% !important;
+}
+.donut chart{
+  margin-left: 30px !important;
+  text-align: center;
+}

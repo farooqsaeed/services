@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41.237" height="60.979" viewBox="0 0 41.237 60.979">
+  <g id="Group_1383" data-name="Group 1383" transform="translate(-83 -359.215)">
+    <g id="Group_1382" data-name="Group 1382">
+      <path id="Subtraction_5" data-name="Subtraction 5" d="M35.237,41.237H6a6.007,6.007,0,0,1-6-6V6A6.007,6.007,0,0,1,6,0H35.237a6.007,6.007,0,0,1,6,6V35.237A6.007,6.007,0,0,1,35.237,41.237ZM8.069,30.031a1.345,1.345,0,0,0,0,2.689H27.79a1.345,1.345,0,0,0,0-2.689Zm0-10.758a1.345,1.345,0,0,0,0,2.69H34.961a1.345,1.345,0,0,0,0-2.69Zm0-10.757a1.345,1.345,0,1,0,0,2.689h8.964a1.345,1.345,0,1,0,0-2.689Z" transform="translate(83 359.215)" fill="#737475"/>
+      <text id="Events" transform="translate(84 417.193)" fill="#737475" font-size="12" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Events</tspan></text>
+    </g>
+  </g>
+</svg>

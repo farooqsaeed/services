@@ -1,0 +1,11 @@
+<svg id="Group_1389" data-name="Group 1389" xmlns="http://www.w3.org/2000/svg" width="39.045" height="53.823" viewBox="0 0 39.045 53.823">
+  <g id="Group_1388" data-name="Group 1388" transform="translate(0)">
+    <g id="Group_1354" data-name="Group 1354" transform="translate(0)">
+      <g id="Group_1353" data-name="Group 1353" transform="translate(0)">
+        <path id="logout" d="M36.424,22.479l-5.5-5.5,3.067-3.067L44.725,24.648,33.99,35.383l-3.067-3.067,5.5-5.5H22.141V22.479Z" transform="translate(-5.68 -5.13)" fill="#407c1e"/>
+        <path id="logout-2" data-name="logout" d="M4.5,8.837A4.35,4.35,0,0,1,8.837,4.5H26.187V8.837H8.837V39.2H26.187v4.337H8.837A4.35,4.35,0,0,1,4.5,39.2Z" transform="translate(-4.5 -4.5)" fill="#407c1e"/>
+      </g>
+    </g>
+    <text id="Logout-3" data-name="Logout" transform="translate(4.661 51.823)" fill="#407c1e" font-size="8" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">Logout</tspan></text>
+  </g>
+</svg>

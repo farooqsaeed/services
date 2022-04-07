@@ -1,0 +1,178 @@
+/* Contractor_cards cont */
+
+
+
+/* Contractor_cards css */
+
+.Contractor_cards .card {
+  margin: 5px;
+  box-shadow: 0px 0px 9px #00000058;
+  border-radius: 16px;
+  color: white;
+  padding: 0px 5px !important;
+}
+
+.Contractor_cards .card-title {
+  font-family: "Helvetica";
+  font-weight: bold;
+  margin-top: 30px;
+  line-height: 10px;
+}
+.Contractor_cards .card-text {
+  font-family: "Helvetica";
+  font-weight: bold;
+  color: white !important;
+  
+}
+
+.Contractor_cards .card1 {
+  background-color: #fc5461;
+}
+
+.Contractor_cards .card2 {
+  background-color: #21c5db;
+}
+
+.Contractor_cards .card3 {
+  background-color: #38bf67;
+}
+
+.Contractor_cards .card4 {
+  background-color: #FEDA32;
+}
+
+.Contractor_cards .card5{
+  background-color: #5869C1;
+}
+.Contractor_cards .card5 p{
+    margin-bottom: 0px;
+ }
+
+.Contractor_cards .fa {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+
+
+
+/* card details */
+
+/* job css */
+.DetailCards p,
+.DetailCards h1,
+.DetailCards h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.DetailCards .card-header {
+  background-color: #333333;
+  text-align: left;
+  color: white;
+  border-radius: 16px !important;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.DetailCards .card {
+  border-radius: 16px;
+}
+
+.DetailCards .card1 .card-title {
+  font-size: 1.3em;
+  color: #407c1e;
+}
+
+.DetailCards .card .card-body p {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.DetailCards .fa {
+  background-color: #407c1e;
+  padding: 4px;
+  font-style: 4px !important;
+  color: white;
+  border-radius: 20px;
+}
+
+.DetailCards .card-text {
+  font-size: 15px;
+  margin-top: 3px;
+  color: #737475;
+}
+.DetailCards p {
+  padding: 0%;
+  /* margin: 0px; */
+  margin-bottom: 0% !important;
+  text-align: center !important;
+}
+
+/* apechart */
+
+hr.card_hr {
+  border-top: 1px solid #407c1e;
+}
+
+.footer .TotalJobs {
+
+  font-size: 15px;
+  margin-top: 3px;
+  color: #737475;
+}
+
+.footer .Total  {
+
+  font-size: 18px;
+  margin-top: 3px;
+  color: #407c1e;
+}
+.DetailCards .card-header img{
+  background-color: white;
+  border-radius: 20px;
+  padding: 2px;
+}
+
+
+/* breadcrumb */
+
+
+.BreadCrumb_card .card-title{
+    color: #407C1E;
+    font-size: 35px;
+  }
+
+.breadcrumb-item,.breadcrumb-item a{
+    color: #407C1E;
+    font-family: Helvetica;
+    font-weight:600;
+    margin-top: -30px;
+    font-size: 18px;
+}
+
+.BreadCrumb_card .notification{
+color: #407C1E;
+text-align: center;
+display: flex;
+justify-content: end;
+ }
+
+.BreadCrumb_card .notification p{
+    font-size: 10px;
+    font-weight: bold;
+ 
+}
+
+.BreadCrumb_card .fa-bell,.BreadCrumb_card .fa-sign-out{
+  font-size: 20px;
+}
