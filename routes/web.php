@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.dashboard');
 });
+
+ Route::get('/contractors', function () {
+    return view('contractors.contractors');
+});  
+
+ Route::get('/addcontractor', function () {
+    return view('contractors.add');
+});  
+
+ Route::get('/plumbers', function () {
+    return view('plumbers.plumbers');
+});  
+
+
