@@ -85,7 +85,7 @@
                     <a class="dashboard-nav-item" href="/contractors">
                         <i class="fa fa-user"></i> Contractors
                     </a>
-                    <a href="#" class="dashboard-nav-item">
+                    <a href="callout" class="dashboard-nav-item">
                         <i class="fa fa-comment"></i> Callout
                     </a>
                     <a href="newjobs" class="dashboard-nav-item">
@@ -174,6 +174,27 @@
         });
     </script>
 
+
+    <script>
+           $(document).ready(function () {
+                $("#collapseExample").click(function () {
+                    if ($('.example_col').is(':visible')) {
+                        $('.example_col').slideUp();
+                        $('#hideable').removeClass('fa-chevron-up');
+                        $('#hideable').addClass('fa-chevron-down');
+
+                    }
+                    else {
+                        $('.example_col').slideDown();
+                        $('#hideable').addClass('fa-chevron-up');
+                        $('#hideable').removeClass('fa-chevron-down');
+                    }
+                });
+                $("#removeexampletable").click(function () {
+                    $('.example_col').hide();
+                });
+            });
+    </script>
 </body>
 
 </html>

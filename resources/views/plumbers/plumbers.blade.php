@@ -19,9 +19,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
             <div class="card py-0 my-0 border-0 BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
-                    <p class="d-flex  justify-content-between mt-5 mb-0 " id="collapsable">
+                    <p class="d-flex  justify-content-between mt-5 mb-0 " >
                     <div class="card-text p-0   mt-0">
-                        <ol class="breadcrumb bg-white collapse show" id="collapseExample">
+                        <ol class="breadcrumb bg-white collapse show" >
                             <li class="breadcrumb-item">
                                 <a href="#!">Home</a>
                             </li>
@@ -34,18 +34,18 @@
                             </li>
                         </ol>
                     </div>
-                    <div class="notification   ">
-                        <div class=" mt-n1 " data-toggle="collapse" href="#collapseExample" role="button">
-                            <i class="fa fa-chevron-up " aria-hidden="true"></i>
+                    <div class="notification">
+                        <div class=" mt-n1"  id="collapseExample" role="button">
+                            <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                         </div>
-                        <div class="fa fa-times ml-3"></div>
+                        <div id="removeexampletable" class="fa fa-times ml-3"></div>
                     </div>
                     </p>
                 </div>
             </div>
 
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 example_col">
             <table id="example" class="table table-striped table-bordered display" style="width:100%">
                 <a href="addcontractor"><button class="btn btn-success float-right btn-sm">Add Contractor</button></a> 
                 <thead>
@@ -530,5 +530,5 @@
         </div>
     </div>
 </div>
-
+ 
 @endsection

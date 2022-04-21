@@ -16,15 +16,14 @@
                     <div class="col-sm-2">Businessman</div>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1" checked={checkBoxChecked}
-                                onChange={handleChange} />
+                            <input class="form-check-input" type="checkbox" id="gridCheck1" checked />
                         </div>
                     </div>
                 </div>
                  
-                <div class="my-3">
+                <div class="my-3" id="Businessman">
                     <label htmlFor="">Business Name *</label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter Business" />
+                    <input type="text" class="form-control" name=""  placeholder="Enter Business" />
                 </div>
                 
             </div>
@@ -186,7 +185,18 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
+<script>
+    	$('#gridCheck1').on('click', function () {
+                var is_checked = $(this).is(':checked');
+                if (is_checked) {
+                    $('#Businessman').show();
+                }
+                else {
+                    $('#Businessman').hide();
+                }
+            });
+</script>
 
 @endsection
