@@ -1,0 +1,32 @@
+.menu p {
+    font-size: 13px;
+    font-weight: bold;
+    color: #407c1e;
+    opacity: 0.5;
+}
+.menu p a{
+    color: #407c1e;
+  
+}
+.selected {
+    opacity: 1 !important;
+    /* border-bottom: 2px solid #407C1E; */
+    text-decoration: underline;
+}
+.Enrolment span {
+    background-color: #e0f0d7 !important;
+    color: #407c1e;
+    border-radius: 5px;
+    padding: 10px 0px;
+    font-size: 16px;
+}
+
+.Enrolment p {
+    color: #407c1e;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.Enrolment .fa-chevron-right {
+    color: #407c1e;
+}

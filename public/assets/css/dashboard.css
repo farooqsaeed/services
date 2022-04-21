@@ -14,7 +14,10 @@
   margin-top: 30px;
   line-height: 10px;
 }
-
+.cards .card a{
+  text-decoration:  none;
+  color: white;
+}
 
 .cards .card-text {
   font-family: "Helvetica";

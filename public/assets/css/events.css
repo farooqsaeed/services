@@ -1,0 +1,27 @@
+.events .cards  a {
+        text-decoration: none !important;
+        color: white;
+    }
+  .events  .eventsuser{
+        border: 1.5px solid #407C1E;
+        border-radius: 14px;
+    }
+   .events .eventuserimage img{
+      
+        height: 102px;
+    }
+ .events   .eventtext p,
+ .events   .eventtext p span {
+        font-weight: normal;
+        color: gray;
+        font-size: 14px;
+        line-height: 27px;
+    }
+
+   .events .eventtext h5 {
+        color: #407C1E;
+        font-size: 22px;
+        text-transform: capitalize;
+        margin-bottom: 0px;
+        margin-top: 5px;
+    }

@@ -3,11 +3,15 @@
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/contractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
-
+<style>
+    .DetailCards .col-lg-3 a {
+        text-decoration: none;
+    }
+</style>
 
 <div class="container-fluid">
     <div class="row ">
-         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
             <div class=" Header d-none  d-sm-block">
                 <div class="row  ">
                     <div class="col-lg-3 p-3">
@@ -15,23 +19,23 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
                         <span class="card-title my-0">Contractors</span>
-                    <div class="notification mt-3">
-                        <div class="fa fa-bell mr-2 mt-1">
-                            <p class="mt-1">Notification</p>
-                        </div>
-                        <div class="mt-1 ">
-                             <div class="fa fa-sign-out" aria-hidden="true">
-                            <p class="mt-1">Logout</p>
+                        <div class="notification mt-3">
+                            <div class="fa fa-bell mr-2 mt-1">
+                                <p class="mt-1">Notification</p>
+                            </div>
+                            <div class="mt-1 ">
+                                <div class="fa fa-sign-out" aria-hidden="true">
+                                    <p class="mt-1">Logout</p>
 
-                             </div> 
+                                </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="card-text p-0 mb-0 mt-0">
                         <ol class="breadcrumb bg-white">
@@ -112,39 +116,41 @@
                     </div>
                 </div>
                 <div class="col-lg-3 my-2 p-1">
-                    <div class="card1 card shadow">
-                        <div class="card-header ">
-                            <img src="{{URL::asset('assets/imgs/icons/Plumber.svg')}}" alt="" srcSet="" /> Plumber
-                        </div>
-                        <div class="card-body pb-0 mb-0">
-                            <p>
-                                <span class="card-title">
-                                    <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
-                                </span>
-                                <span class="card-title"> 0</span>
-                                <span class="card-text">Active</span>
-                            </p>
-                            <p>
-                                <span class="card-title">
-                                    <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
-                                </span>
-                                <span class="card-title">&nbsp;&nbsp; 0</span>
-                                <span class="card-text">Pending</span>
-                            </p>
-                            <p>
-                                <span class="card-title">
-                                    <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
-                                </span>
-                                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
-                                <span class="card-text">Suspended</span>
-                            </p>
-                            <hr class="card_hr my-0" />
-                            <div class="footer text-center pb-0 my-1">
-                                <span class="TotalJobs">Total Jobs </span>
-                                <span class="Total"> 40,886</span>
+                    <a href="plumbers">
+                        <div class="card1 card shadow">
+                            <div class="card-header ">
+                                <img src="{{URL::asset('assets/imgs/icons/Plumber.svg')}}" alt="" srcSet="" /> Plumber
+                            </div>
+                            <div class="card-body pb-0 mb-0">
+                                <p>
+                                    <span class="card-title">
+                                        <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                                    </span>
+                                    <span class="card-title"> 0</span>
+                                    <span class="card-text">Active</span>
+                                </p>
+                                <p>
+                                    <span class="card-title">
+                                        <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                                    </span>
+                                    <span class="card-title">&nbsp;&nbsp; 0</span>
+                                    <span class="card-text">Pending</span>
+                                </p>
+                                <p>
+                                    <span class="card-title">
+                                        <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                                    </span>
+                                    <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                                    <span class="card-text">Suspended</span>
+                                </p>
+                                <hr class="card_hr my-0" />
+                                <div class="footer text-center pb-0 my-1">
+                                    <span class="TotalJobs">Total Jobs </span>
+                                    <span class="Total"> 40,886</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-3 my-2 p-1">
                     <div class="card1 card shadow">

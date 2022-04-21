@@ -3,6 +3,18 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/jobs.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/compliance.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/calender.css')}}">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+<style>
+  .cards .card a {
+    color: white;
+    text-decoration: none;
+  }
+</style>
 
 
 <div class="container-fluid">
@@ -20,7 +32,8 @@
       <div class="card py-0 my-0 border-0  BreadCrumb_card">
         <div class="card-body py-0 my-0">
           <div class="d-flex justify-content-between my-0 align-self-center">
-            <span class="card-title my-0">Dashboard</span>
+            <span class="card-title my-0 ml-n2"><i class="fa fa-th-large" aria-hidden="true"></i>
+              Dashboard</span>
             <div class="notification mt-3">
               <div class="fa fa-bell mr-2 mt-1">
                 <p class="mt-1">Notification</p>
@@ -33,10 +46,10 @@
               </div>
             </div>
           </div>
-          <div class="card-text p-0 mb-0 mt-0">
+          <div class="card-text p-0 mb-0 mt-0 ml-4">
             <ol class="breadcrumb bg-white">
               <li class="breadcrumb-item ml-lg-n3">
-                <a href='/' >Overview </a>
+                <a href='/'>Overview </a>
               </li>
             </ol>
           </div>
@@ -47,11 +60,13 @@
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
     <div class="cards d-lg-flex justify-content-lg-around align-self-center">
       <div class="card card1 w-100">
-        <div class="card-body">
-          <div class="fa fa-suitcase fa-2x"></div>
-          <h4 class="card-title">10,345</h4>
-          <p class="card-text">New Jobs</p>
-        </div>
+        <a href="newjobs">
+          <div class="card-body">
+            <div class="fa fa-suitcase fa-2x"></div>
+            <h4 class="card-title">10,345</h4>
+            <p class="card-text ">New Jobs</p>
+          </div>
+        </a>
       </div>
       <div class="card card2 w-100">
         <div class="card-body">
@@ -68,11 +83,13 @@
         </div>
       </div>
       <div class="card card4 w-100">
-        <div class="card-body">
-          <div class="fa fa-exclamation-triangle fa-2x"></div>
-          <h4 class="card-title">215</h4>
-          <p class="card-text">Compliance</p>
-        </div>
+        <a href="events_complience">
+          <div class="card-body">
+            <div class="fa fa-exclamation-triangle fa-2x"></div>
+            <h4 class="card-title">215</h4>
+            <p class="card-text">Compliance</p>
+          </div>
+        </a>
       </div>
       <div class="card card5 w-100">
         <div class="card-body">
@@ -81,8 +98,8 @@
           <p>
             <span>Property:</span> <span class="card-title">3674</span>
           </p>
-          <p>
-            <span>Contactors:</span> <span class="card-title">159</span>
+          <p><a href="contractors"><span>Contactors:</span> <span class="card-title">159</span></a>
+
           </p>
           <p class="card-text">Assets</p>
         </div>
@@ -90,8 +107,8 @@
     </div>
   </div>
 
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
-    <div class="jobs d-lg-flex justify-content-lg-between  ">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0" id="myid">
+    <div class="jobs d-lg-flex justify-content-lg-between  align-items-stretch   ">
       <div class="col-lg-3 my-2 p-1 ">
         <div class="card1 card shadow">
           <div class="card-header">Open Jobs</div>
@@ -186,8 +203,10 @@
         <div class="card1 card shadow">
           <div class="card-header">Job Categories</div>
           <div class="card-body p-0 mb-0">
-            <div class="donut">
-              <article class="pl-3 graph_label">
+            <div id="piechart" class="w-100"></div>
+
+            <div class="donut mt-n2">
+              <article class="pl-4 graph_label">
                 <span>
                   <i class="fa fa-circle mr-2 text-info" aria-hidden="true"></i>
                   Electrician
@@ -346,11 +365,25 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 my-2 p-1">
+      <div class="col-lg-3 my-2  p-1  ">
         <div class="card1 card shadow">
-          <div class="card-header">Open Jobs</div>
-          <div class="card-body">
-            <Calendar />
+          <div class="card-header">Calendar</div>
+          <div class="card-body p-2 pb-3">
+            <div class="calendar ">
+              <div class="header">
+                <a data-action="prev-month" href="javascript:void(0)" title="Previous Month"><i></i></a>
+                <div class="text" data-render="month-year"></div>
+                <a data-action="next-month" href="javascript:void(0)" title="Next Month"><i></i></a>
+              </div>
+              <div class="months" data-flow="left">
+                <div class="month month-a">
+                  <div class="render render-a"></div>
+                </div>
+                <div class="month month-b">
+                  <div class="render render-b"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -359,5 +392,34 @@
 </div>
 </div>
 
+<script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
+</script>
+
+
+<script>
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Electrician', 8],
+      ['Plumber', 6],
+      ['Handyman', 5],
+      ['Gas & Heating', 4],
+      ['Locksmith', 3],
+      ['Drainage', 2]
+    ]);
+
+    var options = {
+      legend: 'none'      // title: 'My Daily Activities'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
 
 @endsection

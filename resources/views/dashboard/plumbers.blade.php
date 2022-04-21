@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumbers.css')}}">
 
 <div class="container-fluid">
-    <div class="row Contractor_header p-0">
-        <div class="col-lg-12 p-0">
-            <div class="add  mt-0 p-3">
+    <div class="row Contractor_header">
+        <div class="col-lg-12">
+            <div class="add  mt-0 ">
                 <span>
                     <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
                 </span>
@@ -47,7 +47,6 @@
         </div>
         <div class="col-lg-12">
             <table id="example" class="table table-striped table-bordered display" style="width:100%">
-                <a href="addcontractor"><button class="btn btn-success float-right btn-sm">Add Contractor</button></a> 
                 <thead>
                     <tr>
                         <th>Name</th>

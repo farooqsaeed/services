@@ -83,6 +83,8 @@ span {
   font-size: 15px;
 }
 
+
+
 .DetailCards .card {
   border-radius: 16px;
 }
@@ -142,6 +144,15 @@ hr.card_hr {
   border-radius: 20px;
   padding: 2px;
 }
+
+.newjobs .DetailCards .card-header img{
+  background-color: #333333;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 2px;
+}
+
+ 
 
 
 /* breadcrumb */

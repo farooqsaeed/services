@@ -8,16 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+
+
     <link rel="stylesheet" href="{{URL::asset('assets/css/master.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/dashboard.css')}} 
     ">
 
 
 </head>
-
+ 
 <body class="">
     <div>
         <div class="dashboard">
@@ -39,7 +42,7 @@
                         <a href="/groups" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="fa fa-users"></i> Groups
                         </a>
-                        <div class="dashboard-nav-dropdown-menu">
+                        <!-- <div class="dashboard-nav-dropdown-menu">
                             <a href="#" class="dashboard-nav-dropdown-item">
                                 All
                             </a>
@@ -55,21 +58,21 @@
                             <a href="#" class="dashboard-nav-dropdown-item">
                                 New
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="dashboard-nav-dropdown">
                         <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="fa fa-calendar"></i> Events
                         </a>
                         <div class="dashboard-nav-dropdown-menu">
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                All
+                            <a href="eventsreports" class="dashboard-nav-dropdown-item">
+                                Reports
                             </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                Recent
+                            <a href="events_complience" class="dashboard-nav-dropdown-item">
+                                Complience
                             </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                Projections
+                            <a href="events" class="dashboard-nav-dropdown-item">
+                                Events
                             </a>
                         </div>
                     </div>
@@ -85,13 +88,13 @@
                     <a href="#" class="dashboard-nav-item">
                         <i class="fa fa-comment"></i> Callout
                     </a>
-                    <a href="#" class="dashboard-nav-item">
+                    <a href="newjobs" class="dashboard-nav-item">
                         <i class="fa fa-suitcase"></i> Jobs
                     </a>
                     <a href="/signin" class="dashboard-nav-item">
                         <i class="fa fa-sign-out"></i> Logout
                     </a>
-                    <a href="#" class="dashboard-nav-item">
+                    <a href="setting" class="dashboard-nav-item">
                         <i class="fa fa-cogs"></i> Settings
                     </a>
                 </nav>
@@ -156,10 +159,19 @@
 
     <script>
         $(document).ready(function () {
-                $('#example').DataTable({
-                    "pagingType": "simple_numbers",
-                });
+            $('#example').DataTable({
+                "pagingType": "simple_numbers",
             });
+        });
+    </script>
+
+    <!-- open jobs  -->
+    <script>
+        $(document).ready(function () {
+            $('#openjobs').DataTable({
+                "pagingType": "simple"
+            });
+        });
     </script>
 
 </body>
