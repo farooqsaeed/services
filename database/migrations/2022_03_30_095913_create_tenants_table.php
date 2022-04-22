@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('mobile_no');
+            $table->string('email');
+            $table->string('house_no');
+            $table->string('street_name');
+            $table->string('town');
+            $table->string('postal_code');
+            $table->integer('isMobile')->default(1);
             $table->timestamps();
         });
     }

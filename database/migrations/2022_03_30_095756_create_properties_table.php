@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->string('property_id');
+            $table->string('first_line_address');
+            $table->string('second_line_address');
+            $table->string('Town');
+            $table->string('Postcode');
+            $table->string('group_id');
+            $table->string('group_name');
+            $table->string('group_type');
+            $table->string('Notes');
+            $table->string('status');
             $table->timestamps();
         });
     }

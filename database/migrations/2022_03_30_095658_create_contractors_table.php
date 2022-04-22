@@ -15,6 +15,24 @@ return new class extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
+            $table->string('business_name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('landline_no');
+            $table->string('mobile_no');
+            $table->string('house_no');
+            $table->string('street_name');
+            $table->string('town_city');
+            $table->string('postal_code');
+            $table->string('rate_option');
+            $table->string('rate');
+            $table->string('preferred_communication');
+            $table->string('area_of_coverage');
+            $table->string('isMobile')->default(1);
+            $table->string('approved_by')->nullable();
+            $table->string('Recommendation')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('workinghours', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->nullable()->unique();
-            $table->string('password');
-            $table->string('unique_id');
-            $table->string('group_name')->nullable();
-            $table->string('user_type');
-            $table->string('status')->default('Pending');
+            $table->string('Mon');
+            $table->string('Tues');
+            $table->string('Wed');
+            $table->string('Thur');
+            $table->string('Fri');
+            $table->string('Sat');
+            $table->string('Sun');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('workinghours');
     }
 };
