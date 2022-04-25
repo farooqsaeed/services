@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('subgroups', function (Blueprint $table) {
             $table->id();
+            $table->string('Sub_Group_ID');
+            $table->string('Sub_Group_Name');
+            $table->string('group_id');
             $table->timestamps();
         });
     }

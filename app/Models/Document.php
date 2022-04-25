@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tenant extends Model
+class Document extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'mobile_no',
-        'email',
-        'house_no',
-        'street_name',
-        'town',
-        'postal_code',
-        'isMobile'
+        'title',
+        'description',
+        'attachment',
+        'achieved_date',
+        'expiry_date',
+        'doc_type',
+        'user_id'
     ];
 
     /**

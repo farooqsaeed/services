@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tenant_properties', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->nullable()->unique();
-            $table->string('password');
-            $table->string('unique_id');
-            $table->string('group_name')->nullable();
-            $table->string('user_type');
-            $table->string('status')->default('Pending');
+            $table->string('tenant_id');
+            $table->string('property_id');
+            $table->string('tenancy_start_date')
+            ->nullable();
+            $table->string('tenancy_last_date')->nullable();
+            $table->integer('status')->default(1);
+            $table->string('IsExpired')->default('1');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tenant_properties');
     }
 };

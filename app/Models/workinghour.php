@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tenant extends Model
+class workinghour extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'mobile_no',
-        'email',
-        'house_no',
-        'street_name',
-        'town',
-        'postal_code',
-        'isMobile'
+        'Mon',
+        'Tues',
+        'Wed',
+        'Thur',
+        'Fri',
+        'Sat',
+        'Sun',
+        'user_id'
     ];
 
     /**
