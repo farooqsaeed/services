@@ -17,10 +17,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/master.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/dashboard.css')}} 
     ">
-
-
 </head>
- 
 <body class="">
     <div>
         <div class="dashboard">

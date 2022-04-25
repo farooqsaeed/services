@@ -105,3 +105,11 @@ Route::get('/contractorcompliance', function () {
 Route::get('/licences', function () {
     return view('setting.licences');
 });
+
+
+// map view
+
+
+Route::get('mapview', function () {
+    return view('mapview.mapview');
+});

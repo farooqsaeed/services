@@ -151,7 +151,7 @@
     -webkit-flex-grow: 2;
     -ms-flex-positive: 2;
     flex-grow: 2;
-    padding: 5px;
+    padding: 0px 5px 5px 0px;
   }
 
   .dashboard-nav {
