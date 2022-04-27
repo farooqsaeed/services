@@ -25,12 +25,15 @@ use App\Http\Controllers\ApiController\UserController;
 // });
 
 // contractor registration
-
 Route::apiResources([
        'contractor' => ContractorController::class,
 ]);
-Route::group(['middleware'=>['auth:sanctum']],function(){
 
+// check user status
+
+Route::post('user/status',[UserController::class,'UserStatus']);
+
+Route::group(['middleware'=>['auth:sanctum']],function(){
 	// Route::apiResources([
  //       'contractor' => ContractorController::class,
  //    ]);
