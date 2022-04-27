@@ -27,7 +27,8 @@ class Contractor extends Model
         'isMobile',
         'approved_by',
         'Recommendation',
-        'notes'
+        'notes',
+        'logo'
     ];
 
     /**
