@@ -137,25 +137,14 @@ class UserController extends Controller
 
         if (!empty($Check)) {
             $token = $Check->createToken('api-token')->plainTextToken;
-
-            if ($Check->user_type=='Tenant') {
-                // for tenant
-              $tenant = Tenant::where('id','=',$Check->id)->first();
-              if (!empty($tenant)) {
-                  return json_encode(['status'=>1,'IsRegister'=>true,'userType'=>$Check->user_type,'token'=>$token,'success'=>$tenant]);
-              }else{
-                return json_encode(['status'=>1,'IsRegister'=>false,'userType'=>$Check->user_type,'success'=>$tenant]);
-              }
-            }else{
                 // for contractor 
-                $contractor = Contractor::where('id','=',$Check->id)->first();
-              if (!empty($contractor)) {
-                  return json_encode(['status'=>1,'IsRegister'=>true,'token'=>$token,'userType'=>$Check->user_type,'success'=>$contractor]);
-              }else{
-                return json_encode(['status'=>1,'IsRegister'=>false,'userType'=>$Check->user_type,'success'=>$contractor]);
-              }
+            $contractor = Contractor::where('id','=',$Check->id)->first();
 
-            }
+              if (!empty($contractor)) {
+                  return json_encode(['status'=>1,'IsRegister'=>true,'token'=>$token,'success'=>$contractor]);
+              }else{
+                return json_encode(['status'=>1,'IsRegister'=>false,'success'=>$contractor]);
+              }
         }else{
             return json_encode(['status'=>0,'IsRegister'=>false,'message'=>'user not found!']);
         }

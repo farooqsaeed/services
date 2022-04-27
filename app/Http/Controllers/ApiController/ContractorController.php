@@ -41,9 +41,6 @@ class ContractorController extends Controller
             'street_name'=> 'required',
             'town_city' => 'required',
             'postal_code' => 'required',
-            'rate_option' => 'required',
-            'rate' => 'required',
-            'preferred_communication'=>'required',
             'area_of_coverage'=>'required'
          ]);
    
@@ -64,9 +61,6 @@ class ContractorController extends Controller
                 'street_name'=>$request->street_name,
                 'town_city'=>$request->town_city,
                 'postal_code'=>$request->postal_code,
-                'rate_option'=>$request->rate_option,
-                'rate'=>$request->rate,
-                'preferred_communication'=>$request->preferred_communication,
                 'area_of_coverage'=>$request->area_of_coverage,
             )
         );
@@ -80,20 +74,7 @@ class ContractorController extends Controller
                     'user_id' => $user->id,
                 )
                ); 
-            }
-
-            workinghour::create(
-                array(
-                    'Mon'=> $request->Mon,
-                    'Tues'=> $request->Tues,
-                    'Wed'=> $request->Wed,
-                    'Thur'=> $request->Thur,
-                    'Fri'=> $request->Fri,
-                    'Sat'=> $request->Sat,
-                    'Sun'=> $request->Sun,
-                    'user_id'=> $user->id
-                )
-            ); 
+            } 
          } 
 
         return json_encode(['status'=>1,'message'=>'user registered successfully','success'=>$user]);
