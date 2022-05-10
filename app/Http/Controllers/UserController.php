@@ -14,14 +14,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $arrayName = array('name' => 'Farooq','Address'=>'Mardan');
+        $arrayName = array('Farooq','Mardan');
         $collection = collect($arrayName)->map(function ($name) {
             return strtoupper($name);
         })->reject(function ($name) {
             return empty($name);
         });
 
-        return $collection->toUpper();
+        return $collection;
     }
 
     /**
