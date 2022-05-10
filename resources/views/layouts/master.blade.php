@@ -2,22 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Western Property</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{URL::asset('assets/css/master.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/dashboard.css')}} 
     ">
 </head>
+
 <body class="">
     <div>
         <div class="dashboard">
@@ -32,33 +35,18 @@
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
-                    <a class="dashboard-nav-item" href="/">
+                    <a class="dashboard-nav-item {{ Request::path() ==  '/' ? '  active' : ''  }}" href="/">
                         <i class="fa fa-th-large" aria-hidden="true"></i> Dashboard
                     </a>
-                    <div class="dashboard-nav-dropdown">
-                        <a href="/groups" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                    <div class="dashboard-nav-dropdown ">
+                        <a href="/groups"
+                            class="dashboard-nav-item dashboard-nav-dropdown-toggle {{ Request::path() ==  'groups' ? 'open active' : ''  }}">
                             <i class="fa fa-users"></i> Groups
                         </a>
-                        <!-- <div class="dashboard-nav-dropdown-menu">
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                All
-                            </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                Subscribed
-                            </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                Non-subscribed
-                            </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                Banned
-                            </a>
-                            <a href="#" class="dashboard-nav-dropdown-item">
-                                New
-                            </a>
-                        </div> -->
                     </div>
                     <div class="dashboard-nav-dropdown">
-                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <a href="#!"
+                            class="dashboard-nav-item dashboard-nav-dropdown-toggle  {{ Request::path() ==  'events' ? 'open active' : ''  }}">
                             <i class="fa fa-calendar"></i> Events
                         </a>
                         <div class="dashboard-nav-dropdown-menu">
@@ -79,19 +67,22 @@
                     <a href="#" class="dashboard-nav-item">
                         <i class="fa fa-key"></i> Tenants
                     </a>
-                    <a class="dashboard-nav-item" href="/contractors">
+                    <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"
+                        href="{{URL('contractors')}}">
                         <i class="fa fa-user"></i> Contractors
                     </a>
-                    <a href="callout" class="dashboard-nav-item">
+                    <a href="callout" class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
                         <i class="fa fa-comment"></i> Callout
                     </a>
-                    <a href="newjobs" class="dashboard-nav-item">
+                    <a href="{{URL('jobs')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}">
                         <i class="fa fa-suitcase"></i> Jobs
                     </a>
                     <a href="/signin" class="dashboard-nav-item">
                         <i class="fa fa-sign-out"></i> Logout
                     </a>
-                    <a href="setting" class="dashboard-nav-item">
+                    <a href="{{URL('setting')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'setting' ? 'active' : ''  }}">
                         <i class="fa fa-cogs"></i> Settings
                     </a>
                 </nav>
@@ -127,7 +118,9 @@
         crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 
+    <!-- main screen script -->
     <script>
         const mobileScreen = window.matchMedia("(max-width: 990px )");
         $(document).ready(function () {
@@ -171,27 +164,25 @@
         });
     </script>
 
-
+    <!-- plumber page script -->
     <script>
-           $(document).ready(function () {
-                $("#collapseExample").click(function () {
-                    if ($('.example_col').is(':visible')) {
-                        $('.example_col').slideUp();
-                        $('#hideable').removeClass('fa-chevron-up');
-                        $('#hideable').addClass('fa-chevron-down');
-
-                    }
-                    else {
-                        $('.example_col').slideDown();
-                        $('#hideable').addClass('fa-chevron-up');
-                        $('#hideable').removeClass('fa-chevron-down');
-                    }
-                });
-                $("#removeexampletable").click(function () {
-                    $('.example_col').hide();
-                });
+        $(document).ready(function () {
+            $("#collapseExample").click(function () {
+                if ($('.example_col').is(':visible')) {
+                    $('.example_col').slideUp();
+                    $('#hideable').removeClass('fa-chevron-up');
+                    $('#hideable').addClass('fa-chevron-down');
+                }
+                else {
+                    $('.example_col').slideDown();
+                    $('#hideable').addClass('fa-chevron-up');
+                    $('#hideable').removeClass('fa-chevron-down');
+                }
             });
+            $("#removeexampletable").click(function () {
+                $('.example_col').hide();
+            });
+        });
     </script>
 </body>
-
 </html>

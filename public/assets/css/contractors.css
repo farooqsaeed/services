@@ -11,6 +11,13 @@
   color: white;
   padding: 0px 5px !important;
 }
+@media screen and (max-width: 480px) {
+    .Contractor_cards .card{
+        margin: 0px;
+    } 
+}
+
+
 
 .Contractor_cards .card-title {
   font-family: "Helvetica";
@@ -107,6 +114,10 @@ span {
   color: white;
   border-radius: 20px;
 }
+.DetailCards .pending img:hover{
+  fill:red !important;
+}
+
 
 .DetailCards .card-text {
   font-size: 15px;

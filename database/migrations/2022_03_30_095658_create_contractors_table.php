@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
-            $table->string('business_name');
+            $table->string('business_name')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');

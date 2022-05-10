@@ -3,8 +3,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContractorController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\GroupController;
 
-use App\Http\Controllers\dummyAPI;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,32 +23,19 @@ use App\Http\Controllers\dummyAPI;
 Route::get('/', function () {
     return view('dashboard.dashboard');
 });
-
 // contractors
-Route::get('/contractors', function () {
-    return view('contractors.contractors');
-});
-Route::get('/addcontractor', function () {
-    return view('contractors.add');
-});
-Route::get('/plumbers', function () {
-    return view('plumbers.plumbers');
-});
+Route::resource('contractors', ContractorController::class);
+Route::get('plumbers', [ContractorController::class,'plumbers']);
+
 
 
 // jobs
-Route::get('/newjobs', function () {
-    return view('jobs.newjobs');
-});
 Route::get('/openjobs', function () {
     return view('jobs.openjobs');
 });
-
-
+Route::resource('jobs', JobController::class);
 // groups
-Route::get('/groups', function () {
-    return view('groups.groups');
-});
+Route::resource('groups', GroupController::class);
 
  
 // events
@@ -99,8 +89,7 @@ Route::get('/propertycompliance', function () {
 Route::get('/contractorcompliance', function () {
     return view('setting.contractorcompliance');
 });
-
-
+ 
 
 Route::get('/licences', function () {
     return view('setting.licences');
@@ -108,8 +97,8 @@ Route::get('/licences', function () {
 
 
 // map view
-
-
 Route::get('mapview', function () {
     return view('mapview.mapview');
 });
+
+

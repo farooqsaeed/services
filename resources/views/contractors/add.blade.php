@@ -5,12 +5,13 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i  class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
         <span>Add Contractor</span>
     </div>
     <div class="p-3">
-        <form action="" class="row addform ">
+        <form id="myform" class="row addform ">
+            @csrf
             <div class="col-lg-10 offset-lg-1">
                 <div class="form-group row">
                     <div class="col-sm-2">Businessman</div>
@@ -20,61 +21,71 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="my-3" id="Businessman">
                     <label htmlFor="">Business Name *</label>
-                    <input type="text" class="form-control" name=""  placeholder="Enter Business" />
+                    <input type="text" class="form-control" name="business_name" value=""
+                        placeholder="Enter Business" />
                 </div>
-
             </div>
             <!-- {/* column 1st */} -->
             <div class="col-lg-5  offset-lg-1">
                 <div class="my-3">
                     <label htmlFor="">First Name *</label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter first name" />
+                    <input type="text" class="form-control" name="first_name" id="" value=""
+                        placeholder="Enter first name" required />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Mobile No *
                     </label>
-                    <input type="tele" class="form-control" name="" id="" placeholder="Enter Mobile NO" />
+                    <input type="tele" class="form-control" name="mobile_no" id="" placeholder="Enter Mobile NO"
+                        required />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Phone No *
                     </label>
-                    <input type="tele" class="form-control" name="" id="" placeholder="Enter Phone NO" />
+                    <input type="tele" class="form-control" name="landline_no" id="" placeholder="Enter Phone NO"
+                        required />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Email *
                     </label>
-                    <input type="Email" class="form-control" name="" id="" placeholder="Enter Email" />
+                    <input type="Email" class="form-control" name="email" id="" placeholder="Enter Email" required />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Area of Coverage *
                     </label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter Area of Coverage" />
-                </div>
-                <div class="my-3">
-                    <label htmlFor="" class="mt-3">
-                        Agreed Rate *
-                    </label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter Area of Coverage" />
+                    <input type="text" class="form-control" name="area_of_coverage" id=""
+                        placeholder="Enter Area of Coverage" required />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Business Address *
                     </label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter Area of Coverage" />
+                    <input type="text" class="form-control" name="house_no" id=""
+                        placeholder="Enter Area of Coverage" />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">street name</label>
+                    <input type="text" class="form-control" name="street_name" id="" placeholder="Enter street name"
+                        value="" required />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">Postal Code</label>
+                    <input type="text" class="form-control" name="postal_code" id="" placeholder="Enter street name"
+                        value="" />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Recommendation *
                     </label>
-                    <select name="" class="form-control" id="">
-                        <option value="">1st</option>
+                    <select name="Recommendation" class="form-control" id="" required>
+                        <option value="1">1st Choise</option>
+                        <option value="2">2nd Choise</option>
+                        <option value="3">3rd Choise</option>
                     </select>
                 </div>
                 <div class="my-3">
@@ -83,8 +94,7 @@
                     </label>
                     <div class="d-flex Working justify-content-between mt-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                             checked />
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
                             <label class="form-check-label" for="flexCheckDefault">
                                 6 - 8
                             </label>
@@ -102,16 +112,18 @@
             <div class="col-lg-5 ">
                 <div class="my-3">
                     <label htmlFor=""> Last Name *</label>
-                    <input type="text" class="form-control" name="" id="" placeholder="Enter Last Name" />
+                    <input type="text" class="form-control" name="last_name" id="" placeholder="Enter Last Name"
+                        required />
                 </div>
-
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Preferred Communication *
                     </label>
-                    <select name="" class="form-control" id="">
-                        <option value="">1st</option>
-                        <option value="">2nd</option>
+                    <select name="preferred_communication" class="form-control" id="" required>
+                        <option value="text">Phone</option>
+                        <option value="text">Text</option>
+                        <option value="email">Email</option>
+
                     </select>
                 </div>
                 <div class="my-3">
@@ -119,8 +131,8 @@
                         Select Services *
                     </label>
                     <select name="" class="form-control" id="">
-                        <option value="">1st</option>
-                        <option value="">2nd</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
                     </select>
                 </div>
                 <div class="my-3">
@@ -128,15 +140,40 @@
                         Add Group
                     </label>
                     <select name="" class="form-control" id="">
-                        <option value="">1st</option>
-                        <option value="">2nd</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
                     </select>
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">
+                        Agreed Rate *
+                    </label>
+                    <input type="text" class="form-control" name="rate" id="" placeholder="Enter Area of Coverage" />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">House NO</label>
+                    <input type="text" class="form-control" name="house_no" id="" placeholder="Enter house no" value=""
+                        required />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">Town city</label>
+                    <input type="text" class="form-control" name="town_city" id="" placeholder="Enter Town city"
+                        value="" required />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="" class="mt-3">Rate option</label>
+                    <input type="text" class="form-control" name="rate_option" id="" placeholder="Enter Rate"
+                        value="" />
+                </div>
+                <div class="my-3">
+                    <input type="hidden" class="form-control" name="isMobile" id="isMobile" placeholder="Enter Rate"
+                        value="0" />
                 </div>
                 <div class="my-3">
                     <label htmlFor="" class="mt-3">
                         Notes
                     </label>
-                    <textarea class="form-control" name="" id="" cols="30" rows="7"></textarea>
+                    <textarea class="form-control" name="notes" id="" cols="30" rows="5"></textarea>
                 </div>
             </div>
 
@@ -178,8 +215,17 @@
                     <input type="file" class="form-control" name="" id="" placeholder="Text Message" />
                 </div>
             </div>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert" style="display: none;">
+                    <span id="message"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block">Add</button>
+                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
+                    value="Add">Add</button>
             </div>
         </form>
     </div>
@@ -198,5 +244,30 @@
         }
     });
 </script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- ajax submition -->
+<script>
+    $('#myform').submit(function (e) {
+        e.preventDefault();
+        $('#formbtn').attr('disabled', true);
+        $('#formbtn').text('Please wait...');
+        $.ajax({
+            url: "{{URL('contractors')}}",
+            data: $('#myform').serialize(),
+            type: 'POST',
+            success: function (result) {
+                $('#message').html(result.result);
+                $("#msgdiv").css({ display: "block" });
+                $('#myform')['0'].reset();
+                $('#formbtn').attr('disabled', false);
+                $('#formbtn').text('Add');
+            }
+        })
+    })
+
+</script>
+
 
 @endsection

@@ -161,7 +161,7 @@
     top: 0;
     bottom: 0;
     overflow: auto;
-    background-color: #373193;
+    
   }
 .dashboard-nav {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -170,10 +170,7 @@
 .dashboard-nav::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
-
-
-
-
+ 
 
   .dashboard-compact .dashboard-nav {
     display: none;
@@ -194,6 +191,7 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    background-color: white;
   }
 
   .dashboard-nav header .menu-toggle {
@@ -245,8 +243,9 @@
     margin-right: 10px;
   }
 .brand-logo img{
-  width: 100px;
+  width: 180px;
   height: 120px;
+ 
 }
   .dashboard-nav-list {
     display: -webkit-box;
@@ -488,6 +487,26 @@
 
 
    
+/* scroll bar csss */
 
+*{
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+ /* body::-webkit-scrollbar {
+  width: 3px;
+}
 
+body::-webkit-scrollbar-track {
+  background:white;
+}
  
+body::-webkit-scrollbar-thumb {
+  background-color: green;
+  outline: 1px solid slategrey;
+} */
+
+body{
+  overflow-x: hidden;
+}

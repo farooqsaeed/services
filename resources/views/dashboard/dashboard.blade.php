@@ -109,7 +109,7 @@
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0" id="myid">
     <div class="jobs d-lg-flex justify-content-lg-between  align-items-stretch   ">
-      <div class="col-lg-3 my-2 p-1 ">
+      <div class="col-lg-3 my-3 p-1 ">
         <div class="card1 card shadow">
           <div class="card-header">Open Jobs</div>
           <div class="card-body">
@@ -136,7 +136,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 my-2 p-1 ">
+      <div class="col-lg-3 my-3 p-1 ">
         <div class="card2  card shadow pb-2">
           <div class="card-header">
             Job Age <small>(Emergency / Non-Emergency)</small>
@@ -155,7 +155,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 my-2 p-1">
+      <div class="col-lg-3 my-3 p-1">
         <div class="card3 card shadow">
           <div class="card-header">
             Avg. Response Time <small>(24 hrs)</small>
@@ -198,8 +198,7 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-3 my-2 p-1">
+      <div class="col-lg-3 my-3 p-1">
         <div class="card1 card shadow">
           <div class="card-header">Job Categories</div>
           <div class="card-body p-0 mb-0">

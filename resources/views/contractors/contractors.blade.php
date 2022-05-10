@@ -94,14 +94,14 @@
                                 <span class="card-text">Active</span>
                             </p>
                             <p>
-                                <span class="card-title">
+                                <span class="card-title pending">
                                     <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
                                 </span>
                                 <span class="card-title">&nbsp;&nbsp; 0</span>
                                 <span class="card-text">Pending</span>
                             </p>
                             <p>
-                                <span class="card-title">
+                                <span class="card-title pending">
                                     <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
                                 </span>
                                 <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
