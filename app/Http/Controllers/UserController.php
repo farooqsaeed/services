@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class UserController extends Controller
 {
@@ -13,7 +14,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $arrayName = array('name' => 'Farooq','Address'=>'Mardan');
+        $collection = collect($arrayName)->map(function ($name) {
+            return strtoupper($name);
+        })->reject(function ($name) {
+            return empty($name);
+        });
+
+        return $collection->toUpper();
     }
 
     /**

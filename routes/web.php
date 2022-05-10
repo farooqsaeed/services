@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -19,6 +20,7 @@ use App\Http\Controllers\GroupController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/farooq',[UserController::class,'index']);
 
 Route::get('/', function () {
     return view('dashboard.dashboard');
