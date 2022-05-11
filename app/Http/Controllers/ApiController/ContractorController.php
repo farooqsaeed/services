@@ -36,7 +36,7 @@ class ContractorController extends Controller
             'last_name' => 'required',
             'email' => 'required|unique:contractors',
             'landline_no' => 'required',
-            'mobile_no' => 'required',
+            'mobile_no' => 'required|unique:contractors',
             'house_no' => 'required',
             'street_name'=> 'required',
             'town_city' => 'required',
