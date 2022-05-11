@@ -29,7 +29,8 @@ class Contractor extends Model
         'approved_by',
         'Recommendation',
         'notes',
-        'logo'
+        'logo',
+        'social_id'
     ];
 
     /**
