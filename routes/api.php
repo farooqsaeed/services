@@ -27,6 +27,7 @@ use App\Http\Controllers\ApiController\UserController;
 // contractor registration
 Route::apiResources([
        'contractor' => ContractorController::class,
+       'tenant' => TenantController::class,
 ]);
 
 // check user status
