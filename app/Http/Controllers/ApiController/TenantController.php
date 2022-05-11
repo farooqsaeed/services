@@ -54,7 +54,7 @@ class TenantController extends Controller
                 'email'=>$request->email,
                 'house_no'=>$request->house_no,
                 'street_name'=>$request->street_name,
-                'town'=>$request->,
+                'town'=>$request->town,
                 'postal_code'=>$request->postal_code,
                 'social_id'=>$request->social_id
             )
