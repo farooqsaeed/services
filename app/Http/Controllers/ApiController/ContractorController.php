@@ -34,7 +34,7 @@ class ContractorController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|unique:contractors',
             'landline_no' => 'required',
             'mobile_no' => 'required',
             'house_no' => 'required',
