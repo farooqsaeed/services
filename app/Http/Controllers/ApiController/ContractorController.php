@@ -42,7 +42,8 @@ class ContractorController extends Controller
             'town_city' => 'required',
             'postal_code' => 'required',
             'area_of_coverage'=>'required',
-            'social_id'=>'required'
+            'social_id'=>'required',
+            'preferred_communication'=>'required'
          ]);
    
         if($validator->fails()){
@@ -63,6 +64,7 @@ class ContractorController extends Controller
                 'town_city'=>$request->town_city,
                 'postal_code'=>$request->postal_code,
                 'area_of_coverage'=>$request->area_of_coverage,
+                'preferred_communication'=>$request->preferred_communication
                 'social_id'=>$request->social_id,
             )
         );
