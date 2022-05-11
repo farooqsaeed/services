@@ -148,6 +148,7 @@ class UserController extends Controller
     public function IsRegister(Request $request)
     {
         if ($request->usertype=='Contractor') {
+
                  $contractor = Contractor::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
                             ->orWhere('email','=',$request->email)
@@ -155,6 +156,8 @@ class UserController extends Controller
                     })->first();
 
                  if (!empty($contractor)) {
+
+                     $token = $contractor->createToken('api-token')->plainTextToken;
 
                      return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Contractor','token'=>$token,'success'=>$contractor]);
                  }else{
@@ -171,6 +174,9 @@ class UserController extends Controller
                             ->orWhere('mobile_no','=',$request->mobile_no);
                     })->first();
                  if (!empty($tenant)) {
+                    
+                      $token = $tenant->createToken('api-token')->plainTextToken;
+
                       return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Tenant','token'=>$token,'success'=>$tenant]);
                   }else{
                     return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
