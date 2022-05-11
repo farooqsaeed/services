@@ -41,7 +41,8 @@ class ContractorController extends Controller
             'street_name'=> 'required',
             'town_city' => 'required',
             'postal_code' => 'required',
-            'area_of_coverage'=>'required'
+            'area_of_coverage'=>'required',
+            'social_id'=>'required'
          ]);
    
         if($validator->fails()){
@@ -62,11 +63,11 @@ class ContractorController extends Controller
                 'town_city'=>$request->town_city,
                 'postal_code'=>$request->postal_code,
                 'area_of_coverage'=>$request->area_of_coverage,
+                'social_id'=>$request->social_id,
             )
         );
 
         if (!empty($user)) {
-
             foreach ($request->services as $service) {
                Service::create(
                 array(

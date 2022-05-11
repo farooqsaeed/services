@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Tenant;
 use App\Models\Contractor;
 use App\Models\Document;
+use App\Models\UniqueId;
 use Validator;
 
 class UserController extends Controller
@@ -133,34 +134,47 @@ class UserController extends Controller
             return json_encode(['status'=>0,'errors'=>$errors]); 
         }
 
-        $Check = User::where('unique_id','=',$request->unique_id)->first();
+        $Check = UniqueId::where('uid','=',$request->unique_id)->first();
 
         if (!empty($Check)) {
-            $token = $Check->createToken('api-token')->plainTextToken;
-                // for contractor 
-            if ($Check->user_type=='Contractor') {
+            
+            return json_encode(['status'=>1,'usertype'=>$Check->usertype]);
+            
+        }else{
+            return json_encode(['status'=>0,'message'=>'user not found!']);
+        } 
+    }
 
-                  $contractor = Contractor::where('id','=',$Check->id)->first();
+    public function IsRegister(Request $request)
+    {
+        if ($request->usertype=='Contractor') {
+                 $contractor = Contractor::where(function ($query) use ($request) {
+                      $query->where('social_id','=',$request->social_id)
+                            ->orWhere('email','=',$request->email)
+                            ->orWhere('mobile_no','=',$request->mobile_no);
+                    })->first();
 
-                  if (!empty($contractor)) {
-                      return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Contractor','token'=>$token,'success'=>$contractor]);
-                  }else{
-                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Contractor','success'=>$contractor]);
-                  }
+                 if (!empty($contractor)) {
+
+                     return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Contractor','token'=>$token,'success'=>$contractor]);
+                 }else{
+
+                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Contractor','success'=>
+                        $contractor]);
+                 }
+
             }else{
-                // for tenant
-                $tenant = Tenant::where('id','=',$Check->id)->first();
 
-                  if (!empty($tenant)) {
+                 $tenant = Tenant::where(function ($query) use ($request) {
+                      $query->where('social_id','=',$request->social_id)
+                            ->orWhere('email','=',$request->email)
+                            ->orWhere('mobile_no','=',$request->mobile_no);
+                    })->first();
+                 if (!empty($tenant)) {
                       return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Tenant','token'=>$token,'success'=>$tenant]);
                   }else{
                     return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
                   }
-
             }
-            
-        }else{
-            return json_encode(['status'=>0,'IsRegister'=>false,'message'=>'user not found!']);
-        }
     }
 }

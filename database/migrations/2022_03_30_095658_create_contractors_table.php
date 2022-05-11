@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('business_name')->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('landline_no');
-            $table->string('mobile_no');
+            $table->string('mobile_no')->unique();
             $table->string('house_no');
             $table->string('street_name');
             $table->string('town_city');
@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('approved_by')->nullable();
             $table->string('Recommendation')->nullable();
             $table->string('notes')->nullable();
+            $table->string('social_id');
             $table->timestamps();
         });
     }

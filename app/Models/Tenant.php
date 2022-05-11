@@ -18,7 +18,8 @@ class Tenant extends Model
         'street_name',
         'town',
         'postal_code',
-        'isMobile'
+        'isMobile',
+        'social_id'
     ];
 
     /**

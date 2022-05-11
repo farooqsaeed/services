@@ -33,6 +33,9 @@ Route::apiResources([
 Route::post('user/status',[UserController::class,'UserStatus']);
 // store attachment
 Route::post('store/user/attachment',[UserController::class,'StoreAttachments']);
+// IsRegister
+
+Route::post('isuser/register',[UserController::class,'IsRegister']);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
 	// Route::apiResources([
