@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('town');
             $table->string('postal_code');
             $table->integer('isMobile')->default(1);
-            $table->string('social_id');
+            $table->string('social_id')->nullable();
             $table->timestamps();
         });
     }

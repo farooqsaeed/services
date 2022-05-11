@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('approved_by')->nullable();
             $table->string('Recommendation')->nullable();
             $table->string('notes')->nullable();
-            $table->string('social_id');
+            $table->string('social_id')->nullable();
             $table->timestamps();
         });
     }
