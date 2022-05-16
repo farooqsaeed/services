@@ -184,5 +184,16 @@
             });
         });
     </script>
+
+
+
+<!-- jobs -->
+<script>
+    $(document).ready(function () {
+        $('#jobs').DataTable({
+            "pagingType": "simple_numbers",
+        });
+    });
+</script>
 </body>
 </html>

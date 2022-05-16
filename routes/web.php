@@ -7,6 +7,8 @@ use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertyController;
+
 
 
 
@@ -38,8 +40,7 @@ Route::get('/openjobs', function () {
 Route::resource('jobs', JobController::class);
 // groups
 Route::resource('groups', GroupController::class);
-
- 
+  
 // events
 Route::get('/eventsreports', function () {
     return view('events.events_reports');
@@ -104,3 +105,6 @@ Route::get('mapview', function () {
 });
 
 
+// Property
+Route::resource('property',PropertyController::class);
+ 
