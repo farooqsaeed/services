@@ -123,20 +123,6 @@
                             <td>093493085</td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Jobs</th>
-                            <th>Job Name</th>
-                            <th>Avg Response time</th>
-                            <th>Avg Job Close time</th>
-                            <th>Coverage Area/Group</th>
-                            <th>Job Age</th>
-                            <th>Issue Reported from</th>
-                            <th>Service</th>
-                            <th>Contact</th>
-
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

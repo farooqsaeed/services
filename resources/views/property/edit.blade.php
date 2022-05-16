@@ -9,7 +9,7 @@
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
-        <span>Add Jobs</span>
+        <span>Edit Property</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform ">
@@ -17,40 +17,50 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Enter Job Details</h2>
+                    <h2 class="Certificate">Edit Property</h2>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="  line Address *" />
+                        <label htmlFor="">1st line Address *</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="1st line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Tenant Name    " />
+                        <label htmlFor="">2nd line Address *</label>
+                        <input type="text" class="form-control" name="" id=""
+                            placeholder="Enter 2nd line Address *     " />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Contact *" />
+                        <label htmlFor="">Town *</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="Enter   Town " />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="">Upload Attachment *</label>
-                        <input type="file" class="form-control " name="" id="" />
+                        <label htmlFor="">Post code *</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="Enter Post code *" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mt-lg-5">Description *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter  Text Message" />
+                        <label htmlFor="" class="mb-lg-5">Notes *</label>
+                        <input type="text" class="form-control mt-lg-5" name="" id=""
+                            placeholder="Enter Text Message" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <div class="text-right">
-                            <button class="btn btn-info success btn-sm">Add Another</button>
-                        </div>
-                        <label htmlFor="" class="mt-3">Subject </label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter  Subject  " />
-                    </div>
-                    <div class="col-4 offset-4  mt-5">
-                        <button class="btn btn-info success btn-block ">Save</button>
+                        <label htmlFor="">No. of Tenants </label>
+                        <input type="text" class="form-control" name="" id="" placeholder="Enter No. of Tenants" />
+                        <label htmlFor="" class="mt-3">Managed by *</label>
+                        <input type="text" class="form-control" name="" id="" placeholder="Enter Managed   " />
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
+                    style="display: none;">
+                    <span id="message"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4   text-center offset-lg-4 p-0">
+                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn" value="Add">Save</button>
             </div>
         </form>
     </div>

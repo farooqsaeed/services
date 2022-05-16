@@ -45,7 +45,8 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('property.show');
+
     }
 
     /**
@@ -56,7 +57,8 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+                return view('property.edit');
+
     }
 
     /**

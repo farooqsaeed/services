@@ -26,9 +26,10 @@
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
     }
-    .dropdown-menu .dropdown-item:hover{
+
+    .dropdown-menu .dropdown-item:hover {
         background-color: #407C1E;
-       color: white;
+        color: white;
     }
 </style>
 
@@ -77,7 +78,7 @@
                                     <a href="#!">Home</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    Jobs
+                                    Properties
                                 </li>
                             </ol>
                         </div>
@@ -91,10 +92,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+            <div class="menu p-3">
+                <p class="active mx-3">Active Properties</p>
+                <p class="mx-2">Archive</p>
+                <p>View all</p>
+            </div>
+        </div>
         <div class="col-lg-12 example_col">
             <table id="jobs" class="table table-striped table-bordered display" style="width:100%">
-                <a href="{{URL('jobs/create')}}"><button class="btn btn-success float-right btn-sm">Add
-                        Jobs</button></a>
+                <a href="{{URL('property/create')}}"><button class="btn btn-success float-right btn-sm">Add
+                        Property</button></a>
                 <thead>
                     <tr>
                         <th>First line of address</th>
@@ -134,8 +142,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -154,8 +162,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -174,8 +182,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -194,8 +202,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -214,8 +222,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -234,8 +242,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -254,8 +262,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -274,8 +282,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -294,8 +302,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -314,8 +322,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -334,8 +342,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -354,8 +362,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -374,8 +382,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -394,8 +402,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -414,8 +422,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -434,8 +442,8 @@
                         <td>Active</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">

@@ -27,6 +27,16 @@ class JobController extends Controller
 
     }
 
+    public function landlord()
+    {
+                return view('jobs.landlord');
+    }
+    
+public function assignengineer()
+    {
+                return view('jobs.assignengineer');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -46,7 +56,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('jobs.show');
     }
 
     /**
@@ -57,7 +67,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+                        return view('jobs.edit');
     }
 
     /**

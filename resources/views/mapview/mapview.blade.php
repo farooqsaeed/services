@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-    <div class="row p-0 m-0">
+    <div class="row p-0 ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  p-0 m-0">
             <div class="card border-0  p-0 m-0">
                 <div class="card-body p-0 pt-1">
@@ -188,7 +188,7 @@
             x.style.visibility = "hidden";
         }
     });
-    
+
     // when user click outside the div the search div will hide
     window.addEventListener('mouseup', function (event) {
         var box = document.getElementById('card');

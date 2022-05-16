@@ -144,3 +144,25 @@ hr.divider {
   margin-left: 30px !important;
   text-align: center;
 }
+
+
+.menu {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+}
+
+.menu p {
+    color: #407c1e;
+    opacity: 0.7;
+}
+.menu .active {
+    text-decoration: underline;
+    color: #407c1e !important;
+    opacity: 1 !important;
+
+}
+
+.success{
+  background-color: #407c1e;
+}

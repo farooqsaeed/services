@@ -7,196 +7,265 @@ h4,
 h5,
 h6,
 span {
-  font-family: Helvetica;
-  font-weight: bold;
+    font-family: Helvetica;
+    font-weight: bold;
 }
 
 .jobs .card-header {
-  background-color: #333333;
-  text-align: left;
-  color: white;
-  border-radius: 16px 16px 16px 16px;
-  font-family: Helvetica;
-  font-weight: bold;
-  font-size: 15px;
-  border-radius: 16px !important;
+    background-color: #333333;
+    text-align: left;
+    color: white;
+    border-radius: 16px 16px 16px 16px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 16px !important;
 }
 .jobs .card-header small {
-  font-size: 8px;
-  font-weight: bold;
+    font-size: 8px;
+    font-weight: bold;
 }
 
 .jobs .card {
-  border-radius: 16px !important;
+    border-radius: 16px !important;
 }
 
 .jobs .card1 .card-title {
-  font-size: 1.3em;
-  color: #407c1e;
+    font-size: 1.3em;
+    color: #407c1e;
 }
 .jobs .card1 .card-text {
-  font-weight: bold !important;
-  color: black !important;
+    font-weight: bold !important;
+    color: black !important;
 }
 
 .jobs .card .card-body p {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .jobs .card2 .Emergency {
-  margin-left: 10px;
-  background-color: #e6fcda;
-  border-radius: 21px;
-  font-weight: Bold;
-  color: #333333;
-  box-shadow: 0px 0px 9px #00000058;
+    margin-left: 10px;
+    background-color: #e6fcda;
+    border-radius: 21px;
+    font-weight: Bold;
+    color: #333333;
+    box-shadow: 0px 0px 9px #00000058;
 }
 .jobs .card2 .Emergency p {
-  margin-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .Emergency,
 .NonEmergency {
-  font-size: 14px;
+    font-size: 14px;
 }
 .jobs .card2 .NonEmergency {
-  margin-left: 10px;
-  background-color: #e6fcda;
-  border-radius: 21px;
-  width: 55%;
-  color: #333333;
-  box-shadow: 0px 0px 9px #00000058;
+    margin-left: 10px;
+    background-color: #e6fcda;
+    border-radius: 21px;
+    width: 55%;
+    color: #333333;
+    box-shadow: 0px 0px 9px #00000058;
 }
 .jobs .card2 .NonEmergency p {
-  margin-left: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-weight: Bold;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: Bold;
 }
 
 .jobs .card2 .days {
-  font-weight: bold;
-  font-size: 33px;
-  padding: 10px 15px;
-  color: #407c1e;
+    font-weight: bold;
+    font-size: 33px;
+    padding: 10px 15px;
+    color: #407c1e;
 }
 
 hr.divider {
-  border-top: 1px solid #407c1e;
-  color: #407c1e;
+    border-top: 1px solid #407c1e;
+    color: #407c1e;
 }
 .fa-clock-o {
-  color: #407c1e;
+    color: #407c1e;
 }
 
 .jobs .card3 .card-title {
-  font-size: 30px;
-  color: #407c1e;
+    font-size: 30px;
+    color: #407c1e;
 }
 
 .jobs .card33 .Emergency,
 .jobs .card33 .NonEmergency {
-  background-color: #e6fcda;
-  border-radius: 21px;
-  box-shadow: 0px 0px 9px #00000058;
+    background-color: #e6fcda;
+    border-radius: 21px;
+    box-shadow: 0px 0px 9px #00000058;
 }
 
 .jobs .card33 .Emergency p,
 .jobs .card33 .NonEmergency p {
-  font-weight: Bold;
-  color: #333333;
-  margin-left: 5px;
-  padding: 5px 3px !important;
+    font-weight: Bold;
+    color: #333333;
+    margin-left: 5px;
+    padding: 5px 3px !important;
 }
 
 .vr {
-  border-left: 2px solid #407c1e;
-  height: 90%;
+    border-left: 2px solid #407c1e;
+    height: 90%;
 }
 
 .card33 .days {
-  text-align: center;
-  font-size: 33px !important;
-  color: #407c1e;
-  font-weight: 600;
-  font-family: Helvetica;
+    text-align: center;
+    font-size: 33px !important;
+    color: #407c1e;
+    font-weight: 600;
+    font-family: Helvetica;
 }
 
 .subscript {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 /* apechart */
 
 .apexcharts-legend {
-  display: none !important;
+    display: none !important;
 }
 
 .graph_label span {
-  font-family: Helvetica;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 10% !important;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 10% !important;
 }
 
-.success,.btn-success{
+.success,
+.btn-success {
     background-color: #407c1e;
 }
 
-.btn-outline-success{
+.btn-outline-success {
     border: 1px solid #407c1e;
 }
-.btn-outline-success:hover{
-        background-color: #407c1e;
+.btn-outline-success:hover {
+    background-color: #407c1e;
 }
-
 
 /* drag and drop */
 
-
 /* Code By Webdevtrick ( https://webdevtrick.com ) */
 .dropzone-wrapper {
-  border: 2px dashed  #407c1e;
-  color: #92b0b3;
-  position: relative;
-  height: 180px;
+    border: 2px dashed #407c1e;
+    color: #92b0b3;
+    position: relative;
+    height: 180px;
 }
 
 .dropzone-desc {
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  width: 40%;
-  top: 75px;
-  font-size: 16px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 40%;
+    top: 75px;
+    font-size: 16px;
 }
 
 .dropzone,
 .dropzone:focus {
-  position: absolute;
-  outline: none !important;
-  width: 100%;
-  height: 150px;
-  cursor: pointer;
-  opacity: 0;
+    position: absolute;
+    outline: none !important;
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    opacity: 0;
 }
 
 .dropzone-wrapper:hover,
 .dropzone-wrapper.dragover {
-  background: #ecf0f5;
+    background: #ecf0f5;
 }
- 
- 
 
 .btn-primary {
-  background-color: crimson;
-  border: 1px solid #212121;
+    background-color: crimson;
+    border: 1px solid #212121;
 }
 
-.excel{
+.excel {
     color: #737475;
+}
+
+label {
+    font-weight: bold;
+    color: #737475;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-5869C1,
+.btn-21C5DB,
+.btn-38BF67,
+.btn-warning {
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-5869C1 {
+    background-color: #5869c1;
+}
+
+.btn-21C5DB {
+    background-color: #21c5db;
+}
+
+.btn-38BF67 {
+    background-color: #38bf67;
+}
+
+.text-title {
+    color: #737475;
+    font-weight: bold;
+}
+
+.text-title span {
+    color: #737475;
+    font-size: 14px;
+    font-weight: 100 !important;
+}
+
+.attachment {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 100px;
+}
+
+label {
+    font-weight: bold;
+    color: #737475;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.col_border {
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+}
+
+.menu p {
+    color: #407c1e;
+    opacity: 0.7;
+}
+.menu .active {
+    text-decoration: underline;
+    color: #407c1e !important;
+    opacity: 1 !important;
+
 }

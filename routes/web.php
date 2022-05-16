@@ -38,6 +38,10 @@ Route::get('/openjobs', function () {
     return view('jobs.openjobs');
 });
 Route::resource('jobs', JobController::class);
+Route::get('landlord', [JobController::class,'landlord']);
+Route::get('assignengineer', [JobController::class,'assignengineer']);
+
+
 // groups
 Route::resource('groups', GroupController::class);
   

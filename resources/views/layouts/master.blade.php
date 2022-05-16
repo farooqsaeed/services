@@ -61,7 +61,7 @@
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="dashboard-nav-item">
+                    <a href="{{URL('property')}}" class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}">
                         <i class="fa fa-building"></i> Properties
                     </a>
                     <a href="#" class="dashboard-nav-item">
