@@ -22,7 +22,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
       <div class=" Header d-none  d-sm-block">
         <div class="row  ">
-          <div class="col-lg-3 p-3">
+          <div class="col-lg-3">
             <h2>Map View</h2>
           </div>
         </div>
