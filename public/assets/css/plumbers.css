@@ -1,47 +1,98 @@
 /* plumber */
 
-
 .Contractor_header .add {
-  background: #407c1e;
-  /* padding: 15px; */
+    background: #407c1e;
+    /* padding: 15px; */
 }
 
 .Contractor_header .add span {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
 }
-.fa-chevron-circle-up{
-  color: #407c1e;
-} 
+.fa-chevron-circle-up {
+    color: #407c1e;
+}
 
-.BreadCrumb_card .card-title{
-    color: #407C1E;
+.BreadCrumb_card .card-title {
+    color: #407c1e;
     font-size: 35px;
-  }
+}
 
-.breadcrumb-item,.breadcrumb-item a{
-    color: #407C1E;
+.breadcrumb-item,
+.breadcrumb-item a {
+    color: #407c1e;
     font-family: Helvetica;
-    font-weight:600;
+    font-weight: 600;
     margin-top: 0px;
 }
 
-.BreadCrumb_card .notification{
-color: #407C1E;
-text-align: center;
- }
+.BreadCrumb_card .notification {
+    color: #407c1e;
+    text-align: center;
+}
 
-.BreadCrumb_card .notification small{
+.BreadCrumb_card .notification small {
     font-size: 10px;
     margin-top: -100px !important;
 }
 
-.BreadCrumb_card .border-bottom{
+.BreadCrumb_card .border-bottom {
     border: none;
-    border-bottom: 2px solid #407C1E !important;
+    /* border-bottom: 2px solid #407C1E !important; */
 }
 
-.notification .btn-primary{
-  color: #407c1e;
+.notification .btn-primary {
+    color: #407c1e;
+}
+
+#plumber {
+    text-align: center;
+}
+
+#plumber th {
+    font-weight: bold;
+    color: #737475;
+    font-size: 13px;
+    padding: 10px 5px;
+}
+
+#plumber td {
+    font-size: 13px;
+    padding: 10px 0px;
+}
+
+#plumber_paginate .pagination .page-item.active .page-link {
+    background: transparent !important;
+    border: 1px solid #407c1e;
+    color: #407c1e;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#plumber_paginate .pagination .page-item .page-link {
+    border: none;
+    font-weight: bold;
+    color: #737475;
+}
+.success {
+    background: #407c1e !important;
+}
+#plumber_length select,
+#plumber_filter input {
+    border: 1px solid #407c1e;
+}
+
+.border-bottom {
+    border: none !important;
+    position: relative;
+}
+
+.border-bottom::after {
+    content: "";
+    width: 95%;
+    height: 2px;
+    background: green;
+    position: absolute;
+    bottom: 0;
+    left: 4%;
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
+
 
 class JobController extends Controller
 {
@@ -23,18 +25,17 @@ class JobController extends Controller
      */
     public function create()
     {
-                return view('jobs.add');
-
+        return view('jobs.add');
     }
 
     public function landlord()
     {
-                return view('jobs.landlord');
+        return view('jobs.landlord');
     }
-    
-public function assignengineer()
+
+    public function assignengineer()
     {
-                return view('jobs.assignengineer');
+        return view('jobs.assignengineer');
     }
 
     /**
@@ -45,7 +46,8 @@ public function assignengineer()
      */
     public function store(Request $request)
     {
-        //
+        $Job = Job::create($request->all());
+        return response()->json(['result' => 'Record Inserted!']);
     }
 
     /**
@@ -67,7 +69,7 @@ public function assignengineer()
      */
     public function edit($id)
     {
-                        return view('jobs.edit');
+        return view('jobs.edit');
     }
 
     /**

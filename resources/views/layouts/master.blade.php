@@ -14,7 +14,8 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     <link rel="stylesheet" href="{{URL::asset('assets/css/master.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/dashboard.css')}} 
@@ -30,13 +31,14 @@
                         <i class="fa fa-bars"></i>
                     </a>
                     <i class="brand-logo" to="/">
-                        <img src="{{URL::asset('assets/imgs/img/WPM-logo/logo.png')}}" alt="" srcSet="" />
+                        <img src="{{URL::asset('assets/imgs/img/WPM-logo/logo2.png')}}" alt="" srcSet="" />
                     </i>
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
                     <a class="dashboard-nav-item {{ Request::path() ==  '/' ? '  active' : ''  }}" href="/">
-                        <i class="fa fa-th-large" aria-hidden="true"></i> Dashboard
+                        <i class="fa fa-th-large" aria-hidden="true"></i> 
+                        Dashboard
                     </a>
                     <div class="dashboard-nav-dropdown ">
                         <a href="/groups"
@@ -61,7 +63,8 @@
                             </a>
                         </div>
                     </div>
-                    <a href="{{URL('property')}}" class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}">
+                    <a href="{{URL('property')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}">
                         <i class="fa fa-building"></i> Properties
                     </a>
                     <a href="#" class="dashboard-nav-item">
@@ -147,9 +150,10 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
+    <!-- plumber page table -->
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
+            $('#plumber').DataTable({
                 "pagingType": "simple_numbers",
             });
         });
@@ -185,15 +189,30 @@
         });
     </script>
 
-
-
-<!-- jobs -->
-<script>
-    $(document).ready(function () {
-        $('#jobs').DataTable({
-            "pagingType": "simple_numbers",
+    <!-- jobs -->
+    <script>
+        $(document).ready(function () {
+            $('#jobs').DataTable({
+                "pagingType": "simple_numbers",
+            });
         });
-    });
-</script>
+    </script>
+    <!-- property -->
+    <script>
+        $(document).ready(function () {
+            $('#property').DataTable({
+                "pagingType": "simple_numbers",
+            });
+        });
+    </script>
+    <!-- toaster -->
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": true,
+            "positionClass": "toast-top-right"
+        };
+    </script>
 </body>
+
 </html>

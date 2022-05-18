@@ -67,13 +67,13 @@
             </div>
         </div>
     </div>
-    <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0  ">
-            <div class="card py-0 my-0 border-0 BreadCrumb_card">
+    <div class="row  ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0   ">
+            <div class="card py-0 my-0 border-0 border BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
                     <div class="d-flex  justify-content-between mt-5 mb-0 ">
-                        <div class="card-text p-0   mt-0">
-                            <ol class="breadcrumb bg-white collapse show">
+                        <div class="card-text p-0 mt-0">
+                            <ol class="breadcrumb bg-white ml-lg-3 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="col-lg-12 example_col">
-            <table id="jobs" class="table table-striped table-bordered display" style="width:100%">
+            <table id="property" class="table table-striped table-bordered display" style="width:100%">
                 <a href="{{URL('property/create')}}"><button class="btn btn-success float-right btn-sm">Add
                         Property</button></a>
                 <thead>

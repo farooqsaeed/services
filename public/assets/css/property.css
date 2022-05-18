@@ -269,3 +269,24 @@ label {
     opacity: 1 !important;
 
 }
+
+#property_paginate .pagination .page-item.active .page-link {
+    background: transparent !important;
+    border: 1px solid #407c1e;
+    color: #407c1e;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#property_paginate .pagination .page-item .page-link {
+    border: none;
+    font-weight: bold;
+    color: #737475;
+}
+.success {
+    background: #407c1e !important;
+}
+#property_length select,
+#property_filter input {
+    border: 1px solid #407c1e;
+}
+

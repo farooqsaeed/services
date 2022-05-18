@@ -22,24 +22,24 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="1st line Address *" />
+                        <input type="text" class="form-control" name="first_line_address" id="" placeholder="1st line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="" id=""
+                        <input type="text" class="form-control" name="last_line_address" id=""
                             placeholder="Enter 2nd line Address *     " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter   Town " />
+                        <input type="text" class="form-control" name="Town" id="" placeholder="Enter   Town " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Post code *" />
+                        <input type="text" class="form-control" name="Postcode" id="" placeholder="Enter Post code *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="mb-lg-5">Notes *</label>
-                        <input type="text" class="form-control mt-lg-5" name="" id=""
+                        <input type="text" class="form-control mt-lg-5" name="Notes" id=""
                             placeholder="Enter Text Message" />
                     </div>
                     <div class="my-3 col-lg-6">
@@ -60,7 +60,8 @@
                 </div>
             </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn" value="Add">Save</button>
+                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
+                    value="Add">Save</button>
             </div>
         </form>
     </div>

@@ -29,7 +29,8 @@ class ContractorController extends Controller
     // plumbers
     public function plumbers()
     {
-        return view('contractors.plumbers');
+        $contractors= Contractor::get();
+        return view('contractors.plumbers',compact(['contractors']));
     }
 
     /**
@@ -42,6 +43,7 @@ class ContractorController extends Controller
     {
         $contractor=Contractor::create($request->all());   
         return response()->json(['result' => 'Record Inserted!']);
+        return redirect("property");
     }
 
     /**
