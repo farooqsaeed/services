@@ -22,13 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
+                        <div class="form-group">
+                            <label htmlFor="">Select Property*</label>
+                            <select class="form-control" name="property_id" id="">
+                                @foreach($properties as $property)
+                                <option> {{$property->first_line_address}} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="my-3 col-lg-6">
                         <label htmlFor="">Address *</label>
                         <input type="text" class="form-control" name="address" id="" placeholder="  line Address *" />
                     </div>
-                    <div class=" ">
-                        <input type="hidden" class="form-control" name="case_no" id="" value="1" />
-                        <input type="hidden" class="form-control" name="property_id" id="" value="1" />
-                    </div>
+
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenant Name *</label>
                         <input type="text" class="form-control" name="tenant_name" id=""
@@ -43,24 +50,40 @@
                         <input type="file" class="form-control " name="attachment" id="" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mt-lg-5">Description *</label>
+                        <label htmlFor="" class="">Description *</label>
                         <input type="text" class="form-control" name="description" id=""
                             placeholder="Enter  Text Message" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <div class="text-right">
-                            <button class="btn btn-info success btn-sm">Add Another</button>
+                        <div class="form-group">
+                            <label htmlFor="" class="">Category *</label>
+                            <select class="form-control" name="category" id="country">
+                                <option></option>
+                            </select>
                         </div>
-                        <label htmlFor="" class="mt-3">Subject </label>
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <div class="form-group">
+                            <label htmlFor="" class="">Sub Category *</label>
+                            <select id="state" class="form-control" name="subCategory" id="">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="" class="">Subject </label>
                         <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject  " />
                     </div>
-                    <div class="col-4 offset-4  mt-5">
-                        <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>
+                    <div class="my-3 col-lg-6 text-right">
+                        <button class="btn btn-info success btn-sm">Add Another</button>
                     </div>
                 </div>
+                <div class="col-4 offset-4  mt-5">
+                    <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>
+                </div>
             </div>
-        </form>
     </div>
+    </form>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -89,7 +112,7 @@
             url: "{{URL('jobs')}}",
             data: $('#jobform').serialize(),
             type: 'POST',
-             error: function (request, status, error) {
+            error: function (request, status, error) {
                 alert(request.responseText);
             },
             success: function (result) {
@@ -98,12 +121,19 @@
                 $('#jobform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
+                toastr.success(result.result);
             }
         })
     })
 
 </script>
 
+
+
+<!-- select cat -->
+<script type="text/javascript">
+    
+</script>
 
 
 @endsection

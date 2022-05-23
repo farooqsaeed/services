@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumbers.css')}}">
-
-
-
 <style>
     .cards .card a {
         color: white;
@@ -31,19 +28,54 @@
         background-color: #407C1E;
         color: white;
     }
+
+
+    #dropdown .dropdown-menu {
+        background: transparent 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border: 2px solid #407C1E;
+        border-radius: 10px;
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 2%;
+    }
+
+    #dropdown .dropdown-menu ul li a:hover {
+        text-decoration: none;
+        border-radius: 2px;
+    }
+
+    #dropdown .dropdown-menu li a {
+        text-decoration: none;
+        border-radius: 2px;
+        color: #407C1E !important;
+
+    }
+
+    #dropdown .dropdown-submenu {
+        position: relative;
+    }
+
+    #dropdown .dropdown-submenu .dropdown-menu {
+        background-color: white !important;
+        top: 120%;
+        left: 30%;
+        margin-top: -1px;
+    }
 </style>
-
-
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
-            <div class=" Header d-none  d-sm-block">
-                <div class="row  ">
-                    <div class="col-lg-3 ">
-                        <h2>Map View</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0 map_view">
+            <a href="/mapview">
+                <div class=" Header d-none  d-sm-block">
+                    <div class="row  ">
+                        <div class="col-lg-3 ">
+                            <h2>Map View</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
@@ -52,6 +84,27 @@
                         <span class="card-title my-0 ml-n2"><i class="fa fa-home" aria-hidden="true"></i>
                             Properties</span>
                         <div class="notification mt-3">
+                            <div id="dropdown" class="dropdown mt-2 mr-2">
+                                <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
+                                    data-toggle="dropdown">Global
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="#">Group A</a></li>
+                                    <li><a tabindex="-1" href="#">Group B</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a class="test" tabindex="-1" href="#">Group C <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <!-- <li><a tabindex="-1" href="#">Group A1</a></li> -->
+                                            <li class="dropdown-submenu">
+                                                <a class="test" href="#">Group A2<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Group A21</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="fa fa-bell mr-2 mt-1">
                                 <p class="mt-1">Notification</p>
                             </div>
@@ -101,9 +154,9 @@
         </div>
         <div class="col-lg-12 example_col">
             <table id="property" class="table table-striped table-bordered display" style="width:100%">
-                <a href="{{URL('property/create')}}"><button class="btn btn-success float-right btn-sm">Add
+                <a href="{{URL('property/create')}}"><button class="btn btn-success float-right postion-relative btn-sm">Add
                         Property</button></a>
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>First line of address</th>
                         <th>Town</th>
@@ -462,10 +515,15 @@
 
 <script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
 </script>
+
 <script>
-
-
+    $(document).ready(function () {
+        $('.dropdown-submenu a.test').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
 </script>
-
 
 @endsection

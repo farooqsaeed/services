@@ -6,7 +6,11 @@
 
 
 <style>
-
+ .addbtn {
+        position: relative;
+        z-index: 99;
+        float: right;
+    }
 </style>
 <div class="container-fluid">
     <div class="row Contractor_header p-0">
@@ -49,8 +53,10 @@
         </div>
         <div class="col-lg-12 example_col">
             <table id="plumber" class="table table-striped table-bordered display" style="width:100%">
-                <a href="{{URL('contractors/create')}}"><button class="btn btn-success float-right success btn-sm">Add  Contractor</button></a>
-                <thead>
+                <div class="addbtn">
+                <a href="{{URL('contractors/create')}}"><button class="btn btn-success   success btn-sm">Add  Contractor</button></a>
+                </div>
+                <thead class="thead-dark">
                     <tr>
                         <th>Status</th>
                         <th>Business Name</th>
@@ -89,7 +95,6 @@
                     </tr>
                     @endforeach
                 </tbody>
-
             </table>
         </div>
     </div>

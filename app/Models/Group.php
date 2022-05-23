@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Subgroup;
 class Group extends Model
 {
     use HasFactory;
@@ -23,4 +23,11 @@ class Group extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function subgroup()
+    {
+        return $this->hasOne(Subgroup::class);
+    }
+
+
 }

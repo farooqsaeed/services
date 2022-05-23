@@ -8,6 +8,8 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\TenantController;
+
 
 
 
@@ -22,14 +24,15 @@ use App\Http\Controllers\PropertyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/farooq',[UserController::class,'index']);
+
+Route::get('/farooq', [UserController::class, 'index']);
 
 Route::get('/', function () {
     return view('dashboard.dashboard');
 });
 // contractors
 Route::resource('contractors', ContractorController::class);
-Route::get('plumbers', [ContractorController::class,'plumbers']);
+Route::get('plumbers', [ContractorController::class, 'plumbers']);
 
 
 
@@ -38,13 +41,11 @@ Route::get('/openjobs', function () {
     return view('jobs.openjobs');
 });
 Route::resource('jobs', JobController::class);
-Route::get('landlord', [JobController::class,'landlord']);
-Route::get('assignengineer', [JobController::class,'assignengineer']);
+Route::get('landlord', [JobController::class, 'landlord']);
+Route::get('assignengineer', [JobController::class, 'assignengineer']);
 
 
-// groups
-Route::resource('groups', GroupController::class);
-  
+
 // events
 Route::get('/eventsreports', function () {
     return view('events.events_reports');
@@ -96,7 +97,7 @@ Route::get('/propertycompliance', function () {
 Route::get('/contractorcompliance', function () {
     return view('setting.contractorcompliance');
 });
- 
+
 
 Route::get('/licences', function () {
     return view('setting.licences');
@@ -110,5 +111,22 @@ Route::get('mapview', function () {
 
 
 // Property
-Route::resource('property',PropertyController::class);
- 
+Route::resource('property', PropertyController::class);
+
+// groups
+Route::resource('groups', GroupController::class);
+// sub group
+Route::get('add_subgroups', [GroupController::class, 'subgroupcreate']);
+Route::post('store_subgroups', [GroupController::class, 'subgroupstore']);
+
+
+// child group
+Route::get('add_childgroups', [GroupController::class, 'childgroupcreate']);
+Route::post('store_childgroups', [GroupController::class, 'childgroupstore']);
+
+// tenants
+Route::resource('tenant', TenantController::class);
+Route::get('add-tproperty/{id}', [TenantController::class, 'createproperty']);
+
+
+Route::post('storeproperty', [TenantController::class, 'storeproperty']);

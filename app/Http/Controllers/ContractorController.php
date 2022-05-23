@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contractor;
+use App\Models\Document;
+
+
 class ContractorController extends Controller
 {
     /**
@@ -29,8 +32,8 @@ class ContractorController extends Controller
     // plumbers
     public function plumbers()
     {
-        $contractors= Contractor::get();
-        return view('contractors.plumbers',compact(['contractors']));
+        $contractors = Contractor::get();
+        return view('contractors.plumbers', compact(['contractors']));
     }
 
     /**
@@ -41,9 +44,38 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-        $contractor=Contractor::create($request->all());   
-        return response()->json(['result' => 'Record Inserted!']);
-        return redirect("property");
+        // $contractor = Contractor::create($request->all());
+         $document = new Document();
+        $document->title = $request->input('title');
+        $document->description = $request->input('description');
+        $document->achieved_date = $request->input('achieved_date');
+        $document->expiry_date = $request->input('expiry_date');
+        $document->doc_type = $request->doc_type;
+        $document->user_id = 1;
+        if ($request->file('attachment')) {
+            $file = $request->file('attachment');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/Image'), $filename);
+            $document['attachment'] = $filename;
+        }
+        $document->save();
+
+        $document = new Document();
+        $document->title = $request->input('title1');
+        $document->description = $request->input('description1');
+        $document->achieved_date = $request->input('achieved_date1');
+        $document->expiry_date = $request->input('expiry_date1');
+        $document->doc_type = $request->input('doc_type1');
+        $document->user_id = 1;
+        if ($request->file('attachment1')) {
+            $file = $request->file('attachment1');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/Image'), $filename);
+            $document['attachment'] = $filename;
+        }
+        $document->save();
+        // return response()->json(['result' => 'Record Inserted!']);
+        return redirect("/contractors")->with(['success', 'Contractor added successfully']);
     }
 
     /**

@@ -29,6 +29,22 @@
         visibility: hidden;
     }
 
+    #sorting {
+        position: absolute;
+        right: 250px;
+        top: 50px;
+        height: 40vw;
+        box-shadow: 0px 3px 6px #00000029;
+        border: 2px solid #407C1E;
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+    }
+
+
     @media screen and (max-width: 480px) {
         #card {
             right: 15px;
@@ -66,6 +82,39 @@
         color: #737475;
         font-weight: 700;
     }
+
+    .fa-rotate-45 {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .success {
+        background: #407C1E;
+        color: white;
+    }
+
+    .pl-5 li {
+        list-style: none;
+        border-radius: 5px;
+        margin-right: 20px;
+        padding: 5px;
+    }
+
+    .pl-5 ul .active {
+        list-style: none;
+        background-color: #407C1E;
+        color: white !important;
+        border-radius: 5px;
+        margin-right: 20px;
+        padding: 3px;
+    }
+
+    hr {
+        border-top: 1px solid #407C1E;
+    }
 </style>
 
 
@@ -79,8 +128,10 @@
                         <h5>Map View</h5>
                     </a>
                 </div>
-                <div class="search-container ">
+                <div class="search-container d-none  d-sm-block">
                     <form>
+                        <i id="fa-align-left" class=" fa fa-align-left text-white float-left mt-4 fa-rotate-45"
+                            aria-hidden="true"></i>
                         <button id="searchbtn" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -101,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 p-3  col-10" id="card">
+        <div class="col-lg-3 p-3  col-10 p-3 d-none  d-sm-block " id="card">
             <div>
                 <button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -170,33 +221,105 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-3 p-3 d-none  d-sm-block  col-10" id="sorting">
+            <div>
+                <button type="button" id="close1" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div>
+                <form action="">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fa fa-clock-o rounded success p-1 " aria-hidden="true"> </i>
+                        <div>&nbsp; &nbsp; <b> Time</b></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="form-check mt-3">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input text-success    " name="time" id=""
+                                    value="checkedValue">6 - 8
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input text-success    " name="time" id=""
+                                    value="checkedValue" checked>24/7
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fa rounded success p-1 fa-bullseye" aria-hidden="true"> </i>
+                        <div>&nbsp; &nbsp; <b> Skills</b></div>
+                    </div>
+                    <div class="pl-5">
+                        <ul>
+                            <li class="active m-2">Electrician</li>
+                            <li class="m-2">Plumber</li>
+                            <li class="m-2">Locksmith</li>
+                            <li class="m-2">Handyman</li>
+                            <li class="m-2">Guard</li>
+                            <li class="m-2">Keyholder</li>
+                            <li class="m-2">Other</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="my-3"></div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-    // hide and
-    document.getElementById("searchbtn").addEventListener("click", function (event) {
-        event.preventDefault();
-        var x = document.getElementById('card');
-        if (x.style.visibility === "hidden") {
-            x.style.visibility = "visible";
-            document.getElementById("close").addEventListener("click", function (event) {
-                event.preventDefault();
+    <script>
+        // hide and
+        document.getElementById("searchbtn").addEventListener("click", function (event) {
+            event.preventDefault();
+            var x = document.getElementById('card');
+            var y = document.getElementById('sorting');
+
+            if (x.style.visibility === "hidden") {
+                x.style.visibility = "visible";
+                y.style.visibility = "hidden";
+
+                document.getElementById("close").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    x.style.visibility = "hidden";
+                });
+            } else {
                 x.style.visibility = "hidden";
-            });
-        } else {
-            x.style.visibility = "hidden";
-        }
-    });
+            }
+        });
 
-    // when user click outside the div the search div will hide
-    window.addEventListener('mouseup', function (event) {
-        var box = document.getElementById('card');
-        if (event.target != box && event.target.parentNode != box) {
-            box.style.visibility = 'hidden';
-        }
-    });
+        // when user click outside the div the search div will hide
+        window.addEventListener('mouseup', function (event) {
+            var box = document.getElementById('card');
+            if (event.target != box && event.target.parentNode != box) {
+                box.style.visibility = 'hidden';
+            }
+        });
 
-</script>
+        // sorting
+        // hide and
+        document.getElementById("fa-align-left").addEventListener("click", function (event) {
+            event.preventDefault();
+            var x = document.getElementById('sorting');
+            var y = document.getElementById('card');
+            if (x.style.visibility === "hidden") {
+                x.style.visibility = "visible";
+                y.style.visibility = "hidden";
+                document.getElementById("close1").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    x.style.visibility = "hidden";
+                });
+            } else {
+                x.style.visibility = "hidden";
+            }
+        });
 
-@endsection
+
+    </script>
+
+    @endsection

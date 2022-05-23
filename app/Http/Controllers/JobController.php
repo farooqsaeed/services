@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\Property;
+// use App\Models\Category;
+
+
 
 
 class JobController extends Controller
@@ -24,8 +28,10 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('jobs.add');
+    {   
+        // $categories= Category::orderBy('id', 'desc')->get();
+        $properties=Property::orderBy('id','desc')->get();
+        return view('jobs.add',compact(['properties']));
     }
 
     public function landlord()
@@ -46,8 +52,31 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        $Job = Job::create($request->all());
-        return response()->json(['result' => 'Record Inserted!']);
+        // $Job = Job::create($request->all());
+        // return response()->json(['result' => 'Record Inserted!']);
+
+
+        $Job = new Job;
+        $Job->address = $request->address;
+        $Job->tenant_name = $request->tenant_name;
+        $Job->contact = $request->contact;
+        $Job->attachment = $request->attachment;
+        $Job->description = $request->description;
+        $Job->subject = $request->subject;
+
+        $Job->case_no = "1";
+        $Job->property_id = "2";
+        $Job->severity = "2";
+        $Job->payment_status = "Pending";
+        $Job->category = "2";
+        $Job->subCategory = "2";
+        $Job->status = 'Pending';
+        $Job->notes = "nothing to ";
+        $Job->job_time =$Job->created_at;
+        $Job->job_date =$Job->created_at;
+         
+        $Job->save();
+        return redirect('/');
     }
 
     /**

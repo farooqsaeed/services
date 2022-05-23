@@ -24,7 +24,7 @@
     color: #407c1e;
     font-family: Helvetica;
     font-weight: 600;
-    margin-top: 0px;
+    margin-top: 0px !important;
 }
 
 .BreadCrumb_card .notification {
@@ -52,7 +52,7 @@
 
 #plumber th {
     font-weight: bold;
-    color: #737475;
+ 
     font-size: 13px;
     padding: 10px 5px;
 }

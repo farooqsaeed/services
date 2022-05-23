@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Group;
+use App\Models\Subgroup;
+use App\Models\Childgroup;
+
 
 class GroupController extends Controller
 {
@@ -13,7 +17,10 @@ class GroupController extends Controller
      */
     public function index()
     {
-            return view('groups.groups');
+        $Groups= Group::with('subgroup')->get();
+        // return
+        // $Groups;
+         return view('groups.groups',compact(['Groups']));
     }
 
     /**
@@ -23,7 +30,18 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.add');
+    }
+    // sub group
+    public function subgroupcreate()
+    {
+        return view('groups.addsubgroup');
+    }
+
+    // child group
+    public function childgroupcreate()
+    {
+        return view('groups.addchildgroup');
     }
 
     /**
@@ -34,7 +52,22 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Group = Group::create($request->all());
+        return response()->json(['result' => 'Record Inserted!']);
+    }
+
+    // sub
+    public function subgroupstore(Request $request)
+    {
+        $Group = Subgroup::create($request->all());
+        return response()->json(['result' => 'Record Inserted!']);
+    }
+
+    // child group
+    public function childgroupstore(Request $request)
+    {
+        $Group = Childgroup::create($request->all());
+        return response()->json(['result' => 'Record Inserted!']);
     }
 
     /**

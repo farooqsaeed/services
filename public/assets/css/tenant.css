@@ -1,0 +1,87 @@
+.Certificate {
+    font-family: Helvetica;
+    font-weight: bold;
+    color: #407c1e;
+}
+.info{
+    font-weight: 100;
+}
+
+
+#tenant_property_paginate .pagination .page-item.active .page-link {
+    background: transparent !important;
+    border: 1px solid #407c1e;
+    color: #407c1e;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#tenant_property_paginate .pagination .page-item .page-link {
+    border: none;
+    font-weight: bold;
+    color: #737475;
+}
+.success {
+    background: #407c1e !important;
+}
+#tenant_property_length select,
+#tenant_property_filter input {
+    border: 1px solid #407c1e;
+}
+
+
+  .dropdown-menu {
+        margin-left: -60px !important;
+        border: none;
+        border: 2px solid var(--unnamed-color-407c1e);
+        background: transparent url('img/Rectangle 1522.png') 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border: 2px solid #407C1E;
+        border-radius: 10px;
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #407C1E;
+        color: white;
+    }
+
+    #tenant_property_info{
+        display: none;
+    }
+
+    #tenant_property_paginate{
+        text-align: left !important;
+    }
+
+
+        .dt-buttons {
+        position: absolute !important;
+        bottom: 0%;
+        left: 0%;
+        border-radius: 5px;
+        padding: 0% !important;
+        margin:0% 0% !important;
+        box-sizing:content-box !important;
+        border: 1px solid green !important;
+    }
+
+    .dt-buttons button {
+        background: #fff !important;
+        color: gray;
+         padding: 1px;
+        margin-right: 0% !important;
+        border: none !important;
+     }
+
+    .dt-buttons button span {
+        padding: 0%;
+        font-weight: 100 !important;
+    }
+
+    .dt-buttons button:hover {
+        background: transparent #fff !important;
+        box-shadow: 0% !important;
+        color: gray;
+    }

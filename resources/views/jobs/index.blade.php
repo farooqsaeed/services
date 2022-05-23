@@ -1,31 +1,38 @@
 @extends('layouts.master')
 @section('content')
 <link rel="stylesheet" href="{{URL::asset('assets/css/jobs.css')}}">
- 
+
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
- 
+
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumbers.css')}}">
 
-  
+
 
 <style>
     .cards .card a {
         color: white;
         text-decoration: none;
     }
+    .addbtn {
+        position: relative;
+        z-index: 99;
+        float: right;
+    }
 </style>
 
 
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
-            <div class=" Header d-none  d-sm-block">
-                <div class="row  ">
-                    <div class="col-lg-3 ">
-                        <h2>Map View</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 map_view">
+            <a href="/mapview">
+                <div class=" Header d-none  d-sm-block">
+                    <div class="row  ">
+                        <div class="col-lg-3 ">
+                            <h2>Map View</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
@@ -54,22 +61,22 @@
             <div class="card py-0 my-0 border-0 BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
                     <div class="d-flex  justify-content-between mt-5 mb-0 ">
-                    <div class="card-text p-0   mt-0">
-                        <ol class="breadcrumb bg-white collapse show">
-                            <li class="breadcrumb-item">
-                                <a href="#!">Home</a>
-                            </li>
-                            <li class="breadcrumb-item" aria-current="page">
-                                 Jobs
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="notification">
-                        <div class=" mt-n1" id="collapseExample" role="button">
-                            <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
+                        <div class="card-text p-0   mt-0">
+                            <ol class="breadcrumb bg-white collapse show">
+                                <li class="breadcrumb-item">
+                                    <a href="#!">Home</a>
+                                </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    Jobs
+                                </li>
+                            </ol>
                         </div>
-                        <div id="removeexampletable" class="fa fa-times ml-3"></div>
-                    </div>
+                        <div class="notification">
+                            <div class=" mt-n1" id="collapseExample" role="button">
+                                <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
+                            </div>
+                            <div id="removeexampletable" class="fa fa-times ml-3"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,15 +87,17 @@
                 <p class="mx-2">In progress Jobs</p>
                 <p class="mx-2">Auto Resolved Jobs</p>
                 <p class="mx-2">Resolved Jobs</p>
-                <p class="mx-2">Closed Jobs</p> 
+                <p class="mx-2">Closed Jobs</p>
             </div>
 
         </div>
         <div class="col-lg-12 example_col">
             <table id="jobs" class="table text-center table-striped table-bordered display" style="width:100%">
-                <a href="{{URL('jobs/create')}}"><button class="btn btn-success float-right btn-sm success" >Add
-                         Jobs</button></a>
-                <thead>
+                <div class="addbtn">
+                    <a href="{{URL('jobs/create')}}"><button class="btn btn-success btn-sm success">Add
+                            Jobs</button></a>
+                </div>
+                <thead class="thead-dark">
                     <tr>
                         <th>Case Number</th>
                         <th>Property ID</th>
@@ -106,9 +115,11 @@
                         <td>Unknown</td>
                         <td>Nill</td>
                         <td>Non-Emergency</td>
-                        <td><div class="bg-info text-white rounded">
-                            Active
-                        </div></td>
+                        <td>
+                            <div class="bg-info text-white rounded">
+                                Active
+                            </div>
+                        </td>
                         <td>One Day Ago</td>
                     </tr>
                     <tr>
@@ -158,10 +169,7 @@
 
 <script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
 </script>
-<script>
-
-
-</script>
+ 
 
 
 @endsection

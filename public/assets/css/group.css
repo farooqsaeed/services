@@ -1,0 +1,28 @@
+.cards {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+.subgroup {
+    background-color: white;
+    color: #407c1e;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid #407c1e;
+}
+
+.cards .fa {
+    background-color: white;
+    margin-right: 5px;
+    color: black;
+    border-radius: 4px;
+}
+
+.subgroup .fa {
+    background-color: #407c1e;
+    margin-right: 5px;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+}

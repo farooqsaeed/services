@@ -3,9 +3,12 @@
     height: 140px;
     /* padding: 0% 5% 8% 2%; */
     margin: 0%;
-    background-image: url("../imgs/img/map.png");
-    background-size: cover;
+      background-image: url("../imgs/img/map.png");  
+     background-size: cover;
     background-position: center;
+}
+.map_view a{
+    text-decoration: none;
 }
 .Header h2 {
     font-weight: bold;

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/master.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/dashboard.css')}} 
     ">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 </head>
 
 <body class="">
@@ -30,14 +31,16 @@
                     <a href="#!" class="menu-toggle">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <i class="brand-logo" to="/">
-                        <img src="{{URL::asset('assets/imgs/img/WPM-logo/logo2.png')}}" alt="" srcSet="" />
-                    </i>
+                    <a href="/">
+                        <i class="brand-logo">
+                            <img src="{{URL::asset('assets/imgs/img/WPM-logo/logo2.png')}}" alt="" srcSet="" />
+                        </i>
+                    </a>
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
                     <a class="dashboard-nav-item {{ Request::path() ==  '/' ? '  active' : ''  }}" href="/">
-                        <i class="fa fa-th-large" aria-hidden="true"></i> 
+                        <i class="fa fa-th-large" aria-hidden="true"></i>
                         Dashboard
                     </a>
                     <div class="dashboard-nav-dropdown ">
@@ -46,28 +49,15 @@
                             <i class="fa fa-users"></i> Groups
                         </a>
                     </div>
-                    <div class="dashboard-nav-dropdown">
-                        <a href="#!"
-                            class="dashboard-nav-item dashboard-nav-dropdown-toggle  {{ Request::path() ==  'events' ? 'open active' : ''  }}">
-                            <i class="fa fa-calendar"></i> Events
-                        </a>
-                        <div class="dashboard-nav-dropdown-menu">
-                            <a href="eventsreports" class="dashboard-nav-dropdown-item">
-                                Reports
-                            </a>
-                            <a href="events_complience" class="dashboard-nav-dropdown-item">
-                                Complience
-                            </a>
-                            <a href="events" class="dashboard-nav-dropdown-item">
-                                Events
-                            </a>
-                        </div>
-                    </div>
+                    <a href="{{URL('events')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'events' ? 'open active' : ''  }}">
+                        <i class="fa fa-building"></i> Events
+                    </a>
                     <a href="{{URL('property')}}"
                         class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}">
                         <i class="fa fa-building"></i> Properties
                     </a>
-                    <a href="#" class="dashboard-nav-item">
+                    <a href="{{URL('tenant')}}" class="dashboard-nav-item">
                         <i class="fa fa-key"></i> Tenants
                     </a>
                     <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"
@@ -80,9 +70,6 @@
                     <a href="{{URL('jobs')}}"
                         class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}">
                         <i class="fa fa-suitcase"></i> Jobs
-                    </a>
-                    <a href="/signin" class="dashboard-nav-item">
-                        <i class="fa fa-sign-out"></i> Logout
                     </a>
                     <a href="{{URL('setting')}}"
                         class="dashboard-nav-item  {{ Request::path() ==  'setting' ? 'active' : ''  }}">
@@ -101,7 +88,7 @@
                         </a>
                     </nav>
                 </header>
-                <div class=" dashboard-content ">
+                <div class="dashboard-content ">
                     @yield('content')
                 </div>
             </div>
@@ -149,6 +136,19 @@
 
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js
+"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js
+"></script>
+
+
+
+
 
     <!-- plumber page table -->
     <script>
@@ -205,6 +205,32 @@
             });
         });
     </script>
+
+    <!-- tenant -->
+    <script>
+        $(document).ready(function () {
+            $('#tenant').DataTable({
+                "pagingType": "simple_numbers",
+            });
+        });
+    </script>
+    <!-- tenatn property table -->
+    <script>
+        $(document).ready(function () {
+            $('#tenant_property').DataTable({
+                "pagingType": "simple_numbers",
+                "info": true,
+                "lengthChange": true,
+
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
+
     <!-- toaster -->
     <script>
         toastr.options = {
