@@ -169,7 +169,7 @@
                                         Tenant Details
                                     </a>
                                     <a href="{{ URL::to('add-tproperty/' . $tenant->id) }}
-                                    " class="dropdown-item" type="button"  >Assign Property </a>
+                                    " class="dropdown-item" type="button">Assign Property </a>
                                     <a href="tenant/{{$tenant->id}}/edit" class="dropdown-item" type="button">Edit
                                         Tenant </a>
                                     <form action="{{ url('tenant' , $tenant->id ) }}" method="POST">

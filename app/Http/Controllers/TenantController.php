@@ -18,7 +18,7 @@ class TenantController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::orderby('id', 'desc')->get();
+        $tenants = Tenant::orderby('id', 'DESC')->get();
         return view('tenants.index', compact(['tenants']));
     }
 
@@ -92,10 +92,11 @@ class TenantController extends Controller
     public function show($id)
     {
         $tenant_property = tenant_property::where('tenant_id', $id)->get();
+
         foreach ($tenant_property as $item) {
             $item->detail = Property::where('property_id', $item->property_id)->first();
         }
-         $tenant = Tenant::findorFail($id);
+        $tenant = Tenant::findorFail($id);
         return view('tenants.show', compact(['tenant', 'tenant_property']));
     }
 
