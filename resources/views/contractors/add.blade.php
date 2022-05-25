@@ -31,7 +31,7 @@
             </div>
             <!-- {/* column 1st */} -->
             <div class="col-lg-10  offset-lg-1">
-                <!-- <div class="row">
+                <div class="row">
                     <div class="my-3 col-6">
                         <label htmlFor="">First Name *</label>
                         <input type="text" class="form-control" name="first_name" id="" value=""
@@ -51,6 +51,13 @@
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
+                            Phone No *
+                        </label>
+                        <input type="tele" class="form-control" name="landline_no" id="" placeholder="Enter Phone NO"
+                            required />
+                    </div>
+                    <div class="my-3 col-6">
+                        <label htmlFor="" class="mt-3">
                             Preferred Communication *
                         </label>
                         <select name="preferred_communication" class="form-control" id="" required>
@@ -59,13 +66,6 @@
                             <option value="email">Email</option>
 
                         </select>
-                    </div>
-                    <div class="my-3 col-6">
-                        <label htmlFor="" class="mt-3">
-                            Phone No *
-                        </label>
-                        <input type="tele" class="form-control" name="landline_no" id="" placeholder="Enter Phone NO"
-                            required />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
@@ -88,8 +88,9 @@
                             Add Group
                         </label>
                         <select name="" class="form-control" id="">
-                            <option value="1">1st</option>
-                            <option value="2">2nd</option>
+                            @foreach($groups as $group)
+                            <option value="{{$group->id}}">{{$group->Group_Name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="my-3 col-6">
@@ -152,8 +153,7 @@
                         <label htmlFor="" class="mt-3">
                             Is Mobile
                         </label>
-                        <input type="number" disabled class="form-control" name="isMobile" id="isMobile"
-                            placeholder="Enter Rate" value="0" />
+                        <input type="number" disabled class="form-control" name="isMobile" id="isMobile" value="0" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
@@ -181,14 +181,14 @@
                         </label>
                         <textarea class="form-control" name="notes" id="" cols="30" rows="5"></textarea>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!-- {/* add certificate */} -->
             <div class="col-lg-5 offset-lg-1  ">
                 <div class="my-5">
                     <h2 class="Certificate">Add Certificate</h2>
                 </div>
-                <div class="my-3">
+                <!-- <div class="my-3">
                     <label htmlFor="">Title *</label>
                     <input type="text" class="form-control" name="title" id=""
                         placeholder="Title of your certificate" />
@@ -210,10 +210,10 @@
                     <label htmlFor="">Upload Attachment *</label>
                     <input type="file" class="form-control" name="attachment" />
                     <input type="hidden" class="form-control" value="certificate" name="doc_type" />
-                </div>
+                </div> -->
             </div>
             <!-- {/* Add ID */} -->
-            <div class="col-lg-5">
+            <!-- <div class="col-lg-5">
                 <div class="my-5">
                     <h2 class="Certificate">Add ID </h2>
                 </div>
@@ -241,7 +241,7 @@
                     <input type="file" class="form-control" name="attachment1" id="" placeholder="Text Message" />
                     <input type="hidden" class="form-control" value="id" name="doc_type1" />
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-10 offset-lg-1">
                 <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
                     style="display: none;">

@@ -12,7 +12,7 @@
         <span>Add Properties</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform ">
+        <form id="myform"  class="row addform"  >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -22,30 +22,26 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="first_line_address" id="" placeholder="1st line Address *" />
+                        <input type="text" class="form-control" name="first_line_address" id=""
+                        required    placeholder="1st line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">2nd line Address *</label>
                         <input type="text" class="form-control" name="second_line_address" id=""
-                            placeholder="Enter 2nd line Address *     " />
+                        required    placeholder="Enter 2nd line Address *     " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town" id="" placeholder="Enter Town " />
+                        <input type="text" class="form-control" name="Town"   id="" placeholder="Enter Town " required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="Postcode" id="" placeholder="Enter Post code *" />
+                        <input type="text" class="form-control" name="Postcode" required id="" placeholder="Enter Post code *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="mb-lg-5">Notes *</label>
-                        <input type="text" class="form-control mt-lg-5" name="Notes" id="" placeholder="Enter Text Message" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">No. of Tenants </label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter No. of Tenants" />
-                        <label htmlFor="" class="mt-3">Managed by *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Managed   " />
+                        <input type="text" class="form-control mt-lg-5" name="Notes" id=""
+                         required   placeholder="Enter Text Message" />
                     </div>
                 </div>
             </div>
@@ -57,51 +53,75 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Full Name *" />
+                        <input type="text" class="form-control" name="full_name" required  id="" placeholder="Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Email Address " />
+                        <input type="text" class="form-control" name="email" id="" required placeholder="Enter Email Address " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="" id="" placeholder="Enter   Contact Number  " />
+                        <input type="tel" class="form-control" name="contact_no" id="" required
+                            placeholder="Enter   Contact Number  " />
                     </div>
-                    <div class="my-3 col-lg-12 text-right">
+                    <div class="my-3 col-lg-6 ">
+                    </div>
+                    <div class="my-3 col-6 ">
+                        <input type="checkbox" name="check_box" class="showtenant" id="" onchange="valueChanged()" checked /> Assign
+                        Tenant.
+                    </div>
+                    <div class="my-3 col-6 text-right">
                         <button class="btn btn-info success btn-sm">Add Another</button>
                     </div>
                 </div>
             </div>
-
             <!-- {/* Tenant Detail */} -->
-            <div class="col-lg-10 offset-lg-1  ">
+            <div class="col-lg-10 offset-lg-1  showtenantdiv">
                 <div class="mt-5">
                     <h2 class="Certificate">Enter Tenant Detail</h2>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Full Name *" />
+                        <label htmlFor="">First Name *</label>
+                        <input type="text" class="form-control" name="first_name" id="" placeholder="First Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Last Name *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Enter Last Name " />
+                        <input type="text" class="form-control" name="last_name" id="" placeholder="Enter Last Name " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="" id="" placeholder="Enter   Contact Number  " />
+                        <input type="tel" class="form-control" name="mobile_no" id="" placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="" id="" placeholder="Enter Email Address *" />
+                        <input type="email" class="form-control" name="email" id="" placeholder="Enter Email Address *" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">House No*</label>
+                        <input type="text" class="form-control" name="house_no" id="" placeholder="Enter house no*" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">Street Name*</label>
+                        <input type="text" class="form-control" name="street_name" id=""
+                            placeholder="Enter Street Name*" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">Town*</label>
+                        <input type="text" class="form-control" name="town" id="" placeholder="Enter Town*" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">Postal Code*</label>
+                        <input type="text" class="form-control" name="postal_code" id=""
+                            placeholder="Enter postal code " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move in Date *</label>
-                        <input type="date" class="form-control" name="" id="" placeholder="Enter   Contact Number  " />
+                        <input type="date" class="form-control" name="tenancy_start_date" id="" placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move out Date *</label>
-                        <input type="date" class="form-control" name="" id="" placeholder="Enter   Contact Number  " />
+                        <input type="date" class="form-control" name="tenancy_last_date" id="" placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6 ">
                         <input type="checkbox" name="" id=""> Send Sign Up Info.
@@ -109,16 +129,16 @@
                     <div class="my-3 col-lg-6 text-right">
                         <button class="btn btn-info success btn-sm">Add Another</button>
                     </div>
-
-                    <div class="my-3 col-lg-4">
-                        <button class="btn btn-outline-success btn-block">Cancel</button>
-                    </div>
-                    <div class="my-3 col-lg-4 offset-lg-4 text-right">
-                        <button class="btn btn-success   btn-block">SAVE</button>
-                    </div>
                 </div>
             </div>
-
+            <div class="my-3 col-lg-4 offset-lg-1">
+                <button type="reset" class="btn btn-outline-success btn-block">Cancel</button>
+            </div>
+            <div class="my-3 col-lg-4 offset-lg-2 text-right">
+                <button type="submit" id="formbtn"  class="btn btn-success   btn-block">SAVE</button>
+            </div>
+        </form>
+        <form id="bulkuploadform" class="row addform ">
             <!-- {/*  Bulk Upload   */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
@@ -136,11 +156,11 @@
                             </div>
                             <input type="file" name="img_logo" class="dropzone">
                         </div>
-                        <p class="excel">Only Excel and CSV File are allowed. Please check the template before uploading file!</p>
+                        <p class="excel">Only Excel and CSV File are allowed. Please check the template before uploading
+                            file!</p>
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-10 offset-lg-1">
                 <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
                     style="display: none;">
@@ -151,7 +171,7 @@
                 </div>
             </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
+                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn1"
                     value="Add">Upload</button>
             </div>
         </form>
@@ -181,15 +201,21 @@
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-            url: "{{URL('contractors')}}",
+            url: "{{URL('property')}}",
             data: $('#myform').serialize(),
             type: 'POST',
+             error: function (request, status, error) {
+                toastr.warning(request.responseText);
+                $('#formbtn').attr('disabled', false);
+                $('#formbtn').text('Update');
+            },
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
                 $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
+                toastr.success(result.result);
             }
         })
     })
@@ -252,5 +278,14 @@
     });
 </script>
 
+<!-- show tenant checkbox -->
+<script type="text/javascript">
+    function valueChanged() {
+        if ($('.showtenant').is(":checked"))
+            $(".showtenantdiv").show();
+        else
+            $(".showtenantdiv").hide();
+    }
+</script>
 
 @endsection

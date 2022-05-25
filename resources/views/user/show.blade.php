@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/tenant.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumber.css')}}">
-
 <style>
     .cards .card a {
         color: white;
@@ -50,9 +49,46 @@
         z-index: 99;
         float: right;
     }
-    #tenant_paginate ul li{
-         border: none !important;
+
+    #tenant_paginate ul li {
+        border: none !important;
         border-radius: 0%;
+    }
+
+    .menu p {
+        font-size: 13px;
+        font-weight: bold;
+        color: #407c1e;
+        opacity: 0.5;
+        margin-left: 10px;
+    }
+
+    .menu p a {
+        color: #407c1e;
+
+    }
+
+    .selected {
+        opacity: 1 !important;
+        /* border-bottom: 2px solid #407C1E; */
+        text-decoration: underline;
+    }
+
+    .user {
+        width: 59px;
+        height: 59px;
+
+    }
+
+    .text-title {
+        color: #737475;
+        font-weight: bold;
+    }
+
+    .text-title span {
+        color: #737475;
+        font-size: 14px;
+        font-weight: 100 !important;
     }
 </style>
 
@@ -70,12 +106,12 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
-                        <span class="card-title my-0 ml-n2"><i class="fa fa-th-large" aria-hidden="true"></i>
-                            Tenant</span>
+                        <span class="card-title my-0 ml-n2"><i class="fa fa-cog" aria-hidden="true"></i>
+                            Settings</span>
                         <div class="notification mt-3">
                             <div id="dropdown" class="dropdown mt-2 mr-2">
                                 <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
@@ -113,83 +149,62 @@
         </div>
     </div>
     <div class="row  ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0   ">
-            <div class="card py-0 my-0 border-0 border BreadCrumb_card">
-                <div class="card-body py-0 my-0 border-bottom mb-3">
-                    <div class="d-flex justify-content-between mt-5 mb-0 ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+            <div class="card py-0 my-0 border-0 BreadCrumb_card">
+                <div class="card-body py-0 my-0 mb-3">
+                    <div class="d-flex justify-content-between mt-3 mb-0 ">
                         <div class="  card-text  ">
                             <ol class="breadcrumb bg-white ml-lg-3 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    Tenants
+                                    Settings
+                                </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    User Management
                                 </li>
                             </ol>
                         </div>
-                        <div class="  notification">
-                            <div class="mt-n1 " id="collapseExample" role="button">
-                                <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
-                            </div>
-                            <div id="removeexampletable" class="fa fa-times ml-3"></div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- table -->
-        <div class="col-lg-12 example_col">
-            <table id="tenant" class="table table-striped table-bordered display text-center" style="width:100%">
-                <div class="addbtn">
-                    <a href="tenant/create" class="  btn btn-success btn-sm success  "> Add
-                        Tenant </a>
-                </div>
-                <thead class="thead-dark">
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Contact</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($tenants as $tenant)
-                    <tr>
-                        <td>{{$tenant->first_name}}</td>
-                        <td>{{$tenant->last_name}}</td>
-                        <td>{{$tenant->mobile_no}}</td>
-                        <td>{{$tenant->email}}</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <a href="{{ URL::to('tenant/' . $tenant->id) }}" class="dropdown-item"
-                                        type="button">
-                                        Tenant Details
-                                    </a>
-                                    <a href="{{ URL::to('add-tproperty/' . $tenant->id) }}
-                                    " class="dropdown-item" type="button">Assign Property </a>
-                                    <a href="tenant/{{$tenant->id}}/edit" class="dropdown-item" type="button">Edit
-                                        Tenant </a>
-                                    <form action="{{ url('tenant' , $tenant->id ) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button class="dropdown-item">Delete Tenant</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="d-flex justify-content-start menu ">
+                <p class="selected"><a href="">Profile</a></p>
+                <p><a href="">User Management</a></p>
+                <p><a href="">Services</a></p>
+            </div>
         </div>
-        <!-- end table -->
+        <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-12 col-xs-12 pt-lg-5 p-2">
+            <div class="d-flex justify-content-start  align-items-center mt-lg-n2">
+                <img class="user" src="{{ URL::to('/assets/imgs/img/user.jpg') }}">
+                <h3 class="p-3">User Name</h3>
+            </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-12 col-xs-12 p-lg-5 pb-lg-0 pl-lg-1 p-2">
+            <div class="d-flex  justify-content-lg-between   justify-content-around">
+                <div href="user/{{$user->id}}/edit" class="btn btn-success btn-sm px-4">Edit</div>
+                <a href="{{url('changepassword')}}" class="btn btn-info btn-sm" >Change Password</a>
+                <form action="{{ url('user' , $user->id ) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-sm btn-danger px-4">Delete</button>
+                </form>
+             </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-12 col-xs-12 p-2">
+            <p class="text-title">Email: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Farooq@gmail.com</span> </p>
+            <p class="text-title">Sub-Group: <span> &nbsp;&nbsp; Group A-1</span> </p>
+            <p class="text-title">Allowed Properties: <span>&nbsp; Property, Tenant & User</span> </p>
+        </div>
+        <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-12 col-xs-12 p-2 pl-lg-5">
+            <p class="text-title">Root Group:<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group A</span> </p>
+            <p class="text-title">Child Group:<span> &nbsp;&nbsp;Group A-1.1</span> </p>
+            <p class="text-title">Roll: <span>&nbsp; Administrater</span> </p>
+        </div>
     </div>
 </div>
 

@@ -25,11 +25,14 @@ use App\Http\Controllers\TenantController;
 |
 */
 
-Route::get('/farooq', [UserController::class, 'index']);
-
+Route::resource('/user', UserController::class);
 Route::get('/', function () {
     return view('dashboard.dashboard');
 });
+Route::get('changepassword', [UserController::class, 'change_password']);
+
+
+
 // contractors
 Route::resource('contractors', ContractorController::class);
 Route::get('plumbers', [ContractorController::class, 'plumbers']);

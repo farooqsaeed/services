@@ -50,8 +50,9 @@
         z-index: 99;
         float: right;
     }
-    #tenant_paginate ul li{
-         border: none !important;
+
+    #tenant_paginate ul li {
+        border: none !important;
         border-radius: 0%;
     }
 </style>
@@ -75,7 +76,7 @@
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-th-large" aria-hidden="true"></i>
-                            Tenant</span>
+                            Settings</span>
                         <div class="notification mt-3">
                             <div id="dropdown" class="dropdown mt-2 mr-2">
                                 <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
@@ -123,7 +124,10 @@
                                     <a href="#!">Home</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    Tenants
+                                     Settings 
+                                </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                  User Management
                                 </li>
                             </ol>
                         </div>
@@ -142,44 +146,40 @@
         <div class="col-lg-12 example_col">
             <table id="tenant" class="table table-striped table-bordered display text-center" style="width:100%">
                 <div class="addbtn">
-                    <a href="tenant/create" class="  btn btn-success btn-sm success  "> Add
-                        Tenant </a>
+                    <a href="user/create" class="  btn btn-success btn-sm success  "> Add
+                        User </a>
                 </div>
                 <thead class="thead-dark">
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Contact</th>
+                        <th>User Name</th>
                         <th>Email</th>
-                        <th>Actions</th>
+                        <th>Role</th>
+                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($tenants as $tenant)
+                    @foreach($users as $user)
                     <tr>
-                        <td>{{$tenant->first_name}}</td>
-                        <td>{{$tenant->last_name}}</td>
-                        <td>{{$tenant->mobile_no}}</td>
-                        <td>{{$tenant->email}}</td>
-                        <td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->status}}</td>
+                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <a href="{{ URL::to('tenant/' . $tenant->id) }}" class="dropdown-item"
+                                    <a href="{{ URL::to('user/' . $user->id) }}" class="dropdown-item"
                                         type="button">
-                                        Tenant Details
+                                        User Details
                                     </a>
-                                    <a href="{{ URL::to('add-tproperty/' . $tenant->id) }}
-                                    " class="dropdown-item" type="button">Assign Property </a>
-                                    <a href="tenant/{{$tenant->id}}/edit" class="dropdown-item" type="button">Edit
-                                        Tenant </a>
-                                    <form action="{{ url('tenant' , $tenant->id ) }}" method="POST">
+                                    <a href="user/{{$user->id}}/edit" class="dropdown-item" type="button">Edit
+                                        User </a>
+                                    <form action="{{ url('user' , $user->id ) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button class="dropdown-item">Delete Tenant</button>
+                                        <button class="dropdown-item">Delete User</button>
                                     </form>
                                 </div>
                             </div>

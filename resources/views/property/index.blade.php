@@ -26,9 +26,8 @@
 
     .dropdown-menu .dropdown-item:hover {
         background-color: #407C1E;
-        color: white;
+        color: white !important;
     }
-
 
     #dropdown .dropdown-menu {
         background: transparent 0% 0% no-repeat padding-box;
@@ -62,6 +61,12 @@
         top: 120%;
         left: 30%;
         margin-top: -1px;
+    }
+
+    .addbtn {
+        position: relative;
+        z-index: 99;
+        float: right;
     }
 </style>
 <div class="container-fluid">
@@ -153,8 +158,8 @@
             </div>
         </div>
         <div class="col-lg-12 example_col">
-            <table id="property" class="table table-striped table-bordered display" style="width:100%">
-                <a href="{{URL('property/create')}}"><button class="btn btn-success float-right postion-relative btn-sm">Add
+            <table id="property" class="table table-striped table-bordered text-center display" style="width:100%">
+                <a class="addbtn" href="{{URL('property/create')}}"><button class="btn btn-success btn-sm">Add
                         Property</button></a>
                 <thead class="thead-dark">
                     <tr>
@@ -167,346 +172,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($property as $item)
                     <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
+                        <td>{{$item->first_line_address}}</td>
+                        <td>{{$item->Town}}</td>
+                        <td> {{$item->Postcode}}</td>
                         <td> 8</td>
-                        <td>Active</td>
+                        <td>{{$item->status}}</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                                <a class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
-                                </button>
+                                </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
+                                    <a href="{{url('jobs/create')}}" class="dropdown-item" type="button">Add New Job</a>
+                                    <a href="{{ url('property/'.$item->id.'/edit') }}" class="dropdown-item" type="button"> Edit Property  </a>
+                                    <form action="{{ url('property', $item->id ) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="dropdown-item">Delete </button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peshawar KP Pakistan</td>
-                        <td>Mardan</td>
-                        <td> 0000</td>
-                        <td> 8</td>
-                        <td>Active</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

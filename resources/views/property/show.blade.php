@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="my-3 col-lg-12 col_border   p-3">
-                        <p class="text-title">Address: <span> Peshawar KP Pakistan </span> </p>
+                        <p class="text-title">Address: <span> {{$property->first_line_address}} {{$property->first_line_address}} </span> </p>
                         <p class="text-title">Notes: <span> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                 Laudantium at repellendus magni ex nesciunt. </span> </p>
 

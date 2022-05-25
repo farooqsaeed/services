@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Property;
+use App\Models\Tenant;
+use App\Models\landlord;
+use App\Models\tenant_property;
+
+
 
 class PropertyController extends Controller
 {
@@ -13,7 +19,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        return view('property.index');
+        $property = Property::orderby('id', 'DESC')->get();
+        return view('property.index', compact(['property']));
     }
 
     /**
@@ -34,7 +41,50 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $Property = new Property;
+        $Property->property_id = random_int(10000, 90000);
+        $Property->first_line_address = $request->first_line_address;
+        $Property->second_line_address = $request->second_line_address;
+        $Property->Town = $request->Town;
+        $Property->Notes = $request->Notes;
+        $Property->Postcode = $request->Postcode;
+        $Property->status = 'active';
+        $Property->group_id = 1;
+        $Property->group_name = 1;
+        $Property->group_type = 1;
+        $Property->save();
+
+        // landlord
+        $landlord = new landlord;
+        $landlord->property_id = $Property->property_id;
+        $landlord->full_name = $request->full_name;
+        $landlord->email = $request->email;
+        $landlord->contact_no = $request->contact_no;
+        $landlord->save();
+
+        // tenant add
+        $Tenant = new Tenant;
+        $Tenant->first_name = $request->first_name;
+        $Tenant->last_name = $request->last_name;
+        $Tenant->mobile_no = 0;
+        $Tenant->email = $request->email;
+        $Tenant->house_no = $request->house_no;
+        $Tenant->street_name = $request->street_name;
+        $Tenant->town = $request->town;
+        $Tenant->postal_code = $request->postal_code;
+        $Tenant->save();
+
+        // tenant_property add
+        $tenant_property = new tenant_property();
+        $tenant_property->tenancy_start_date = $request->tenancy_start_date;
+        $tenant_property->tenancy_last_date = $request->tenancy_last_date;
+        $tenant_property->tenant_id = $Tenant->id;
+        $tenant_property->property_id = $Property->property_id;
+        $tenant_property->IsExpired = 'active';
+        $tenant_property->save();
+
+        return response()->json(['result' => 'Property has been added!']);
     }
 
     /**
@@ -45,8 +95,10 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        return view('property.show');
-
+        $property = Property::where('id', $id)->first();
+        $landlord = landlord::where('property_id', $property->property_id)->first();
+        
+        return view('property.show',compact(['property', 'landlord']));
     }
 
     /**
@@ -57,8 +109,8 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-                return view('property.edit');
-
+        $property = Property::where('id', $id)->first();
+        return view('property.edit', compact(['property']));
     }
 
     /**
@@ -70,7 +122,16 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            "first_line_address" => $request->first_line_address,
+            "second_line_address" => $request->last_line_address,
+            "Town" => $request->Town,
+            "Postcode" => $request->Postcode,
+            "Notes" => $request->Notes,
+
+        ];
+        Property::where('id', $id)->update($update);
+        return response()->json(['result' => 'Property updated  Successfully!']);
     }
 
     /**
@@ -81,6 +142,8 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = Property::findorFail($id);
+        $property->delete();
+        return Redirect()->back();
     }
 }

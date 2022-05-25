@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contractor;
 use App\Models\Document;
+use App\Models\Group;
+
 
 
 class ContractorController extends Controller
@@ -16,6 +18,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
+        
         return view('contractors.contractors');
     }
 
@@ -26,7 +29,8 @@ class ContractorController extends Controller
      */
     public function create()
     {
-        return view('contractors.add');
+        $groups = Group::orderby('id', 'DESC')->get();
+        return view('contractors.add',compact(['groups']));
     }
 
     // plumbers
@@ -44,8 +48,9 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-        // $contractor = Contractor::create($request->all());
-         $document = new Document();
+
+         // $contractor = Contractor::create($request->all());
+        $document = new Document();
         $document->title = $request->input('title');
         $document->description = $request->input('description');
         $document->achieved_date = $request->input('achieved_date');
