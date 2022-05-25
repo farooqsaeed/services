@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Property;
+use App\Models\landlord;
+
 // use App\Models\Category;
 
 
@@ -37,6 +39,13 @@ class JobController extends Controller
     public function landlord()
     {
         return view('jobs.landlord');
+    }
+
+    public function destroylandlord($id)
+    {
+        $landlord = landlord::find($id)->first();
+        $landlord->delete();
+        return redirect()->back();
     }
 
     public function assignengineer()

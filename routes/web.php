@@ -45,6 +45,7 @@ Route::get('/openjobs', function () {
 });
 Route::resource('jobs', JobController::class);
 Route::get('landlord', [JobController::class, 'landlord']);
+Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
 Route::get('assignengineer', [JobController::class, 'assignengineer']);
 
 

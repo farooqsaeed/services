@@ -24,9 +24,9 @@
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">First Name *</label>
-                        <input type="text" class="form-control" name="first_name" id=""
-                            placeholder="Enter First Name *" />
+                        <label htmlFor="">Full Name *</label>
+                        <input type="text" class="form-control" name="name" id=""
+                            placeholder="Enter Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email *</label>
@@ -40,9 +40,9 @@
                         <label htmlFor="">Role *</label>
                         <select name="role" class="form-control">
                             <option selected disabled>Select role</option>
-                            <option value="1">User</option>
-                            <option value="2">contractor</option>
-                            <option value="3">engineer</option>
+                            @foreach($roles as $role)
+                            <option >{{$role->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="my-3 col-lg-6">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Sub-Group *</label>
-                        <input type="text" class="form-control" name="sub-group" placeholder="Enter Sub-Group " />
+                        <input type="text" class="form-control" name="subgroup" placeholder="Enter Sub-Group " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Child Group *</label>
@@ -83,29 +83,29 @@
                                 <p class="mb-1 p-0 ">Read</p>
                                 <input type="checkbox" class="form-check-input" name="" id="ReadAll">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read1"><br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read2" id=""><br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read3" id="">
+                                <input type="checkbox" class="form-check-input checkRead" name="read_property"><br>
+                                <input type="checkbox" class="form-check-input checkRead" name="read_tenant" id=""><br>
+                                <input type="checkbox" class="form-check-input checkRead" name="read_users" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read4" id="">
+                                <input type="checkbox" class="form-check-input checkRead" name="read_groups" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read5" id="">
+                                <input type="checkbox" class="form-check-input checkRead" name="read_jobs" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkRead" name="read6" id="">
+                                <input type="checkbox" class="form-check-input checkRead" name="read_engineer" id="">
                             </div>
                             <div class="col-lg-1 col-3 text-center">
                                 <p class="mb-1 p-0 ">Write</p>
                                 <input type="checkbox" class="form-check-input" name="" id="WriteAll">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write1" id=""><br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write2" id=""><br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write3" id="">
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_property" id=""><br>
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_tenant" id=""><br>
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_users" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write4" id="">
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_groups" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write5" id="">
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_jobs" id="">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write6" id="">
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_engineer" id="">
                             </div>
                         </div>
                     </div>

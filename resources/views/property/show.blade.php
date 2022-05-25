@@ -40,7 +40,7 @@
         <span>Property Details</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform ">
+        <div   class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -57,9 +57,9 @@
                         </div>
                     </div>
                     <div class="my-3 col-lg-12 col_border   p-3">
-                        <p class="text-title">Address: <span> {{$property->first_line_address}} {{$property->first_line_address}} </span> </p>
-                        <p class="text-title">Notes: <span> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Laudantium at repellendus magni ex nesciunt. </span> </p>
+                        <p class="text-title">Address: <span> {{$property->first_line_address}}
+                                {{$property->second_line_address}} </span> </p>
+                        <p class="text-title">Notes: <span> {{$property->Notes}}</span> </p>
 
                     </div>
                     <!-- Landlord Info. * -->
@@ -75,15 +75,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($landlord !=null)
                                 <tr>
-                                    <td>Muneer Ahmad</td>
-                                    <td>09009009009</td>
-                                    <td>muneer100@gamil.com</td>
+                                    <td>{{$landlord->full_name}} </td>
+                                    <td>{{$landlord->contact_no}} </td>
+                                    <td>{{$landlord->email}} </td>
                                     <td>
-                                        <div class="bg-danger rounded text-white"><i class="fa fa-trash"
-                                                aria-hidden="true"></i></div>
+                                        <form action="{{ url('landlord' , $landlord->id ) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <div class="bg-danger rounded ">
+                                                <button class="fa fa-trash text-white btn-sm btn "
+                                                    type="submit"></button>
+                                            </div>
+                                        </form>
                                     </td>
                                 </tr>
+                                @else
+                                <tr>
+                                    <td colspan="4"> sorry No data avalible </td>
+                                </tr>
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
@@ -101,11 +114,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($tenant_property !=null)
+                                @foreach($tenant_property as $tenant)
                                 <tr>
-                                    <td>Muneer Ahmad</td>
-                                    <td>09009009009</td>
-                                    <td>muneer100@gamil.com</td>
-                                    <td>02/07/2022</td>
+                                    <td>{{$tenant->detail->first_name}} {{$tenant->detail->last_name}}</td>
+                                    <td>{{$tenant->detail->mobile_no}}</td>
+                                    <td>{{$tenant->detail->email}}</td>
+                                    <td>{{$tenant->tenancy_last_date}}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-white dropdown-toggle" type="button"
@@ -121,6 +136,12 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="5"> Sorry no data Avalible </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -135,21 +156,23 @@
                                     <th>Subject</th>
                                     <th>Description</th>
                                     <th>Status</th>
-                                 </tr>
+                                </tr>
                             </thead>
                             <tbody>
+                                @foreach($jobs as $job)
                                 <tr>
-                                    <td>Muneer Ahmad</td>
-                                    <td>09009009009</td>
-                                    <td>muneer100@gamil.com</td>
-                                    <td>active</td>
+                                    <td>{{$job->case_no}}</td>
+                                    <td>{{$job->subject}}</td>
+                                    <td>{{$job->description}}</td>
+                                    <td>{{$job->status}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -171,7 +194,7 @@
 
 <!-- ajax submition -->
 <script>
-    $('#myform').submit(function (e) {
+    $(' myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');

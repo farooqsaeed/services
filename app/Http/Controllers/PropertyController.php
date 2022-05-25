@@ -7,6 +7,8 @@ use App\Models\Property;
 use App\Models\Tenant;
 use App\Models\landlord;
 use App\Models\tenant_property;
+use App\Models\Job;
+
 
 
 
@@ -41,8 +43,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-
-        $Property = new Property;
+         $Property = new Property;
         $Property->property_id = random_int(10000, 90000);
         $Property->first_line_address = $request->first_line_address;
         $Property->second_line_address = $request->second_line_address;
@@ -62,6 +63,8 @@ class PropertyController extends Controller
         $landlord->email = $request->email;
         $landlord->contact_no = $request->contact_no;
         $landlord->save();
+
+        if ($request->check_box =='on') {
 
         // tenant add
         $Tenant = new Tenant;
@@ -83,7 +86,7 @@ class PropertyController extends Controller
         $tenant_property->property_id = $Property->property_id;
         $tenant_property->IsExpired = 'active';
         $tenant_property->save();
-
+        }
         return response()->json(['result' => 'Property has been added!']);
     }
 
@@ -97,8 +100,14 @@ class PropertyController extends Controller
     {
         $property = Property::where('id', $id)->first();
         $landlord = landlord::where('property_id', $property->property_id)->first();
-        
-        return view('property.show',compact(['property', 'landlord']));
+        $tenant_property = tenant_property::where('property_id', $property->property_id)->get();
+
+        foreach ($tenant_property as $item) {
+            $item->detail = Tenant::where('id', $item->tenant_id)->first();
+        }
+        $jobs = Job::where('property_id', $property->property_id)->get();
+
+        return view('property.show', compact(['property', 'landlord', 'tenant_property', 'jobs']));
     }
 
     /**

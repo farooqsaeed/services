@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Property;
+use App\Models\Tenant;
+
 
 class tenant_property extends Model
 {
@@ -32,6 +34,11 @@ class tenant_property extends Model
     public function properties()
     {
         return $this->hasMany(Property::class);
+    }
+
+    public function tenant_properties()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 
     

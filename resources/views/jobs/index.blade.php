@@ -94,7 +94,7 @@
         <div class="col-lg-12 example_col">
             <table id="jobs" class="table text-center table-striped table-bordered display" style="width:100%">
                 <div class="addbtn">
-                    <a href="{{URL('jobs/create')}}"><button class="btn btn-success btn-sm success">Add
+                    <a href="{{url('jobs/create')}}"><button class="btn btn-success btn-sm success">Add
                             Jobs</button></a>
                 </div>
                 <thead class="thead-dark">

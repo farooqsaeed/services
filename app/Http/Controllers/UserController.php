@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Permission;
+use App\Models\UniqueId;
 
 
 class UserController extends Controller
@@ -34,7 +37,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.add');
+        $roles = Role::orderBy('id', 'DESC')->get();
+        return view('user.add', compact(['roles']));
     }
 
     public function change_password()
@@ -50,7 +54,40 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $PermissionArray  = array(
+            $request->read_property,
+            $request->write_property,
+            $request->read_tenant,
+            $request->write_tenant,
+            $request->read_users,
+            $request->write_users,
+            $request->read_groups,
+            $request->write_groups,
+            $request->read_jobs,
+            $request->write_jobs,
+            $request->read_engineer,
+            $request->write_engineer
+        );
+
+        $role = Role::where('slug', '=', $request->role)->first();
+        $Permission = Permission::whereIn('slug', $PermissionArray)->get();
+        // $uid = UniqueId::where('grouptype', '=', $request->grouptype)->where('property_id', '=', $request->property_id)->first();
+
+        // if (!empty($uid)) {
+
+        // }
+        // dd($request->all());
+        $User = new User;
+        $User->name = $request->name;
+        $User->email = $request->email;
+        $User->unique_id = 123;
+        $User->group_name = $request->group;
+        $User->user_type = $request->role;
+        $User->password = bcrypt($request->password);
+        $User->save();
+        $User->roles()->attach($role);
+        $User->permissions()->attach($Permission);
+        return 'added';
     }
 
     /**
@@ -63,7 +100,6 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
         return view('user.show', compact(['user']));
-
     }
 
     /**
