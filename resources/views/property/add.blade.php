@@ -57,7 +57,7 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email" id="" required placeholder="Enter Email Address " />
+                        <input type="email" class="form-control" name="email1" id="" required placeholder="Enter Email Address " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>

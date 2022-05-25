@@ -76,8 +76,7 @@ class UserController extends Controller
         // if (!empty($uid)) {
 
         // }
-        // dd($request->all());
-        $User = new User;
+         $User = new User;
         $User->name = $request->name;
         $User->email = $request->email;
         $User->unique_id = 123;
