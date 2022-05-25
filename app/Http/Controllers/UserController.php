@@ -71,6 +71,8 @@ class UserController extends Controller
 
         $role = Role::where('slug', '=', $request->role)->first();
         $Permission = Permission::whereIn('slug', $PermissionArray)->get();
+
+        return $role;
         // $uid = UniqueId::where('grouptype', '=', $request->grouptype)->where('property_id', '=', $request->property_id)->first();
 
         // if (!empty($uid)) {
