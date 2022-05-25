@@ -43,7 +43,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
- 
+
         $Property = new Property;
         $Property->property_id = random_int(10000, 90000);
         $Property->first_line_address = $request->first_line_address;
@@ -65,7 +65,7 @@ class PropertyController extends Controller
         $landlord->contact_no = $request->contact_no;
         $landlord->save();
 
-        if ($request->check_box !='on') {
+        if ($request->check_box != 'on') {
 
             // tenant add
             $Tenant = new Tenant;

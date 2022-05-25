@@ -12,7 +12,7 @@
         <span>Add Properties</span>
     </div>
     <div class="p-3">
-        <form id="myform"  class="row addform"  >
+        <form id="myform"  class="row addform" action="{{URL('property')}}" method="post" >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="text" class="form-control" name="email" id="" required placeholder="Enter Email Address " />
+                        <input type="email" class="form-control" name="email" id="" required placeholder="Enter Email Address " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
@@ -196,7 +196,7 @@
 
 <!-- ajax submition -->
 <script>
-    $('#myform').submit(function (e) {
+    $(' myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
