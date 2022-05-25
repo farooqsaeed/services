@@ -12,7 +12,7 @@
         <span>Add Properties</span>
     </div>
     <div class="p-3">
-        <form id="myform"  class="row addform"    >
+        <form id="myform"  class="row addform"  >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">

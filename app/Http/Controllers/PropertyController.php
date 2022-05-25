@@ -43,7 +43,8 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-         $Property = new Property;
+ 
+        $Property = new Property;
         $Property->property_id = random_int(10000, 90000);
         $Property->first_line_address = $request->first_line_address;
         $Property->second_line_address = $request->second_line_address;
@@ -64,28 +65,28 @@ class PropertyController extends Controller
         $landlord->contact_no = $request->contact_no;
         $landlord->save();
 
-        if ($request->check_box =='on') {
+        if ($request->check_box !='on') {
 
-        // tenant add
-        $Tenant = new Tenant;
-        $Tenant->first_name = $request->first_name;
-        $Tenant->last_name = $request->last_name;
-        $Tenant->mobile_no = 0;
-        $Tenant->email = $request->email;
-        $Tenant->house_no = $request->house_no;
-        $Tenant->street_name = $request->street_name;
-        $Tenant->town = $request->town;
-        $Tenant->postal_code = $request->postal_code;
-        $Tenant->save();
+            // tenant add
+            $Tenant = new Tenant;
+            $Tenant->first_name = $request->first_name;
+            $Tenant->last_name = $request->last_name;
+            $Tenant->mobile_no = 0;
+            $Tenant->email = $request->email;
+            $Tenant->house_no = $request->house_no;
+            $Tenant->street_name = $request->street_name;
+            $Tenant->town = $request->town;
+            $Tenant->postal_code = $request->postal_code;
+            $Tenant->save();
 
-        // tenant_property add
-        $tenant_property = new tenant_property();
-        $tenant_property->tenancy_start_date = $request->tenancy_start_date;
-        $tenant_property->tenancy_last_date = $request->tenancy_last_date;
-        $tenant_property->tenant_id = $Tenant->id;
-        $tenant_property->property_id = $Property->property_id;
-        $tenant_property->IsExpired = 'active';
-        $tenant_property->save();
+            // tenant_property add
+            $tenant_property = new tenant_property();
+            $tenant_property->tenancy_start_date = $request->tenancy_start_date;
+            $tenant_property->tenancy_last_date = $request->tenancy_last_date;
+            $tenant_property->tenant_id = $Tenant->id;
+            $tenant_property->property_id = $Property->property_id;
+            $tenant_property->IsExpired = 'active';
+            $tenant_property->save();
         }
         return response()->json(['result' => 'Property has been added!']);
     }
