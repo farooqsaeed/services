@@ -25,8 +25,7 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="name" id=""
-                            placeholder="Enter Full Name *" />
+                        <input type="text" class="form-control" name="name" id="" placeholder="Enter Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email *</label>
@@ -47,16 +46,22 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Root Group *</label>
-                        <input type="text" class="form-control" name="group" placeholder="Enter Root Group " />
+                        <select name="group" id="country-dd" class="form-control">
+                            <option selected disabled>Select Group</option>
+                            @foreach($groups as $group)
+                            <option value="{{$group->id}}">{{$group->Group_Name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Sub-Group *</label>
-                        <input type="text" class="form-control" name="subgroup" placeholder="Enter Sub-Group " />
+                        <select name="subgroup" id="state-dd" class="form-control">
+                        </select>
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Child Group *</label>
-                        <input type="text" class="form-control" name="childgroup" id=""
-                            placeholder="Enter Child Group" />
+                        <select name="childgroup" id="city-dd" class="form-control">
+                        </select>
                     </div>
                     <div class="my-3 col-lg-12">
                         <div class="row">
@@ -97,8 +102,10 @@
                                 <p class="mb-1 p-0 ">Write</p>
                                 <input type="checkbox" class="form-check-input" name="" id="WriteAll">
                                 <br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write_property" id=""><br>
-                                <input type="checkbox" class="form-check-input checkWrite" name="write_tenant" id=""><br>
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_property"
+                                    id=""><br>
+                                <input type="checkbox" class="form-check-input checkWrite" name="write_tenant"
+                                    id=""><br>
                                 <input type="checkbox" class="form-check-input checkWrite" name="write_users" id="">
                                 <br>
                                 <input type="checkbox" class="form-check-input checkWrite" name="write_groups" id="">
@@ -223,4 +230,58 @@
 </script>
 
 
+
+<!-- group sub -->
+<script>
+    $(document).ready(function () {
+        $('#country-dd').on('change', function () {
+            var idCountry = this.value;
+            $("#state-dd").html('');
+            $.ajax({
+                url: "{{url('fetch-states')}}",
+                type: "POST",
+                data: {
+                    country_id: idCountry,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                },
+                success: function (result) {
+                    console.log(result);
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dd").append('<option value="' + value
+                            .id + '">' + value.Sub_Group_Name + '</option>');
+                    });
+                    $('#city-dd').html('<option value="">Select City</option>');
+                }
+            });
+        });
+        $('#state-dd').on('change', function () {
+            var idState = this.value;
+            $("#city-dd").html('');
+            $.ajax({
+                url: "{{url('fetch-cities')}}",
+                type: "POST",
+                data: {
+                    state_id: idState,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                },
+                success: function (res) {
+                    $('#city-dd').html('<option value="">Select City</option>');
+                    $.each(res.cities, function (key, value) {
+                        $("#city-dd").append('<option value="' + value
+                            .id + '">' + value.Child_Group_Name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

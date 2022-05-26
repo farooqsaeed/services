@@ -11,8 +11,7 @@
         <span>Add Contractor</span>
     </div>
     <div class="p-3">
-        <form id="myform" enctype="multipart/form-data" action="{{URL('contractors')}}" method="POST"
-            class="row addform">
+        <form id="myform" class="row addform">
             @csrf
             <div class="col-lg-10 offset-lg-1">
                 <div class="form-group row">
@@ -148,12 +147,7 @@
                             <option value="2">2nd Choise</option>
                             <option value="3">3rd Choise</option>
                         </select>
-                    </div>
-                    <div class="my-3 col-6">
-                        <label htmlFor="" class="mt-3">
-                            Is Mobile
-                        </label>
-                        <input type="number" disabled class="form-control" name="isMobile" id="isMobile" value="0" />
+                        <input type="hidden" disabled class="form-control" name="isMobile" id="isMobile" value="0" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
@@ -188,7 +182,7 @@
                 <div class="my-5">
                     <h2 class="Certificate">Add Certificate</h2>
                 </div>
-                <!-- <div class="my-3">
+                <div class="my-3">
                     <label htmlFor="">Title *</label>
                     <input type="text" class="form-control" name="title" id=""
                         placeholder="Title of your certificate" />
@@ -210,10 +204,10 @@
                     <label htmlFor="">Upload Attachment *</label>
                     <input type="file" class="form-control" name="attachment" />
                     <input type="hidden" class="form-control" value="certificate" name="doc_type" />
-                </div> -->
+                </div>
             </div>
             <!-- {/* Add ID */} -->
-            <!-- <div class="col-lg-5">
+            <div class="col-lg-5">
                 <div class="my-5">
                     <h2 class="Certificate">Add ID </h2>
                 </div>
@@ -241,7 +235,7 @@
                     <input type="file" class="form-control" name="attachment1" id="" placeholder="Text Message" />
                     <input type="hidden" class="form-control" value="id" name="doc_type1" />
                 </div>
-            </div> -->
+            </div>
             <div class="col-lg-10 offset-lg-1">
                 <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
                     style="display: none;">
@@ -277,7 +271,7 @@
 
 <!-- ajax submition  removed as it not working with pic-->
 <script>
-    $(' myform').submit(function (e) {
+    $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');

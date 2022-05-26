@@ -12,7 +12,7 @@
         <span>Add Properties</span>
     </div>
     <div class="p-3">
-        <form id="myform"  class="row addform" action="{{URL('property')}}" method="post" >
+        <form id="myform"  class="row addform"  >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -196,7 +196,7 @@
 
 <!-- ajax submition -->
 <script>
-    $(' myform').submit(function (e) {
+    $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');

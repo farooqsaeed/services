@@ -36,15 +36,15 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor=""> Password *</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter password " />
+                        <input type="password" disabled class="form-control" name="password" placeholder="Enter password " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Role *</label>
                         <select name="role" class="form-control">
                             <option selected disabled>Select role</option>
-                            <option value="1">User</option>
-                            <option value="2">contractor</option>
-                            <option value="3">engineer</option>
+                            @foreach($roles as $role)
+                            <option value="{{$role->slug}}">{{$role->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="my-3 col-lg-6">

@@ -146,7 +146,7 @@
         <div class="col-lg-12 example_col">
             <table id="tenant" class="table table-striped table-bordered display text-center" style="width:100%">
                 <div class="addbtn">
-                    <a href="user/create" class="  btn btn-success btn-sm success  "> Add
+                    <a href="{{URL('user/create')}}" class="  btn btn-success btn-sm success  "> Add
                         User </a>
                 </div>
                 <thead class="thead-dark">

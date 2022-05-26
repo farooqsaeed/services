@@ -31,6 +31,8 @@ Route::get('/', function () {
 });
 Route::get('changepassword', [UserController::class, 'change_password']);
 
+Route::post('fetch-states', [UserController::class, 'fetchState']);
+Route::post('fetch-cities', [UserController::class, 'fetchCity']);
 
 
 // contractors
@@ -48,6 +50,7 @@ Route::get('landlord', [JobController::class, 'landlord']);
 Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
 Route::get('assignengineer', [JobController::class, 'assignengineer']);
 
+Route::post('fetch-sub', [JobController::class, 'fetchSub']);
 
 
 // events

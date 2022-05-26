@@ -8,6 +8,11 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Permission;
 use App\Models\UniqueId;
+use App\Models\Group;
+use App\Models\Subgroup;
+use App\Models\Childgroup;
+
+
 
 
 class UserController extends Controller
@@ -19,13 +24,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $arrayName = array('Farooq', 'Mardan');
-        // $collection = collect($arrayName)->map(function ($name) {
-        //     return strtoupper($name);
-        // })->reject(function ($name) {
-        //     return empty($name);
-        // });
-        // return $collection;
         $users = User::orderby('id', 'DESC')->get();
         return view('user.index', compact(['users']));
     }
@@ -38,7 +36,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::orderBy('id', 'DESC')->get();
-        return view('user.add', compact(['roles']));
+        $groups = Group::orderBy('id', 'DESC')->get();
+        return view('user.add', compact(['roles', 'groups']));
     }
 
     public function change_password()
@@ -71,14 +70,10 @@ class UserController extends Controller
 
         $role = Role::where('slug', '=', $request->role)->first();
         $Permission = Permission::whereIn('slug', $PermissionArray)->get();
-
-        return $role;
         // $uid = UniqueId::where('grouptype', '=', $request->grouptype)->where('property_id', '=', $request->property_id)->first();
-
         // if (!empty($uid)) {
-
         // }
-         $User = new User;
+        $User = new User;
         $User->name = $request->name;
         $User->email = $request->email;
         $User->unique_id = 123;
@@ -88,7 +83,7 @@ class UserController extends Controller
         $User->save();
         $User->roles()->attach($role);
         $User->permissions()->attach($Permission);
-        return 'added';
+        return redirect('/user');
     }
 
     /**
@@ -99,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::findorFail($id)->first();
         return view('user.show', compact(['user']));
     }
 
@@ -112,7 +107,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
-        return view('user.edit', compact(['user']));
+        $roles = Role::orderBy('id', 'DESC')->get();
+        return view('user.edit', compact(['user', 'roles']));
     }
 
     /**
@@ -138,5 +134,21 @@ class UserController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
         return redirect()->back();
+    }
+
+    // group or sub group
+
+    public function fetchState(Request $request)
+    {
+        $data['states'] = Subgroup::where("group_id", $request->country_id)->get(["Sub_Group_Name", "id"]);
+        return response()->json($data);
+    }
+
+    public function fetchCity(Request $request)
+    {
+        $data['cities'] = Childgroup::where("subgroup_id", $request->state_id)->get(
+            ["Child_Group_Name", "id"]
+        );
+        return response()->json($data);
     }
 }

@@ -13,7 +13,7 @@
         <span>Add Jobs</span>
     </div>
     <div class="p-3">
-        <form id="jobform" class="row addform">
+        <form id="jobform" class="row addform"   >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -57,15 +57,18 @@
                     <div class="my-3 col-lg-6">
                         <div class="form-group">
                             <label htmlFor="" class="">Category *</label>
-                            <select class="form-control" name="category" id="country">
-                                <option></option>
+                            <select class="form-control" name="category"  id="country-dd">
+                                <option selected disabled>Select Category </option>
+                                @foreach($categories as $cat)
+                                <option value="{{$cat->id}}"> {{$cat->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="my-3 col-lg-6">
                         <div class="form-group">
                             <label htmlFor="" class="">Sub Category *</label>
-                            <select id="state" class="form-control" name="subCategory" id="">
+                            <select class="form-control" name="subcategory" id="state-dd">
                             </select>
                         </div>
                     </div>
@@ -131,8 +134,29 @@
 
 
 <!-- select cat -->
-<script type="text/javascript">
-    
+ <script>
+    $(document).ready(function () {
+        $('#country-dd').on('change', function () {
+            var idCountry = this.value;
+            $("#state-dd").html('');
+            $.ajax({
+                url: "{{url('fetch-sub')}}",
+                type: "POST",
+                data: {
+                    country_id: idCountry,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state-dd').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dd").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
 </script>
 
 

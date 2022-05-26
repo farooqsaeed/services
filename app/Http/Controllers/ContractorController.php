@@ -18,7 +18,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        
+
         return view('contractors.contractors');
     }
 
@@ -30,7 +30,7 @@ class ContractorController extends Controller
     public function create()
     {
         $groups = Group::orderby('id', 'DESC')->get();
-        return view('contractors.add',compact(['groups']));
+        return view('contractors.add', compact(['groups']));
     }
 
     // plumbers
@@ -49,7 +49,9 @@ class ContractorController extends Controller
     public function store(Request $request)
     {
 
-         // $contractor = Contractor::create($request->all());
+        $contractor = Contractor::create($request->all());
+
+        // ID certificate
         $document = new Document();
         $document->title = $request->input('title');
         $document->description = $request->input('description');
@@ -64,7 +66,7 @@ class ContractorController extends Controller
             $document['attachment'] = $filename;
         }
         $document->save();
-
+        // ID document
         $document = new Document();
         $document->title = $request->input('title1');
         $document->description = $request->input('description1');
@@ -78,6 +80,7 @@ class ContractorController extends Controller
             $file->move(public_path('upload/Image'), $filename);
             $document['attachment'] = $filename;
         }
+
         $document->save();
         // return response()->json(['result' => 'Record Inserted!']);
         return redirect("/contractors")->with(['success', 'Contractor added successfully']);

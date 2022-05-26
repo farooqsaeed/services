@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Property;
 use App\Models\landlord;
-
+use App\Models\Category;
+use App\Models\Subcategory;
+use Carbon;
 // use App\Models\Category;
-
-
 
 
 class JobController extends Controller
@@ -30,11 +30,18 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        // $categories= Category::orderBy('id', 'desc')->get();
-        $properties=Property::orderBy('id','desc')->get();
-        return view('jobs.add',compact(['properties']));
+    {
+        $categories = Category::orderBy('name')->get();
+        $properties = Property::orderBy('id', 'desc')->get();
+        return view('jobs.add', compact(['properties', 'categories']));
     }
+
+    public function fetchSub(Request $request)
+    {
+        $data['states'] = Subcategory::where("category_id", $request->country_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+
 
     public function landlord()
     {
@@ -62,29 +69,30 @@ class JobController extends Controller
     public function store(Request $request)
     {
         // $Job = Job::create($request->all());
-        // return response()->json(['result' => 'Record Inserted!']);
-
-
-        $Job = new Job;
+        $Job = new Job();
         $Job->address = $request->address;
         $Job->tenant_name = $request->tenant_name;
         $Job->contact = $request->contact;
-        $Job->attachment = $request->attachment;
         $Job->description = $request->description;
         $Job->subject = $request->subject;
 
         $Job->case_no = "1";
         $Job->property_id = "2";
-        $Job->severity = "2";
-        $Job->payment_status = "Pending";
-        $Job->category = "2";
-        $Job->subCategory = "2";
-        $Job->status = 'Pending';
+        $Job->category = $request->category;
+        $Job->subCategory = $request->subcategory;
         $Job->notes = "nothing to ";
-        $Job->job_time =$Job->created_at;
-        $Job->job_date =$Job->created_at;
-         
-        $Job->save();
+        $Job->job_time = date('h:m');
+        $Job->job_date= date('Y:m:d');
+
+        if ($image = $request->file('attachment')) {
+            $imageDestinationPath = 'uploads/Images';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($imageDestinationPath, $postImage);
+            $Job['attachment'] = "$postImage";
+        }
+        
+
+        $Job->save();   
         return redirect('/');
     }
 

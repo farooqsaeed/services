@@ -6,7 +6,7 @@
 
 
 <style>
- .addbtn {
+    .addbtn {
         position: relative;
         z-index: 99;
         float: right;
@@ -54,7 +54,8 @@
         <div class="col-lg-12 example_col">
             <table id="plumber" class="table table-striped table-bordered display" style="width:100%">
                 <div class="addbtn">
-                <a href="{{URL('contractors/create')}}"><button class="btn btn-success   success btn-sm">Add  Contractor</button></a>
+                    <a href="{{URL('contractors/create')}}"><button class="btn btn-success   success btn-sm">Add
+                            Contractor</button></a>
                 </div>
                 <thead class="thead-dark">
                     <tr>
@@ -62,9 +63,7 @@
                         <th>Business Name</th>
                         <th>Contractor Name</th>
                         <th>Coverage Area/Group</th>
-                        <th>Working Hours</th>
-                        <th>User</th>
-                        <th>Service</th>
+                         <th>Service</th>
                         <th>Contact</th>
                         <th>Actions</th>
                     </tr>
@@ -76,10 +75,14 @@
                         <td>{{$contractor->business_name}}</td>
                         <td>{{$contractor->first_name}}</td>
                         <td>{{$contractor->area_of_coverage}}</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>2011/04/25</td>
-                        <td>{{$contractor->mobile_no}}</td>
+                        <td>@if($contractor->mobile_no==1)
+                            App user
+                            @else
+                            Non App user
+                            @endif</td>
+                        <td>
+                            {{$contractor->mobile_no}}
+                        </td>
                         <td>
                             <div class="dropdown open">
                                 <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="triggerId"
