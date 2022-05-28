@@ -48,6 +48,9 @@
     left: 30%;
     margin-top: -1px;
   }
+  form .fa,form p{
+    color: #407C1E;
+  }
 </style>
 
 
@@ -96,11 +99,11 @@
               <div class="fa fa-bell mr-2 mt-1">
                 <p class="mt-1">Notification</p>
               </div>
-              <div class="mt-1 ">
-                <div class="fa fa-sign-out" aria-hidden="true">
-                  <p class="mt-1">Logout</p>
-
-                </div>
+              <div class="">
+                <form action="{{ URL::to('signout') }}" method="post">
+                  @csrf
+                  <button class="fa fa-sign-out btn" type="submit" ><br> <p>Logout</p></button>
+                </form>
               </div>
             </div>
           </div>

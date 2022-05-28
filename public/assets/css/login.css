@@ -1,0 +1,33 @@
+.login .row {
+        height: 100vh;
+    }
+
+    .login img {
+        width: 70%;
+    }
+    .login .card{
+        border: none;
+        border: 2px solid #407C1E;
+        border-radius: 10px;
+    }
+
+    .login .card-title{
+        color: #407C1E;
+         font-weight: bold;
+     }
+     .btn-green{
+         background-color: #407C1E;
+         color: white;
+     }
+     .login label{
+        color: #333333;
+        font-family: Helvetica;
+     }
+     .login input{
+         border: none;
+         border-bottom: 2px solid #407C1E;
+         border-radius: 0%;
+     }
+     .login small{
+         color: black !important;
+     }

@@ -11,6 +11,8 @@ use App\Models\UniqueId;
 use App\Models\Group;
 use App\Models\Subgroup;
 use App\Models\Childgroup;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -150,5 +152,20 @@ class UserController extends Controller
             ["Child_Group_Name", "id"]
         );
         return response()->json($data);
+    }
+
+
+    public function signin()
+    {
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+            return redirect('/dashboard');
+        } else {
+            return back()->with('error', 'Your username or password is incorrect!');
+        }
+    }
+    public function signout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }
