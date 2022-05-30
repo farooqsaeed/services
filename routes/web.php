@@ -9,10 +9,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TenantController;
-
-
-
-
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +21,7 @@ use App\Http\Controllers\TenantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
+ 
 Route::get('/', function () {
     return view('login.login');
 });
@@ -37,7 +32,7 @@ Route::get('/resetpassword', function () {
 Route::get('/resetpassword1', function () {
     return view('login.resetpassword1');
 });
- 
+
 // middleware
 Route::group(['middleware' => ['auth']], function () {
     // contractors
@@ -122,3 +117,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('dashboard.dashboard');
     });
 });
+
+
+Route::post('/signin', [UserController::class,'signin']);
+Route::post('/signout', [UserController::class, 'signout']);
+
+

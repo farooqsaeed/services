@@ -157,12 +157,14 @@ class UserController extends Controller
 
     public function signin()
     {
+    
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             return redirect('/dashboard');
         } else {
             return back()->with('error', 'Your username or password is incorrect!');
         }
     }
+
     public function signout()
     {
         Auth::logout();
