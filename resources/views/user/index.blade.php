@@ -162,7 +162,7 @@
                     <tr>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->status}}</td>
+                        <td>{{$user->user_type}}</td>
                          <td>
                             <div class="dropdown">
                                 <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"

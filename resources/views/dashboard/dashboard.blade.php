@@ -75,36 +75,7 @@
               Dashboard</span>
 
             <div class="notification mt-3">
-              <div class="dropdown mt-2 mr-2">
-                <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
-                  data-toggle="dropdown">Global
-                  <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Group A</a></li>
-                  <li><a tabindex="-1" href="#">Group B</a></li>
-                  <li class="dropdown-submenu">
-                    <a class="test" tabindex="-1" href="#">Group C <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <!-- <li><a tabindex="-1" href="#">Group A1</a></li> -->
-                      <li class="dropdown-submenu">
-                        <a class="test" href="#">Group A2<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Group A21</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="fa fa-bell mr-2 mt-1">
-                <p class="mt-1">Notification</p>
-              </div>
-              <div class="">
-                <form action="{{ URL::to('signout') }}" method="post">
-                  @csrf
-                  <button class="fa fa-sign-out btn" type="submit" ><br> <p>Logout</p></button>
-                </form>
-              </div>
+              @include('../layouts/header')
             </div>
           </div>
           <div class="card-text p-0 mb-0 mt-0 ml-4">
@@ -486,14 +457,5 @@
   }
 </script>
 
-
-<script>
-  $(document).ready(function () {
-    $('.dropdown-submenu a.test').on("click", function (e) {
-      $(this).next('ul').toggle();
-      e.stopPropagation();
-      e.preventDefault();
-    });
-  });
-</script>
+ 
 @endsection

@@ -21,7 +21,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('jobs.index');
+        $jobs = Job::all();
+        // return $jobs;
+        return view('jobs.index',compact(['jobs']));
     }
 
     /**
@@ -68,32 +70,35 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        // $Job = Job::create($request->all());
-        $Job = new Job();
-        $Job->address = $request->address;
-        $Job->tenant_name = $request->tenant_name;
-        $Job->contact = $request->contact;
-        $Job->description = $request->description;
-        $Job->subject = $request->subject;
-
-        $Job->case_no = "1";
-        $Job->property_id = "2";
-        $Job->category = $request->category;
-        $Job->subCategory = $request->subcategory;
-        $Job->notes = "nothing to ";
-        $Job->job_time = date('h:m');
-        $Job->job_date= date('Y:m:d');
-
-        if ($image = $request->file('attachment')) {
-            $imageDestinationPath = 'uploads/Images';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($imageDestinationPath, $postImage);
-            $Job['attachment'] = "$postImage";
+        $path = null;
+        if ($request->hasFile('attachment')) {
+            $image = $request->attachment;
+            $name = time();
+            $file = $image->getClientOriginalName();
+            $extension = $image->extension();
+            $ImageName = $name . $file;
+            $fileName = md5($ImageName);
+            $fullPath =  $fileName . '.' . $extension;
+            $image->move(public_path('upload/Image/'), $fullPath);
+            $path = 'upload/Image/' . $fullPath;
         }
-        
 
-        $Job->save();   
-        return redirect('/');
+        Job::create([
+            'address' => $request->address,
+            'tenant_name' => $request->tenant_name,
+            'contact' => $request->contact,
+            'description' => $request->description,
+            'subject' => $request->subject,
+            'case_no' => "1",
+            'property_id' => "2",
+            'category' => $request->category,
+            'subCategory' => $request->subcategory,
+            'notes' => "nothing to ",
+            'job_time' => date('h:m'),
+            'job_date' => date('Y:m:d'),
+            'attachment' => $path
+        ]);
+        return redirect('/jobs');
     }
 
     /**

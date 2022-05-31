@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contractor;
 use App\Models\Document;
 use App\Models\Group;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class ContractorController extends Controller
 {
@@ -48,41 +47,51 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-
-        $contractor = Contractor::create($request->all());
-
-        // ID certificate
-        $document = new Document();
-        $document->title = $request->input('title');
-        $document->description = $request->input('description');
-        $document->achieved_date = $request->input('achieved_date');
-        $document->expiry_date = $request->input('expiry_date');
-        $document->doc_type = $request->doc_type;
-        $document->user_id = 1;
-        if ($request->file('attachment')) {
-            $file = $request->file('attachment');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/Image'), $filename);
-            $document['attachment'] = $filename;
-        }
-        $document->save();
-        // ID document
-        $document = new Document();
-        $document->title = $request->input('title1');
-        $document->description = $request->input('description1');
-        $document->achieved_date = $request->input('achieved_date1');
-        $document->expiry_date = $request->input('expiry_date1');
-        $document->doc_type = $request->input('doc_type1');
-        $document->user_id = 1;
-        if ($request->file('attachment1')) {
-            $file = $request->file('attachment1');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/Image'), $filename);
-            $document['attachment'] = $filename;
+        $user = auth()->user();
+        $path = null;
+        $path1 = null;
+        if ($request->hasFile('attachment')) {
+            $image = $request->attachment;
+            $name = time();
+            $file = $image->getClientOriginalName();
+            $extension = $image->extension();
+            $ImageName = $name . $file;
+            $fileName = md5($ImageName);
+            $fullPath =  $fileName . '.' . $extension;
+            $image->move(public_path('upload/image/'), $fullPath);
+            $path = 'upload/image/' . $fullPath;
         }
 
-        $document->save();
-        // return response()->json(['result' => 'Record Inserted!']);
+        if ($request->hasFile('attachment1')) {
+            $image = $request->attachment1;
+            $name = time();
+            $file = $image->getClientOriginalName();
+            $extension = $image->extension();
+            $ImageName = $name . $file;
+            $fileName = md5($ImageName);
+            $fullPath =  $fileName . '.' . $extension;
+            $image->move(public_path('upload/image/'), $fullPath);
+            $path1 = 'upload/image/' . $fullPath;
+        }
+        Document::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'achieved_date' => $request->achieved_date,
+            'expiry_date' => $request->expiry_date,
+            'doc_type' => $request->doc_type,
+            'user_id' => $user->id,
+            'attachment' => $path
+        ]);
+        Document::create([
+            'title' => $request->title1,
+            'description' => $request->description1,
+            'achieved_date' => $request->achieved_date1,
+            'expiry_date' => $request->expiry_date1,
+            'doc_type' => $request->doc_type1,
+            'user_id' => $user->id,
+            'attachment' => $path1
+        ]);
+        Contractor::create($request->all());
         return redirect("/contractors")->with(['success', 'Contractor added successfully']);
     }
 
@@ -128,6 +137,8 @@ class ContractorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contractor = Contractor::find($id)->first();
+        $contractor->delete();
+        return redirect()->back();
     }
 }

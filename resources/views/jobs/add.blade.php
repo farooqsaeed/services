@@ -13,7 +13,7 @@
         <span>Add Jobs</span>
     </div>
     <div class="p-3">
-        <form id="jobform" class="row addform"   >
+        <form id="jobform" class="row addform"  enctype="multipart/form-data" action="{{URL('jobs')}}" method="post" >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -107,7 +107,7 @@
 
 <!-- ajax submition -->
 <script>
-    $('#jobform').submit(function (e) {
+    $(' jobform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');

@@ -113,7 +113,8 @@
                         <span class="card-title my-0 ml-n2"><i class="fa fa-cog" aria-hidden="true"></i>
                             Settings</span>
                         <div class="notification mt-3">
-                            <div id="dropdown" class="dropdown mt-2 mr-2">
+                            @include('../layouts/header')
+                            <!-- <div id="dropdown" class="dropdown mt-2 mr-2">
                                 <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
                                     data-toggle="dropdown">Global
                                     <span class="caret"></span></button>
@@ -141,7 +142,7 @@
                                     <p class="mt-1">Logout</p>
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -207,15 +208,5 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-        $('#dropdown.dropdown-submenu a.test').on("click", function (e) {
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-            e.preventDefault();
-        });
-    });
-</script>
+ 
 @endsection

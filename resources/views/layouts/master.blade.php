@@ -39,7 +39,7 @@
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
-                    <a class="dashboard-nav-item {{ Request::path() ==  '/' ? '  active' : ''  }}" href="/">
+                    <a class="dashboard-nav-item {{ Request::path() ==  '/dashboard' ? '  active' : ''  }}" href="/dashboard">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
                         Dashboard
                     </a>

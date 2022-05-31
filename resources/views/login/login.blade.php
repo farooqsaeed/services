@@ -24,7 +24,7 @@
             <div class="col-lg-5 m-auto text-center">
                 <img src="{{ URL::to('/assets/imgs/img/login.png') }}" alt="" srcset="">
             </div>
-            <div class="col-lg-5 offset-lg-1 m-auto p-lg-5">
+            <div class="col-lg-5 offset-lg-1 m-auto p-5">
                 <div class="card  py-3">
                     <h2 class="card-title text-center pt-3">Log In</h2>
                     <div class="card-body mx-3">
@@ -32,11 +32,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">User Name:</label>
-                                <input type="email" class="form-control" name="email" id="" placeholder="Enter User Name">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter User Name">
                             </div>
                             <div class="form-group py-3">
                                 <label for="">Password:</label>
-                                <input type="password" class="form-control" name="password" id="" placeholder="Enter Password:">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password:">
                             </div>
                             <div class="form-group text-right">
                                 <small id="helpId" class="form-text text-muted">Forget Password?</small>

@@ -12,7 +12,7 @@
     border: 1px solid #407c1e;
 }
 
-.cards .fa {
+.cards .fa,.cards form button {
     background-color: white;
     margin-right: 5px;
     color: black;

@@ -89,36 +89,7 @@
                         <span class="card-title my-0 ml-n2"><i class="fa fa-home" aria-hidden="true"></i>
                             Properties</span>
                         <div class="notification mt-3">
-                            <div id="dropdown" class="dropdown mt-2 mr-2">
-                                <button class="btn btn-success btn-sm success dropdown-toggle" type="button"
-                                    data-toggle="dropdown">Global
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="#">Group A</a></li>
-                                    <li><a tabindex="-1" href="#">Group B</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a class="test" tabindex="-1" href="#">Group C <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <!-- <li><a tabindex="-1" href="#">Group A1</a></li> -->
-                                            <li class="dropdown-submenu">
-                                                <a class="test" href="#">Group A2<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Group A21</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="fa fa-bell mr-2 mt-1">
-                                <p class="mt-1">Notification</p>
-                            </div>
-                            <div class="mt-1 ">
-                                <div class="fa fa-sign-out" aria-hidden="true">
-                                    <p class="mt-1">Logout</p>
-
-                                </div>
-                            </div>
+                            @include('../layouts/header')
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 
 
-<div class="container-fluid addcontractor  p-0">
+<div class="container-fluid addcontractor p-0">
     <div class="add  mt-0 ">
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
@@ -11,7 +11,8 @@
         <span>Add Contractor</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform">
+        <form id="myform" class="row addform" action="{{URL('contractors')}}" method="post"
+            enctype="multipart/form-data">
             @csrf
             <div class="col-lg-10 offset-lg-1">
                 <div class="form-group row">
@@ -103,14 +104,14 @@
                         <label htmlFor="" class="mt-3">
                             Agreed Rate *
                         </label>
-                        <input type="text" class="form-control" name="rate" id=""
+                        <input type="text" class="form-control" name="rate" required
                             placeholder="Enter Area of Coverage" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
                             Business Address *
                         </label>
-                        <input type="text" class="form-control" name="house_no" id=""
+                        <input type="text" class="form-control" name="house_no" required
                             placeholder="Enter Area of Coverage" />
                     </div>
                     <div class="my-3 col-6">
@@ -131,12 +132,12 @@
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">Postal Code</label>
                         <input type="text" class="form-control" name="postal_code" id="" placeholder="Enter street name"
-                            value="" />
+                         required   value="" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">Rate option</label>
                         <input type="text" class="form-control" name="rate_option" id="" placeholder="Enter Rate"
-                            value="" />
+                         required   value="" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
@@ -184,25 +185,27 @@
                 </div>
                 <div class="my-3">
                     <label htmlFor="">Title *</label>
-                    <input type="text" class="form-control" name="title" id=""
+                    <input type="text" class="form-control" name="title" required
                         placeholder="Title of your certificate" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Description *</label>
-                    <input type="text" class="form-control mt-4" name="description" id="" placeholder="Text Message" />
+                    <input type="text" class="form-control mt-4" name="description" required
+                        placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Archived Date *</label>
-                    <input type="date" class="form-control mt-4" name="achieved_date" id=""
+                    <input type="date" class="form-control mt-4" name="achieved_date" required
                         placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Expiry Date *</label>
-                    <input type="date" class="form-control mt-4" name="expiry_date" id="" placeholder="Text Message" />
+                    <input type="date" class="form-control mt-4" name="expiry_date" required
+                        placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor="">Upload Attachment *</label>
-                    <input type="file" class="form-control" name="attachment" />
+                    <input type="file" class="form-control" required name="attachment" />
                     <input type="hidden" class="form-control" value="certificate" name="doc_type" />
                 </div>
             </div>
@@ -213,26 +216,28 @@
                 </div>
                 <div class="my-3">
                     <label htmlFor="">Title *</label>
-                    <input type="text" class="form-control" name="title1" id="" placeholder=" Title of your ID" />
+                    <input type="text" class="form-control" name="title1" required placeholder=" Title of your ID" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Description *</label>
-                    <input type="text" class="form-control mt-4" name="description1" id="" placeholder="Text Message" />
+                    <input type="text" class="form-control mt-4" name="description1" required
+                        placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Archived Date *</label>
-                    <input type="date" class="form-control mt-4" name="achieved_date1" id=""
+                    <input type="date" class="form-control mt-4" name="achieved_date1" required
                         placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Expiry Date *</label>
-                    <input type="date" class="form-control mt-4" name="expiry_date1" id="" placeholder="Text Message" />
+                    <input type="date" class="form-control mt-4" name="expiry_date1" required
+                        placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor="" class="custom-file-upload">
                         Upload Attachment *
                     </label>
-                    <input type="file" class="form-control" name="attachment1" id="" placeholder="Text Message" />
+                    <input type="file" class="form-control" name="attachment1" required />
                     <input type="hidden" class="form-control" value="id" name="doc_type1" />
                 </div>
             </div>
@@ -271,7 +276,7 @@
 
 <!-- ajax submition  removed as it not working with pic-->
 <script>
-    $('#myform').submit(function (e) {
+    $('myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');

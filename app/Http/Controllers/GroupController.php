@@ -88,8 +88,9 @@ class GroupController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $group = Group::findorFail($id);
+        return view('groups.edit-group', compact(['group']));
     }
 
     /**
@@ -101,7 +102,11 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            "Group_Name" => $request->Group_Name,
+        ];
+        Group::where('id', $id)->update($update);
+        return response()->json(['result' => 'Tenant updated  Successfully!']);
     }
 
     /**
@@ -112,6 +117,8 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group=Group::find($id)->first();
+        $group->delete();
+        return redirect()->back();
     }
 }

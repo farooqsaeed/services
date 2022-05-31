@@ -13,6 +13,7 @@
         color: white;
         text-decoration: none;
     }
+
     .addbtn {
         position: relative;
         z-index: 99;
@@ -109,58 +110,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($jobs as $job)
                     <tr>
-                        <td>10000010</td>
-                        <td>45</td>
-                        <td>Unknown</td>
+                        <td>{{$job->case_no}}</td>
+                        <td>{{$job->property_id}}</td>
+                        <td>{{$job->subject}}</td>
                         <td>Nill</td>
-                        <td>Non-Emergency</td>
+                        <td>{{$job->severity}}</td>
                         <td>
                             <div class="bg-info text-white rounded">
-                                Active
+                                {{$job->status}}
                             </div>
                         </td>
                         <td>One Day Ago</td>
                     </tr>
-                    <tr>
-                        <td>10000010</td>
-                        <td>45</td>
-                        <td>Unknown</td>
-                        <td>Nill</td>
-                        <td>Non-Emergency</td>
-                        <td>
-                            <div class="bg-info text-white rounded">
-                                Active
-                            </div>
-                        </td>
-                        <td>One Day Ago</td>
-                    </tr>
-                    <tr>
-                        <td>10000010</td>
-                        <td>45</td>
-                        <td>Unknown</td>
-                        <td>Nill</td>
-                        <td>Non-Emergency</td>
-                        <td>
-                            <div class="bg-info text-white rounded">
-                                Active
-                            </div>
-                        </td>
-                        <td>One Day Ago</td>
-                    </tr>
-                    <tr>
-                        <td>10000010</td>
-                        <td>45</td>
-                        <td>Unknown</td>
-                        <td>Nill</td>
-                        <td>Non-Emergency</td>
-                        <td>
-                            <div class="bg-info text-white rounded">
-                                Active
-                            </div>
-                        </td>
-                        <td>One Day Ago</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -169,7 +133,7 @@
 
 <script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
 </script>
- 
+
 
 
 @endsection

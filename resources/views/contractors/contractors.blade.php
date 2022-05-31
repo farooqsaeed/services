@@ -26,15 +26,7 @@
                     <div class="d-flex justify-content-between my-0 align-self-center">
                         <span class="card-title my-0">Contractors</span>
                         <div class="notification mt-3">
-                            <div class="fa fa-bell mr-2 mt-1">
-                                <p class="mt-1">Notification</p>
-                            </div>
-                            <div class="mt-1 ">
-                                <div class="fa fa-sign-out" aria-hidden="true">
-                                    <p class="mt-1">Logout</p>
-
-                                </div>
-                            </div>
+                            @include('../layouts/header')
                         </div>
                     </div>
                     <div class="card-text p-0 mb-0 mt-0">

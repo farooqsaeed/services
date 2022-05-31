@@ -90,7 +90,12 @@
                                     Select
                                 </button>
                                 <div class="dropdown-menu ml-n5" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
+                                    
+                                    <form action="{{URL('contractors/'.$contractor->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit">Delete</button>
+                                    </form>
                                     <button class="dropdown-item disabled" href="#">Disabled action</button>
                                 </div>
                             </div>

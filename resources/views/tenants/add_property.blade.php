@@ -12,7 +12,7 @@
         <span>Assign Property</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform "    >
+        <form id="myform" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -25,7 +25,7 @@
                         <label htmlFor="">Select Property *</label>
                            <select class="form-control" name="property_id" id="">
                                @foreach($properties as $property)
-                            <option value="{{$property->id}}">{{$property->first_line_address}}</option>
+                            <option value="{{$property->property_id}}">{{$property->first_line_address}}</option>
                             @endforeach
                           </select>
                         </div>

@@ -41,15 +41,17 @@ class TenantController extends Controller
     // store add_property_to_tenant
     public function storeproperty(Request $request)
     {
+
         $isexpire = 0;
         $startDate = date('Y-m-d', intval("$request->tenancy_start_date"));
         $endDate = date('Y-m-d', intval("$request->tenancy_last_date"));
+
         if ($startDate <= $endDate) {
             $isexpire = "No";
         } else {
             $isexpire = "Expired";
         }
-        $property = Property::findorFail($request->property_id);
+        $property = Property::where('property_id', $request->property_id)->first();
         $Tenantproperty = new tenant_property;
         $Tenantproperty->tenant_id = $request->tenancy_id;
         $Tenantproperty->property_id = $request->property_id;
@@ -92,11 +94,11 @@ class TenantController extends Controller
     public function show($id)
     {
         $tenant_property = tenant_property::where('tenant_id', $id)->get();
-
         foreach ($tenant_property as $item) {
             $item->detail = Property::where('property_id', $item->property_id)->first();
         }
-        $tenant = Tenant::findorFail($id);
+        $tenant = Tenant::where('id',$id)->first();
+        // return  $tenant_property;
         return view('tenants.show', compact(['tenant', 'tenant_property']));
     }
 
@@ -121,7 +123,6 @@ class TenantController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $update = [
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,

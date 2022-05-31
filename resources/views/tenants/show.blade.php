@@ -68,7 +68,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tenant_property as $items)
+                             @foreach($tenant_property as $items)
                             <tr>
                                 <td> {{$items->detail->first_line_address}} </td>
                                 <td>{{$items->detail->Town}}</td>
@@ -90,8 +90,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                            
-                        </tbody>
+                         </tbody>
                     </table>
                 </div>
             </div>
