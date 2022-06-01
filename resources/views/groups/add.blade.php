@@ -20,13 +20,11 @@
                 <div class="row mt-5">
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Name *</label>
-                        <input type="text" class="form-control" name="Group_Name" id="" placeholder="Enter Group Name" />
-                    </div>
-                    <div class="my-3 col-lg-12">
-                         <input type="hidden" class="form-control" value="1"  name="Group_ID" id=""  />
+                        <input type="text" class="form-control" name="Group_Name" id=""
+                            placeholder="Enter Group Name" />
                     </div>
                     <div class="col-lg-4 col-6 mt-5">
-                        <button id="formbtn" type="submit" class="btn btn-outline-success btn-block ">Cancel</button>
+                        <button type="reset" class="btn btn-outline-success btn-block ">Cancel</button>
                     </div>
                     <div class="col-lg-4 col-6 offset-lg-4   mt-5">
                         <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>
@@ -39,7 +37,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
- 
+
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

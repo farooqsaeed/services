@@ -39,6 +39,16 @@
         left: 30%;
         margin-top: -1px;
     }
+
+    .btn-outline-success {
+        border: none;
+        color: #407C1E;
+        border: 1px solid #407C1E;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #407C1E;
+    }
 </style>
 
 <div class="container-fluid">
@@ -74,6 +84,9 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11  text-right">
+            <a href="{{URL('groups/create')}}"><button class="btn btn-outline-success btn-sm"> Add Group</button></a>
+        </div>
     </div>
     <div class="row mt-4">
         @if(!$Groups->isEmpty())
@@ -84,7 +97,9 @@
                     <h5 class="mb-0 pb-0">&nbsp;&nbsp;{{$Group->Group_Name}}</h5>
                 </div>
                 <div class="d-flex justify-content-between align-self-center">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <a href="add-subgroups/{{$Group->id}}">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
                     <a href="groups/{{$Group->id}}/edit">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>

@@ -8,6 +8,8 @@ use App\Models\Tenant;
 use App\Models\landlord;
 use App\Models\tenant_property;
 use App\Models\Job;
+use App\Models\UniqueId;
+
 
 
 
@@ -45,7 +47,7 @@ class PropertyController extends Controller
     {
       
         $Property = new Property;
-        $Property->property_id = random_int(10000, 90000);
+        $Property->property_id = random_int(100000, 900000);
         $Property->first_line_address = $request->first_line_address;
         $Property->second_line_address = $request->second_line_address;
         $Property->Town = $request->Town;
@@ -88,6 +90,15 @@ class PropertyController extends Controller
             $tenant_property->IsExpired = 'active';
             $tenant_property->save();
         }
+
+        UniqueId::create([
+            'uid' => $Property->property_id,
+            'usertype' => 'Tenant',
+            'property_id' =>$Property->id,
+            'grouptype' => null,
+        ]);
+
+
         return response()->json(['result' => 'Property has been added!']);
     }
 
@@ -98,7 +109,8 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        // return $id;
         $property = Property::where('id', $id)->first();
         $landlord = landlord::where('property_id', $property->property_id)->first();
         $tenant_property = tenant_property::where('property_id', $property->property_id)->get();
@@ -107,7 +119,7 @@ class PropertyController extends Controller
             $item->detail = Tenant::where('id', $item->tenant_id)->first();
         }
         $jobs = Job::where('property_id', $property->property_id)->get();
-
+        
         return view('property.show', compact(['property', 'landlord', 'tenant_property', 'jobs']));
     }
 

@@ -56,7 +56,7 @@
 
 <div class="container-fluid">
   <div class="row ">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 map_view  ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0 map_view  ">
       <a href="/mapview">
         <div class=" Header d-none  d-sm-block">
           <div class="row  ">
@@ -78,7 +78,7 @@
               @include('../layouts/header')
             </div>
           </div>
-          <div class="card-text p-0 mb-0 mt-0 ml-4">
+          <div class="card-text p-0 mb-0 mt-0 ml-lg-4">
             <ol class="breadcrumb bg-white">
               <li class="breadcrumb-item ml-lg-n3">
                 <a href='/'>Overview </a>
@@ -90,7 +90,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pt-0">
       <div class="cards d-lg-flex justify-content-lg-around align-self-center">
         <div class="card card1 w-100">
           <a href="newjobs">
@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0" id="myid">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   pt-0" id="myid">
       <div class="jobs d-lg-flex justify-content-lg-between  align-items-stretch   ">
         <div class="col-lg-3 my-3 p-1 ">
           <div class="card1 card shadow">
@@ -276,7 +276,7 @@
       </div>
     </div>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pt-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pt-0">
       <div class="compliance d-lg-flex justify-content-lg-between">
         <div class="col-lg-6   my-2 p-1">
           <div class="card1 card shadow">

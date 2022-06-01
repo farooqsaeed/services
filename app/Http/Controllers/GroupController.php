@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\Subgroup;
 use App\Models\Childgroup;
-
+use App\Models\UniqueId;
 
 class GroupController extends Controller
 {
@@ -17,10 +17,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $Groups= Group::with('subgroup')->get();
-        // return
-        // $Groups;
-         return view('groups.groups',compact(['Groups']));
+        $Groups = Group::with('subgroup')->get();
+        return view('groups.groups', compact(['Groups']));
     }
 
     /**
@@ -33,9 +31,10 @@ class GroupController extends Controller
         return view('groups.add');
     }
     // sub group
-    public function subgroupcreate()
+    public function subgroupcreate($id)
     {
-        return view('groups.addsubgroup');
+        $group = Group::where('id', $id)->first();
+        return view('groups.addsubgroup', compact(['group']));
     }
 
     // child group
@@ -52,15 +51,36 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        $Group = Group::create($request->all());
-        return response()->json(['result' => 'Record Inserted!']);
+        // $Group = Group::create($request->all());
+
+        // Group::create([
+        //     'Group_Name' => $request->Group_Name,
+        //     'Group_ID' => random_int(10000, 90000)
+        // ]);
+        $group=New Group();
+        $group->Group_Name=$request->Group_Name;
+        $group->Group_ID = random_int(100000, 900000);
+        $group->save();  
+        
+        UniqueId::create([
+            'uid' => $group->Group_ID,
+            'usertype' => 'Contractor',
+            'property_id' => $group->id,
+            'grouptype' => 'group',
+        ]);
+
+        return response()->json(['result' => 'Group added!']);
     }
 
     // sub
     public function subgroupstore(Request $request)
     {
-        $Group = Subgroup::create($request->all());
-        return response()->json(['result' => 'Record Inserted!']);
+        Subgroup::create([
+            'Sub_Group_Name' => $request->Sub_Group_Name,
+            'Sub_Group_ID' => random_int(10000, 90000),
+            'group_id' => $request->group_id,
+        ]);
+        return response()->json(['result' => 'Sub group added succesfully!']);
     }
 
     // child group
@@ -88,7 +108,7 @@ class GroupController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $group = Group::findorFail($id);
         return view('groups.edit-group', compact(['group']));
     }
@@ -117,7 +137,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group=Group::find($id)->first();
+        $group = Group::where('id',$id)->first();
         $group->delete();
         return redirect()->back();
     }

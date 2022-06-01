@@ -98,7 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
     // groups
     Route::resource('groups', GroupController::class);
     // sub group
-    Route::get('add_subgroups', [GroupController::class, 'subgroupcreate']);
+    Route::get('add-subgroups/{id}', [GroupController::class, 'subgroupcreate']);
     Route::post('store_subgroups', [GroupController::class, 'subgroupstore']);
     // child group
     Route::get('add_childgroups', [GroupController::class, 'childgroupcreate']);
@@ -107,6 +107,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('tenant', TenantController::class);
     Route::get('add-tproperty/{id}', [TenantController::class, 'createproperty']);
     Route::post('storeproperty', [TenantController::class, 'storeproperty']);
+    Route::delete('delete-property/{id}', [TenantController::class, 'propertydestroy']);
+
+    
     // user
     Route::resource('/user', UserController::class);
     Route::get('changepassword', [UserController::class, 'change_password']);

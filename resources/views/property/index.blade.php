@@ -68,6 +68,9 @@
         z-index: 99;
         float: right;
     }
+    tr{
+        cursor: pointer;
+    }
 </style>
 <div class="container-fluid">
     <div class="row ">
@@ -144,7 +147,7 @@
                 </thead>
                 <tbody>
                     @foreach($property as $item)
-                    <tr>
+                    <tr data-url="{{url('property/'.$item->id)}}">           
                         <td>{{$item->first_line_address}}</td>
                         <td>{{$item->Town}}</td>
                         <td> {{$item->Postcode}}</td>
@@ -158,7 +161,9 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <a href="{{url('jobs/create')}}" class="dropdown-item" type="button">Add New Job</a>
-                                    <a href="{{ url('property/'.$item->id.'/edit') }}" class="dropdown-item" type="button"> Edit Property  </a>
+                                    <a href="{{ url('property/'.$item->id) }}" class="dropdown-item" type="button">Property Details</a>
+                                    <a href="{{ url('property/'.$item->id.'/edit') }}" class="dropdown-item"
+                                        type="button"> Edit Property </a>
                                     <form action="{{ url('property', $item->id ) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -168,6 +173,7 @@
                             </div>
                         </td>
                     </tr>
+                   
                     @endforeach
                 </tbody>
             </table>
@@ -177,6 +183,7 @@
 
 <script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -186,6 +193,13 @@
             e.preventDefault();
         });
     });
+</script>
+<script>
+    $(function () {
+            $('#property').on("click", "tr", function () {
+                window.location = $(this).data("url");
+            });
+        });
 </script>
 
 @endsection

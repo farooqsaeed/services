@@ -97,8 +97,8 @@ class TenantController extends Controller
         foreach ($tenant_property as $item) {
             $item->detail = Property::where('property_id', $item->property_id)->first();
         }
-        $tenant = Tenant::where('id',$id)->first();
-        // return  $tenant_property;
+        $tenant = Tenant::where('id', $id)->first();
+        //    return  $tenant_property;
         return view('tenants.show', compact(['tenant', 'tenant_property']));
     }
 
@@ -143,6 +143,13 @@ class TenantController extends Controller
     {
         $tenant = Tenant::findorFail($id);
         $tenant->delete();
+        return Redirect()->back();
+    }
+
+    public function propertydestroy($id)
+    {
+         $tenant = tenant_property::where('property_id', $id)->first();
+         $tenant->delete();
         return Redirect()->back();
     }
 }

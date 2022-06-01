@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
 
 
-<div class="container-fluid addcontractor  p-0">
+<div class="container-fluid addcontractor p-0">
     <div class="add  mt-0 ">
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
@@ -19,17 +19,14 @@
                 <div class="row mt-5">
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Group Name *</label>
-                        <input type="text" class="form-control" name="" id="" disabled value="Farooq" />
+                        <input type="text" class="form-control" name="" disabled value="{{$group->Group_Name}}" />
                     </div>
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Name *</label>
                         <input type="text" class="form-control" name="Sub_Group_Name" id="" placeholder="Enter Group Name" />
                     </div>
                     <div class="my-3 col-lg-12">
-                        <input type="hidden" class="form-control" value="1" name="Sub_Group_ID" id="" />
-                    </div>
-                    <div class="my-3 col-lg-12">
-                        <input type="hidden" class="form-control" value="1" name="group_id" id="" />
+                        <input type="hidden" class="form-control" value="{{$group->id}}" name="group_id" id="" />
                     </div>
                     <div class="col-lg-4 col-6 mt-5">
                         <button  type="submit" class="btn btn-outline-success btn-block ">Cancel</button>

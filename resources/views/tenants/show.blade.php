@@ -82,7 +82,11 @@
                                             Select
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <button class="dropdown-item" type="button">Action</button>
+                                            <form action="/delete-property/{{$items->detail->property_id}}" method="post">
+                                                @csrf 
+                                                @method('Delete')
+                                                <button type="submit" class="dropdown-item" type="button">Delete</button>
+                                            </form>
                                             <button class="dropdown-item" type="button">Another action</button>
                                             <button class="dropdown-item" type="button">Something else here</button>
                                         </div>
