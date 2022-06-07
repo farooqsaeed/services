@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
             <div class="Contractor_cards d-lg-flex justify-content-lg-between align-self-center">
                 <div class="card card3 mt-3  w-100">
@@ -69,6 +70,8 @@
                 <div class="w-100 "></div>
             </div>
         </div>
+
+        <!-- start -->
         <div class="col-lg-12 col-md-12 mt-2 col-sm-12 col-xs-12  ">
             <div class="DetailCards d-lg-flex justify-content-lg-between ">
                 <div class="col-lg-3 my-2 p-1">
@@ -432,6 +435,8 @@
                 </div>
             </div>
         </div>
+        <!-- end -->
+
     </div>
 </div>
 

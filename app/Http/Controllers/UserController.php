@@ -39,7 +39,8 @@ class UserController extends Controller
     {
         $roles = Role::orderBy('id', 'DESC')->get();
         $groups = Group::orderBy('id', 'DESC')->get();
-        return view('user.add', compact(['roles', 'groups']));
+        return view('user.add', 
+            compact(['roles', 'groups']));
     }
 
     public function change_password()

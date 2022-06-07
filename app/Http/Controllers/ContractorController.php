@@ -29,7 +29,8 @@ class ContractorController extends Controller
     public function create()
     {
         $groups = Group::orderby('id', 'DESC')->get();
-        return view('contractors.add', compact(['groups']));
+        return view('contractors.add', 
+            compact(['groups']));
     }
 
     // plumbers
