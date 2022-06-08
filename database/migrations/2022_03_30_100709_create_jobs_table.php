@@ -34,7 +34,13 @@ return new class extends Migration
             $table->string('cost')->nullable();
             $table->string('severity')
             ->default('Non-Emergency');
+            $table->integer('landloard_id');
+            $table->integer('show_to_landloard')
+            ->default(0);
+            $table->string('landloard_approvel')
+            ->default('Pending');
             $table->timestamps();
+
         });
     }
 

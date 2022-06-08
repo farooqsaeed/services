@@ -26,7 +26,10 @@ class Job extends Model
         'job_date',
         'payment_status',
         'cost',
-        'severity'
+        'severity',
+        'landloard_id',
+        'show_to_landloard',
+        'landloard_approvel'
     ];
 
     /**
