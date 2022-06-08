@@ -9,7 +9,9 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TenantController;
- 
+use App\Http\Controllers\GaurdController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use App\Http\Controllers\TenantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
- 
+
 Route::get('/', function () {
     return view('login.login');
 });
@@ -57,10 +59,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/events', function () {
         return view('events.events_events');
     });
+
     // callout
-    Route::get('/callout', function () {
-        return view('callout.callout');
-    });
+    Route::resource('callout', GaurdController::class);
+    Route::get('assign-property/{id}', [GaurdController::class, 'assign_property']);
+    Route::post('store_call_property/{id}', [GaurdController::class, 'store_call_property']);
+
     // setting
     Route::get('/setting', function () {
         return view('setting.enrolment');
@@ -109,20 +113,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('storeproperty', [TenantController::class, 'storeproperty']);
     Route::delete('delete-property/{id}', [TenantController::class, 'propertydestroy']);
 
-    
+
     // user
     Route::resource('/user', UserController::class);
     Route::get('changepassword', [UserController::class, 'change_password']);
     Route::post('fetch-states', [UserController::class, 'fetchState']);
     Route::post('fetch-cities', [UserController::class, 'fetchCity']);
+    
     // dashboard
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     });
+
 });
 
 
-Route::post('/signin', [UserController::class,'signin']);
+Route::post('/signin', [UserController::class, 'signin']);
 Route::post('/signout', [UserController::class, 'signout']);
-
-

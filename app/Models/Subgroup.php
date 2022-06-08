@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Subgroup extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'Sub_Group_ID',
         'Sub_Group_Name',
-        'group_id' 
+        'group_id'
     ];
 
     /**

@@ -192,15 +192,5 @@
         <!-- end table -->
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-        $('#dropdown.dropdown-submenu a.test').on("click", function (e) {
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-            e.preventDefault();
-        });
-    });
-</script>
+ 
 @endsection

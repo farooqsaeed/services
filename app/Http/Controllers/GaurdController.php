@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Gaurd;
+use App\Models\Property;
+
 
 class GaurdController extends Controller
 {
@@ -14,7 +17,8 @@ class GaurdController extends Controller
      */
     public function index()
     {
-        //
+        $gaurds = Gaurd::orderBy('id', 'DESC')->get();
+        return view('callout.index', compact(['gaurds']));
     }
 
     /**
@@ -24,7 +28,7 @@ class GaurdController extends Controller
      */
     public function create()
     {
-        //
+        return view('callout.add');
     }
 
     /**
@@ -39,22 +43,24 @@ class GaurdController extends Controller
             'Guard_Name' => 'required',
             'Guard_Email' => 'required',
             'Guard_Contact' => 'required',
-         ]);
-   
-        if($validator->fails()){
+        ]);
+
+        if ($validator->fails()) {
             $errors = $validator->errors();
-            return json_encode(['status'=>0,'errors'=>$errors]); 
+            return json_encode(['status' => 0, 'errors' => $errors]);
         }
 
         Gaurd::create(
-            array(
-            'Guard_Name' => $request->Guard_Name,
-            'Guard_Email' =>$request->Guard_Email,
-            'Guard_Contact' =>$request->Guard_Contact,
-            'Notes' =>$request->Notes, 
-            )
+            [
+                'Guard_Name' => $request->Guard_Name,
+                'Guard_Email' => $request->Guard_Email,
+                'Guard_Contact' => $request->Guard_Contact,
+                'Notes' => $request->Notes,
+                'status' => 'active',
+                'property_id' => null,
+            ]
         );
-
+        return response()->json(['result' => 'Callout added!']);
     }
 
     /**
@@ -68,6 +74,24 @@ class GaurdController extends Controller
         //
     }
 
+    // assign property
+    public function assign_property($id)
+    {
+        $gaurd = Gaurd::findorFail($id);
+        $properties = Property::all();
+        return view('callout.callout-property', compact(['properties', 'gaurd']));
+    }
+
+    public function store_call_property(Request $request, $id)
+    {
+        $update = [
+            "property_id" => $request->property_id,
+            "status" => 'unactive',
+        ];
+        Gaurd::where('id', $id)->update($update);
+        return response()->json(['result' => 'Callout updated  Successfully!']);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,7 +100,8 @@ class GaurdController extends Controller
      */
     public function edit($id)
     {
-        //
+        $callout = Gaurd::findorFail($id);
+        return view('callout.edit', compact(['callout']));
     }
 
     /**
@@ -88,7 +113,14 @@ class GaurdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            "Guard_Name" => $request->Guard_Name,
+            "Guard_Contact" => $request->Guard_Contact,
+            "Guard_Email" => $request->Guard_Email,
+            "Notes" => $request->Notes,
+        ];
+        Gaurd::where('id', $id)->update($update);
+        return response()->json(['result' => 'Callout updated  Successfully!']);
     }
 
     /**
@@ -99,8 +131,8 @@ class GaurdController extends Controller
      */
     public function destroy($id)
     {
-        //admin
-        // Pass: Surprise@2022
-        // https://dubaitourinfo.com:8090/
+        $callout = Gaurd::findorFail($id);
+        $callout->delete();
+        return redirect('callout');
     }
 }

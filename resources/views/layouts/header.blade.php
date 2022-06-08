@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="{{URL::asset('assets/css/plumber.css')}}">
+@php
+use App\Models\Group;
+$groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
+@endphp
+
+<link rel="stylesheet" href="{{URL::asset('assets/css/plumber.css')}}">
 
 <style>
     .cards .card a {
@@ -37,12 +42,13 @@
     .dropdown-submenu .dropdown-menu {
         background-color: white !important;
         top: 120%;
-        left: 30%;
-        margin-top: -1px;
+        left: 0%;
+        padding: 5px;
+        margin-top: 2px;
     }
 
     form .fa,
-    form p{
+    form p {
         color: #407C1E;
     }
 </style>
@@ -51,20 +57,20 @@
     <button class="btn btn-success btn-sm success dropdown-toggle" type="button" data-toggle="dropdown">Global
         <span class="caret"></span></button>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Group A</a></li>
-        <li><a tabindex="-1" href="#">Group B</a></li>
+        @foreach($groups as $group)
         <li class="dropdown-submenu">
-            <a class="test" tabindex="-1" href="#">Group C <span class="caret"></span></a>
+            <a class="test" tabindex="-1" href="#">{{$group->Group_Name}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <!-- <li><a tabindex="-1" href="#">Group A1</a></li> -->
+
                 <li class="dropdown-submenu">
-                    <a class="test" href="#">Group A2<span class="caret"></span></a>
+                    <a class="test" href="#"> Sub_Group_Name <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Group A21</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
+        @endforeach
     </ul>
 </div>
 <div class="fa fa-bell mr-2 mt-1">
@@ -81,7 +87,7 @@
 
 <script>
     $(document).ready(function () {
-        $('.dropdown-submenu a.test').on("click", function (e) {
+        $('.dropdown-submenu a.test').on("mouseover", function (e) {
             $(this).next('ul').toggle();
             e.stopPropagation();
             e.preventDefault();

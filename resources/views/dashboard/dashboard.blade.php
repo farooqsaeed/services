@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/compliance.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/calender.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/contractors.css')}}">
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -51,6 +52,9 @@
   form .fa,form p{
     color: #407C1E;
   }
+  .DetailCards .col-lg-3 a {
+        text-decoration: none;
+    }
 </style>
 
 
@@ -275,7 +279,371 @@
         </div>
       </div>
     </div>
-
+    <!-- start -->
+    <div class="col-lg-12 col-md-12 mt-2 col-sm-12 col-xs-12  ">
+      <div class="DetailCards d-lg-flex justify-content-lg-between ">
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header pb-1">
+              <img class="" src="{{URL::asset('assets/imgs/icons/powerplug.svg')}}" alt="" srcSet="" />
+              Electrician
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title pending">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title pending">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <a href="plumbers">
+            <div class="card1 card shadow">
+              <div class="card-header ">
+                <img src="{{URL::asset('assets/imgs/icons/Plumber.svg')}}" alt="" srcSet="" /> Plumber
+              </div>
+              <div class="card-body pb-0 mb-0">
+                <p>
+                  <span class="card-title">
+                    <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                  </span>
+                  <span class="card-title"> 0</span>
+                  <span class="card-text">Active</span>
+                </p>
+                <p>
+                  <span class="card-title">
+                    <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                  </span>
+                  <span class="card-title">&nbsp;&nbsp; 0</span>
+                  <span class="card-text">Pending</span>
+                </p>
+                <p>
+                  <span class="card-title">
+                    <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                  </span>
+                  <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                  <span class="card-text">Suspended</span>
+                </p>
+                <hr class="card_hr my-0" />
+                <div class="footer text-center pb-0 my-1">
+                  <span class="TotalJobs">Total Jobs </span>
+                  <span class="Total"> 40,886</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img src="{{URL::asset('assets/imgs/icons/Lock.svg')}}" alt="" srcSet="" /> Electrician
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img src="{{URL::asset('assets/imgs/icons/tools.svg')}}" alt="" srcSet="" /> Handyman
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="DetailCards my-3 d-lg-flex justify-content-lg-between ">
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img class="" src="{{URL::asset('assets/imgs/icons/Gas.svg')}}" alt="" srcSet="" /> Gas &
+              Heating
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header pb-2">
+              <img src="{{URL::asset('assets/imgs/icons/Drain.svg')}}" alt="" srcSet="" /> Drainage
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img src="{{URL::asset('assets/imgs/icons/Pest.svg')}}" alt="" srcSet="" /> Pest control
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img src="{{URL::asset('assets/imgs/icons/garden.svg')}}" alt="" srcSet="" /> Gardner
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="DetailCards my-3 d-lg-flex justify-content-lg-start ">
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img class="" src="{{URL::asset('assets/imgs/icons/key.svg')}}" alt="" srcSet="" /> Key
+              Holder
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 my-2 p-1">
+          <div class="card1 card shadow">
+            <div class="card-header">
+              <img src="{{URL::asset('assets/imgs/icons/other.svg')}}" alt="" srcSet="" /> Others
+            </div>
+            <div class="card-body pb-0 mb-0">
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/check.svg')}}" alt="" />
+                </span>
+                <span class="card-title"> 0</span>
+                <span class="card-text">Active</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/Pending.svg')}}" alt="" srcSet="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp; 0</span>
+                <span class="card-text">Pending</span>
+              </p>
+              <p>
+                <span class="card-title">
+                  <img src="{{URL::asset('assets/imgs/icons/prohibited.svg')}}" alt="" />
+                </span>
+                <span class="card-title">&nbsp;&nbsp;&nbsp; &nbsp; 0</span>
+                <span class="card-text">Suspended</span>
+              </p>
+              <hr class="card_hr my-0" />
+              <div class="footer text-center pb-0 my-1">
+                <span class="TotalJobs">Total Jobs </span>
+                <span class="Total"> 40,886</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pt-0">
       <div class="compliance d-lg-flex justify-content-lg-between">
         <div class="col-lg-6   my-2 p-1">
