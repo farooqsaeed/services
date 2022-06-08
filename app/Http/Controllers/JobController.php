@@ -108,10 +108,10 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return view('jobs.show');
+    {   $job=Job::findorfail($id);
+        return view('jobs.show',compact(['job']));
     }
-
+ 
     /**
      * Show the form for editing the specified resource.
      *

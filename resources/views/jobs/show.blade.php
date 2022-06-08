@@ -69,20 +69,19 @@
                                 <div class="btn btn-warning btn-sm">Assign Engineer</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="my-3 col-lg-6">
-                        <p class="text-title">Case Number: <span> 100070</span> </p>
+                        <p class="text-title">Case Number: <span> {{$job->case_no}}</span> </p>
                         <p class="text-title">Time: <span> 2:30:30 pm</span> </p>
                         <p class="text-title">Date: <span> 05/12/2022</span> </p>
-                        <p class="text-title">Status: <span> New</span> </p>
+                        <p class="text-title">Status: <span> {{$job->status}}</span> </p>
                         <p class="text-title">Reported Issue: <span> Unknow</span> </p>
                         <p class="text-title">Attachment: </p>
                     </div>
                     <div class="my-3 col-lg-6">
                         <p class="text-title">Property Address: <span> Peshawar, KPK, Pakistan</span> </p>
                         <p class="text-title">Reported By: <span> Nill</span> </p>
-                        <p class="text-title">Severity: <span> NON-Emergency</span> </p>
+                        <p class="text-title">Severity: <span> {{$job->severity}}</span> </p>
                         <p class="text-title">Assignment: <span> 100070</span> </p>
                         <p class="text-title">Description: <span> Unknow</span> </p>
                     </div>

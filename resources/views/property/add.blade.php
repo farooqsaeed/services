@@ -12,7 +12,18 @@
         <span>Add Properties</span>
     </div>
     <div class="p-3">
-        <form id="myform"  class="row addform"  >
+        <div class="row  ">
+            <div class="my-3 col-lg-10 offset-lg-1  ">
+                <label for="">Search by postal Code</label>
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" />
+                    <button type="button" class="btn btn-success success">search</button>
+                </div>
+            </div>
+
+        </div>
+        <form id="myform" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -22,26 +33,27 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="first_line_address" id=""
-                        required    placeholder="1st line Address *" />
+                        <input type="text" class="form-control" name="first_line_address" id="" required
+                            placeholder="1st line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="second_line_address" id=""
-                        required    placeholder="Enter 2nd line Address *     " />
+                        <input type="text" class="form-control" name="second_line_address" id="" required
+                            placeholder="Enter 2nd line Address *     " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town"   id="" placeholder="Enter Town " required />
+                        <input type="text" class="form-control" name="Town" id="" placeholder="Enter Town " required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="Postcode" required id="" placeholder="Enter Post code *" />
+                        <input type="text" class="form-control" name="Postcode" required id=""
+                            placeholder="Enter Post code *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="mb-lg-5">Notes *</label>
-                        <input type="text" class="form-control mt-lg-5" name="Notes" id=""
-                         required   placeholder="Enter Text Message" />
+                        <input type="text" class="form-control mt-lg-5" name="Notes" id="" required
+                            placeholder="Enter Text Message" />
                     </div>
                 </div>
             </div>
@@ -53,11 +65,13 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="full_name" required  id="" placeholder="Full Name *" />
+                        <input type="text" class="form-control" name="full_name" required id=""
+                            placeholder="Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email1" id="" required placeholder="Enter Email Address " />
+                        <input type="email" class="form-control" name="email1" id="" required
+                            placeholder="Enter Email Address " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
@@ -67,7 +81,8 @@
                     <div class="my-3 col-lg-6 ">
                     </div>
                     <div class="my-3 col-6 ">
-                        <input type="checkbox" name="check_box" class="showtenant" id="" onchange="valueChanged()" checked /> Assign
+                        <input type="checkbox" name="check_box" class="showtenant" id="" onchange="valueChanged()"
+                            checked /> Assign
                         Tenant.
                     </div>
                     <div class="my-3 col-6 text-right">
@@ -91,11 +106,13 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="mobile_no" id="" placeholder="Enter   Contact Number  " />
+                        <input type="tel" class="form-control" name="mobile_no" id=""
+                            placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email" id="" placeholder="Enter Email Address *" />
+                        <input type="email" class="form-control" name="email" id=""
+                            placeholder="Enter Email Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">House No*</label>
@@ -117,11 +134,13 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move in Date *</label>
-                        <input type="date" class="form-control" name="tenancy_start_date" id="" placeholder="Enter   Contact Number  " />
+                        <input type="date" class="form-control" name="tenancy_start_date" id=""
+                            placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move out Date *</label>
-                        <input type="date" class="form-control" name="tenancy_last_date" id="" placeholder="Enter   Contact Number  " />
+                        <input type="date" class="form-control" name="tenancy_last_date" id=""
+                            placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6 ">
                         <input type="checkbox" name="" id=""> Send Sign Up Info.
@@ -135,7 +154,7 @@
                 <button type="reset" class="btn btn-outline-success btn-block">Cancel</button>
             </div>
             <div class="my-3 col-lg-4 offset-lg-2 text-right">
-                <button type="submit" id="formbtn"  class="btn btn-success   btn-block">SAVE</button>
+                <button type="submit" id="formbtn" class="btn btn-success   btn-block">SAVE</button>
             </div>
         </form>
         <form id="bulkuploadform" class="row addform ">
@@ -204,7 +223,7 @@
             url: "{{URL('property')}}",
             data: $('#myform').serialize(),
             type: 'POST',
-             error: function (request, status, error) {
+            error: function (request, status, error) {
                 toastr.warning(request.responseText);
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Update');

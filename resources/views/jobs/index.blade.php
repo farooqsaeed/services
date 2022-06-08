@@ -17,6 +17,9 @@
         z-index: 99;
         float: right;
     }
+    tr{
+        cursor: pointer;
+    }
 </style>
 
 
@@ -106,7 +109,7 @@
                 </thead>
                 <tbody>
                     @foreach($jobs as $job)
-                    <tr>
+                    <tr data-url="{{url('jobs/'.$job->id)}}">
                         <td>{{$job->case_no}}</td>
                         <td>{{$job->property_id}}</td>
                         <td>{{$job->subject}}</td>
@@ -129,6 +132,14 @@
 <script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<script>
+     $(function () {
+            $('#jobs').on("click", "tr", function () {
+                window.location = $(this).data("url");
+            });
+        });
+</script>
 
 @endsection
