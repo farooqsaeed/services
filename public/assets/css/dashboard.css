@@ -1,93 +1,89 @@
 /* cards css */
 
 .cards .card {
-  margin: 5px;
-  box-shadow: 0px 0px 9px #00000058;
-  border-radius: 16px;
-  color: white;
-  padding: 0px 5px !important;
+    margin: 5px;
+    box-shadow: 0px 0px 9px #00000058;
+    border-radius: 16px;
+    color: white;
+    padding: 0px 5px !important;
 }
-
- 
 
 .cards .card-title {
-  font-family: "Helvetica";
-  font-weight: bold;
-  margin-top: 30px;
-  line-height: 10px;
+    font-family: "Helvetica";
+    font-weight: bold;
+    margin-top: 30px;
+    line-height: 10px;
 }
-.cards .card a{
-  text-decoration:  none;
-  color: white;
+.cards .card a {
+    text-decoration: none;
+    color: white;
 }
 
 .cards .card-text {
-  font-family: "Helvetica";
-  font-weight: bold;
-  color: white !important;
+    font-family: "Helvetica";
+    font-weight: bold;
+    color: white !important;
 }
-.cards .card .card-body h4{
-  font-weight: bold;
+.cards .card .card-body h4 {
+    font-weight: bold;
 }
 .cards .card1 {
-  background-color: #fc5461;
+    background-color: #fc5461;
 }
 
 .cards .card2 {
-  background-color: #21c5db;
+    background-color: #21c5db;
 }
 
 .cards .card3 {
-  background-color: #38bf67;
+    background-color: #38bf67;
 }
 
 .cards .card4 {
-  background-color: #FEDA32;
+    background-color: #feda32;
 }
 
-.cards .card5{
-  background-color: #5869C1;
+.cards .card5 {
+    background-color: #5869c1;
 }
-.cards .card5 p{
+.cards .card5 p {
     margin-bottom: 0px;
- }
+}
 
 .cards .fa {
-  border: 1px solid white;
-  border-radius: 10px;
-  padding: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
 }
-
 
 /* breadcrumb */
 
-
-.BreadCrumb_card .card-title{
-    color: #407C1E;
+.BreadCrumb_card .card-title {
+    color: #407c1e;
     font-size: 35px;
-  }
+}
 
-.breadcrumb-item,.breadcrumb-item a{
-    color: #407C1E;
+.breadcrumb-item,
+.breadcrumb-item a {
+    color: #407c1e;
     font-family: Helvetica;
-    font-weight:600;
-    margin-top: -30px;
+    font-weight: 600;
     font-size: 18px;
 }
 
-.BreadCrumb_card .notification{
-color: #407C1E;
-text-align: center;
-display: flex;
-justify-content: end;
- }
-
-.BreadCrumb_card .notification p{
-    font-size: 10px;
-    font-weight: bold;
- 
+.BreadCrumb_card .notification {
+    color: #407c1e;
+    text-align: center;
+    display: flex;
+    justify-content: end;
 }
 
-.BreadCrumb_card .fa-bell,.BreadCrumb_card .fa-sign-out{
-  font-size: 20px;
+.BreadCrumb_card .notification p {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.BreadCrumb_card .fa-bell,
+.BreadCrumb_card .fa-sign-out {
+    font-size: 20px;
 }

@@ -5,9 +5,7 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumbers.css')}}">
-
-
-
+ 
 <style>
     .cards .card a {
         color: white;
@@ -73,10 +71,7 @@
                             </ol>
                         </div>
                         <div class="notification">
-                            <div class=" mt-n1" id="collapseExample" role="button">
-                                <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
-                            </div>
-                            <div id="removeexampletable" class="fa fa-times ml-3"></div>
+                            @include('../layouts/header')
                         </div>
                     </div>
                 </div>

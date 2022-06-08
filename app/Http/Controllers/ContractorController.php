@@ -17,8 +17,8 @@ class ContractorController extends Controller
      */
     public function index()
     {
-
-        return view('contractors.contractors');
+        $contractors = Contractor::orderBy('id', 'DESC')->get();
+        return view('contractors.contractors', compact(['contractors']));
     }
 
     /**
@@ -29,17 +29,8 @@ class ContractorController extends Controller
     public function create()
     {
         $groups = Group::orderby('id', 'DESC')->get();
-        return view('contractors.add', 
-            compact(['groups']));
+        return view('contractors.add', compact(['groups']));
     }
-
-    // plumbers
-    public function plumbers()
-    {
-        $contractors = Contractor::get();
-        return view('contractors.plumbers', compact(['contractors']));
-    }
-
     /**
      * Store a newly created resource in storage.
      *

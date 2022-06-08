@@ -39,7 +39,8 @@
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
-                    <a class="dashboard-nav-item {{ Request::path() ==  '/dashboard' ? '  active' : ''  }}" href="/dashboard">
+                    <a class="dashboard-nav-item {{ Request::path() ==  '/dashboard' ? '  active' : ''  }}"
+                        href="/dashboard">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
                         Dashboard
                     </a>
@@ -64,7 +65,8 @@
                         href="{{URL('contractors')}}">
                         <i class="fa fa-user"></i> Contractors
                     </a>
-                    <a href="callout" class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
+                    <a href="{{URL('callout')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
                         <i class="fa fa-comment"></i> Callout
                     </a>
                     <a href="{{URL('jobs')}}"
@@ -146,14 +148,10 @@
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js
 "></script>
 
-
-
-
-
-    <!-- plumber page table -->
+    <!-- contractor page table -->
     <script>
         $(document).ready(function () {
-            $('#plumber').DataTable({
+            $('#contractor').DataTable({
                 "pagingType": "simple_numbers",
             });
         });
@@ -239,6 +237,30 @@
             "positionClass": "toast-top-right"
         };
     </script>
+
+    <!-- callout table -->
+    <script>
+        $(document).ready(function () {
+            $('#callout').DataTable({
+                "pagingType": "simple_numbers",
+                'aoColumnDefs': [{
+                    'bSortable': false,
+                    'aTargets': [-1] /* 1st one, start by the right */
+                }]
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

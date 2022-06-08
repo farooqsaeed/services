@@ -18,7 +18,8 @@ class GroupController extends Controller
     public function index()
     {
         $Groups = Group::with('subgroup')->get();
-        return view('groups.groups', compact(['Groups']));
+         
+         return view('groups.groups', compact(['Groups']));
     }
 
     /**
@@ -57,11 +58,11 @@ class GroupController extends Controller
         //     'Group_Name' => $request->Group_Name,
         //     'Group_ID' => random_int(10000, 90000)
         // ]);
-        $group=New Group();
-        $group->Group_Name=$request->Group_Name;
+        $group = new Group();
+        $group->Group_Name = $request->Group_Name;
         $group->Group_ID = random_int(100000, 900000);
-        $group->save();  
-        
+        $group->save();
+
         UniqueId::create([
             'uid' => $group->Group_ID,
             'usertype' => 'Contractor',
@@ -137,7 +138,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::where('id',$id)->first();
+        $group = Group::where('id', $id)->first();
         $group->delete();
         return redirect()->back();
     }

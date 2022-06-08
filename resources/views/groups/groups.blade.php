@@ -53,7 +53,7 @@
 
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
             <div class=" Header d-none  d-sm-block">
                 <div class="row  ">
                     <div class="col-lg-3  ">
@@ -91,8 +91,8 @@
     <div class="row mt-4">
         @if(!$Groups->isEmpty())
         @foreach($Groups as $key => $Group )
-        <div class="col-lg-10 col-md-10 col-sm-12 my-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 pl-1 pt-0">
-            <div id="gp{{$key}}" class="cards d-flex justify-content-between align-self-center ">
+        <div class="col-lg-10 col-md-10 col-sm-12 my-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 pl-1 pt-0 parent">
+            <div id="gp{{$key}}" class="cards d-flex justify-content-between align-self-center">
                 <div>
                     <h5 class="mb-0 pb-0">&nbsp;&nbsp;{{$Group->Group_Name}}</h5>
                 </div>
@@ -113,12 +113,13 @@
                 </div>
             </div>
             @if($Group->subgroup !=null)
-            @if($Group->Group_ID===$Group->subgroup->group_id)
             <div class="row mt-3 mygroup">
                 <div class="col-10 offset-2">
                     <div class="subgroup d-flex justify-content-between align-self-center ">
                         <div>
-                            <h5 class="mb-0 pb-0">&nbsp;&nbsp;{{$Group->subgroup->Sub_Group_Name}}</h5>
+                            <h5 class="mb-0 pb-0">&nbsp;&nbsp;
+                                {{$Group->subgroup->Sub_Group_Name}} 
+                            </h5>
                         </div>
                         <div class="d-flex justify-content-between align-self-center">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -140,9 +141,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            @endif
             @endif
         </div>
         @endforeach
@@ -153,27 +152,10 @@
         @endif
     </div>
 </div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('.dropdown-submenu a.test').on("click", function (e) {
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-            e.preventDefault();
-        });
-    });
+    $('.parent').click(function () {
+        $(this).children().toggle();
+     });
 </script>
-
-
-<script>
-    $(document).ready(function () {
-        $('#gp0').on("click", function (e) {
-            $('.mygroup').toggle();
-        });
-    });
-</script>
-
 @endsection

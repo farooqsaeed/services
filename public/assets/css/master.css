@@ -494,7 +494,7 @@
   padding: 0%;
   margin: 0%;
 }
- /* body::-webkit-scrollbar {
+   body::-webkit-scrollbar {
   width: 3px;
 }
 
@@ -505,7 +505,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: green;
   outline: 1px solid slategrey;
-} */
+}  
 
 body{
   overflow-x: hidden;
