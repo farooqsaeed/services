@@ -17,22 +17,15 @@
                 <div class="my-3 col-lg-10  offset-lg-1  ">
                     <label for="">Search by postal Code</label>
                     <div class="input-group ">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        <input type="search" id="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                             aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-success success">search</button>
+                        <button onclick="getAddress()" type="button" class="btn btn-success success">search</button>
                     </div>
                 </div>
                 <div class="my-3 col-lg-10  offset-lg-1  ">
                      <div class="form-group">
                       <label for="">Select Address</label>
-                      <select class="form-control" name="" id="">
-                        <option>Kabal</option>
-                        <option>Jalal Abad</option>
-                        <option>Nangahar</option>
-                        <option>Qandahar</option>
-                        <option>Kunar</option>
-                        <option>Paktia</option>
-                        <option>Mazar Sharif</option>
+                      <select class="form-control" name="" id="addressList">
                       </select>
                     </div>
                 </div>
@@ -49,21 +42,21 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="first_line_address" id="" required
+                        <input type="text" class="form-control" name="first_line_address" id="firstline" required
                             placeholder="1st line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="second_line_address" id="" required
+                        <input type="text" class="form-control" name="second_line_address" id="secondline" required
                             placeholder="Enter 2nd line Address *     " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town" id="" placeholder="Enter Town " required />
+                        <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town " required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="Postcode" required id=""
+                        <input type="text" class="form-control" name="Postcode" required id="postcode"
                             placeholder="Enter Post code *" />
                     </div>
                     <div class="my-3 col-lg-6">
@@ -231,6 +224,49 @@
 
 <!-- ajax submition -->
 <script>
+    var allAddress;
+    var postcode;
+    function search(nameKey){
+        for (var i=0; i < allAddress.length; i++) {
+            if (allAddress[i].line_1 === nameKey) {
+                return allAddress[i];
+            }
+        }
+    }
+
+    $('#addressList').on('change', function() {
+        var resultObject = search(this.value);
+         $('#firstline').val(resultObject.line_1)
+        $('#secondline').val(resultObject.line_2)
+        $('#town').val(resultObject.town_or_city)
+        $('#postcode').val(postcode)
+        console.log(resultObject)
+    });
+
+
+    function getAddress() {
+        
+        postcode = $('#search').val();
+        $.ajax({
+            
+                type: "GET",
+                url: "https://api.getAddress.io/find/" +postcode+ "?api-key=TNinqIHsSE2nau9gzq2jpg35492&expand=true",
+                dataType: "json",
+                success: function (result) {
+                    allAddress = result.addresses
+                    // console.log(result.addresses)
+                    var items = result.addresses
+                    console.log('okkkkkk'+allAddress.length)
+
+                    document.getElementById('addressList').innerHTML = null
+                    for (var i =0; i < items.length; i++) {
+                        $('#addressList').append(`<option value="${items[i].line_1}">
+                          ${items[i].line_1+' '+items[i].line_2+' '+items[i].town_or_city+' '+items[i].county} </option>`);
+                    }
+
+                }
+            });
+    }
     $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
