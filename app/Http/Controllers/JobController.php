@@ -23,7 +23,7 @@ class JobController extends Controller
     {
         $jobs = Job::all();
         // return $jobs;
-        return view('jobs.index',compact(['jobs']));
+        return view('jobs.index', compact(['jobs']));
     }
 
     /**
@@ -57,6 +57,9 @@ class JobController extends Controller
         return redirect()->back();
     }
 
+
+
+
     public function assignengineer()
     {
         return view('jobs.assignengineer');
@@ -70,6 +73,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+
         $path = null;
         if ($request->hasFile('attachment')) {
             $image = $request->attachment;
@@ -90,12 +94,15 @@ class JobController extends Controller
             'description' => $request->description,
             'subject' => $request->subject,
             'case_no' => "1",
-            'property_id' => "2",
+            'property_id' => $request->property_id,
             'category' => $request->category,
             'subCategory' => $request->subcategory,
             'notes' => "nothing to ",
             'job_time' => date('h:m'),
             'job_date' => date('Y:m:d'),
+            'landloard_id'=>null,
+            'show_to_landloard'=>0,
+            'landloard_approvel'=>'Pending',
             'attachment' => $path
         ]);
         return redirect('/jobs');
@@ -108,10 +115,13 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $job=Job::findorfail($id);
-        return view('jobs.show',compact(['job']));
+    {
+        $job = Job::findorFail($id);
+        $property = Property::where('property_id', '=', $job->property_id)->first();
+        // return $property;
+        return view('jobs.show', compact(['job', 'property']));
     }
- 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,7 +130,8 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        return view('jobs.edit');
+        $job = Job::findorFail($id);
+        return view('jobs.edit', compact(['job']));
     }
 
     /**
@@ -132,7 +143,28 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            "address" => $request->address,
+            "tenant_name" => $request->tenant_name,
+            "contact" => $request->contact,
+            "description" => $request->description,
+            "subject" => $request->subject,
+        ];
+        Job::where('id', $id)->update($update);
+        return response()->json(['result' => 'Tenant updated  Successfully!']);
+    }
+
+
+    public function update_landlord($id)
+    {   
+        $update = [
+            'landloard_id' => null,
+            'show_to_landloard' => 1,
+            'landloard_approvel' => 'Sent To Approve',
+        ];
+        Job::where('id', $id)->update($update);
+
+        return redirect()->back();
     }
 
     /**

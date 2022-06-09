@@ -24,16 +24,16 @@
                     <div class="my-3 col-lg-6">
                         <div class="form-group">
                             <label htmlFor="">Select Property*</label>
-                            <select class="form-control" name="property_id" id="">
+                            <select class="form-control" name="property_id"  >
                                 @foreach($properties as $property)
-                                <option> {{$property->first_line_address}} </option>
+                                <option value="{{$property->property_id}}" > {{$property->first_line_address}} </option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" name="address" id="" placeholder="  line Address *" />
+                        <input type="text" class="form-control" name="address" id="" placeholder=" line Address *" />
                     </div>
 
                     <div class="my-3 col-lg-6">

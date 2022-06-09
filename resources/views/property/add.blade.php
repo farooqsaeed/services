@@ -13,14 +13,30 @@
     </div>
     <div class="p-3">
         <div class="row  ">
-            <div class="my-3 col-lg-10 offset-lg-1  ">
-                <label for="">Search by postal Code</label>
-                <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-success success">search</button>
+            <form class="w-100">
+                <div class="my-3 col-lg-10  offset-lg-1  ">
+                    <label for="">Search by postal Code</label>
+                    <div class="input-group ">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                            aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-success success">search</button>
+                    </div>
                 </div>
-            </div>
+                <div class="my-3 col-lg-10  offset-lg-1  ">
+                     <div class="form-group">
+                      <label for="">Select Address</label>
+                      <select class="form-control" name="" id="">
+                        <option>Kabal</option>
+                        <option>Jalal Abad</option>
+                        <option>Nangahar</option>
+                        <option>Qandahar</option>
+                        <option>Kunar</option>
+                        <option>Paktia</option>
+                        <option>Mazar Sharif</option>
+                      </select>
+                    </div>
+                </div>
+            </form>
 
         </div>
         <form id="myform" class="row addform">

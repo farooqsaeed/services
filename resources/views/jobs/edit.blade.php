@@ -12,7 +12,7 @@
         <span>Update Jobs</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform ">
+        <form id="myform" class="row addform" >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -22,30 +22,31 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" name="address" id="" placeholder="  line Address *" />
+                        <input type="text" class="form-control"
+                        value="{{$job->address}}"
+                        name="address" id="" placeholder="line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="tenant_name" id="" placeholder="Enter Tenant Name    " />
+                        <input type="text" class="form-control" name="tenant_name" id="" value="{{$job->tenant_name}}" placeholder="Enter Tenant Name" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *" />
+                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *" value="{{$job->contact}}" />
+                    </div>    
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor=""  >Description *</label>
+                        <input type="text" class="form-control" name="description" id="" placeholder="Enter  Text Message" value="{{$job->description}}" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="">Upload Attachment *</label>
-                        <input type="file" class="form-control " name="attachment" id="" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mt-lg-5">Description *</label>
-                        <input type="text" class="form-control" name="description" id="" placeholder="Enter  Text Message" />
+                        <label htmlFor=""  >Subject </label>
+                        <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject"
+                            value="{{$job->subject}}" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <div class="text-right">
                             <button class="btn btn-info success btn-sm">Add Another</button>
                         </div>
-                        <label htmlFor="" class="mt-3">Subject </label>
-                        <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject  " />
                     </div>
                     <div class="col-4 offset-4  mt-5">
                         <button class="btn btn-info success btn-block ">Update</button>
@@ -79,15 +80,17 @@
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-            url: "{{URL('contractors')}}",
+            url: "{{URL('jobs/'.$job->id)}}",
             data: $('#myform').serialize(),
-            type: 'POST',
+            type: 'PUT',
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
                 $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
-                $('#formbtn').text('Add');
+                $('#formbtn').text('update');
+                  toastr.success(result.result);
+                window.location.replace("/jobs");
             }
         })
     })

@@ -44,6 +44,10 @@
         color: #737475;
         font-family: Arial, Helvetica, sans-serif;
     }
+    .addform a{
+        text-decoration: none;
+        color: white;
+    }
 </style>
 
 <div class="container-fluid addcontractor  p-0">
@@ -63,8 +67,9 @@
                         <div class="d-flex justify-content-between">
                             <h2 class="Certificate">Job Details</h2>
                             <div>
-                                <div class="btn btn-38BF67 btn-sm">Edit Jobs</div>
-                                <div class="btn btn-21C5DB btn-sm">Landlord Approval</div>
+                                <div class="btn btn-38BF67 btn-sm"><a title="edit job" href="{{ url('jobs/'.$job->id.'/edit') }}">Edit Jobs</a></div>
+                                <div class="btn btn-21C5DB btn-sm">
+                                    <a title="edit job" href="{{URL('landlord-approval/'.$job->id) }}">Landlord Approval</a></div>
                                 <div class="btn btn-5869C1 btn-sm">Get Quote</div>
                                 <div class="btn btn-warning btn-sm">Assign Engineer</div>
                             </div>
@@ -72,18 +77,19 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <p class="text-title">Case Number: <span> {{$job->case_no}}</span> </p>
-                        <p class="text-title">Time: <span> 2:30:30 pm</span> </p>
-                        <p class="text-title">Date: <span> 05/12/2022</span> </p>
+                        <p class="text-title">Time: <span> {{$job->job_time}}</span> </p>
+                        <p class="text-title">Date: <span> {{$job->job_date}}</span> </p>
                         <p class="text-title">Status: <span> {{$job->status}}</span> </p>
                         <p class="text-title">Reported Issue: <span> Unknow</span> </p>
                         <p class="text-title">Attachment: </p>
                     </div>
                     <div class="my-3 col-lg-6">
-                        <p class="text-title">Property Address: <span> Peshawar, KPK, Pakistan</span> </p>
+                        <p class="text-title">Property Address: <span>{{$property->first_line_address}} {{$property->second_line_address}}</span> </p>
                         <p class="text-title">Reported By: <span> Nill</span> </p>
                         <p class="text-title">Severity: <span> {{$job->severity}}</span> </p>
                         <p class="text-title">Assignment: <span> 100070</span> </p>
-                        <p class="text-title">Description: <span> Unknow</span> </p>
+                        <p class="text-title">Description: <span> {{$job->description}}</span> </p>
+                        <p class="text-title">Landloard Approvel: <span> {{$job->landloard_approvel}}</span> </p>
                     </div>
                     <div class="my-3 col-lg-12 px-5  ">
                         <div class="attachment"></div>
@@ -120,7 +126,7 @@
 
 <!-- ajax submition -->
 <script>
-    $('#myform').submit(function (e) {
+    $(' myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
