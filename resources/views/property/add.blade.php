@@ -254,11 +254,12 @@
                 dataType: "json",
                 success: function (result) {
                     allAddress = result.addresses
-                    // console.log(result.addresses)
                     var items = result.addresses
-                    console.log('okkkkkk'+allAddress.length)
+                    
 
                     document.getElementById('addressList').innerHTML = null
+                     $('#addressList').append(`<option>--Select--
+                           </option>`);
                     for (var i =0; i < items.length; i++) {
                         $('#addressList').append(`<option value="${items[i].line_1}">
                           ${items[i].line_1+' '+items[i].line_2+' '+items[i].town_or_city+' '+items[i].county} </option>`);
