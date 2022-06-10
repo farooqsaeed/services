@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('jobs', JobController::class);
     Route::get('landlord', [JobController::class, 'landlord']);
     Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
-
+    Route::post('job-notes/{id}', [JobController::class, 'store_note']);
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
     Route::get('assignengineer', [JobController::class, 'assignengineer']);
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);

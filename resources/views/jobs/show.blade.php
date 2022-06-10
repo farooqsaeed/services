@@ -1,54 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
-<link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
-<style>
-    .btn-5869C1,
-    .btn-21C5DB,
-    .btn-38BF67,
-    .btn-warning {
-        color: white;
-        font-weight: bold;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+<link rel="stylesheet" href="{{URL::asset('assets/css/showjob.css')}}">
 
-    .btn-5869C1 {
-        background-color: #5869C1;
-    }
-
-    .btn-21C5DB {
-        background-color: #21C5DB;
-    }
-
-    .btn-38BF67 {
-        background-color: #38BF67;
-    }
-
-    .text-title {
-        color: #737475;
-        font-weight: bold;
-    }
-
-    .text-title span {
-        color: #737475;
-        font-size: 14px;
-        font-weight: 100 !important;
-    }
-    .attachment{
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 100px;
-    }
-    label{
-        font-weight: bold;
-        color: #737475;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    .addform a{
-        text-decoration: none;
-        color: white;
-    }
-</style>
 
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
@@ -58,8 +12,7 @@
         <span>Job Details</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform ">
-            @csrf
+        <div id="myform" class="row addform ">
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
@@ -67,9 +20,12 @@
                         <div class="d-flex justify-content-between">
                             <h2 class="Certificate">Job Details</h2>
                             <div>
-                                <div class="btn btn-38BF67 btn-sm"><a title="edit job" href="{{ url('jobs/'.$job->id.'/edit') }}">Edit Jobs</a></div>
+                                <div class="btn btn-38BF67 btn-sm"><a title="edit job"
+                                        href="{{ url('jobs/'.$job->id.'/edit') }}">Edit Jobs</a></div>
                                 <div class="btn btn-21C5DB btn-sm">
-                                    <a title="edit job" href="{{URL('landlord-approval/'.$job->id) }}">Landlord Approval</a></div>
+                                    <a title="edit job" href="{{URL('landlord-approval/'.$job->id) }}">Landlord
+                                        Approval</a>
+                                </div>
                                 <div class="btn btn-5869C1 btn-sm">Get Quote</div>
                                 <div class="btn btn-warning btn-sm">Assign Engineer</div>
                             </div>
@@ -84,7 +40,8 @@
                         <p class="text-title">Attachment: </p>
                     </div>
                     <div class="my-3 col-lg-6">
-                        <p class="text-title">Property Address: <span>{{$property->first_line_address}} {{$property->second_line_address}}</span> </p>
+                        <p class="text-title">Property Address: <span>{{$property->first_line_address}}
+                                {{$property->second_line_address}}</span> </p>
                         <p class="text-title">Reported By: <span> Nill</span> </p>
                         <p class="text-title">Severity: <span> {{$job->severity}}</span> </p>
                         <p class="text-title">Assignment: <span> 100070</span> </p>
@@ -92,19 +49,32 @@
                         <p class="text-title">Landloard Approvel: <span> {{$job->landloard_approvel}}</span> </p>
                     </div>
                     <div class="my-3 col-lg-12 px-5  ">
-                        <div class="attachment"></div>
+                        <div class="attachment">
+                            <img src="{{URL($job->attachment)}}" alt="">
+                        </div>
                     </div>
                     <div class="col-lg-12 my-3">
-                        <label for="">Note</label>
-                        <input type="text" class="form-control mt-5" placeholder="Text Message"
-                         />
+                        <label for="">Notes</label>
+                        <ul>
+                            @foreach($notes as $note)
+                            <li>
+                                {{$note->note}}
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="col-12 text-right  mt-5">
-                        <button class="btn btn-info success btn-sm  px-4">Add</button>
-                    </div>
+                    <form id="jobnote" class="w-100">
+                        @csrf
+                        <div class="col-lg-12 my-3">
+                            <input id="note" name="note" type="text" class="form-control" placeholder="Text Message" />
+                        </div>
+                        <div class="col-12 text-right  mt-5">
+                            <button id="formbtn" type="submit" class="btn btn-info success btn-sm  px-4">Add</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -126,20 +96,28 @@
 
 <!-- ajax submition -->
 <script>
-    $(' myform').submit(function (e) {
+    $('#jobnote').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
+        var note = $('#note').val();
         $.ajax({
-            url: "{{URL('contractors')}}",
-            data: $('#myform').serialize(),
+            url: "{{URL('job-notes/'.$job->id) }}",
+            data: $('#jobnote').serialize(),
             type: 'POST',
+            error: function (request, status, error) {
+                toastr.warning(request.responseText);
+                $('#formbtn').attr('disabled', false);
+                $('#formbtn').text('add');
+            },
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
-                $('#myform')['0'].reset();
+                $('#jobnote')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
+                $("ul").append("<li>" + note + "</li>");
+                toastr.success(result.result);
             }
         })
     })

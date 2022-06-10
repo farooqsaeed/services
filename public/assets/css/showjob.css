@@ -1,0 +1,63 @@
+.btn-5869C1,
+.btn-21C5DB,
+.btn-38BF67,
+.btn-warning {
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-5869C1 {
+    background-color: #5869c1;
+}
+
+.btn-21C5DB {
+    background-color: #21c5db;
+}
+
+.btn-38BF67 {
+    background-color: #38bf67;
+}
+
+.text-title {
+    color: #737475;
+    font-weight: bold;
+}
+
+.text-title span {
+    color: black;
+    font-size: 14px;
+    font-weight: normal !important;
+}
+
+.attachment {
+    border-radius: 5px;
+}
+.attachment img {
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    color: #737475;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.addform a {
+    text-decoration: none;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    box-shadow: 1px 0px 5px 2px rgb(225, 225, 225);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.success {
+    background: #407c1e !important;
+}

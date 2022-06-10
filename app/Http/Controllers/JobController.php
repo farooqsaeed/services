@@ -7,6 +7,7 @@ use App\Models\Job;
 use App\Models\Property;
 use App\Models\landlord;
 use App\Models\Category;
+use App\Models\Jobnote;
 use App\Models\Subcategory;
 use Carbon;
 // use App\Models\Category;
@@ -108,6 +109,15 @@ class JobController extends Controller
         return redirect('/jobs');
     }
 
+    public function store_note(Request $request, $id)
+    {
+        Jobnote::create([
+            'job_id' => $request->id,
+            'note' => $request->note,
+        ]);
+        return response()->json(['result' => 'Note added succesfully!']);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -117,9 +127,10 @@ class JobController extends Controller
     public function show($id)
     {
         $job = Job::findorFail($id);
+        $notes = Jobnote::where('job_id', $job->id)->get();
         $property = Property::where('property_id', '=', $job->property_id)->first();
-        // return $property;
-        return view('jobs.show', compact(['job', 'property']));
+        // return $job;
+        return view('jobs.show', compact(['job', 'property', 'notes']));
     }
 
     /**
