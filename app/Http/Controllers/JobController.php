@@ -100,9 +100,9 @@ class JobController extends Controller
             'notes' => "nothing to ",
             'job_time' => date('h:m'),
             'job_date' => date('Y:m:d'),
-            'landloard_id'=>null,
-            'show_to_landloard'=>0,
-            'landloard_approvel'=>'Pending',
+            'landloard_id' => null,
+            'show_to_landloard' => 0,
+            'landloard_approvel' => 'Pending',
             'attachment' => $path
         ]);
         return redirect('/jobs');
@@ -156,14 +156,19 @@ class JobController extends Controller
 
 
     public function update_landlord($id)
-    {   
-        $update = [
-            'landloard_id' => null,
-            'show_to_landloard' => 1,
-            'landloard_approvel' => 'Sent To Approve',
-        ];
-        Job::where('id', $id)->update($update);
+    {
+        $job = Job::where('id', $id)->first();
+        $landlord = landlord::where('property_id', $job->property_id)->first();
 
+        if (!empty($landlord)) {
+            $update = [
+                'landloard_id' => $landlord->id,
+                'show_to_landloard' => 1,
+                'landloard_approvel' => 'Sent To Approve',
+            ];
+        }
+
+        Job::where('id', $id)->update($update);
         return redirect()->back();
     }
 

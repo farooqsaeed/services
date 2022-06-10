@@ -248,7 +248,6 @@
         
         postcode = $('#search').val();
         $.ajax({
-            
                 type: "GET",
                 url: "https://api.getAddress.io/find/" +postcode+ "?api-key=TNinqIHsSE2nau9gzq2jpg35492&expand=true",
                 dataType: "json",
@@ -267,6 +266,8 @@
                 }
             });
     }
+
+    
     $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
