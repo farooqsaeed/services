@@ -17,16 +17,16 @@
                 <div class="my-3 col-lg-10  offset-lg-1  ">
                     <label for="">Search by postal Code</label>
                     <div class="input-group ">
-                        <input type="search" id="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                            aria-describedby="search-addon" />
+                        <input type="search" id="search" class="form-control rounded" placeholder="Search"
+                            aria-label="Search" aria-describedby="search-addon" />
                         <button onclick="getAddress()" type="button" class="btn btn-success success">search</button>
                     </div>
                 </div>
                 <div class="my-3 col-lg-10  offset-lg-1  ">
-                     <div class="form-group">
-                      <label for="">Select Address</label>
-                      <select class="form-control" name="" id="addressList">
-                      </select>
+                    <div class="form-group">
+                        <label for="">Select Address</label>
+                        <select class="form-control" name="" id="addressList">
+                        </select>
                     </div>
                 </div>
             </form>
@@ -52,7 +52,8 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town " required />
+                        <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town "
+                            required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post code *</label>
@@ -74,28 +75,33 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="full_name" required id=""
+                        <input type="text" class="form-control" name="full_name[]" required id=""
                             placeholder="Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email1" id="" required
+                        <input type="email" class="form-control" name="email1[]" id="" required
                             placeholder="Enter Email Address " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="contact_no" id="" required
+                        <input type="tel" class="form-control" name="contact_no[]" id="" required
                             placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6 ">
                     </div>
+                </div>
+                <div class="landlord_waraper">
+                </div>
+                <div class="row">
                     <div class="my-3 col-6 ">
                         <input type="checkbox" name="check_box" class="showtenant" id="" onchange="valueChanged()"
                             checked /> Assign
                         Tenant.
                     </div>
                     <div class="my-3 col-6 text-right">
-                        <button class="btn btn-info success btn-sm">Add Another</button>
+                        <button id="addmorelandlord" class="btn btn-info success btn-sm addmorelandlord">Add
+                            Another</button>
                     </div>
                 </div>
             </div>
@@ -226,17 +232,17 @@
 <script>
     var allAddress;
     var postcode;
-    function search(nameKey){
-        for (var i=0; i < allAddress.length; i++) {
+    function search(nameKey) {
+        for (var i = 0; i < allAddress.length; i++) {
             if (allAddress[i].line_1 === nameKey) {
                 return allAddress[i];
             }
         }
     }
 
-    $('#addressList').on('change', function() {
+    $('#addressList').on('change', function () {
         var resultObject = search(this.value);
-         $('#firstline').val(resultObject.line_1)
+        $('#firstline').val(resultObject.line_1)
         $('#secondline').val(resultObject.line_2)
         $('#town').val(resultObject.town_or_city)
         $('#postcode').val(postcode)
@@ -245,30 +251,29 @@
 
 
     function getAddress() {
-        
         postcode = $('#search').val();
         $.ajax({
-                type: "GET",
-                url: "https://api.getAddress.io/find/" +postcode+ "?api-key=TNinqIHsSE2nau9gzq2jpg35492&expand=true",
-                dataType: "json",
-                success: function (result) {
-                    allAddress = result.addresses
-                    var items = result.addresses
-                    
+            type: "GET",
+            url: "https://api.getAddress.io/find/" + postcode + "?api-key=TNinqIHsSE2nau9gzq2jpg35492&expand=true",
+            dataType: "json",
+            success: function (result) {
+                allAddress = result.addresses
+                var items = result.addresses
 
-                    document.getElementById('addressList').innerHTML = null
-                     $('#addressList').append(`<option>--Select--
+
+                document.getElementById('addressList').innerHTML = null
+                $('#addressList').append(`<option>--Select--
                            </option>`);
-                    for (var i =0; i < items.length; i++) {
-                        $('#addressList').append(`<option value="${items[i].line_1}">
-                          ${items[i].line_1+' '+items[i].line_2+' '+items[i].town_or_city+' '+items[i].county} </option>`);
-                    }
-
+                for (var i = 0; i < items.length; i++) {
+                    $('#addressList').append(`<option value="${items[i].line_1}">
+                          ${items[i].line_1 + ' ' + items[i].line_2 + ' ' + items[i].town_or_city + ' ' + items[i].county} </option>`);
                 }
-            });
+
+            }
+        });
     }
 
-    
+
     $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
@@ -360,5 +365,23 @@
             $(".showtenantdiv").hide();
     }
 </script>
+
+
+<script>
+
+    $(".addmorelandlord").click(function (e) {
+        e.preventDefault();
+        $(".landlord_waraper").append('<div class="landlord-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removetntbtn" > Remove</a > </div > <div class="my-3 col-lg-6"><label htmlFor="">Full Name *</label><input type="text" class="form-control" name="full_name[]" required id="" placeholder="Full Name *" /> </div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email1[]" id="" required placeholder="Enter Email Address" /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="contact_no[]" id="" required placeholder="Enter Contact Number" /></div></div>');
+    });
+
+    $("body").on("click", ".removetntbtn", function () {
+        $(this).parents(".landlord-wraper").remove();
+    });
+
+
+</script>
+
+
+
 
 @endsection

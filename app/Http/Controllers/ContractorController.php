@@ -106,7 +106,8 @@ class ContractorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contractor  = Contractor::findorFail($id);
+        return view('contractors.edit', compact(['contractor']));
     }
 
     /**
@@ -118,7 +119,21 @@ class ContractorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = [
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
+            "email" => $request->email,
+            "landline_no" => $request->landline_no,
+            "mobile_no" => $request->mobile_no,
+            "house_no" => $request->house_no,
+            "street_name" => $request->street_name,
+            "town_city" => $request->town_city,
+            "postal_code" => $request->postal_code,
+            "preferred_communication" => $request->preferred_communication,
+        ];
+
+        Contractor::where('id', $id)->update($update);
+        return response()->json(['result' => 'Contractor updated  Successfully!']);
     }
 
     /**
@@ -129,7 +144,7 @@ class ContractorController extends Controller
      */
     public function destroy($id)
     {
-        $contractor = Contractor::find($id)->first();
+        $contractor = Contractor::findorFail($id);
         $contractor->delete();
         return redirect()->back();
     }

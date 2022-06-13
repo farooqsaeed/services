@@ -45,7 +45,6 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-      
         $Property = new Property;
         $Property->property_id = random_int(100000, 900000);
         $Property->first_line_address = $request->first_line_address;
@@ -58,16 +57,19 @@ class PropertyController extends Controller
         $Property->group_name = 1;
         $Property->group_type = 1;
         $Property->save();
-
         // landlord
-        $landlord = new landlord;
-        $landlord->property_id = $Property->property_id;
-        $landlord->full_name = $request->full_name;
-        $landlord->email = $request->email1;
-        $landlord->contact_no = $request->contact_no;
-        $landlord->save();
+        if (!empty($request->full_name[0])) {
+            foreach ($request->full_name as $key => $name) {
+                $landlord = new landlord;
+                $landlord->property_id = $Property->property_id;
+                $landlord->full_name = $name;
+                $landlord->email = $request->email1[$key];
+                $landlord->contact_no = $request->contact_no[$key];
+                $landlord->save();
+            }
+        }
 
-        if ($request->has('check_box') ) {
+        if ($request->has('check_box')) {
 
             // tenant add
             $Tenant = new Tenant;
@@ -94,7 +96,7 @@ class PropertyController extends Controller
         UniqueId::create([
             'uid' => $Property->property_id,
             'usertype' => 'Tenant',
-            'property_id' =>$Property->id,
+            'property_id' => $Property->id,
             'grouptype' => null,
         ]);
 
@@ -109,7 +111,7 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
+    {
         // return $id;
         $property = Property::where('id', $id)->first();
         $landlord = landlord::where('property_id', $property->property_id)->first();
@@ -119,7 +121,7 @@ class PropertyController extends Controller
             $item->detail = Tenant::where('id', $item->tenant_id)->first();
         }
         $jobs = Job::where('property_id', $property->property_id)->get();
-        
+
         return view('property.show', compact(['property', 'landlord', 'tenant_property', 'jobs']));
     }
 
@@ -132,7 +134,12 @@ class PropertyController extends Controller
     public function edit($id)
     {
         $property = Property::where('id', $id)->first();
-        return view('property.edit', compact(['property']));
+
+        if (!empty($property)) {
+            return view('property.edit', compact(['property']));
+        } else {
+            return ('Sorry not avalible');
+        }
     }
 
     /**

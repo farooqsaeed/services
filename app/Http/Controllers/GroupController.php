@@ -35,7 +35,13 @@ class GroupController extends Controller
     public function subgroupcreate($id)
     {
         $group = Group::where('id', $id)->first();
-        return view('groups.addsubgroup', compact(['group']));
+        if (!empty($group)) {
+            return view('groups.addsubgroup', compact(['group']));
+        }
+        else
+        {
+            return 'Sorry not avalible';
+        }
     }
 
     // child group
@@ -138,7 +144,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::where('id', $id)->first();
+        $group = Group::findorFail($id);
         $group->delete();
         return redirect()->back();
     }

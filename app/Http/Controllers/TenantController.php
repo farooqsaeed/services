@@ -82,7 +82,7 @@ class TenantController extends Controller
             'postal_code' => 'required',
         ]);
         $Tenant = Tenant::create($request->all());
-        return response()->json(['result' => 'Tenant Added  Successfully!']);
+        return response()->json(['url' => url('tenant'), 'result'=>'Tenant added']);
     }
 
     /**
@@ -98,8 +98,10 @@ class TenantController extends Controller
             $item->detail = Property::where('property_id', $item->property_id)->first();
         }
         $tenant = Tenant::where('id', $id)->first();
-        //    return  $tenant_property;
-        return view('tenants.show', compact(['tenant', 'tenant_property']));
+        if (!empty($tenant)) {
+
+            return view('tenants.show', compact(['tenant', 'tenant_property']));
+        }
     }
 
     /**

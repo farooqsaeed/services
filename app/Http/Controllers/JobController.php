@@ -22,8 +22,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        // return $jobs;
+        $jobs = Job::orderBy('id', 'DESC')->get();
         return view('jobs.index', compact(['jobs']));
     }
 
@@ -53,13 +52,10 @@ class JobController extends Controller
 
     public function destroylandlord($id)
     {
-        $landlord = landlord::find($id)->first();
+        $landlord = landlord::findorFail($id);
         $landlord->delete();
         return redirect()->back();
     }
-
-
-
 
     public function assignengineer()
     {
@@ -129,8 +125,13 @@ class JobController extends Controller
         $job = Job::findorFail($id);
         $notes = Jobnote::where('job_id', $job->id)->get();
         $property = Property::where('property_id', '=', $job->property_id)->first();
-        // return $job;
-        return view('jobs.show', compact(['job', 'property', 'notes']));
+        if (!empty($property)) {
+            return view('jobs.show', compact(['job', 'property', 'notes']));
+        }
+        else
+        {
+            return 'sorry not avalible';
+        }
     }
 
     /**
@@ -169,18 +170,19 @@ class JobController extends Controller
     public function update_landlord($id)
     {
         $job = Job::where('id', $id)->first();
-        $landlord = landlord::where('property_id', $job->property_id)->first();
+        if (!empty($property)) {
+            $landlord = landlord::where('property_id', $job->property_id)->first();
+            if (!empty($landlord)) {
 
-        if (!empty($landlord)) {
-            $update = [
-                'landloard_id' => $landlord->id,
-                'show_to_landloard' => 1,
-                'landloard_approvel' => 'Sent To Approve',
-            ];
+                $update = [
+                    'landloard_id' => $landlord->id,
+                    'show_to_landloard' => 1,
+                    'landloard_approvel' => 'Sent To Approve',
+                ];
+                Job::where('id', $id)->update($update);
+                return redirect()->back();
+            }
         }
-
-        Job::where('id', $id)->update($update);
-        return redirect()->back();
     }
 
     /**

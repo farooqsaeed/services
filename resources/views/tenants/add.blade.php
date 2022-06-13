@@ -107,6 +107,7 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
+                window.location = result.url;
 
             }
         })
