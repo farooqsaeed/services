@@ -68,7 +68,8 @@
         z-index: 99;
         float: right;
     }
-    tr{
+
+    tr {
         cursor: pointer;
     }
 </style>
@@ -147,7 +148,7 @@
                 </thead>
                 <tbody>
                     @foreach($property as $item)
-                    <tr data-url="{{url('property/'.$item->id)}}">           
+                    <tr data-url="{{url('property/'.$item->id)}}">
                         <td>{{$item->first_line_address}}</td>
                         <td>{{$item->Town}}</td>
                         <td> {{$item->Postcode}}</td>
@@ -161,7 +162,8 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <a href="{{url('jobs/create')}}" class="dropdown-item" type="button">Add New Job</a>
-                                    <a href="{{ url('property/'.$item->id) }}" class="dropdown-item" type="button">Property Details</a>
+                                    <a href="{{ url('property/'.$item->id) }}" class="dropdown-item"
+                                        type="button">Property Details</a>
                                     <a href="{{ url('property/'.$item->id.'/edit') }}" class="dropdown-item"
                                         type="button"> Edit Property </a>
                                     <form action="{{ url('property', $item->id ) }}" method="POST">
@@ -173,7 +175,6 @@
                             </div>
                         </td>
                     </tr>
-                   
                     @endforeach
                 </tbody>
             </table>
@@ -185,13 +186,15 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
- 
+
 <script>
-    $(function () {
-            $('#property').on("click", "tr", function () {
-                window.location = $(this).data("url");
-            });
-        });
+    // $(function () {
+    //     $('#property').on("click", "tr", function () {
+    //         window.location = $(this).data("url");
+    //     });
+    // });
+
+    
 </script>
 
 @endsection

@@ -15,7 +15,7 @@
     <div class="p-3">
         <form id="groupform" class="row addform">
             @csrf
-             <div class="col-lg-10 offset-lg-1  ">
+            <div class="col-lg-10 offset-lg-1  ">
                 <div class="row mt-5">
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Group Name *</label>
@@ -23,13 +23,14 @@
                     </div>
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Name *</label>
-                        <input type="text" class="form-control" name="Sub_Group_Name" id="" placeholder="Enter Group Name" />
+                        <input type="text" class="form-control" required name="Sub_Group_Name" 
+                            placeholder="Enter Group Name" />
                     </div>
                     <div class="my-3 col-lg-12">
                         <input type="hidden" class="form-control" value="{{$group->id}}" name="group_id" id="" />
                     </div>
                     <div class="col-lg-4 col-6 mt-5">
-                        <button  type="submit" class="btn btn-outline-success btn-block ">Cancel</button>
+                        <button type="reset" class="btn btn-outline-success btn-block ">Cancel</button>
                     </div>
                     <div class="col-lg-4 col-6 offset-lg-4   mt-5">
                         <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>

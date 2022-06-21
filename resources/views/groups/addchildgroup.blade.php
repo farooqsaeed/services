@@ -23,7 +23,7 @@
                     </div>
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Name *</label>
-                        <input type="text" class="form-control" name="Child_Group_Name" id="" placeholder="Enter Group Name" />
+                        <input type="text" class="form-control" required name="Child_Group_Name" id="" placeholder="Enter Group Name" />
                     </div>
                     <div class="my-3 col-lg-12">
                         <input type="hidden" class="form-control" value="1" name="Child_Group_ID" id="" />

@@ -46,11 +46,11 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
         padding: 5px;
         margin-top: 2px;
     }
-
     form .fa,
     form p {
         color: #407C1E;
     }
+    
 </style>
 
 <div class="dropdown mt-2 mr-2">
@@ -61,9 +61,8 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
         <li class="dropdown-submenu">
             <a class="test" tabindex="-1" href="#">{{$group->Group_Name}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-
                 <li class="dropdown-submenu">
-                    <a class="test" href="#"> Sub_Group_Name <span class="caret"></span></a>
+                    <a class="test" href="#"> {{ $group->subgroup->Sub_Group_Name}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Group A21</a></li>
                     </ul>

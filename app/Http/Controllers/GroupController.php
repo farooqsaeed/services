@@ -17,8 +17,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $Groups = Group::with('subgroup')->get();
-         
+        $Groups = Group::orderBy('Id','DESC')->with('subgroup')->get();
+        //   return $Groups;
          return view('groups.groups', compact(['Groups']));
     }
 

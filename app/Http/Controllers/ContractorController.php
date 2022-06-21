@@ -133,7 +133,7 @@ class ContractorController extends Controller
         ];
 
         Contractor::where('id', $id)->update($update);
-        return response()->json(['result' => 'Contractor updated  Successfully!']);
+        return response()->json(['result' => 'Contractor updated  Successfully!', 'url' =>  url('contractors')]);
     }
 
     /**

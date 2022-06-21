@@ -22,43 +22,36 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">First Name *</label>
-                        <input type="text" class="form-control" name="first_name" id=""
-                            placeholder="Enter First Name *" />
+                        <input type="text" class="form-control" name="first_name" id="" required placeholder="Enter First Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Last Name *</label>
-                        <input type="text" class="form-control" name="last_name" id=""
-                            placeholder="Enter Last Name *" />
+                        <input type="text" class="form-control" name="last_name" id="" required placeholder="Enter Last Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Mobile No*</label>
-                        <input type="text" class="form-control" name="mobile_no" id=""
-                            placeholder="Enter Contact number " />
+                        <input type="text" class="form-control" name="mobile_no" id="" required placeholder="Enter Contact number " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email *</label>
                         <input type="text" class="form-control" name="email" id=""
-                            placeholder="Enter Email address *" />
+                        required placeholder="Enter Email address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">House No*</label>
-                        <input type="text" class="form-control" name="house_no" id=""
-                            placeholder="Enter House Number" />
+                        <input type="text" class="form-control" name="house_no" id="" required placeholder="Enter House Number" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Street Name *</label>
-                        <input type="text" class="form-control" name="street_name" id=""
-                            placeholder="Enter Street Name*" />
+                        <input type="text" class="form-control" name="street_name" id="" required placeholder="Enter Street Name*" />
                     </div>
-
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="town" id="" placeholder="Enter Town Name" />
+                        <input type="text" class="form-control" name="town" id="" required  placeholder="Enter Town Name" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Post Code *</label>
-                        <input type="text" class="form-control" name="postal_code" id=""
-                            placeholder="Enter Post Code*" />
+                        <input type="text" class="form-control" name="postal_code" id="" required  placeholder="Enter Post Code*" />
                         <input type="hidden" class="form-control" name="isMobile" value="0" id="" />
                     </div>
                 </div>
@@ -73,8 +66,7 @@
                 </div>
             </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Save</button>
+                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn" value="Add">Save</button>
             </div>
         </form>
     </div>

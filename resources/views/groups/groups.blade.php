@@ -49,6 +49,10 @@
     .btn-outline-success:hover {
         background-color: #407C1E;
     }
+
+    .mygroup {
+        display: none;
+    }
 </style>
 
 <div class="container-fluid">
@@ -118,7 +122,7 @@
                     <div class="subgroup d-flex justify-content-between align-self-center ">
                         <div>
                             <h5 class="mb-0 pb-0">&nbsp;&nbsp;
-                                {{$Group->subgroup->Sub_Group_Name}} 
+                                {{$Group->subgroup->Sub_Group_Name}}
                             </h5>
                         </div>
                         <div class="d-flex justify-content-between align-self-center">
@@ -156,6 +160,6 @@
 <script>
     $('.parent').click(function () {
         $(this).children().toggle();
-     });
+    });
 </script>
 @endsection

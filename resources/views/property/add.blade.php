@@ -32,7 +32,7 @@
             </form>
 
         </div>
-        <form id="myform" class="row addform">
+        <form id="myform" class="row addform" action="{{URL('property')}}" method="post">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -113,55 +113,59 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">First Name *</label>
-                        <input type="text" class="form-control" name="first_name" id="" placeholder="First Name *" />
+                        <input type="text" class="form-control" name="first_name[]" id="" placeholder="First Name *"
+                            required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Last Name *</label>
-                        <input type="text" class="form-control" name="last_name" id="" placeholder="Enter Last Name " />
+                        <input type="text" class="form-control" name="last_name[]" id="" placeholder="Enter Last Name "
+                            required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="mobile_no" id=""
+                        <input type="tel" class="form-control" name="mobile_no[]" id="" required
                             placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email" id=""
+                        <input type="email" class="form-control" name="email[]" id="" required
                             placeholder="Enter Email Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">House No*</label>
-                        <input type="text" class="form-control" name="house_no" id="" placeholder="Enter house no*" />
+                        <input type="text" class="form-control" name="house_no[]" id="" placeholder="Enter house no*"
+                            required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Street Name*</label>
-                        <input type="text" class="form-control" name="street_name" id=""
+                        <input type="text" class="form-control" name="street_name[]" id="" required
                             placeholder="Enter Street Name*" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town*</label>
-                        <input type="text" class="form-control" name="town" id="" placeholder="Enter Town*" />
+                        <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Postal Code*</label>
-                        <input type="text" class="form-control" name="postal_code" id=""
+                        <input type="text" class="form-control" name="postal_code[]" id="" required
                             placeholder="Enter postal code " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move in Date *</label>
-                        <input type="date" class="form-control" name="tenancy_start_date" id=""
+                        <input type="date" class="form-control" name="tenancy_start_date[]" id="" required
                             placeholder="Enter   Contact Number  " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Move out Date *</label>
-                        <input type="date" class="form-control" name="tenancy_last_date" id=""
+                        <input type="date" class="form-control" name="tenancy_last_date[]" id="" required
                             placeholder="Enter   Contact Number  " />
                     </div>
+                    <div class="col-12 tenant_wrapper"></div>
                     <div class="my-3 col-lg-6 ">
                         <input type="checkbox" name="" id=""> Send Sign Up Info.
                     </div>
                     <div class="my-3 col-lg-6 text-right">
-                        <button class="btn btn-info success btn-sm">Add Another</button>
+                        <button id="addtenant" class="btn btn-info success btn-sm">Add Another</button>
                     </div>
                 </div>
             </div>
@@ -249,7 +253,6 @@
         console.log(resultObject)
     });
 
-
     function getAddress() {
         postcode = $('#search').val();
         $.ajax({
@@ -259,8 +262,6 @@
             success: function (result) {
                 allAddress = result.addresses
                 var items = result.addresses
-
-
                 document.getElementById('addressList').innerHTML = null
                 $('#addressList').append(`<option>--Select--
                            </option>`);
@@ -272,9 +273,8 @@
             }
         });
     }
-
-
-    $('#myform').submit(function (e) {
+    // form submition
+    $(' myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
@@ -366,22 +366,27 @@
     }
 </script>
 
-
+<!-- landlord -->
 <script>
-
     $(".addmorelandlord").click(function (e) {
         e.preventDefault();
-        $(".landlord_waraper").append('<div class="landlord-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removetntbtn" > Remove</a > </div > <div class="my-3 col-lg-6"><label htmlFor="">Full Name *</label><input type="text" class="form-control" name="full_name[]" required id="" placeholder="Full Name *" /> </div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email1[]" id="" required placeholder="Enter Email Address" /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="contact_no[]" id="" required placeholder="Enter Contact Number" /></div></div>');
+        $(".landlord_waraper").append('<div class="landlord-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removelandbtn" > Remove</a > </div > <div class="my-3 col-lg-6"><label htmlFor="">Full Name *</label><input type="text" class="form-control" name="full_name[]" required id="" placeholder="Full Name *" /> </div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email1[]" id="" required placeholder="Enter Email Address" /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="contact_no[]" id="" required placeholder="Enter Contact Number" /></div></div>');
+    });
+
+    $("body").on("click", ".removelandbtn", function () {
+        $(this).parents(".landlord-wraper").remove();
+    });
+</script>
+
+<!--tenant  -->
+<script>
+    $("#addtenant").click(function (e) {
+        e.preventDefault();
+        $(".tenant_wrapper").append('<div class="tenant-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removetntbtn" > Remove</a > </div ><div class="my-3 col-lg-6"><label htmlFor = "" > First Name *</label> <input type="text" class="form-control" name="first_name[]" id="" placeholder="First Name *" required /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">Last Name *</label> <input type="text" class="form-control" name="last_name[]" id="" placeholder="Enter Last Name " required /></div> <div class="my-3 col-lg-6"> <label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="mobile_no[]" id="" required placeholder="Enter   Contact Number  " /></div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email[]" id="" required placeholder="Enter Email Address *" /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">House No*</label> <input type="text" class="form-control" name="house_no[]" id="" placeholder="Enter house no*"required /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Street Name*</label> <input type="text" class="form-control" name="street_name[]" id="" required placeholder="Enter Street Name*" /></div> <div class="my-3 col-lg-6"> <label htmlFor="">Town*</label> <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*" required /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Postal Code*</label> <input type="text" class="form-control" name="postal_code[]" id="" required placeholder="Enter postal code " /> </div><div class="my-3 col-lg-6"> <label htmlFor="">Move in Date *</label> <input type="date" class="form-control" name="tenancy_start_date[]" id="" required  /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">Move out Date *</label> <input type="date" class="form-control" name="tenancy_last_date[]" id="" required  /></div>  </div>');
     });
 
     $("body").on("click", ".removetntbtn", function () {
-        $(this).parents(".landlord-wraper").remove();
+        $(this).parents(".tenant-wraper").remove();
     });
-
-
 </script>
-
-
-
-
 @endsection

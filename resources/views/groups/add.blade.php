@@ -20,7 +20,7 @@
                 <div class="row mt-5">
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Name *</label>
-                        <input type="text" class="form-control" name="Group_Name" id=""
+                        <input type="text" class="form-control" name="Group_Name" id="" required
                             placeholder="Enter Group Name" />
                     </div>
                     <div class="col-lg-4 col-6 mt-5">

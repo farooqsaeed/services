@@ -25,8 +25,7 @@
                 </div>
                 <div class="my-3" id="Businessman">
                     <label htmlFor="">Business Name *</label>
-                    <input type="text" class="form-control" name="business_name" value=""
-                        placeholder="Enter Business" />
+                    <input type="text" class="form-control" name="business_name" value="" required placeholder="Enter Business" />
                 </div>
             </div>
             <!-- {/* column 1st */} -->
@@ -200,8 +199,7 @@
                 </div>
                 <div class="my-5">
                     <label htmlFor=""> Expiry Date *</label>
-                    <input type="date" class="form-control mt-4" name="expiry_date" required
-                        placeholder="Text Message" />
+                    <input type="date" class="form-control mt-4" name="expiry_date" required placeholder="Text Message" />
                 </div>
                 <div class="my-5">
                     <label htmlFor="">Upload Attachment *</label>

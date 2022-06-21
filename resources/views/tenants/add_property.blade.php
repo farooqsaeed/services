@@ -32,12 +32,12 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenancy Start Date *</label>
-                        <input type="date" class="form-control" name="tenancy_start_date" id=""
+                        <input type="date" class="form-control" name="tenancy_start_date" id="" required
                             placeholder="Enter Last Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenancy End Date*</label>
-                        <input type="date" class="form-control" name="tenancy_last_date" id=""
+                        <input type="date" class="form-control" name="tenancy_last_date" id="" required
                             placeholder="Enter Contact number " />
                     </div>
                     <div class="my-3 col-lg-6">

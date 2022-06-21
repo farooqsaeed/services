@@ -19,14 +19,14 @@
                 <div class="row">
                     <div class="my-3 col-lg-12 mt-lg-5">
                         <label htmlFor="">Subject *</label>
-                        <input type="text" class="form-control" name="" id="" placeholder=" Lorem ipsum " />
+                        <input type="text" class="form-control" required name="" id="" placeholder=" Lorem ipsum " />
                     </div>
                     <div class="my-3 col-lg-12">
                         <label htmlFor="">Descripion</label>
-                        <input type="text" class="form-control mt-5" name="" id="" placeholder="Enter Descripion" />
+                        <input type="text" class="form-control mt-5" required name="" id="" placeholder="Enter Descripion" />
                     </div>
                     <div class="col-lg-4  mt-5">
-                        <button class="btn btn-outline-success btn-block ">Cancel</button>
+                        <button type="reset" class="btn btn-outline-success btn-block ">Cancel</button>
                     </div>
                     <div class="col-lg-4 offset-lg-4  mt-5 text-right  ">
                         <button class="btn btn-info success btn-block">Save</button>

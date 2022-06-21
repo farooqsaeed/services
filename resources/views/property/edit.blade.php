@@ -94,6 +94,9 @@
 
 </script>
 
+<script>
+    toastr.danger(error);
+</script>
 
 
 @endsection

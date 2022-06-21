@@ -9,7 +9,8 @@ use App\Models\landlord;
 use App\Models\Category;
 use App\Models\Jobnote;
 use App\Models\Subcategory;
-use Carbon;
+use Illuminate\Support\Facades\Validator;
+
 // use App\Models\Category;
 
 

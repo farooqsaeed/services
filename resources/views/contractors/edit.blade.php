@@ -8,7 +8,7 @@
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
-        <span>Update Contractor</span>
+        <span>Edit Contractor</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform" enctype="multipart/form-data">
@@ -24,31 +24,30 @@
                     <div class="my-3 col-6">
                         <label htmlFor=""> Last Name *</label>
                         <input type="text" class="form-control" name="last_name" id="" placeholder="Enter Last Name"
-                        value="{{$contractor->last_name}}"    required />
+                            value="{{$contractor->last_name}}" required />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
                             Mobile No *
                         </label>
                         <input type="tele" class="form-control" name="mobile_no" id="" placeholder="Enter Mobile NO"
-                        value="{{$contractor->mobile_no}}"     />
+                            value="{{$contractor->mobile_no}}" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
                             Phone No *
                         </label>
                         <input type="tele" class="form-control" name="landline_no" id="" placeholder="Enter Phone NO"
-                         value="{{$contractor->landline_no}}"     />
+                            value="{{$contractor->landline_no}}" />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">
                             Preferred Communication *
                         </label>
-                        <select name="preferred_communication" class="form-control"  required>
+                        <select name="preferred_communication" class="form-control" required>
                             <option value="text">Phone</option>
                             <option value="text">Text</option>
                             <option value="email">Email</option>
-
                         </select>
                     </div>
 
@@ -57,28 +56,28 @@
                             Email *
                         </label>
                         <input type="Email" class="form-control" name="email" id="" placeholder="Enter Email"
-                            required />
+                            value="{{$contractor->email}}" required />
                     </div>
 
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">House #</label>
                         <input type="text" class="form-control" name="house_no" id="" placeholder="Enter house number"
-                            value="" required />
+                            value="{{$contractor->house_no}}" required />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">street name</label>
                         <input type="text" class="form-control" name="street_name" id="" placeholder="Enter street name"
-                            value="" required />
+                            value="{{$contractor->street_name}}" required />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">Town city</label>
                         <input type="text" class="form-control" name="town_city" id="" placeholder="Enter Town city"
-                            value="" required />
+                            value="{{$contractor->town_city}}" required />
                     </div>
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">Postal Code</label>
                         <input type="text" class="form-control" name="postal_code" id="" placeholder="Enter street name"
-                            required value="" />
+                        required value="{{$contractor->postal_code}}" />
                     </div>
                 </div>
             </div>
@@ -93,7 +92,7 @@
             </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
                 <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Add</button>
+                    value="Update">Update</button>
             </div>
         </form>
     </div>
@@ -123,15 +122,19 @@
         $('#formbtn').text('Please wait...');
 
         $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') 
+        }
         });
 
         $.ajax({
-            url: "{{URL('contractors')}}",
+            url: "{{URL('contractors/'.$contractor->id)}}",
             data: $('#myform').serialize(),
             type: 'PUT',
             error: function (request, status, error) {
-                alert(request.responseText);
+                $('#formbtn').attr('disabled', false);
+                $('#formbtn').text('Add');
+                console.log(request.responseText);
+
             },
             success: function (result) {
                 // $('#message').html(result.result);
@@ -140,7 +143,7 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                console.log(result.result);
+                location.href=(result.url);
             }
         })
     })

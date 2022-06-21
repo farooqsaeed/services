@@ -66,7 +66,7 @@
                     <form id="jobnote" class="w-100">
                         @csrf
                         <div class="col-lg-12 my-3">
-                            <input id="note" name="note" type="text" class="form-control" placeholder="Text Message" />
+                            <input id="note" name="note" type="text" class="form-control" required placeholder="Text Message" />
                         </div>
                         <div class="col-12 text-right  mt-5">
                             <button id="formbtn" type="submit" class="btn btn-info success btn-sm  px-4">Add</button>

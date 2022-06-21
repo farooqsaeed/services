@@ -22,18 +22,16 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor=""> Name *</label>
-                        <input type="text" class="form-control" name="Guard_Name" id=""
+                        <input type="text" class="form-control" name="Guard_Name" id="" required
                             placeholder="Enter Full Name *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Mobile No*</label>
-                        <input type="tel" class="form-control" name="Guard_Contact" id=""
-                            placeholder="Enter Contact number " />
+                        <input type="tel" class="form-control" name="Guard_Contact" id="" required placeholder="Enter Contact number " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email *</label>
-                        <input type="text" class="form-control" name="Guard_Email" id=""
-                            placeholder="Enter Email address *" />
+                        <input type="text" class="form-control" name="Guard_Email" id="" required placeholder="Enter Email address *" />
                     </div>
 
                     <div class="my-3 col-lg-6">

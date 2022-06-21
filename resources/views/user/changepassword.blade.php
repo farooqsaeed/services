@@ -19,17 +19,16 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Old Password *</label>
-                        <input type="password" class="form-control" name="old_password" 
-                            placeholder="Enter Old Password" />
+                        <input type="password" class="form-control" name="old_password" required placeholder="Enter Old Password" />
                     </div>
                     <div class="  col-lg-6"></div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor=""> Password *</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter New Password " />
+                        <input type="password" class="form-control" name="password" required placeholder="Enter New Password " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Confirm Password *</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter New Password" />
+                        <input type="password" class="form-control" name="password" required placeholder="Enter New Password" />
                     </div>
                 </div>
             </div>

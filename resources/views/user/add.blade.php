@@ -25,11 +25,11 @@
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="name" id="" placeholder="Enter Full Name *" />
+                        <input type="text" class="form-control" name="name" id="" placeholder="Enter Full Name *" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Email *</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email *" />
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email *" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor=""> Password *</label>

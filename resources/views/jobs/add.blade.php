@@ -13,7 +13,7 @@
         <span>Add Jobs</span>
     </div>
     <div class="p-3">
-        <form id="jobform" class="row addform"  enctype="multipart/form-data" action="{{URL('jobs')}}" method="post" >
+        <form id="jobform" class="row addform" enctype="multipart/form-data" action="{{URL('jobs')}}" method="post">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
@@ -24,40 +24,41 @@
                     <div class="my-3 col-lg-6">
                         <div class="form-group">
                             <label htmlFor="">Select Property*</label>
-                            <select class="form-control" name="property_id"  >
+                            <select class="form-control" name="property_id">
                                 @foreach($properties as $property)
-                                <option value="{{$property->property_id}}" > {{$property->first_line_address}} </option>
+                                <option value="{{$property->property_id}}"> {{$property->first_line_address}} </option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" name="address" id="" placeholder=" line Address *" />
+                        <input type="text" class="form-control" name="address" id="" required
+                            placeholder=" line Address *" />
                     </div>
 
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="tenant_name" id=""
+                        <input type="text" class="form-control" name="tenant_name" id="" required
                             placeholder="Enter Tenant Name    " />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *" />
+                        <input type="text" class="form-control" name="contact" id="" required
+                            placeholder="Enter Contact *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="">Upload Attachment *</label>
-                        <input type="file" class="form-control " name="attachment" id="" />
+                        <input type="file" class="form-control " name="attachment" id="" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="">Description *</label>
-                        <input type="text" class="form-control" name="description" id=""
-                            placeholder="Enter  Text Message" />
+                        <input type="text" class="form-control" name="description" id="" required placeholder="Enter  Text Message" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <div class="form-group">
                             <label htmlFor="" class="">Category *</label>
-                            <select class="form-control" name="category"  id="country-dd">
+                            <select class="form-control" name="category" id="country-dd">
                                 <option selected disabled>Select Category </option>
                                 @foreach($categories as $cat)
                                 <option value="{{$cat->id}}"> {{$cat->name}}</option>
@@ -74,7 +75,8 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="">Subject </label>
-                        <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject  " />
+                        <input type="text" class="form-control" name="subject" id="" required
+                            placeholder="Enter  Subject  " />
                     </div>
                     <div class="my-3 col-lg-6 text-right">
                         <button class="btn btn-info success btn-sm">Add Another</button>
@@ -134,7 +136,7 @@
 
 
 <!-- select cat -->
- <script>
+<script>
     $(document).ready(function () {
         $('#country-dd').on('change', function () {
             var idCountry = this.value;
