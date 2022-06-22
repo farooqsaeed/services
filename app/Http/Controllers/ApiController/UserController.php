@@ -125,8 +125,9 @@ class UserController extends Controller
 
     public function UserStatus(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'unique_id' => 'required'
+        $validator = Validator::make($request->all(),[
+            'unique_id' => 'required',
+            'type' => 'required'
          ]);
    
         if($validator->fails()){
@@ -134,12 +135,10 @@ class UserController extends Controller
             return json_encode(['status'=>0,'errors'=>$errors]); 
         }
 
-        $Check = UniqueId::where('uid','=',$request->unique_id)->first();
+        $Check = UniqueId::where('uid','=',$request->unique_id)->where('usertype','=',$request->type)->first();
 
         if (!empty($Check)) {
-            
             return json_encode(['status'=>1,'usertype'=>$Check->usertype]);
-            
         }else{
             return json_encode(['status'=>0,'message'=>'user not found!']);
         } 
@@ -174,7 +173,6 @@ class UserController extends Controller
                             ->orWhere('mobile_no','=',$request->mobile_no);
                     })->first();
                  if (!empty($tenant)) {
-                    
                       $token = $tenant->createToken('api-token')->plainTextToken;
 
                       return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Tenant','token'=>$token,'success'=>$tenant]);
