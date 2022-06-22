@@ -43,7 +43,6 @@ class ContractorController extends Controller
             'postal_code' => 'required',
             'area_of_coverage'=>'required',
             'social_id'=>'required',
-            'preferred_communication'=>'required'
          ]);
    
         if($validator->fails()){
@@ -64,12 +63,23 @@ class ContractorController extends Controller
                 'town_city'=>$request->town_city,
                 'postal_code'=>$request->postal_code,
                 'area_of_coverage'=>$request->area_of_coverage,
-                'preferred_communication'=>$request->preferred_communication,
                 'social_id'=>$request->social_id,
             )
         );
 
         if (!empty($user)) {
+            workinghour::create(
+                array(
+                    'Mon' => $request->Mon, 
+                    'Tues' => $request->Tues,
+                    'Wed' => $request->Wed,
+                    'Thur' => $request->Thur,
+                    'Fri' => $request->Fri,
+                    'Sat' => $request->Sat,
+                    'Sun' => $request->Sun,
+                    'user_id' => $user->id,
+                )
+             );
             foreach ($request->services as $service) {
                Service::create(
                 array(
