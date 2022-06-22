@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('Recommendation')->nullable();
             $table->string('notes')->nullable();
             $table->string('social_id')->nullable();
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
