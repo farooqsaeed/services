@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('street_name');
             $table->string('town_city');
             $table->string('postal_code');
-            $table->string('rate_option');
-            $table->string('rate');
-            $table->string('preferred_communication');
+            $table->string('rate_option')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('preferred_communication')->nullable();
             $table->string('area_of_coverage');
             $table->string('isMobile')->default(1);
             $table->string('approved_by')->nullable();
