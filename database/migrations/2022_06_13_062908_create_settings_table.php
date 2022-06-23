@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email_description');
             $table->string('app_message');
+            $table->text('terms_and_condition');
             $table->timestamps();
         });
     }

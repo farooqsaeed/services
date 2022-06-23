@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('workinghours', function (Blueprint $table) {
             $table->id();
-            $table->string('Mon');
-            $table->string('Tues');
-            $table->string('Wed');
-            $table->string('Thur');
-            $table->string('Fri');
-            $table->string('Sat');
-            $table->string('Sun');
+            $table->string('Mon')->nullable();
+            $table->string('Tues')->nullable();
+            $table->string('Wed')->nullable();
+            $table->string('Thur')->nullable();
+            $table->string('Fri')->nullable();
+            $table->string('Sat')->nullable();
+            $table->string('Sun')->nullable();
             $table->string('user_id');
             $table->timestamps();
         });

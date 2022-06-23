@@ -23,7 +23,7 @@ use App\Http\Controllers\GaurdController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/expirydate',[UserController::class,'expirydate']);
 Route::get('/', function () {
     return view('login.login');
 });

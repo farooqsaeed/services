@@ -171,4 +171,31 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function expirydate()
+    {
+        // code 1
+        $today = date("Y-m-d H:i:s");
+        $user = trail::where('user_id','=',Auth::User()->id)->first();
+
+        if ($today >= $user->expireydate ) {
+            return redirect('/')->with('error','trail period has expired');
+        }
+        
+        // code 2
+        $users = trail::all();
+
+        foreach ($users as $user) {
+            if ($today >= $user->expireydate ) {
+               $info = User::where('id','=',$user->user_id)->first();
+               if (!empty($info)) {
+                   $email = $info->email;
+                   // write email code to send email to user
+               }
+            }
+        }
+
+
+
+    }
 }
