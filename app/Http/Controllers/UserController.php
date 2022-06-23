@@ -97,7 +97,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findorFail($id)->first();
+        $user = User::findorFail($id);
         return view('user.show', compact(['user']));
     }
 
@@ -109,7 +109,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::findorFail($id);
         $roles = Role::orderBy('id', 'DESC')->get();
         return view('user.edit', compact(['user', 'roles']));
     }

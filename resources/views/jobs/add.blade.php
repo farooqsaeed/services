@@ -25,6 +25,7 @@
                         <div class="form-group">
                             <label htmlFor="">Select Property*</label>
                             <select class="form-control" name="property_id">
+                                <option selected disabled>Select Property</option>
                                 @foreach($properties as $property)
                                 <option value="{{$property->property_id}}"> {{$property->first_line_address}} </option>
                                 @endforeach
