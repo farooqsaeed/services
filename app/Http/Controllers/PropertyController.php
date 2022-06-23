@@ -72,21 +72,21 @@ class PropertyController extends Controller
                     // tenant add
                     $Tenant = new Tenant;
                     $Tenant->first_name = $request->first_name[$key];
-                    $Tenant->last_name = $request-> last_name[$key];
+                    $Tenant->last_name = $request->last_name[$key];
                     $Tenant->mobile_no = 0;
-                    $Tenant->email = $request-> email[$key];
-                    $Tenant->house_no = $request-> house_no[$key];
-                    $Tenant->street_name = $request-> street_name[$key];
-                    $Tenant->town = $request-> town[$key];
-                    $Tenant->postal_code = $request-> postal_code[$key];
+                    $Tenant->email = $request->email[$key];
+                    $Tenant->house_no = $request->house_no[$key];
+                    $Tenant->street_name = $request->street_name[$key];
+                    $Tenant->town = $request->town[$key];
+                    $Tenant->postal_code = $request->postal_code[$key];
                     $Tenant->save();
 
                     // tenant_property add
                     $tenant_property = new tenant_property();
-                    $tenant_property->tenancy_start_date = $request-> tenancy_start_date[$key];
-                    $tenant_property->tenancy_last_date = $request-> tenancy_last_date[$key];
-                    $tenant_property->tenant_id = $Tenant-> id;
-                    $tenant_property->property_id = $Property-> property_id;
+                    $tenant_property->tenancy_start_date = $request->tenancy_start_date[$key];
+                    $tenant_property->tenancy_last_date = $request->tenancy_last_date[$key];
+                    $tenant_property->tenant_id = $Tenant->id;
+                    $tenant_property->property_id = $Property->property_id;
                     $tenant_property->IsExpired = 'active';
                     $tenant_property->save();
                 }
