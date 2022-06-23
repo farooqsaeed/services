@@ -7,6 +7,8 @@ use App\Models\Group;
 use App\Models\Subgroup;
 use App\Models\Childgroup;
 use App\Models\UniqueId;
+use Illuminate\Support\Facades\DB;
+
 
 class GroupController extends Controller
 {
@@ -17,9 +19,19 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $Groups = Group::orderBy('Id','DESC')->with('subgroup')->get();
-        //   return $Groups;
-         return view('groups.groups', compact(['Groups']));
+        $Groups = Group::orderBy('Id', 'DESC')->with('subgroup')->get();
+
+
+        $items = DB::table('groups')->get();
+        foreach ($items as $item) {
+            $lists = DB::table('subgroups')->where('group_id', '=', $item->id)->get();
+            $item->subgroups = $lists;
+            foreach ($lists as $list) {
+                $list->childs = DB::table('childgroups')->where('subgroup_id', '=', $list->id)->get();
+            }
+        }
+     
+        return view('groups.groups', compact(['Groups', 'items']));
     }
 
     /**
@@ -37,9 +49,7 @@ class GroupController extends Controller
         $group = Group::where('id', $id)->first();
         if (!empty($group)) {
             return view('groups.addsubgroup', compact(['group']));
-        }
-        else
-        {
+        } else {
             return 'Sorry not avalible';
         }
     }

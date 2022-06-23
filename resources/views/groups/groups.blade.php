@@ -94,7 +94,7 @@
     </div>
     <div class="row mt-4">
         @if(!$Groups->isEmpty())
-        @foreach($Groups as $key => $Group )
+        @foreach($items as $key => $Group )
         <div class="col-lg-10 col-md-10 col-sm-12 my-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 pl-1 pt-0 parent">
             <div id="gp{{$key}}" class="cards d-flex justify-content-between align-self-center">
                 <div>
@@ -116,14 +116,16 @@
                     </form>
                 </div>
             </div>
-            @if($Group->subgroup !=null)
+     
+            @if(count($Group->subgroups)!=0)
             <div class="row mt-3 mygroup">
                 <div class="col-10 offset-2">
+                    @foreach($Group->subgroups as $subgroup)
                     <div class="subgroup d-flex justify-content-between align-self-center ">
                         <div>
                             <h5 class="mb-0 pb-0">&nbsp;&nbsp;
-                                {{$Group->subgroup->Sub_Group_Name}}
-                            </h5>
+                                {{$subgroup->Sub_Group_Name}}
+                             </h5>
                         </div>
                         <div class="d-flex justify-content-between align-self-center">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -131,11 +133,13 @@
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </div>
                     </div>
+                    @endforeach
                     <div class="row mt-3">
+                        @foreach($subgroup->childs as $child)
                         <div class="col-10 offset-2">
                             <div class="subgroup d-flex justify-content-between align-self-center ">
                                 <div>
-                                    <h5 class="mb-0 pb-0">&nbsp;&nbsp; Group A-1.1</h5>
+                                    <h5 class="mb-0 pb-0">&nbsp;&nbsp; {{$child->Child_Group_Name}} </h5>
                                 </div>
                                 <div class="d-flex justify-content-between align-self-center">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -143,6 +147,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
