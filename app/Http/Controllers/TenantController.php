@@ -58,7 +58,7 @@ class TenantController extends Controller
         $Tenantproperty->tenancy_start_date = $request->tenancy_start_date;
         $Tenantproperty->tenancy_last_date = $request->tenancy_last_date;
         $Tenantproperty->IsExpired = $isexpire;
-        $Tenantproperty->status = (int)$property->status;;
+        $Tenantproperty->status = (int)$property->status;
         $Tenantproperty->save();
         return response()->json(['result' => 'Property is  assign to tenant!']);
     }
