@@ -208,11 +208,14 @@
   }
 
   .dashboard-nav {
-    background-color: #407C1E;
+    border-right: 1px solid rgba(177, 177, 177, 1);
+    background-color: white;
   }
 
   .dashboard-nav a {
-    color: rgb(255, 255, 255);
+    color: rgba(177, 177, 177, 1);
+    font-weight: bold;
+    font-family: 'Helvetica'  ;
   }
 
   .brand-logo {
@@ -257,7 +260,7 @@
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    background-color: #407C1E;
+    background-color: white;
   }
 
   .dashboard-nav-item {
@@ -287,7 +290,7 @@
 
   .active {
     background: rgb(255, 255, 255);
-  color: black !important;
+  color: #38BF67 !important;
   }
 
   .dashboard-nav-dropdown {

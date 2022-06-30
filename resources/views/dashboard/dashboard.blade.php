@@ -49,12 +49,15 @@
     left: 30%;
     margin-top: -1px;
   }
-  form .fa,form p{
+
+  form .fa,
+  form p {
     color: #407C1E;
   }
+
   .DetailCards .col-lg-3 a {
-        text-decoration: none;
-    }
+    text-decoration: none;
+  }
 </style>
 
 
@@ -85,7 +88,7 @@
           <div class="card-text p-0 mb-0 mt-0 ml-lg-4">
             <ol class="breadcrumb bg-white">
               <li class="breadcrumb-item ml-lg-n3">
-                <a href='/'>Overview </a>
+                <a href='/'>&nbsp; Overview </a>
               </li>
             </ol>
           </div>
@@ -826,5 +829,5 @@
   }
 </script>
 
- 
+
 @endsection

@@ -1,20 +1,28 @@
 /* addd contractors */
 
 .addcontractor .add {
-    background: #407c1e;
+    background: rgba(56, 191, 103, 0.2);
     padding: 20px;
+    text-decoration: none;
 }
 
-.addcontractor .add span {
-    font-size: 30px;
+.addcontractor .add .span {
+    font-size: 35px;
     font-weight: bold;
-    color: white;
+    color: #333333;
+    text-decoration: none !important;
 }
+
+.addcontractor .add span a {
+    text-decoration: none !important;
+    color: rgb(0, 0, 0);
+}
+ 
 
 .addform input,
 .addform select {
     border: none;
-    border-bottom: 2px solid #407c1e;
+    border-bottom: 2px solid #737475;
     border-radius: 0px;
 }
 
@@ -27,7 +35,7 @@
 .addform .Certificate {
     font-family: Helvetica;
     font-weight: bold;
-    color: #407c1e;
+    color: #737475;
 }
 
 ::-webkit-file-upload-button {

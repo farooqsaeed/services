@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contractor;
+use App\Models\Contractor_job;
 use App\Models\Document;
 use App\Models\Group;
+use App\Models\Job;
+use App\Models\Property;
+use App\Models\tenant_property;
 use Illuminate\Support\Facades\Auth;
 
 class ContractorController extends Controller
@@ -18,7 +22,7 @@ class ContractorController extends Controller
     public function index()
     {
         $contractors = Contractor::orderBy('id', 'DESC')->get();
-        return view('contractors.contractors', compact(['contractors']));
+        return view('contractors.index', compact(['contractors']));
     }
 
     /**
@@ -96,7 +100,16 @@ class ContractorController extends Controller
      */
     public function show($id)
     {
-        //
+        $tenant_property = tenant_property::where('tenant_id', 27)->get();
+        foreach ($tenant_property as $item) {
+            $property = Property::where('property_id', $item->property_id)->first();
+            if (!empty($property)) {
+                $item->detail = $property;
+            }
+        }
+
+        $contractor=Contractor::findorFail($id);
+        return view('contractors.show',compact(['contractor', 'tenant_property']));
     }
 
     /**
@@ -149,4 +162,44 @@ class ContractorController extends Controller
         $contractor->delete();
         return redirect()->back();
     }
+
+
+    public function updateStatus(Request $request, $id)
+    {
+        $update = [
+            "status" => $request->status,
+        ];
+
+        Contractor::where('id', $id)->update($update);
+        return redirect("/contractors")->with(['success', 'Status updated successfully']);
+    }
+
+
+    public function assignJob($id)
+    {    
+        $contractor_id = Contractor::findorFail($id);
+        $jobs = Job::all();
+         return view('contractors.assign_job', compact(['jobs', 'contractor_id']));
+    }
+
+    public function StoreAssignJob(Request $request)
+    {   
+         $data=[
+            'contractor_id'=>$request->contractor_id,
+            'job_id' => $request->job_id,
+        ];
+        Contractor_job::create($data);
+        return response()->json(['success' => "Contractors added Successfully "]);
+
+    }
+
+    // multiple delete
+    public function delete_contractors(Request $request)
+    {
+        $ids = $request->ids;
+        $order = Contractor::whereIn('id', $ids);
+        $order->delete();
+        return response()->json(['success' => "contractors have been deleted "]);
+    }
+
 }

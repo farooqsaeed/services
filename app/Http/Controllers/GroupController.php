@@ -20,8 +20,6 @@ class GroupController extends Controller
     public function index()
     {
         $Groups = Group::orderBy('Id', 'DESC')->with('subgroup')->get();
-
-
         $items = DB::table('groups')->get();
         foreach ($items as $item) {
             $lists = DB::table('subgroups')->where('group_id', '=', $item->id)->get();
@@ -30,7 +28,7 @@ class GroupController extends Controller
                 $list->childs = DB::table('childgroups')->where('subgroup_id', '=', $list->id)->get();
             }
         }
-     
+
         return view('groups.groups', compact(['Groups', 'items']));
     }
 
@@ -55,9 +53,14 @@ class GroupController extends Controller
     }
 
     // child group
-    public function childgroupcreate()
+    public function childgroupcreate($id)
     {
-        return view('groups.addchildgroup');
+        $group = Subgroup::findorFail($id);
+        if (!empty($group)) {
+            return view('groups.addchildgroup', compact(['group']));
+        } else {
+            return 'Sorry not avalible';
+        }
     }
 
     /**
@@ -103,8 +106,14 @@ class GroupController extends Controller
     // child group
     public function childgroupstore(Request $request)
     {
-        $Group = Childgroup::create($request->all());
-        return response()->json(['result' => 'Record Inserted!']);
+
+        Childgroup::create([
+            'Child_Group_Name' => $request->Child_Group_Name,
+            'Child_Group_ID' => random_int(10000, 90000),
+            'subgroup_id' => $request->subgroup_id,
+        ]);
+
+        return response()->json(['result' => 'Sub group added succesfully!']);
     }
 
     /**
@@ -155,7 +164,26 @@ class GroupController extends Controller
     public function destroy($id)
     {
         $group = Group::findorFail($id);
+        $subgroup = Subgroup::where('group_id', '=', $id)->first();
+        $childgroup = Childgroup::where('subgroup_id', '=', $subgroup->id)->first();
+
         $group->delete();
+        $childgroup->delete();
+        $subgroup->delete();
+
+        return redirect()->back();
+    }
+
+
+    public function destroySubgroup($id)
+    {
+        $group = Subgroup::findorFail($id);
+        $group->delete();
+        $subgroup = Childgroup::where('subgroup_id', '=', $id)->first();
+        if ($subgroup) {
+            $subgroup->delete();
+            return redirect()->back();
+        }
         return redirect()->back();
     }
 }

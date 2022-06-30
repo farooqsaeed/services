@@ -6,9 +6,9 @@
 <div class="container-fluid addcontractor p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Add Contractor</span>
+        <span class="span">&nbsp;&nbsp; Add Contractor</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform" action="{{URL('contractors')}}" method="post"
@@ -25,7 +25,7 @@
                 </div>
                 <div class="my-3" id="Businessman">
                     <label htmlFor="">Business Name *</label>
-                    <input type="text" class="form-control" name="business_name" value="" required placeholder="Enter Business" />
+                    <input type="text" class="form-control" name="business_name" value="" id="business_name"  placeholder="Enter Business" />
                 </div>
             </div>
             <!-- {/* column 1st */} -->
@@ -180,7 +180,7 @@
             <!-- {/* add certificate */} -->
             <div class="col-lg-5 offset-lg-1  ">
                 <div class="my-5">
-                    <h2 class="Certificate">Add Certificate</h2>
+                    <h3 class="Certificate">Add Certificate</h3>
                 </div>
                 <div class="my-3">
                     <label htmlFor="">Title *</label>
@@ -210,7 +210,7 @@
             <!-- {/* Add ID */} -->
             <div class="col-lg-5">
                 <div class="my-5">
-                    <h2 class="Certificate">Add ID </h2>
+                    <h3 class="Certificate">Add ID </h3>
                 </div>
                 <div class="my-3">
                     <label htmlFor="">Title *</label>
@@ -268,6 +268,25 @@
             $('#Businessman').hide();
         }
     });
+    // required added
+    $(document).ready(function () {
+
+            $('#gridCheck1').change(function () {
+
+                if ($('#business_name').attr('required')) {
+                    $('#business_name"]').removeAttr('required');
+                }
+
+                else {
+                    $('#business_name').attr('required', 'required');
+                }
+
+            });
+
+        });
+
+
+
 </script>
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

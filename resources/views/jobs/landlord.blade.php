@@ -7,9 +7,9 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Landlord Approval </span>
+        <span class="span">Landlord Approval </span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform ">

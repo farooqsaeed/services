@@ -28,9 +28,11 @@
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
-                        <span class="card-title my-0 ml-n4"><i class="fa fa-align-left fa-1x   p-1"
-                                aria-hidden="true"></i>
-                            Events</span>
+                        <span class="card-title my-0 ml-2">
+                            <i class="fa fa-align-left fa-1x   p-1" aria-hidden="true">
+                            </i>
+                            Events
+                        </span>
                         <div class="notification mt-0">
                             @include('../layouts/header')
                         </div>

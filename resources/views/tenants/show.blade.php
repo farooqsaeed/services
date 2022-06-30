@@ -10,13 +10,13 @@
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
-        <span>Tenant Details</span>
+        <span class="span">&nbsp;&nbsp; Tenant Details</span>
     </div>
     <div class="p-3">
         <!-- {/* tenant Details */} -->
         <div class="col-lg-10 offset-lg-1  ">
             <div class="mt-5">
-                <h2 class="Certificate"> Tenant Details</h2>
+                <h3 class="Certificate"> Tenant Details</h3>
             </div>
             <div class="row">
                 <div class=" col-6">
@@ -85,10 +85,9 @@
                                             <form action="/delete-property/{{$items->detail->property_id}}" method="post">
                                                 @csrf 
                                                 @method('Delete')
-                                                <button type="submit" class="dropdown-item" type="button">Delete</button>
+                                                <button type="submit" class="dropdown-item" type="button">Remove</button>
                                             </form>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
+                                             
                                         </div>
                                     </div>
                                 </td>

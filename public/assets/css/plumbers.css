@@ -15,21 +15,29 @@
 }
 
 .BreadCrumb_card .card-title {
-    color: #407c1e;
+    color: #333333;
     font-size: 35px;
 }
 
 .breadcrumb-item,
 .breadcrumb-item a {
-    color: #407c1e;
+    color: #333333;
     font-family: Helvetica;
     font-weight: 600;
     margin-top: 0px !important;
 }
 
 .BreadCrumb_card .notification {
-    color: #407c1e;
+    color: #38BF67;
     text-align: center;
+}
+.BreadCrumb_card .notification p{
+    color: #737475;
+
+}
+
+.BreadCrumb_card .notification .fa-chevron-up ,.BreadCrumb_card .notification .fa-times{
+    color: #737475;
 }
 
 .BreadCrumb_card .notification small {
@@ -91,8 +99,10 @@
     content: "";
     width: 95%;
     height: 2px;
-    background: green;
+    background: #737475;
     position: absolute;
     bottom: 0;
     left: 4%;
 }
+
+ 

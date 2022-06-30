@@ -21,7 +21,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pl-0">
             <div class=" newjobHeader p-3 d-flex justify-content-start align-items-baseline">
-                <i class="fa fa-chevron-left " aria-hidden="true"></i>
+                <a href="{{ url()->previous() }}" class="fa fa-chevron-left " aria-hidden="true"></a>
                 <h5 class="ml-3">New Jobs</h5>
             </div>
         </div>

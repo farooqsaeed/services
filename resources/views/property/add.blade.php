@@ -7,11 +7,11 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Add Properties</span>
+        <span class="span"> &nbsp;&nbsp; Add Properties</span>
     </div>
-    <div class="p-3">
+    <div class="p-3 addform">
         <div class="row  ">
             <form class="w-100">
                 <div class="my-3 col-lg-10  offset-lg-1  ">
@@ -30,14 +30,13 @@
                     </div>
                 </div>
             </form>
-
         </div>
-        <form id="myform" class="row addform" action="{{URL('property')}}" method="post">
+        <form id="myform" >
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Enter Property Details</h2>
+                    <h3 class="Certificate">Enter Property Details</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
@@ -70,7 +69,7 @@
             <!-- {/* Landlord Info */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Enter Landlord Info</h2>
+                    <h3 class="Certificate">Enter Landlord Info</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
@@ -108,7 +107,7 @@
             <!-- {/* Tenant Detail */} -->
             <div class="col-lg-10 offset-lg-1  showtenantdiv">
                 <div class="mt-5">
-                    <h2 class="Certificate">Enter Tenant Detail</h2>
+                    <h3 class="Certificate">Enter Tenant Detail</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
@@ -143,7 +142,8 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town*</label>
-                        <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*" required />
+                        <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*"
+                            required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Postal Code*</label>
@@ -169,11 +169,15 @@
                     </div>
                 </div>
             </div>
-            <div class="my-3 col-lg-4 offset-lg-1">
-                <button type="reset" class="btn btn-outline-success btn-block">Cancel</button>
-            </div>
-            <div class="my-3 col-lg-4 offset-lg-2 text-right">
-                <button type="submit" id="formbtn" class="btn btn-success   btn-block">SAVE</button>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row">
+                    <div class="my-3   col-lg-4 ">
+                        <button type="reset" class="btn btn-outline-success btn-block">Cancel</button>
+                    </div>
+                    <div class="my-3 col-lg-4 offset-lg-4 text-right">
+                        <button type="submit" id="formbtn" class="btn btn-success   btn-block">SAVE</button>
+                    </div>
+                </div>
             </div>
         </form>
         <form id="bulkuploadform" class="row addform ">
@@ -181,7 +185,7 @@
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
                     <div class="my-3 col-lg-6">
-                        <h2 class="Certificate">Bulk Upload</h2>
+                        <h3 class="Certificate">Bulk Upload</h3>
                     </div>
                     <div class="my-3 col-lg-6 text-right">
                         <button class="btn btn-info success btn-sm">Add Another</button>
@@ -274,7 +278,7 @@
         });
     }
     // form submition
-    $(' myform').submit(function (e) {
+    $('#myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
@@ -294,6 +298,7 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
+                window.location.replace("/property");
             }
         })
     })

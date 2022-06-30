@@ -51,7 +51,7 @@
         float: right;
     }
 
-    #tenant_paginate ul li {
+    #contractor_paginate ul li {
         border: none !important;
         border-radius: 0%;
     }
@@ -59,16 +59,14 @@
     #deleteallselected {
         display: none;
     }
-    .clickable{
+
+    .clickable {
         cursor: pointer;
     }
 
-    .btn-suc{
-        background-color: rgba(56, 191, 103, 1);
+    .btn-suc {
+        background-color: #38BF67;
         color: white;
-    }
-    #tenant th{
-        border: none;
     }
 </style>
 
@@ -90,8 +88,8 @@
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
-                        <span class="card-title my-0 ml-n2"><i class="fa fa-th-large" aria-hidden="true"></i>
-                            Tenant</span>
+                        <span class="card-title my-0 ml-n2"><i class="fa fa-user" aria-hidden="true"></i>
+                            Contractors</span>
                         <div class="notification mt-3">
                             @include('../layouts/header')
                         </div>
@@ -100,18 +98,18 @@
             </div>
         </div>
     </div>
-    <div class="row  ">
+    <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0   ">
             <div class="card py-0 my-0 border-0 border BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
                     <div class="d-flex justify-content-between mt-5 mb-0 ">
-                        <div class="  card-text  ">
+                        <div class="card-text ">
                             <ol class="breadcrumb bg-white ml-lg-3 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    Tenants
+                                    Contractors
                                 </li>
                             </ol>
                         </div>
@@ -122,16 +120,16 @@
                             <div id="removeexampletable" class="fa fa-times ml-3"></div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
 
         <!-- table -->
         <div class="col-lg-12 example_col">
-            <table id="tenant" class="table  border  display text-lg-center" style="width:100%">
+            <table id="contractor" class="table border  display" style="width:100%">
                 <div class="addbtn">
-                    <a href="tenant/create" class="btn btn-suc  btn-sm"> Add
-                        Tenant </a>
+                    <a href="{{URL('contractors/create')}}"><button class="btn btn-suc  btn-sm">Add
+                            Contractor</button></a>
                     <button id="deleteallselected" type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </div>
                 <thead>
@@ -139,44 +137,59 @@
                         <th>
                             <input type="checkbox" id="chkcheckall" />
                         </th>
-                        <th class="d-none"></th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Status</th>
+                        <th>Business Name</th>
+                        <th>Contractor Name</th>
+                        <th>Coverage Area/Group</th>
+                        <th>Service</th>
                         <th>Contact</th>
-                        <th>Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($tenants as $tenant)
+                    @foreach($contractors as $contractor)
                     <tr>
-                        <td><input class="checkboxclass" type="checkbox" name="ids" id="ids" value=" {{$tenant->id}} ">
+                        <td><input class="checkboxclass" type="checkbox" name="ids" id="ids"
+                                value=" {{$contractor->id}} ">
                         </td>
-                        <td class="d-none">{{$tenant->id}}</td>
-                        <td class="clickable" data-url="{{url('tenant/'.$tenant->id)}}">{{$tenant->first_name}}</td>
-                        <td class="clickable" data-url="{{url('tenant/'.$tenant->id)}}">{{$tenant->last_name}}</td>
-                        <td class="clickable" data-url="{{url('tenant/'.$tenant->id)}}">{{$tenant->mobile_no}}</td>
-                        <td class="clickable" data-url="{{url('tenant/'.$tenant->id)}}">{{$tenant->email}}</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            {{$contractor->status}}</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            {{$contractor->business_name}}</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            {{$contractor->first_name}}</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            {{$contractor->area_of_coverage}}</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            @if($contractor->mobile_no==1)
+                            App user
+                            @else
+                            Non App user
+                            @endif</td>
+                        <td data-url="{{url('contractors/'.$contractor->id)}}" class="clickable text-capitalize">
+                            {{$contractor->mobile_no}}
+                        </td>
                         <td>
-                            <div class="dropdown">
-                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
+                            <div class="dropdown open">
+                                <button class="btn btn-white btn-sm dropdown-toggle" type="button" id="triggerId"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <a href="{{ URL::to('tenant/' . $tenant->id) }}" class="dropdown-item"
-                                        type="button">
-                                        Tenant Details
-                                    </a>
-                                    <a href="{{ URL::to('add-tproperty/' . $tenant->id) }}
-                                    " class="dropdown-item" type="button">Assign Property </a>
-                                    <a href="tenant/{{$tenant->id}}/edit" class="dropdown-item" type="button">Edit
-                                        Tenant </a>
-                                    <form action="{{ url('tenant' , $tenant->id ) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button class="dropdown-item">Delete Tenant</button>
+                                <div class="dropdown-menu ml-n5" aria-labelledby="triggerId">
+
+                                    <form action="{{URL('contractors/'. $contractor->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit">Delete</button>
                                     </form>
+                                    <a class="dropdown-item" href="contractors/{{$contractor->id}}/edit">Edit </a>
+                                    <button type="button" data-toggle="modal" data-target="#modelId"
+                                        class="dropdown-item status_update" value="{{$contractor->id}}">Update Status
+                                    </button>
+                                    <a href="{{URL('assign-job/'.$contractor->id)}}">
+                                        <button class="dropdown-item">Assign
+                                            Job</button>
+                                    </a>
                                 </div>
                             </div>
                         </td>
@@ -185,23 +198,65 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-lg-12">
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Change Status</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="statusform" action="" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <select name="status" id="" class="form-control">
+                                    <option>select</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn success text-white">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- end table -->
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    var nn = 'contractor';
+    $(".status_update").click(function () {
+        nn = $(".status_update").val();
+        $('#statusform').attr('action', 'update-status/' + nn);
+        var m = $('#statusform').attr('action');
+    });
+</script>
 
 <!-- clickable row -->
 <script>
     $(function () {
-        $('#tenant').on("click", ".clickable", function () {
+        $('#contractor').on("click", ".clickable", function () {
             window.location = $(this).data("url");
         });
     });
 </script>
 
+<!-- multiple selection for delete -->
 <script>
-    // multiple selection for delete
     $(function (e) {
         $("#chkcheckall").click(function () {
             $(".checkboxclass").prop('checked', $(this).prop('checked'));
@@ -224,7 +279,7 @@
             });
 
             $.ajax({
-                url: "{{ url('delete-tenants') }}",
+                url: "{{ url('delete-contractors') }}",
                 type: "DELETE",
                 data: {
                     _token: $("input[name=_token]").val(),

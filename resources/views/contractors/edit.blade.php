@@ -6,9 +6,9 @@
 <div class="container-fluid addcontractor p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Edit Contractor</span>
+        <span class="span">&nbsp;&nbsp; Edit Contractor</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform" enctype="multipart/form-data">

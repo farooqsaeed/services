@@ -60,11 +60,8 @@
   border-radius: 10px;
   padding: 5px;
 }
-
-
-
-
-
+ 
+ 
 /* card details */
 
 /* job css */
@@ -161,40 +158,4 @@ hr.card_hr {
   border-radius: 5px;
   border: 1px solid white;
   padding: 2px;
-}
-
- 
-
-
-/* breadcrumb */
-
-
-.BreadCrumb_card .card-title{
-    color: #407C1E;
-    font-size: 35px;
-  }
-
-.breadcrumb-item,.breadcrumb-item a{
-    color: #407C1E;
-    font-family: Helvetica;
-    font-weight:600;
-    margin-top: -30px;
-    font-size: 18px;
-}
-
-.BreadCrumb_card .notification{
-color: #407C1E;
-text-align: center;
-display: flex;
-justify-content: end;
- }
-
-.BreadCrumb_card .notification p{
-    font-size: 10px;
-    font-weight: bold;
- 
-}
-
-.BreadCrumb_card .fa-bell,.BreadCrumb_card .fa-sign-out{
-  font-size: 20px;
 }

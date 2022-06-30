@@ -8,9 +8,9 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Add Jobs</span>
+        <span class="span"> &nbsp;&nbsp;&nbsp; Add Jobs</span>
     </div>
     <div class="p-3">
         <form id="jobform" class="row addform" enctype="multipart/form-data" action="{{URL('jobs')}}" method="post">
@@ -18,7 +18,7 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Enter Job Details</h2>
+                    <h3 class="Certificate">Enter Job Details</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
@@ -78,6 +78,7 @@
                         <label htmlFor="" class="">Subject </label>
                         <input type="text" class="form-control" name="subject" id="" required
                             placeholder="Enter  Subject  " />
+                            <input type="hidden" name="routeStatus" value="{{ $id }}" />
                     </div>
                     <div class="my-3 col-lg-6 text-right">
                         <button class="btn btn-info success btn-sm">Add Another</button>

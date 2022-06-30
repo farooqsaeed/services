@@ -7,44 +7,33 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
+            <a href="{{ url()->previous() }}
+" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span class="span">&nbsp;&nbsp; Edit Property</span>
+        <span class="span">&nbsp;&nbsp; Assign Job</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform">
             @csrf
-
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h3 class="Certificate">Edit Property</h3>
+                    <h3 class="Certificate">Assign Job</h3>
                 </div>
                 <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="first_line_address"
-                            value="{{$property->first_line_address}}" id="" placeholder="1st line Address *" />
+                    <div class="my-3 col-lg-12">
+                        <div class="form-group">
+                            <label htmlFor="">Select Job *</label>
+                            <select class="form-control" name="job_id" id="">
+                                @foreach($jobs as $property)
+                                <option value="{{$property->id}}">{{$property->subject}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="last_line_address" id=""
-                            value="{{$property->second_line_address}}" placeholder="Enter 2nd line Address *     " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town" value="{{$property->Town}}"
-                            placeholder="Enter Town " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="Postcode" value="{{$property->Postcode}}"
-                            placeholder="Enter Post code *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mb-lg-5">Notes *</label>
-                        <input type="text" class="form-control mt-lg-5" name="Notes" value="{{$property->Notes}}"
-                            placeholder="Enter Text Message" />
+                        <input type="hidden" class="form-control" name="contractor_id" id=""
+                            value="{{$contractor_id->id}}" />
                     </div>
                 </div>
             </div>
@@ -59,14 +48,13 @@
             </div>
             <div class="col-lg-4   text-center offset-lg-4 p-0">
                 <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Update</button>
+                    value="Add">Save</button>
             </div>
         </form>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -78,26 +66,30 @@
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-            url: "{{URL('property/'.$property->id)}}",
+
+            url: "{{URL('store-assign-job')}}",
             data: $('#myform').serialize(),
-            type: 'PUT',
+            type: 'POST',
+            error: function (request, status, error) {
+                toastr.warning(request.responseText);
+                $('#formbtn').attr('disabled', false);
+                $('#formbtn').text('Update');
+            },
             success: function (result) {
-                $('#message').html(result.result);
-                $("#msgdiv").css({ display: "block" });
+                // $('#message').html(result.result);
+                // $("#msgdiv").css({ display: "block" });
                 $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                window.location.replace("/property");
+                window.location.replace("/contractors");
             }
         })
     })
 
 </script>
 
-<script>
-    toastr.danger(error);
-</script>
+
 
 
 @endsection

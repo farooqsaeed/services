@@ -207,24 +207,32 @@ label {
 .btn-5869C1,
 .btn-21C5DB,
 .btn-38BF67,
-.btn-warning {
-    color: white;
-    font-weight: bold;
+.btn-warn {
+     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-5869C1 {
-    background-color: #5869c1;
+    background-color: white;
+    text-decoration: underline;
+    color: #38BF67;
 }
 
 .btn-21C5DB {
-    background-color: #21c5db;
+    background-color: rgba(56, 191, 103, 0.4);
+    color: #38BF67;
+
 }
 
 .btn-38BF67 {
-    background-color: #38bf67;
+    color: white;
+    background-color: #38BF67;
 }
-
+.btn-warn{
+    background-color: white;
+    border: 2px solid #38BF67;
+    color: #38BF67;
+}
 .text-title {
     color: #737475;
     font-weight: bold;
@@ -288,5 +296,10 @@ label {
 #property_length select,
 #property_filter input {
     border: 1px solid #407c1e;
+}
+
+.btn-suc {
+    background-color: #38BF67;
+    color: white;
 }
 

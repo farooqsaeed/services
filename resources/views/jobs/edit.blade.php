@@ -7,39 +7,41 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Update Jobs</span>
+        <span class="span">&nbsp;&nbsp;&nbsp; Update Jobs</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform" >
+        <form id="myform" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Update Job Details</h2>
+                    <h3 class="Certificate">Update Job Details</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control"
-                        value="{{$job->address}}"
-                        name="address" id="" placeholder="line Address *" />
+                        <input type="text" class="form-control" value="{{$job->address}}" name="address" id=""
+                            placeholder="line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="tenant_name" id="" value="{{$job->tenant_name}}" placeholder="Enter Tenant Name" />
+                        <input type="text" class="form-control" name="tenant_name" id="" value="{{$job->tenant_name}}"
+                            placeholder="Enter Tenant Name" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *" value="{{$job->contact}}" />
-                    </div>    
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor=""  >Description *</label>
-                        <input type="text" class="form-control" name="description" id="" placeholder="Enter  Text Message" value="{{$job->description}}" />
+                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *"
+                            value="{{$job->contact}}" />
                     </div>
                     <div class="my-3 col-lg-6">
-                        <label htmlFor=""  >Subject </label>
+                        <label htmlFor="">Description *</label>
+                        <input type="text" class="form-control" name="description" id=""
+                            placeholder="Enter  Text Message" value="{{$job->description}}" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">Subject </label>
                         <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject"
                             value="{{$job->subject}}" />
                     </div>
@@ -89,7 +91,7 @@
                 $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('update');
-                  toastr.success(result.result);
+                toastr.success(result.result);
                 window.location.replace("/jobs");
             }
         })
