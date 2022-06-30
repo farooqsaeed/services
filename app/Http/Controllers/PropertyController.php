@@ -19,7 +19,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $property = Property::orderby('id', 'DESC')->get();
+        $property = Property::orderBy('id', 'DESC')->get();
         return view('property.index', compact(['property']));
     }
 
@@ -174,5 +174,26 @@ class PropertyController extends Controller
         $property = Property::findorFail($id);
         $property->delete();
         return Redirect()->back();
+    }
+
+    // multiple delete
+    public function delete_proterties(Request $request)
+    {
+        $ids = $request->ids;
+        $order = Property::whereIn('id', $ids);
+        $order->delete();
+        return response()->json(['success' => "contractors have been deleted "]);
+    }
+
+    // update status
+
+    public function updateStatus(Request $request, $id)
+    {
+        $update = [
+            "status" => $request->status,
+        ];
+
+        Property::where('id', $id)->update($update);
+        return redirect("/property")->with(['success', 'Status updated successfully']);
     }
 }

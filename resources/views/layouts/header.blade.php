@@ -46,20 +46,21 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
         padding: 5px;
         margin-top: 2px;
     }
+
     form .fa,
     form p {
-        color: #407C1E;
+        color:#737475 ;
     }
-    
 </style>
 
 <div class="dropdown mt-2 mr-2">
-    <button class="btn btn-success btn-sm success dropdown-toggle" type="button" data-toggle="dropdown">Global
+    <button class="btn btn-success btn-sm success px-4 dropdown-toggle" type="button" data-toggle="dropdown">Global
         <span class="caret"></span></button>
     <ul class="dropdown-menu">
         @foreach($groups as $group)
         <li class="dropdown-submenu">
             <a class="test" tabindex="-1" href="#">{{$group->Group_Name}} <span class="caret"></span></a>
+            @if(!empty($group->subgroup))
             <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
                     <a class="test" href="#"> {{ $group->subgroup->Sub_Group_Name}} <span class="caret"></span></a>
@@ -68,6 +69,7 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
                     </ul>
                 </li>
             </ul>
+            @endif
         </li>
         @endforeach
     </ul>

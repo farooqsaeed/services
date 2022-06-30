@@ -30,29 +30,29 @@
         background-color: #407C1E;
         color: white;
     }
+
 </style>
 
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
-        <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
-        </span>
-        <span>Property Details</span>
+        <span><a href="{{ URL::previous() }}"><i class="fa fa-chevron-left mr-4" aria-hidden="true"></i></a></span>
+        <span class="span">&nbsp;&nbsp; Property Details</span>
     </div>
     <div class="p-3">
-        <div   class="row addform ">
+        <div class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
                     <div class="my-3 col-lg-12 mt-4">
                         <div class="d-flex justify-content-between">
-                            <h2 class="Certificate">Property Details</h2>
+                            <h3 class="Certificate">Property Details</h3>
                             <div>
-                                <div class="btn btn-38BF67 btn-sm">Edit Jobs</div>
                                 <div class="btn btn-21C5DB btn-sm">Landlord Approval</div>
+                                <div class="btn btn-38BF67 btn-sm">Edit Property</div>
+                                <div class="btn btn-warn btn-sm">Assign Engineer</div>
                                 <div class="btn btn-5869C1 btn-sm">Get Quote</div>
-                                <div class="btn btn-warning btn-sm">Assign Engineer</div>
+
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                     </div>
                     <!-- Landlord Info. * -->
                     <div class="col-lg-12">
-                        <h2 class="Certificate">Landlord Info. *</h2>
+                        <h3 class="Certificate">Landlord Info. *</h3>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
                                 <tr class="">
@@ -102,7 +102,7 @@
                     </div>
                     <!-- Tenant Info. * -->
                     <div class="col-lg-12">
-                        <h2 class="Certificate">Tenant Info. *</h2>
+                        <h3 class="Certificate">Tenant Info. *</h3>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
                                 <tr class="">
@@ -148,7 +148,7 @@
 
                     <!-- Associated jobs *-->
                     <div class="col-lg-12">
-                        <h2 class="Certificate">Associated jobs *</h2>
+                        <h3 class="Certificate">Associated jobs *</h3>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
                                 <tr class="">
@@ -213,7 +213,5 @@
     })
 
 </script>
-
-
-
+ 
 @endsection

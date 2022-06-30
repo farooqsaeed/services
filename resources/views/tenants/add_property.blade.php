@@ -7,9 +7,9 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Assign Property</span>
+        <span class="span">&nbsp;&nbsp; Assign Property</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform">
@@ -17,17 +17,17 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Assign Property</h2>
+                    <h3 class="Certificate">Assign Property</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-12">
                         <div class="form-group">
-                        <label htmlFor="">Select Property *</label>
-                           <select class="form-control" name="property_id" id="">
-                               @foreach($properties as $property)
-                            <option value="{{$property->property_id}}">{{$property->first_line_address}}</option>
-                            @endforeach
-                          </select>
+                            <label htmlFor="">Select Property *</label>
+                            <select class="form-control" name="property_id" id="">
+                                @foreach($properties as $property)
+                                <option value="{{$property->property_id}}">{{$property->first_line_address}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="my-3 col-lg-6">
@@ -89,7 +89,8 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-            }   
+                window.location.replace("/tenant");
+            }
         })
     })
 

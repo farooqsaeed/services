@@ -65,12 +65,11 @@
 
         <!-- table -->
         <div class="col-lg-12 example_col">
-            <table id="callout" class="table table-striped table-bordered display text-center" style="width:100%">
+            <table id="callout" class="table border  display text-lg-center" style="width:100%">
                 <div class="addbtn">
-                    <a href="callout/create" class=" btn btn-success btn-sm success "> Add
-                        Callout </a>
+                    <a href="callout/create" class=" btn btn-suc btn-sm"> Add Callout </a>
                 </div>
-                <thead class="thead-dark">
+                <thead  >
                     <tr>
                         <th> Name</th>
                         <th> Email</th>

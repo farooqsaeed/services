@@ -72,6 +72,14 @@
     tr {
         cursor: pointer;
     }
+
+    #deleteallselected {
+        display: none;
+    }
+
+    #property th {
+        border: none;
+    }
 </style>
 <div class="container-fluid">
     <div class="row ">
@@ -115,7 +123,7 @@
                                 </li>
                             </ol>
                         </div>
-                        <div class="notification">
+                        <div class="notification align-self-center">
                             <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
@@ -133,11 +141,18 @@
             </div>
         </div>
         <div class="col-lg-12 example_col">
-            <table id="property" class="table table-striped table-bordered text-center display" style="width:100%">
-                <a class="addbtn" href="{{URL('property/create')}}"><button class="btn btn-success btn-sm">Add
-                        Property</button></a>
-                <thead class="thead-dark">
+            <table id="property" class="table border text-center display" style="width:100%">
+                <div class="addbtn">
+                    <a href="{{URL('property/create')}}"><button class="btn btn-suc btn-sm">Add
+                            Property</button></a>
+                    <button id="deleteallselected" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+                <thead>
                     <tr>
+                        <th>
+                            <input type="checkbox" id="chkcheckall" />
+                        </th>
+                        <th style="display: none;"></th>
                         <th>First line of address</th>
                         <th>Town</th>
                         <th>Postcode</th>
@@ -148,12 +163,16 @@
                 </thead>
                 <tbody>
                     @foreach($property as $item)
-                    <tr data-url="{{url('property/'.$item->id)}}">
-                        <td>{{$item->first_line_address}}</td>
-                        <td>{{$item->Town}}</td>
-                        <td> {{$item->Postcode}}</td>
-                        <td> 8</td>
-                        <td>{{$item->status}}</td>
+                    <tr>
+                        <td><input class="checkboxclass" type="checkbox" name="ids" id="ids" value=" {{$item->id}} ">
+                        </td>
+                        <td style="display: none;"> {{ $item->id }}</td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}">{{$item->first_line_address}}
+                        </td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}">{{$item->Town}}</td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}"> {{$item->Postcode}}</td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}"> 8</td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}">{{$item->status}}</td>
                         <td>
                             <div class="dropdown">
                                 <a class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
@@ -161,11 +180,17 @@
                                     Select
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <a href="{{url('jobs/create')}}" class="dropdown-item" type="button">Add New Job</a>
+                                    <a href="{{url('job')}}/property" class="dropdown-item" type="button">Add New
+                                        Job</a>
                                     <a href="{{ url('property/'.$item->id) }}" class="dropdown-item"
                                         type="button">Property Details</a>
                                     <a href="{{ url('property/'.$item->id.'/edit') }}" class="dropdown-item"
                                         type="button"> Edit Property </a>
+
+                                    <button type="button" data-toggle="modal" data-target="#modelId"
+                                        class="dropdown-item status_update" value="{{$item->id}}">Update Status
+                                    </button>
+
                                     <form action="{{ url('property', $item->id ) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -179,6 +204,40 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="col-lg-12">
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Change Status</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="statusform" action="" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <select name="status" id="" class="form-control">
+                                    <option>select</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn success text-white">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -188,13 +247,66 @@
 
 
 <script>
-    // $(function () {
-    //     $('#property').on("click", "tr", function () {
-    //         window.location = $(this).data("url");
-    //     });
-    // });
+    $(function () {
+        $('#property').on("click", ".clickable", function () {
+            window.location = $(this).data("url");
+        });
+    });
 
-    
+
+</script>
+<!-- status -->
+<script>
+    var nn = 'contractor';
+    $(".status_update").click(function () {
+        nn = $(".status_update").val();
+        $('#statusform').attr('action', 'property-status/' + nn);
+        var m = $('#statusform').attr('action');
+    });
 </script>
 
+<!-- delete multiple -->
+<script>
+    // multiple selection for delete
+    $(function (e) {
+        $("#chkcheckall").click(function () {
+            $(".checkboxclass").prop('checked', $(this).prop('checked'));
+        });
+
+        $('.checkboxclass').change(function () {
+            $('#deleteallselected').toggle($('.checkboxclass:checked').length > 0);
+        });
+
+        $('#chkcheckall').change(function () {
+            $('#deleteallselected').toggle($('.checkboxclass:checked').length > 0);
+        });
+
+        $("#deleteallselected").click(function (e) {
+            e.preventDefault();
+            var allids = [];
+            $("input:checkbox[name=ids]:checked").each(function () {
+                $('#deleteallselected').show();
+                allids.push($(this).val());
+            });
+
+            $.ajax({
+                url: "{{ url('delete-properties') }}",
+                type: "DELETE",
+                data: {
+                    _token: $("input[name=_token]").val(),
+                    ids: allids
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                },
+                success: function (response) {
+                    $.each(allids, function (key, val) {
+                        $("#sid" + val).remove;
+                    })
+                    location.reload();
+                }
+            })
+        });
+    })
+</script>
 @endsection

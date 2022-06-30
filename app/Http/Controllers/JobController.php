@@ -23,8 +23,29 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::orderBy('id', 'DESC')->get();
-        return view('jobs.index', compact(['jobs']));
+        $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'pending')->get();
+        $jobcount=count($jobs);
+      
+        return view('jobs.index', compact(['jobs', 'jobcount']));
+    }
+    // resolved
+    public function resolvedJob()
+    {
+        $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'resolved')->get();
+        return view('jobs.resolvedjobs', compact(['jobs']));
+    }
+
+    // inprogress
+    public function inprogressJob()
+    {
+        $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'in progress')->get();
+        return view('jobs.inprogress', compact(['jobs']));
+    }
+    // closed
+    public function closedJob()
+    {
+        $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'closed')->get();
+        return view('jobs.closedjobs', compact(['jobs']));
     }
 
     /**
@@ -32,11 +53,11 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $categories = Category::orderBy('name')->get();
         $properties = Property::orderBy('id', 'desc')->get();
-        return view('jobs.add', compact(['properties', 'categories']));
+        return view('jobs.add', compact(['properties', 'categories', 'id']));
     }
 
     public function fetchSub(Request $request)
@@ -84,7 +105,6 @@ class JobController extends Controller
             $image->move(public_path('upload/Image/'), $fullPath);
             $path = 'upload/Image/' . $fullPath;
         }
-
         Job::create([
             'address' => $request->address,
             'tenant_name' => $request->tenant_name,
@@ -103,7 +123,11 @@ class JobController extends Controller
             'landloard_approvel' => 'Pending',
             'attachment' => $path
         ]);
-        return redirect('/jobs');
+        if ($request->routeStatus == 'property') {
+            return redirect('/property');
+        } else {
+            return redirect('/jobs');
+        }
     }
 
     public function store_note(Request $request, $id)
@@ -128,10 +152,8 @@ class JobController extends Controller
         $property = Property::where('property_id', '=', $job->property_id)->first();
         if (!empty($property)) {
             return view('jobs.show', compact(['job', 'property', 'notes']));
-        }
-        else
-        {
-            return 'sorry not avalible';
+        } else {
+            return 'sorry not property not found';
         }
     }
 
@@ -170,18 +192,17 @@ class JobController extends Controller
 
     public function update_landlord($id)
     {
-        $job = Job::where('id', $id)->first();
-        if (!empty($property)) {
+        $job = Job::findorFail($id);
+        if (!empty($job)) {
             $landlord = landlord::where('property_id', $job->property_id)->first();
             if (!empty($landlord)) {
-
                 $update = [
                     'landloard_id' => $landlord->id,
                     'show_to_landloard' => 1,
                     'landloard_approvel' => 'Sent To Approve',
                 ];
                 Job::where('id', $id)->update($update);
-                return redirect()->back();
+                return redirect('/jobs');
             }
         }
     }

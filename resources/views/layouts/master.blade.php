@@ -39,7 +39,7 @@
                 </header>
                 <nav class="dashboard-nav-list">
                     <div class="nav-item-divider"></div>
-                    <a class="dashboard-nav-item {{ Request::path() ==  '/dashboard' ? '  active' : ''  }}"
+                    <a class="dashboard-nav-item {{ Request::path() ==  'dashboard' ? 'open active' : ''  }}"
                         href="/dashboard">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
                         Dashboard
@@ -142,7 +142,6 @@
 "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js
@@ -153,6 +152,9 @@
         $(document).ready(function () {
             $('#contractor').DataTable({
                 "pagingType": "simple_numbers",
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [-1] }
+                ]
             });
         });
     </script>
@@ -200,18 +202,39 @@
         $(document).ready(function () {
             $('#property').DataTable({
                 "pagingType": "simple_numbers",
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [-1] }
+                ]
             });
         });
     </script>
+
+    <!-- contractor_job -->
+    <script>
+        $(document).ready(function () {
+            $('#contractor_job').DataTable({
+                "pagingType": "simple_numbers",
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [-1] }
+                ]
+            });
+        });
+    </script>
+
 
     <!-- tenant -->
     <script>
         $(document).ready(function () {
             $('#tenant').DataTable({
                 "pagingType": "simple_numbers",
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [-1] }
+                ]
+
             });
         });
     </script>
+
     <!-- tenatn property table -->
     <script>
         $(document).ready(function () {

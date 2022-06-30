@@ -82,7 +82,7 @@ class TenantController extends Controller
             'postal_code' => 'required',
         ]);
         $Tenant = Tenant::create($request->all());
-        return response()->json(['url' => url('tenant'), 'result'=>'Tenant added']);
+        return response()->json(['url' => url('tenant'), 'result' => 'Tenant added']);
     }
 
     /**
@@ -95,11 +95,13 @@ class TenantController extends Controller
     {
         $tenant_property = tenant_property::where('tenant_id', $id)->get();
         foreach ($tenant_property as $item) {
-            $item->detail = Property::where('property_id', $item->property_id)->first();
+            $property = Property::where('property_id', $item->property_id)->first();
+            if (!empty($property)) {
+                $item->detail = $property;
+            }
         }
         $tenant = Tenant::where('id', $id)->first();
         if (!empty($tenant)) {
-
             return view('tenants.show', compact(['tenant', 'tenant_property']));
         }
     }
@@ -150,8 +152,16 @@ class TenantController extends Controller
 
     public function propertydestroy($id)
     {
-         $tenant = tenant_property::where('property_id', $id)->first();
-         $tenant->delete();
+        $tenant = tenant_property::where('property_id', $id)->first();
+        $tenant->delete();
         return Redirect()->back();
+    }
+    // multiple delete
+    public function delete_tenants(Request $request)
+    {
+        $ids = $request->ids;
+        $order = Tenant::whereIn('id', $ids);
+        $order->delete();
+        return response()->json(['success' => "Notes have been deleted "]);
     }
 }

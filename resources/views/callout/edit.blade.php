@@ -9,7 +9,7 @@
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
-        <span>Edit Callout</span>
+        <span class="span">&nbsp;&nbsp; Edit Callout</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform">

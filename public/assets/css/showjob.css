@@ -2,17 +2,23 @@
 .btn-21C5DB,
 .btn-38BF67,
 .btn-warning {
-    color: white;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-5869C1 {
-    background-color: #5869c1;
+    background-color: white;
+    text-decoration: underline;
+    color: #38bf67;
 }
 
 .btn-21C5DB {
-    background-color: #21c5db;
+    background-color: rgba(56, 191, 103, 0.6);
+}
+.btn-engineer {
+    background-color: white;
+    border: 2px solid #38bf67;
+    color: #38bf67;
 }
 
 .btn-38BF67 {

@@ -16,30 +16,15 @@
         position: relative;
         z-index: 99;
         float: right;
-        color: #38BF67;
     }
 
     tr {
         cursor: pointer;
     }
 
-    .menu a {
+     .menu a {
         text-decoration: none !important;
         color: inherit !important;
-    }
-
-    .table {
-        border-collapse: separate;
-
-    }
-
-    .table th {
-        border: none;
-    }
-    .bg-info
-    {
-     background-color: #7d8ace !important;
-     border-radius: 10px !important;
     }
 </style>
 
@@ -62,8 +47,7 @@
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-suitcase" aria-hidden="true"></i>
-                            Jobs
-                        </span>
+                            Jobs</span>
                         <div class="notification">
                             @include('../layouts/header')
                         </div>
@@ -85,33 +69,26 @@
                                 <li class="breadcrumb-item" aria-current="page">
                                     Jobs
                                 </li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    In progress
+                                </li>
                             </ol>
                         </div>
-                        <div class="notification  align-self-center">
+                        <div class="notification mt-0">
                             <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
                             <div id="removeexampletable" class="fa fa-times ml-3"></div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 ">
             <div class="menu p-3">
-                <p class="active ml-3">
-                    <a href="{{url('jobs')}}"> New Jobs
-                             @if($jobcount !==null)
-                                <sup class="badge badge-pill badge-danger">
-                                    <small>{{ $jobcount}}</small>
-                                </sup>
-                            @endif
-                         
-                    </a>
-                </p>
-                <p class="mx-2"><a href="{{url('inprogress-job')}}"> In progress Jobs
-                    <sup class="badge badge-danger"> </sup>
-                </a></p>
+                <p class=" ml-3"><a href="{{url('jobs')}}"> New Jobs</a></p>
+                <p class="active mx-2"><a href="{{url('inprogress-job')}}"> In progress Jobs</a></p>
                 <p class="mx-2">Auto Resolved Jobs</p>
                 <p class=" mx-2"><a href="{{url('resolved-job')}}">Resolved Jobs </a></p>
                 <p class=" mx-2"><a href="{{url('closed-job')}}">Resolved Jobs </a></p>
@@ -119,12 +96,13 @@
 
         </div>
         <div class="col-lg-12 example_col">
-            <table id="jobs" class="table text-lg-center border display" style="width:100%">
+            <table id="jobs" class="table text-center table-striped table-bordered display" style="width:100%">
                 <div class="addbtn">
-                    <a href="{{url('job')}}/job"><button class="btn btn-success btn-sm ">Add Jobs</button></a>
+                    <a href="{{url('jobs/create')}}"><button class="btn btn-success btn-sm success">Add
+                            Jobs</button></a>
                 </div>
-                <thead class="border-0">
-                    <tr >
+                <thead class="thead-dark">
+                    <tr>
                         <th>Case Number</th>
                         <th>Property ID</th>
                         <th>Subject</th>

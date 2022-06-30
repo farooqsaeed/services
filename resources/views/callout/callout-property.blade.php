@@ -7,7 +7,7 @@
         <span>
             <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
         </span>
-        <span>Assign Property</span>
+        <span class="span">&nbsp;&nbsp; Assign Property</span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform">
@@ -15,7 +15,7 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="mt-5">
-                    <h2 class="Certificate">Assign Property to Guard</h2>
+                    <h3 class="Certificate">Assign Property to Guard</h3>
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">

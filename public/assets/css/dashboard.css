@@ -59,20 +59,20 @@
 /* breadcrumb */
 
 .BreadCrumb_card .card-title {
-    color: #407c1e;
+    color: #333333;
     font-size: 35px;
 }
 
 .breadcrumb-item,
 .breadcrumb-item a {
-    color: #407c1e;
+    color: #333333;
     font-family: Helvetica;
     font-weight: 600;
     font-size: 18px;
 }
 
 .BreadCrumb_card .notification {
-    color: #407c1e;
+    color: #38bf67;
     text-align: center;
     display: flex;
     justify-content: end;
@@ -81,6 +81,7 @@
 .BreadCrumb_card .notification p {
     font-size: 10px;
     font-weight: bold;
+    color: #737475;
 }
 
 .BreadCrumb_card .fa-bell,

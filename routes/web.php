@@ -12,7 +12,6 @@ use App\Http\Controllers\TenantController;
 use App\Http\Controllers\GaurdController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +22,8 @@ use App\Http\Controllers\GaurdController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/expirydate',[UserController::class,'expirydate']);
+
+Route::get('/expirydate', [UserController::class, 'expirydate']);
 Route::get('/', function () {
     return view('login.login');
 });
@@ -37,20 +37,44 @@ Route::get('/resetpassword1', function () {
 
 // middleware
 Route::group(['middleware' => ['auth']], function () {
+
     // contractors
     Route::resource('contractors', ContractorController::class);
-    Route::get('plumbers', [ContractorController::class, 'plumbers']);
+    Route::put('update-status/{id}', [ContractorController::class, 'updateStatus']);
+    Route::delete('delete-contractors', [ContractorController::class, 'delete_contractors']);
+    Route::put('property-status/{id}', [PropertyController::class, 'updateStatus']);
+
+    Route::get('assign-job/{id}', [ContractorController::class, 'assignJob'])->name('contractor.assign.job');
+    Route::post('store-assign-job', [ContractorController::class, 'StoreAssignJob']);
+
+
+    
     // jobs
-    Route::get('/openjobs', function () {
-        return view('jobs.openjobs');
-    });
     Route::resource('jobs', JobController::class);
+    Route::get(
+        'job/{id}',
+        [JobController::class, 'create']
+    );
+
     Route::get('landlord', [JobController::class, 'landlord']);
     Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
     Route::post('job-notes/{id}', [JobController::class, 'store_note']);
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
     Route::get('assignengineer', [JobController::class, 'assignengineer']);
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);
+
+
+    Route::get('inprogress-job', [JobController::class, 'inprogressJob']);
+    Route::get('resolved-job', [JobController::class, 'resolvedJob']);
+
+    Route::get('closed-job', [JobController::class, 'closedJob']);
+
+
+    Route::get('/openjobs', function () {
+        return view('jobs.openjobs');
+    });
+
+
     // events
     Route::get('/eventsreports', function () {
         return view('events.events_reports');
@@ -95,25 +119,39 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/licences', function () {
         return view('setting.licences');
     });
+
     // map view
     Route::get('mapview', function () {
         return view('mapview.mapview');
     });
+
     // Property
     Route::resource('property', PropertyController::class);
+    Route::delete('delete-properties', [PropertyController::class, 'delete_proterties']);
+
+
+
     // groups
     Route::resource('groups', GroupController::class);
+
     // sub group
     Route::get('add-subgroups/{id}', [GroupController::class, 'subgroupcreate']);
     Route::post('store_subgroups', [GroupController::class, 'subgroupstore']);
+    Route::get('delete-subgroups/{id}', [GroupController::class, 'destroySubgroup']);
+
+
+
     // child group
-    Route::get('add_childgroups', [GroupController::class, 'childgroupcreate']);
+    Route::get('add_childgroups/{id}', [GroupController::class, 'childgroupcreate']);
     Route::post('store_childgroups', [GroupController::class, 'childgroupstore']);
+
     // tenants
     Route::resource('tenant', TenantController::class);
     Route::get('add-tproperty/{id}', [TenantController::class, 'createproperty']);
     Route::post('storeproperty', [TenantController::class, 'storeproperty']);
     Route::delete('delete-property/{id}', [TenantController::class, 'propertydestroy']);
+
+    Route::delete('delete-tenants', [TenantController::class, 'delete_tenants']);
 
 
     // user
@@ -121,12 +159,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('changepassword', [UserController::class, 'change_password']);
     Route::post('fetch-states', [UserController::class, 'fetchState']);
     Route::post('fetch-cities', [UserController::class, 'fetchCity']);
-    
+
     // dashboard
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     });
-
 });
 
 

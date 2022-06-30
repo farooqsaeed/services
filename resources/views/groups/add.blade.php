@@ -8,9 +8,9 @@
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
-            <i class="fa fa-chevron-left mr-4" aria-hidden="true"></i>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span>Create Group</span>
+        <span class="span">&nbsp;&nbsp; Create Group</span>
     </div>
     <div class="p-3">
         <form id="groupform" class="row addform">
