@@ -70,6 +70,11 @@
     #tenant th{
         border: none;
     }
+    #tenant_paginate .page-item.active .page-link {
+        background-color: white;
+        color: #407C1E;
+        border: 1px solid #407C1E;
+    }
 </style>
 
 

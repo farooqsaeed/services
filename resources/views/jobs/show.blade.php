@@ -16,8 +16,8 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
-                    <div class="my-3 p-0 col-lg-12 mt-4">
-                        <div class="d-flex justify-content-between">
+                    <div class="my-3 pl-lg-0 col-lg-12 mt-4">
+                        <div class="d-flex justify-content-between flex-wrap">
                             <h3 class="Certificate">Job Details</h3>
                             <div>
                                 <div class="btn btn-21C5DB btn-sm">
