@@ -13,11 +13,9 @@
 
     .dropdown-menu {
         margin-left: -60px !important;
-        border: none;
-        border: 2px solid var(--unnamed-color-407c1e);
         background: transparent url('img/Rectangle 1522.png') 0% 0% no-repeat padding-box;
         box-shadow: 0px 3px 6px #00000029;
-        border: 2px solid #407C1E;
+        border: 2px solid #737475 !important;
         border-radius: 10px;
         opacity: 1;
         backdrop-filter: blur(5px);
@@ -25,43 +23,11 @@
     }
 
     .dropdown-menu .dropdown-item:hover {
-        background-color: #407C1E;
+        background-color: #38BF67;
         color: white !important;
     }
 
-    #dropdown .dropdown-menu {
-        background: transparent 0% 0% no-repeat padding-box;
-        box-shadow: 0px 3px 6px #00000029;
-        border: 2px solid #407C1E;
-        border-radius: 10px;
-        opacity: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        padding: 2%;
-    }
 
-    #dropdown .dropdown-menu ul li a:hover {
-        text-decoration: none;
-        border-radius: 2px;
-    }
-
-    #dropdown .dropdown-menu li a {
-        text-decoration: none;
-        border-radius: 2px;
-        color: #407C1E !important;
-
-    }
-
-    #dropdown .dropdown-submenu {
-        position: relative;
-    }
-
-    #dropdown .dropdown-submenu .dropdown-menu {
-        background-color: white !important;
-        top: 120%;
-        left: 30%;
-        margin-top: -1px;
-    }
 
     .addbtn {
         position: relative;
@@ -118,8 +84,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">
-                                    Properties
+                                <li class="breadcrumb-item" aria-current="page">Properties
                                 </li>
                             </ol>
                         </div>
@@ -188,14 +153,18 @@
                                         type="button"> Edit Property </a>
 
                                     <button type="button" data-toggle="modal" data-target="#modelId"
-                                        class="dropdown-item status_update" value="{{$item->id}}">Update Status
+                                        data-id1="{{$item->id}}" class="dropdown-item status_update"
+                                        value="{{$item->id}}">Update Status
                                     </button>
 
-                                    <form action="{{ url('property', $item->id ) }}" method="POST">
+                                    <!-- <form action="{{ url('property', $item->id ) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button class="dropdown-item">Delete </button>
-                                    </form>
+                                    </form> -->
+
+                                    <a href="#" data-id="{{$item->id}}" class="dropdown-item  delete"
+                                        data-toggle="modal" data-target="#deleteModal">Delete</a>
                                 </div>
                             </div>
                         </td>
@@ -206,7 +175,6 @@
         </div>
 
         <div class="col-lg-12">
-            <!-- Button trigger modal -->
             <!-- Modal -->
             <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                 aria-hidden="true">
@@ -231,8 +199,36 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn success text-white">Save</button>
+                                <button type="submit" class="btn success text-white">update</button>
                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <!-- Delete Warning Modal -->
+            <div class="modal modal-danger fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Delete"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Property</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="deleteproperty" action="{{ url('property', 'id') }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <h5 class="text-center">Are you sure to delete this Property?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger text-white">Delete</button>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -257,11 +253,16 @@
 </script>
 <!-- status -->
 <script>
-    var nn = 'contractor';
-    $(".status_update").click(function () {
-        nn = $(".status_update").val();
-        $('#statusform').attr('action', 'property-status/' + nn);
-        var m = $('#statusform').attr('action');
+    $(document).on('click', '.status_update', function () {
+        let id = $(this).attr('data-id1');
+        $('#statusform').attr('action', 'property-status/' + id);
+    });
+</script>
+
+<script>
+    $(document).on('click', '.delete', function () {
+        let id = $(this).attr('data-id');
+        $('#deleteproperty').attr('action', 'property/' + id);
     });
 </script>
 

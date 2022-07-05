@@ -41,7 +41,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $Property = new Property;
         $Property->property_id = random_int(100000, 900000);
         $Property->first_line_address = $request->first_line_address;
@@ -118,10 +118,15 @@ class PropertyController extends Controller
         $tenant_property = tenant_property::where('property_id', $property->property_id)->get();
 
         foreach ($tenant_property as $item) {
-            $item->detail = Tenant::where('id', $item->tenant_id)->first();
+            $new = Tenant::where('id', $item->tenant_id)->first();
+            if (!empty($new)) {
+                $item->detail = $new;
+            } else
+                return 'tenant not availible';
         }
-        $jobs = Job::where('property_id', $property->property_id)->get();
 
+
+        $jobs = Job::where('property_id', $property->property_id)->get();
         return view('property.show', compact(['property', 'landlord', 'tenant_property', 'jobs']));
     }
 
@@ -172,6 +177,9 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::findorFail($id);
+        $tenant_property = tenant_property::where('property_id', $property->property_id)->first();
+
+        $tenant_property->delete();
         $property->delete();
         return Redirect()->back();
     }
@@ -192,7 +200,6 @@ class PropertyController extends Controller
         $update = [
             "status" => $request->status,
         ];
-
         Property::where('id', $id)->update($update);
         return redirect("/property")->with(['success', 'Status updated successfully']);
     }

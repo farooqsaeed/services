@@ -94,13 +94,15 @@ class TenantController extends Controller
     public function show($id)
     {
         $tenant_property = tenant_property::where('tenant_id', $id)->get();
+ 
         foreach ($tenant_property as $item) {
             $property = Property::where('property_id', $item->property_id)->first();
             if (!empty($property)) {
                 $item->detail = $property;
             }
         }
-        $tenant = Tenant::where('id', $id)->first();
+        $tenant = Tenant::findorfail($id);
+
         if (!empty($tenant)) {
             return view('tenants.show', compact(['tenant', 'tenant_property']));
         }

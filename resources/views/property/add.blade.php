@@ -46,8 +46,8 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="second_line_address" id="secondline" required
-                            placeholder="Enter 2nd line Address *     " />
+                        <input type="text" class="form-control" name="second_line_address" id="secondline"
+                        value="" placeholder="Enter 2nd line Address *" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Town *</label>

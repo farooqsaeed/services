@@ -27,7 +27,7 @@
                             <select class="form-control" name="property_id">
                                 <option selected disabled>Select Property</option>
                                 @foreach($properties as $property)
-                                <option value="{{$property->property_id}}"> {{$property->first_line_address}} </option>
+                                <option value="{{$property->property_id}}"> {{$property->first_line_address}} {{$property->second_line_address}} {{$property->Town}}</option>
                                 @endforeach
                             </select>
                         </div>
