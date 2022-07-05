@@ -127,8 +127,6 @@
                                 role="button">
                                 <h5 class="mb-0 pb-0">&nbsp;&nbsp;
                                     {{$subgroup->Sub_Group_Name}}
-
-                                    {{$subgroup->id}}
                                 </h5>
                                 <span>
                                     <a href="add_childgroups/{{$subgroup->id}}">

@@ -176,7 +176,6 @@
                                     Select
                                 </button>
                                 <div class="dropdown-menu ml-n5" aria-labelledby="triggerId">
-
                                     <form action="{{URL('contractors/'. $contractor->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
@@ -184,7 +183,8 @@
                                     </form>
                                     <a class="dropdown-item" href="contractors/{{$contractor->id}}/edit">Edit </a>
                                     <button type="button" data-toggle="modal" data-target="#modelId"
-                                        class="dropdown-item status_update" value="{{$contractor->id}}">Update Status
+                                        data-id2="{{$contractor->id}}" class="dropdown-item contractor_status_update"
+                                        value="{{$contractor->id}}">Update Status
                                     </button>
                                     <a href="{{URL('assign-job/'.$contractor->id)}}">
                                         <button class="dropdown-item">Assign
@@ -238,11 +238,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    var nn = 'contractor';
-    $(".status_update").click(function () {
-        nn = $(".status_update").val();
-        $('#statusform').attr('action', 'update-status/' + nn);
-        var m = $('#statusform').attr('action');
+    $(document).on('click', '.contractor_status_update', function () {
+        let id = $(this).attr('data-id2');
+        $('#statusform').attr('action', 'update-status/' + id);
     });
 </script>
 

@@ -30,7 +30,6 @@
         background-color: #407C1E;
         color: white;
     }
-
 </style>
 
 <div class="container-fluid addcontractor  p-0">
@@ -43,28 +42,53 @@
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
-                <div class="row">
-                    <div class="my-3 col-lg-12 mt-4">
-                        <div class="d-flex justify-content-between">
-                            <h3 class="Certificate">Property Details</h3>
+                <div class="row  ">
+                    <div class="col-lg-12 mt-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>
+                                <h5 class="Certificate">Property Details</h5>
+                            </span>
                             <div>
-                                <div class="btn btn-21C5DB btn-sm">Landlord Approval</div>
-                                <div class="btn btn-38BF67 btn-sm">Edit Property</div>
-                                <div class="btn btn-warn btn-sm">Assign Engineer</div>
-                                <div class="btn btn-5869C1 btn-sm">Get Quote</div>
-
+                                <a href="{{url('job')}}/property" class="btn btn-21C5DB btn-sm">Add new Job</a>
+                                <a href="{{ url('property/'.$property->id.'/edit') }}"
+                                    class="btn btn-38BF67 btn-sm">Edit Property</a>
+                                <div class="btn btn-warn btn-sm">Assign Tenant</div>
                             </div>
                         </div>
                     </div>
-                    <div class="my-3 col-lg-12 col_border   p-3">
-                        <p class="text-title">Address: <span> {{$property->first_line_address}}
-                                {{$property->second_line_address}} </span> </p>
-                        <p class="text-title">Notes: <span> {{$property->Notes}}</span> </p>
+                    <div class="col-lg-6 mb-3">
+                        <div class="col_border p-3">
+                            <p class="text-title">Address: <br>
+                                <span>
+                                    {{ $property->first_line_address}}
+                                    {{ $property->second_line_address}}
+                                </span>
+                            </p>
+                            <p style="min-height: 120px !important;" class="text-title">Notes: <br>
+                                <span> {{$property->Notes}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="col_border p-3">
+                            <p class="text-title">Compliance Report: <br>
+                                <span> <input type="checkbox" name="" id="">&nbsp;&nbsp; Electrical Safty Check</span>
+                                <br>
+                                <span> <input type="checkbox" name="" id="">&nbsp;&nbsp; Gas Safty Check</span>
+                                <br>
+                                <span> <input type="checkbox" name="" id="">&nbsp;&nbsp; Enery Performance Check</span>
 
+                            <p class="text-title">Additional Reports: <br>
+                                <span> <input type="checkbox" name="" id="">&nbsp;&nbsp; Energy Performance Check</span>
+                                <br>
+                                <span> <input type="checkbox" name="" id="">&nbsp;&nbsp;Inspection Report </span>
+                                <br>
+                            </p>
+                        </div>
                     </div>
                     <!-- Landlord Info. * -->
-                    <div class="col-lg-12">
-                        <h3 class="Certificate">Landlord Info. *</h3>
+                    <div class="col-lg-12 mt-lg-3">
+                        <h5 class="Certificate">Landlord Info. *</h5>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
                                 <tr class="">
@@ -84,7 +108,7 @@
                                         <form action="{{ url('landlord' , $landlord->id ) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <div class="bg-danger rounded ">
+                                            <div class="bg-danger success rounded ">
                                                 <button class="fa fa-trash text-white btn-sm btn "
                                                     type="submit"></button>
                                             </div>
@@ -101,8 +125,8 @@
                         </table>
                     </div>
                     <!-- Tenant Info. * -->
-                    <div class="col-lg-12">
-                        <h3 class="Certificate">Tenant Info. *</h3>
+                    <div class="col-lg-12 mt-lg-3">
+                        <h5 class="Certificate">Tenant Info. *</h5>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
                                 <tr class="">
@@ -147,7 +171,7 @@
                     </div>
 
                     <!-- Associated jobs *-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 mt-lg-3">
                         <h3 class="Certificate">Associated jobs *</h3>
                         <table class="table text-center  table-bordered  table-inverse  ">
                             <thead class="thead-inverse">
@@ -159,6 +183,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if(!$jobs->isEmpty())
                                 @foreach($jobs as $job)
                                 <tr>
                                     <td>{{$job->case_no}}</td>
@@ -167,6 +192,14 @@
                                     <td>{{$job->status}}</td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="4">
+                                        <p>sorry no job found</p>
+                                    </td>
+                                </tr>
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
@@ -213,5 +246,5 @@
     })
 
 </script>
- 
+
 @endsection

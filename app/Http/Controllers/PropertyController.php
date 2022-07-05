@@ -200,7 +200,6 @@ class PropertyController extends Controller
         $update = [
             "status" => $request->status,
         ];
-
         Property::where('id', $id)->update($update);
         return redirect("/property")->with(['success', 'Status updated successfully']);
     }

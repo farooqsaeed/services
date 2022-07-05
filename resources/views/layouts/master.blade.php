@@ -38,15 +38,38 @@
                     </a>
                 </header>
                 <nav class="dashboard-nav-list">
-                    <div class="nav-item-divider"></div>
+                    <!-- <div class="nav-item-divider"></div> -->
                     <a class="dashboard-nav-item {{ Request::path() ==  'dashboard' ? 'open active' : ''  }}"
                         href="/dashboard">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
                         Dashboard
                     </a>
-                    <div class="dashboard-nav-dropdown ">
-                        <a href="/groups"
-                            class="dashboard-nav-item dashboard-nav-dropdown-toggle {{ Request::path() ==  'groups' ? 'open active' : ''  }}">
+                    <a href="{{URL('property')}}" class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}
+                                            {{ request()->is('property/*') ? 'open active' : '' }}
+                                            ">
+                        <i class="fa fa-building"></i> Properties
+                    </a>
+                    <a href="{{URL('jobs')}}" class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}
+                                        {{ request()->is('jobs/*') ? 'open active' : '' }}    
+                                            ">
+                        <i class="fa fa-suitcase"></i> Jobs
+                    </a>
+                    <a href="{{URL('callout')}}"
+                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
+                        <i class="fa fa-comment"></i> Callouts
+                    </a>
+                    <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"
+                        href="{{URL('contractors')}}">
+                        <i class="fa fa-user"></i> Contractors
+                    </a>
+                    <a href="{{URL('setting')}}" class="dashboard-nav-item  {{ Request::path() ==  'setting' ? 'active' : ''  }}
+                    {{ request()->is('setting/*') ? 'open active' : '' }} 
+                    "> <i class="fa fa-cogs"></i> Settings
+                    </a>
+                    <!-- <div class="dashboard-nav-dropdown ">
+                        <a href="/groups" class="dashboard-nav-item dashboard-nav-dropdown-toggle {{ Request::path() ==  'groups' ? 'open active' : ''  }}
+                            {{ request()->is('groups/*') ? 'open active' : '' }} 
+                            ">
                             <i class="fa fa-users"></i> Groups
                         </a>
                     </div>
@@ -54,29 +77,14 @@
                         class="dashboard-nav-item  {{ Request::path() ==  'events' ? 'open active' : ''  }}">
                         <i class="fa fa-building"></i> Events
                     </a>
-                    <a href="{{URL('property')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}">
-                        <i class="fa fa-building"></i> Properties
-                    </a>
-                    <a href="{{URL('tenant')}}" class="dashboard-nav-item">
+                    <a href="{{URL('tenant')}}" class="dashboard-nav-item
+                    {{ request()->is('tenant/*') ? 'open active' : '' }} 
+                    {{ request()->is('tenant') ? 'open active' : '' }}
+
+                    ">
                         <i class="fa fa-key"></i> Tenants
-                    </a>
-                    <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"
-                        href="{{URL('contractors')}}">
-                        <i class="fa fa-user"></i> Contractors
-                    </a>
-                    <a href="{{URL('callout')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
-                        <i class="fa fa-comment"></i> Callout
-                    </a>
-                    <a href="{{URL('jobs')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}">
-                        <i class="fa fa-suitcase"></i> Jobs
-                    </a>
-                    <a href="{{URL('setting')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'setting' ? 'active' : ''  }}">
-                        <i class="fa fa-cogs"></i> Settings
-                    </a>
+                    </a> -->
+
                 </nav>
             </div>
             <div class="dashboard-app ">

@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\GaurdController;
+use App\Http\Controllers\ComplianceController;
 
 
 /*
@@ -48,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store-assign-job', [ContractorController::class, 'StoreAssignJob']);
 
 
-    
+
     // jobs
     Route::resource('jobs', JobController::class);
     Route::get(
@@ -129,6 +130,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('property', PropertyController::class);
     Route::delete('delete-properties', [PropertyController::class, 'delete_proterties']);
 
+    // compliance
+    Route::get('electrical-check', [ComplianceController::class, 'electrical']);
+    Route::get('gas-check', [ComplianceController::class, 'gas']);
+    Route::get('fire-check', [ComplianceController::class, 'fire']);
+    Route::get('inspection-check', [ComplianceController::class, 'inspection']);
+    Route::get('energy-check', [ComplianceController::class, 'energy']);
+
+
 
 
     // groups
@@ -139,8 +148,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store_subgroups', [GroupController::class, 'subgroupstore']);
     Route::get('delete-subgroups/{id}', [GroupController::class, 'destroySubgroup']);
 
-
-
     // child group
     Route::get('add_childgroups/{id}', [GroupController::class, 'childgroupcreate']);
     Route::post('store_childgroups', [GroupController::class, 'childgroupstore']);
@@ -150,9 +157,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('add-tproperty/{id}', [TenantController::class, 'createproperty']);
     Route::post('storeproperty', [TenantController::class, 'storeproperty']);
     Route::delete('delete-property/{id}', [TenantController::class, 'propertydestroy']);
-
     Route::delete('delete-tenants', [TenantController::class, 'delete_tenants']);
-
 
     // user
     Route::resource('/user', UserController::class);
