@@ -24,6 +24,7 @@ use App\Http\Controllers\ApiController\UserController;
 //     return $request->user();
 // });
 
+
 // contractor registration
 Route::apiResources([
        'contractor' => ContractorController::class,
