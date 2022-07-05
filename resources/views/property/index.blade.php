@@ -63,7 +63,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
             <div class="card py-0 my-0 border-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
-                    <div class="d-flex justify-content-between my-0 align-self-center">
+                    <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-home" aria-hidden="true"></i>
                             Properties</span>
                         <div class="notification mt-3">
