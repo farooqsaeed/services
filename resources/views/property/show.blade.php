@@ -50,8 +50,7 @@
                             </span>
                             <div>
                                 <a href="{{url('job')}}/property" class="btn btn-21C5DB btn-sm">Add new Job</a>
-                                <a href="{{ url('property/'.$property->id.'/edit') }}"
-                                    class="btn btn-38BF67 btn-sm">Edit Property</a>
+
                                 <div class="btn btn-warn btn-sm">Assign Tenant</div>
                             </div>
                         </div>
@@ -67,6 +66,10 @@
                             <p style="min-height: 120px !important;" class="text-title">Notes: <br>
                                 <span> {{$property->Notes}}</span>
                             </p>
+                            <div class="w-100 text-right">
+                                <a href="{{ url('property/'.$property->id.'/edit') }}"
+                                    class="btn btn-38BF67 btn-sm">Edit Property</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 mb-3">
@@ -84,6 +87,10 @@
                                 <span> <input type="checkbox" name="" id="">&nbsp;&nbsp;Inspection Report </span>
                                 <br>
                             </p>
+                            <div class="w-100 text-right">
+                                <a href="{{url('electrical-check/'.$property->id)}}" class="btn btn-sm btn-38BF67">Add
+                                    Certificate</a>
+                            </div>
                         </div>
                     </div>
                     <!-- Landlord Info. * -->

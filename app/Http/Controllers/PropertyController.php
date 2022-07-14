@@ -44,19 +44,25 @@ class PropertyController extends Controller
 
         $Property = new Property;
         $Property->property_id = random_int(100000, 900000);
-        $Property->first_line_address = $request->first_line_address;
-        $Property->second_line_address = $request->second_line_address;
-        $Property->Town = $request->Town;
+        $Property->first_line_address = 'first address';
+        $Property->second_line_address = 'second address';
+        $Property->Town = 'town';
+
+        // $Property->first_line_address = $request->first_line_address;
+        // $Property->second_line_address = $request->second_line_address;
+        // $Property->Town = $request->Town;
+
         $Property->Notes = $request->Notes;
         $Property->Postcode = $request->Postcode;
-        $Property->status = 'active';
+        $Property->status = 'pending';
         $Property->group_id = 1;
         $Property->group_name = 1;
         $Property->group_type = 1;
         $Property->save();
+
         // landlord
-        if (!empty($request->full_name[0])) {
-            foreach ($request->full_name as $key => $name) {
+        if (!empty($request->full_name1[0])) {
+            foreach ($request->full_name1 as $key => $name) {
                 $landlord = new landlord;
                 $landlord->property_id = $Property->property_id;
                 $landlord->full_name = $name;
@@ -66,30 +72,28 @@ class PropertyController extends Controller
             }
         }
 
-        if ($request->has('check_box')) {
-            if (!empty($request->first_name[0])) {
-                foreach ($request->first_name as $key => $name) {
-                    // tenant add
-                    $Tenant = new Tenant;
-                    $Tenant->first_name = $request->first_name[$key];
-                    $Tenant->last_name = $request->last_name[$key];
-                    $Tenant->mobile_no = 0;
-                    $Tenant->email = $request->email[$key];
-                    $Tenant->house_no = $request->house_no[$key];
-                    $Tenant->street_name = $request->street_name[$key];
-                    $Tenant->town = $request->town[$key];
-                    $Tenant->postal_code = $request->postal_code[$key];
-                    $Tenant->save();
+        if (!empty($request->full_name[0])) {
+            foreach ($request->full_name as $key => $name) {
+                // tenant add
+                $Tenant = new Tenant;
+                $Tenant->first_name = $request->full_name[$key];
+                $Tenant->last_name = '';
+                $Tenant->mobile_no = 0;
+                $Tenant->email = $request->email[$key];
+                $Tenant->house_no = '';
+                $Tenant->street_name = '';
+                $Tenant->town = '';
+                $Tenant->postal_code = '';
+                $Tenant->save();
 
-                    // tenant_property add
-                    $tenant_property = new tenant_property();
-                    $tenant_property->tenancy_start_date = $request->tenancy_start_date[$key];
-                    $tenant_property->tenancy_last_date = $request->tenancy_last_date[$key];
-                    $tenant_property->tenant_id = $Tenant->id;
-                    $tenant_property->property_id = $Property->property_id;
-                    $tenant_property->IsExpired = 'active';
-                    $tenant_property->save();
-                }
+                // tenant_property add
+                $tenant_property = new tenant_property();
+                $tenant_property->tenancy_start_date = $request->tenancy_start_date[$key];
+                $tenant_property->tenancy_last_date = $request->tenancy_last_date[$key];
+                $tenant_property->tenant_id = $Tenant->id;
+                $tenant_property->property_id = $Property->property_id;
+                $tenant_property->IsExpired = 'active';
+                $tenant_property->save();
             }
         }
 

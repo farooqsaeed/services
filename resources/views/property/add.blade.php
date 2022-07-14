@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
-
+ 
 
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
@@ -12,167 +12,148 @@
         <span class="span"> &nbsp;&nbsp; Add Properties</span>
     </div>
     <div class="p-3 addform">
-        <div class="row  ">
-            <form class="w-100">
+        <div class="row">
+            <!-- <form class="w-100">
                 <div class="my-3 col-lg-10  offset-lg-1  ">
                     <label for="">Search by postal Code</label>
                     <div class="input-group ">
-                        <input type="search" id="search" class="form-control rounded" placeholder="Search"
-                            aria-label="Search" aria-describedby="search-addon" />
+                          <input type="search" id="search" class="form-control rounded" placeholder="Search"
+                            aria-label="Search" aria-describedby="search-addon" />  
                         <button onclick="getAddress()" type="button" class="btn btn-success success">search</button>
                     </div>
                 </div>
                 <div class="my-3 col-lg-10  offset-lg-1  ">
-                    <div class="form-group">
+                      <div class="form-group">
                         <label for="">Select Address</label>
                         <select class="form-control" name="" id="addressList">
                         </select>
-                    </div>
+                    </div>  
                 </div>
-            </form>
+            </form> -->
         </div>
-        <form id="myform" >
+        <form id="myform">
             @csrf
-            <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Enter Property Details</h3>
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">1st line Address *</label>
-                        <input type="text" class="form-control" name="first_line_address" id="firstline" required
-                            placeholder="1st line Address *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">2nd line Address *</label>
-                        <input type="text" class="form-control" name="second_line_address" id="secondline"
-                        value="" placeholder="Enter 2nd line Address *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Town *</label>
-                        <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town "
-                            required />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Post code *</label>
-                        <input type="text" class="form-control" name="Postcode" required id="postcode"
-                            placeholder="Enter Post code *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mb-lg-5">Notes *</label>
-                        <input type="text" class="form-control mt-lg-5" name="Notes" id="" required
-                            placeholder="Enter Text Message" />
+            <div class="row">
+                <!-- {/* Property Details */} -->
+                <div class="col-lg-6  p-lg-5 p-4">
+                    <div class="row customshadow p-4">
+                        <div class="col-lg-12">
+                            <h3 class="Certificate">Enter Property Details</h3>
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" name="Postcode" id="search" class="form-control" required
+                                placeholder="Postal Code *" />
+                            <button onclick="getAddress()" class="d-none"></button>
+                        </div>
+                        <div class="my-3 col-12">
+                            <select type="text" class="form-control" id="addressList" required>
+                                <option selected>Select Address *</option>
+                            </select>
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="manageby" required
+                                placeholder="Manage by *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <textarea name="Notes" id="" class="form-control" rows="5">Note*</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- {/* Landlord Info */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Enter Landlord Info</h3>
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Full Name *</label>
-                        <input type="text" class="form-control" name="full_name[]" required id=""
-                            placeholder="Full Name *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email1[]" id="" required
-                            placeholder="Enter Email Address " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="contact_no[]" id="" required
-                            placeholder="Enter   Contact Number  " />
-                    </div>
-                    <div class="my-3 col-lg-6 ">
-                    </div>
-                </div>
-                <div class="landlord_waraper">
-                </div>
-                <div class="row">
-                    <div class="my-3 col-6 ">
-                        <input type="checkbox" name="check_box" class="showtenant" id="" onchange="valueChanged()"
-                            checked /> Assign
-                        Tenant.
-                    </div>
-                    <div class="my-3 col-6 text-right">
-                        <button id="addmorelandlord" class="btn btn-info success btn-sm addmorelandlord">Add
-                            Another</button>
+                <!-- {/* Landlord Info */} -->
+                <div class="col-lg-6  p-lg-5 p-4">
+                    <div class="row customshadow p-4">
+                        <div class="col-lg-12">
+                            <h3 class="Certificate">Enter Landlord Info</h3>
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="full_name1[]" required
+                                placeholder="Full Name *" />
+                        </div>
+
+                        <div class="my-3 col-12">
+                            <input type="email" class="form-control" name="email1[]" required
+                                placeholder="Email Address *" />
+                        </div>
+
+                        <div class="my-3 col-12">
+                            <input type="tel" class="form-control" name="contact_no[]" required
+                                placeholder="Contact Number *" />
+                        </div>
+                        <div class="col-12 landlord_wrapper">
+
+                        </div>
+                        <div class="mt-lg-5 col-12 text-right ">
+                            <button class="btn success addmorelandlord btn-sm mt-lg-3">Add another</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- {/* Tenant Detail */} -->
-            <div class="col-lg-10 offset-lg-1  showtenantdiv">
-                <div class="mt-5">
-                    <h3 class="Certificate">Enter Tenant Detail</h3>
+                <!-- {/* Tenant Detail */} -->
+                <div class="col-lg-6  p-lg-5 p-4">
+                    <div class="row customshadow p-4">
+                        <div class="col-lg-12">
+                            <h3 class="Certificate">Enter Tenant Detail</h3>
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="full_name[]" required
+                                placeholder="Full Name *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="email" class="form-control" name="email[]" required
+                                placeholder="Email Address *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="tel" class="form-control" name="mobile_no[]" required
+                                placeholder="Contact Number *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="date" class="form-control" name="tenancy_start_date[]" id="" required
+                                placeholder="Move in Date *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="date" class="form-control" name="tenancy_last_date[]" id="" required
+                                placeholder="Move out Date *" />
+                        </div>
+                        <div class="col-lg-12 tenant_waraper">
+
+                        </div>
+                        <div class="mt-lg-5 col-12 text-right ">
+                            <button class="btn success addtenant btn-sm mt-lg-3">Add another</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">First Name *</label>
-                        <input type="text" class="form-control" name="first_name[]" id="" placeholder="First Name *"
-                            required />
+                <!-- property hide fields -->
+                <div class="col-lg-10 offset-lg-1 d-none ">
+                    <div class="mt-5">
+                        <h3 class="Certificate">Enter Property Details</h3>
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Last Name *</label>
-                        <input type="text" class="form-control" name="last_name[]" id="" placeholder="Enter Last Name "
-                            required />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Contact Number *</label>
-                        <input type="tel" class="form-control" name="mobile_no[]" id="" required
-                            placeholder="Enter   Contact Number  " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Email Address *</label>
-                        <input type="email" class="form-control" name="email[]" id="" required
-                            placeholder="Enter Email Address *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">House No*</label>
-                        <input type="text" class="form-control" name="house_no[]" id="" placeholder="Enter house no*"
-                            required />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Street Name*</label>
-                        <input type="text" class="form-control" name="street_name[]" id="" required
-                            placeholder="Enter Street Name*" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Town*</label>
-                        <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*"
-                            required />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Postal Code*</label>
-                        <input type="text" class="form-control" name="postal_code[]" id="" required
-                            placeholder="Enter postal code " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Move in Date *</label>
-                        <input type="date" class="form-control" name="tenancy_start_date[]" id="" required
-                            placeholder="Enter   Contact Number  " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Move out Date *</label>
-                        <input type="date" class="form-control" name="tenancy_last_date[]" id="" required
-                            placeholder="Enter   Contact Number  " />
-                    </div>
-                    <div class="col-12 tenant_wrapper"></div>
-                    <div class="my-3 col-lg-6 ">
-                        <input type="checkbox" name="" id=""> Send Sign Up Info.
-                    </div>
-                    <div class="my-3 col-lg-6 text-right">
-                        <button id="addtenant" class="btn btn-info success btn-sm">Add Another</button>
+                    <div class="row">
+                        <div class="my-3 col-lg-6">
+                            <label htmlFor="">1st line Address *</label>
+                            <input type="text" class="form-control" name="first_line_address" id="firstline"
+                                placeholder="1st line Address *" />
+                        </div>
+                        <div class="my-3 col-lg-6">
+                            <label htmlFor="">2nd line Address *</label>
+                            <input type="text" class="form-control" name="second_line_address" id="secondline" value=""
+                                placeholder="Enter 2nd line Address *" />
+                        </div>
+                        <div class="my-3 col-lg-6">
+                            <label htmlFor="">Town *</label>
+                            <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town "
+                                value="null" />
+                        </div>
+                        <div class="my-3 col-lg-6">
+
+                        </div>
+
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-10 offset-lg-1">
                 <div class="row">
-                    <div class="my-3   col-lg-4 ">
-                        <button type="reset" class="btn btn-outline-success btn-block">Cancel</button>
+                    <div class="my-3 col-lg-4 ">
+                        <a href="{{ url()->previous() }}" type="reset" class="btn btn-outline-success btn-block">Cancel</a>
                     </div>
                     <div class="my-3 col-lg-4 offset-lg-4 text-right">
                         <button type="submit" id="formbtn" class="btn btn-success   btn-block">SAVE</button>
@@ -180,61 +161,13 @@
                 </div>
             </div>
         </form>
-        <form id="bulkuploadform" class="row addform ">
-            <!-- {/*  Bulk Upload   */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <h3 class="Certificate">Bulk Upload</h3>
-                    </div>
-                    <div class="my-3 col-lg-6 text-right">
-                        <button class="btn btn-info success btn-sm">Add Another</button>
-                    </div>
-                    <div class="my-3 col-lg-12">
-                        <div class="dropzone-wrapper">
-                            <div class="dropzone-desc">
-                                <i class="glyphicon glyphicon-download-alt"></i>
-                                <p>Select file to upload</p>
-                            </div>
-                            <input type="file" name="img_logo" class="dropzone">
-                        </div>
-                        <p class="excel">Only Excel and CSV File are allowed. Please check the template before uploading
-                            file!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-10 offset-lg-1">
-                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
-                    style="display: none;">
-                    <span id="message"></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn1"
-                    value="Add">Upload</button>
-            </div>
-        </form>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script>
-    $('#gridCheck1').on('click', function () {
-        var is_checked = $(this).is(':checked');
-        if (is_checked) {
-            $('#Businessman').show();
-        }
-        else {
-            $('#Businessman').hide();
-        }
-    });
-</script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 <!-- ajax submition -->
 <script>
@@ -267,16 +200,18 @@
                 allAddress = result.addresses
                 var items = result.addresses
                 document.getElementById('addressList').innerHTML = null
-                $('#addressList').append(`<option>--Select--
-                           </option>`);
+                $('#addressList').append(`<option>--Select-- </option>`);
                 for (var i = 0; i < items.length; i++) {
-                    $('#addressList').append(`<option value="${items[i].line_1}">
-                          ${items[i].line_1 + ' ' + items[i].line_2 + ' ' + items[i].town_or_city + ' ' + items[i].county} </option>`);
+                    $('#addressList').append(`<option value="${items[i].line_1}"> ${items[i].line_1 + ' ' + items[i].line_2 + ' ' + items[i].town_or_city + ' ' + items[i].county} </option>`);
                 }
-
+            },
+            error: function (xhr, ajaxOptions, error, thrownError) {
+                alert(xhr.status);
+                console.log(error)
             }
         });
     }
+
     // form submition
     $('#myform').submit(function (e) {
         e.preventDefault();
@@ -305,62 +240,6 @@
 
 </script>
 
-<!-- drag adn drop -->
-<script>
-    // Code By Webdevtrick ( https://webdevtrick.com )
-    function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                var htmlPreview =
-                    '<img width="200" src="' + e.target.result + '" />' +
-                    '<p>' + input.files[0].name + '</p>';
-                var wrapperZone = $(input).parent();
-                var previewZone = $(input).parent().parent().find('.preview-zone');
-                var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
-
-                wrapperZone.removeClass('dragover');
-                previewZone.removeClass('hidden');
-                boxZone.empty();
-                boxZone.append(htmlPreview);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function reset(e) {
-        e.wrap('<form>').closest('form').get(0).reset();
-        e.unwrap();
-    }
-
-    $(".dropzone").change(function () {
-        readFile(this);
-    });
-
-    $('.dropzone-wrapper').on('dragover', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).addClass('dragover');
-    });
-
-    $('.dropzone-wrapper').on('dragleave', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).removeClass('dragover');
-    });
-
-    $('.remove-preview').on('click', function () {
-        var boxZone = $(this).parents('.preview-zone').find('.box-body');
-        var previewZone = $(this).parents('.preview-zone');
-        var dropzone = $(this).parents('.form-group').find('.dropzone');
-        boxZone.empty();
-        previewZone.addClass('hidden');
-        reset(dropzone);
-    });
-</script>
-
 <!-- show tenant checkbox -->
 <script type="text/javascript">
     function valueChanged() {
@@ -371,27 +250,26 @@
     }
 </script>
 
-<!-- landlord -->
+<!-- add another tenant  -->
 <script>
-    $(".addmorelandlord").click(function (e) {
+    $(".addtenant").click(function (e) {
         e.preventDefault();
-        $(".landlord_waraper").append('<div class="landlord-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removelandbtn" > Remove</a > </div > <div class="my-3 col-lg-6"><label htmlFor="">Full Name *</label><input type="text" class="form-control" name="full_name[]" required id="" placeholder="Full Name *" /> </div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email1[]" id="" required placeholder="Enter Email Address" /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="contact_no[]" id="" required placeholder="Enter Contact Number" /></div></div>');
+        $(".tenant_waraper").append('<div class="tenant-wraper row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removetenantbtn" > Remove </a > </div > <div class="my-3 col-lg-12"> <input type="text" class="form-control" name="full_name[]" required id="" placeholder="Full Name *" /> </div><div class="my-3 col-lg-12"> <input type="email" class="form-control" name="email[]" id="" required placeholder="Email Address" /> </div> <div class="my-3 col-lg-12"><input type="tel" class="form-control" name="mobile_no[]" id="" required placeholder=" Contact Number" /></div><div class= "my-3 col-lg-12"><input type="date" class="form-control" name="tenancy_start_date[]" id="" required placeholder="Move in Date *" /> </div><div class="my-3 col-lg-12"><input type = "date" class= "form-control" name = "tenancy_last_date[]" id = "" required placeholder = "Move out Date *" /></div ></div>');
     });
-
-    $("body").on("click", ".removelandbtn", function () {
-        $(this).parents(".landlord-wraper").remove();
+    $("body").on("click", ".removetenantbtn", function () {
+        $(this).parents(".tenant-wraper").remove();
     });
 </script>
 
-<!--tenant  -->
+<!-- add another landlord -->
 <script>
-    $("#addtenant").click(function (e) {
+    $(".addmorelandlord").click(function (e) {
         e.preventDefault();
-        $(".tenant_wrapper").append('<div class="tenant-wraper  row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removetntbtn" > Remove</a > </div ><div class="my-3 col-lg-6"><label htmlFor = "" > First Name *</label> <input type="text" class="form-control" name="first_name[]" id="" placeholder="First Name *" required /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">Last Name *</label> <input type="text" class="form-control" name="last_name[]" id="" placeholder="Enter Last Name " required /></div> <div class="my-3 col-lg-6"> <label htmlFor="">Contact Number *</label> <input type="tel" class="form-control" name="mobile_no[]" id="" required placeholder="Enter   Contact Number  " /></div><div class="my-3 col-lg-6"><label htmlFor="">Email Address *</label> <input type="email" class="form-control" name="email[]" id="" required placeholder="Enter Email Address *" /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">House No*</label> <input type="text" class="form-control" name="house_no[]" id="" placeholder="Enter house no*"required /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Street Name*</label> <input type="text" class="form-control" name="street_name[]" id="" required placeholder="Enter Street Name*" /></div> <div class="my-3 col-lg-6"> <label htmlFor="">Town*</label> <input type="text" class="form-control" name="town[]" id="" placeholder="Enter Town*" required /> </div> <div class="my-3 col-lg-6"><label htmlFor="">Postal Code*</label> <input type="text" class="form-control" name="postal_code[]" id="" required placeholder="Enter postal code " /> </div><div class="my-3 col-lg-6"> <label htmlFor="">Move in Date *</label> <input type="date" class="form-control" name="tenancy_start_date[]" id="" required  /> </div> <div class="my-3 col-lg-6"> <label htmlFor="">Move out Date *</label> <input type="date" class="form-control" name="tenancy_last_date[]" id="" required  /></div>  </div>');
+        $(".landlord_wrapper").append('<div class="landlord-wraper row"><div class="col-lg-12 text-right"><a class= "btn btn-sm btn-outline-danger removelandlordbtn" > Remove</a > </div ><div class="my-3 col-lg-12"><input type="text" class="form-control" name="full_name1[]" id="" placeholder="First Name *" required /> </div><div class="my-3 col-lg-12"><input type="email" class="form-control" name="email1[]" id="" required placeholder="Email Address *" /> </div> <div class= "my-3 col-lg-12" > <input type="tel" class="form-control" name="contact_no[]" id="" required placeholder="Contact Number  " /></div ></div>');
     });
 
-    $("body").on("click", ".removetntbtn", function () {
-        $(this).parents(".tenant-wraper").remove();
+    $("body").on("click", ".removelandlordbtn", function () {
+        $(this).parents(".landlord-wraper").remove();
     });
 </script>
 @endsection

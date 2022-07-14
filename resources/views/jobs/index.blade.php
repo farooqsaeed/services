@@ -36,35 +36,23 @@
     .table th {
         border: none;
     }
-    .bg-info
-    {
-     background-color: #7d8ace !important;
-     border-radius: 10px !important;
+
+    .bg-info {
+        background-color: #7d8ace !important;
+        border-radius: 10px !important;
     }
 </style>
 
 
 <div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-lg-0 map_view">
-            <a href="/mapview">
-                <div class=" Header d-none  d-sm-block">
-                    <div class="row  ">
-                        <div class="col-lg-3 ">
-                            <h2>Map View</h2>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
-            <div class="card py-0 my-0 border-0  BreadCrumb_card">
+    <div class="row bg-green">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="py-3 my-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
-                    <div class="d-flex justify-content-between my-0 align-items-center">
+                    <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-suitcase" aria-hidden="true"></i>
-                            Jobs
-                        </span>
-                        <div class="notification">
+                            Jobs</span>
+                        <div class="notification mt-3">
                             @include('../layouts/header')
                         </div>
                     </div>
@@ -76,9 +64,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0  ">
             <div class="card py-0 my-0 border-0 BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
-                    <div class="d-flex  justify-content-between mt-5 mb-0 ">
-                        <div class="card-text p-0   mt-0">
-                            <ol class="breadcrumb bg-white collapse show">
+                    <div class="d-flex  justify-content-between align-items-baseline mt-5 mb-0 ">
+                        <div class="card-text p-0 ">
+                            <ol class="breadcrumb bg-white   ml-lg-2 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
@@ -87,7 +75,7 @@
                                 </li>
                             </ol>
                         </div>
-                        <div class="notification  align-self-center">
+                        <div class="notification ">
                             <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
@@ -101,20 +89,20 @@
             <div class="menu p-3">
                 <p class="active ml-3">
                     <a href="{{url('jobs')}}"> New Jobs
-                             @if($jobcount !==null)
-                                <sup class="badge badge-pill badge-danger">
-                                    <small>{{ $jobcount}}</small>
-                                </sup>
-                            @endif
-                         
+                        @if($jobcount !==null)
+                        <sup class="badge badge-pill badge-danger">
+                            <small>{{ $jobcount}}</small>
+                        </sup>
+                        @endif
+
                     </a>
                 </p>
                 <p class="mx-2"><a href="{{url('inprogress-job')}}"> In progress Jobs
-                    <sup class="badge badge-danger"> </sup>
-                </a></p>
+                        <sup class="badge badge-danger"> </sup>
+                    </a></p>
                 <p class="mx-2">Auto Resolved Jobs</p>
                 <p class=" mx-2"><a href="{{url('resolved-job')}}">Resolved Jobs </a></p>
-                <p class=" mx-2"><a href="{{url('closed-job')}}">Resolved Jobs </a></p>
+                <p class=" mx-2"><a href="{{url('closed-job')}}">Closed Jobs </a></p>
             </div>
 
         </div>
@@ -124,7 +112,7 @@
                     <a href="{{url('job')}}/job"><button class="btn btn-success btn-sm ">Add Jobs</button></a>
                 </div>
                 <thead class="border-0">
-                    <tr >
+                    <tr>
                         <th>Case Number</th>
                         <th>Property ID</th>
                         <th>Subject</th>

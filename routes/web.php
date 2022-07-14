@@ -131,14 +131,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('delete-properties', [PropertyController::class, 'delete_proterties']);
 
     // compliance
-    Route::get('electrical-check', [ComplianceController::class, 'electrical']);
-    Route::get('gas-check', [ComplianceController::class, 'gas']);
-    Route::get('fire-check', [ComplianceController::class, 'fire']);
-    Route::get('inspection-check', [ComplianceController::class, 'inspection']);
-    Route::get('energy-check', [ComplianceController::class, 'energy']);
+    Route::get('electrical-check/{id}', [ComplianceController::class, 'electrical'])->name('electrical-check');
+    Route::get('gas-check/{id}', [ComplianceController::class, 'gas'])->name('gas.check');
+    Route::get('fire-check/{id}', [ComplianceController::class, 'fire'])->name('fire-check');
+    Route::get('inspection-check/{id}', [ComplianceController::class, 'inspection'])->name('inspection-check');
+    Route::get('energy-check/{id}', [ComplianceController::class, 'energy'])->name('energy-check');
 
-
-
+    Route::post('compliance-store', [ComplianceController::class, 'complianceStore'])->name('compliance-store');
 
     // groups
     Route::resource('groups', GroupController::class);

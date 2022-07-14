@@ -18,13 +18,13 @@
             <div class="col-lg-10 offset-lg-1  mt-lg-4">
                 <div class="menu ">
                     <p class=" mr-3">
-                        <a href="/electrical-check">
+                        <a href="{{url('electrical-check/'.$property->id)}}">
                             Electrical Safety Check
                         </a>
                     </p>
-                    <p class="mr-2"><a href="/gas-check">GAS Safety Check</a></p>
-                    <p class="mr-2"><a href="/fire-check">Fire Safety Check</a></p>
-                    <p class="mr-2"><a href="/energy-check">Energy Performance Check</a></p>
+                    <p class="mr-2"><a href="{{url('gas-check/'.$property->id)}}">GAS Safety Check</a></p>
+                    <p class="mr-2"><a href="{{url('fire-check/'.$property->id)}}">Fire Safety Check</a></p>
+                    <p class="mr-2"><a href="{{url('energy-check/'.$property->id)}}">Energy Performance Check</a></p>
                     <p class="active">Inspection Report</p>
 
                 </div>
@@ -45,6 +45,9 @@
                             placeholder="Enter Town " />
                     </div>
                     <div class="my-3 col-lg-6">
+                        <input type="hidden" class="form-control mt-lg-5" name="property_id"
+                            value="{{$property->id}}" />
+                        <input type="hidden" class="form-control mt-lg-5" name="type" value="inspection-check" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="mb-lg-5">Description</label>
@@ -67,16 +70,14 @@
 
 <!-- ajax submition -->
 <script>
-    $('  inspection-form').submit(function (e) {
+    $('#inspection-form').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-
-            // url: "",
-
+            url: "{{route('compliance-store')}}",
             data: $('#inspection-form').serialize(),
-            type: 'PUT',
+            type: 'POST',
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
@@ -84,16 +85,13 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                window.location.replace("/property");
+                window.location = result.url;
             }
         })
     })
 
 </script>
 
-<script>
-    toastr.danger(error);
-</script>
-
+ 
 
 @endsection

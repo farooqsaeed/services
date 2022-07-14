@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use function PHPSTORM_META\type;
+
 class property_certificate extends Model
 {
     use HasFactory;
@@ -15,6 +17,8 @@ class property_certificate extends Model
 		'certificate_number',
 		'smoke_alarm_expiry',
 		'carbon_monoxide_expiry',
-		'property_id'
+		'type',
+		'property_id',
+		'description'
     ];
 }

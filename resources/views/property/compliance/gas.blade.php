@@ -18,26 +18,24 @@
             <div class="col-lg-10 offset-lg-1  mt-lg-4">
                 <div class="menu ">
                     <p class=" mr-3">
-                        <a href="/electrical-check">
-                        Electrical Safety Check
+                        <a href="{{url('electrical-check/'.$property->id)}}">
+                            Electrical Safety Check
                         </a>
                     </p>
                     <p class="active mr-2">GAS Safety Check</p>
-                    <p class="mr-2"><a href="/fire-check">Fire Safety Check</a></p>
-                    <p class=" mr-2"><a href="/energy-check">Energy Performance Check</a></p>
-                    <p class=""><a href="/inspection-check">Inspection Report</a></p>
+                    <p class="mr-2"><a href="{{url('fire-check/'.$property->id)}}">Fire Safety Check</a></p>
+                    <p class=" mr-2"><a href="{{url('energy-check/'.$property->id)}}">Energy Performance Check</a></p>
+                    <p class=""><a href="{{url('inspection-check/'.$property->id)}}">Inspection Report</a></p>
 
                 </div>
                 <div class="row">
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Date Carried Out</label>
-                        <input type="text" class="form-control" name="date_carried_out" value="" id=""
-                            placeholder="Date Carried Out *" />
+                        <input type="date" class="form-control" name="date_carried_out" value="" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Renewal Date</label>
-                        <input type="text" class="form-control" name="renewal_date" id="" value=""
-                            placeholder="Renewal Date *" />
+                        <input type="date" class="form-control" name="renewal_date" required value="" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Certificate Number</label>
@@ -45,6 +43,9 @@
                             placeholder="Enter Town " />
                     </div>
                     <div class="my-3 col-lg-6">
+                        <input type="hidden" class="form-control mt-lg-5" name="property_id" id="property_id"
+                            value="{{$property->id}}" />
+                        <input type="hidden" class="form-control mt-lg-5" name="type" value="gas-check" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="" class="mb-lg-5">Description</label>
@@ -67,16 +68,14 @@
 
 <!-- ajax submition -->
 <script>
-    $('  gas-form').submit(function (e) {
+    $('#gas-form').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-
-            // url: "",
-
+            url: "{{route('compliance-store')}}",
             data: $('#gas-form').serialize(),
-            type: 'PUT',
+            type: 'POST',
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
@@ -84,15 +83,11 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                window.location.replace("/property");
+                window.location = result.url;
             }
         })
     })
 
-</script>
-
-<script>
-    toastr.danger(error);
 </script>
 
 

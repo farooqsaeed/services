@@ -13,84 +13,81 @@
         <span class="span"> &nbsp;&nbsp;&nbsp; Add Jobs</span>
     </div>
     <div class="p-3">
-        <form id="jobform" class="row addform" enctype="multipart/form-data" action="{{URL('jobs')}}" method="post">
+        <form id="jobform" class="addform" method="post" action="{{URL('jobs')}}" enctype="multipart/form-data">
             @csrf
-            <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Enter Job Details</h3>
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <div class="form-group">
-                            <label htmlFor="">Select Property*</label>
-                            <select class="form-control" name="property_id">
-                                <option selected disabled>Select Property</option>
-                                @foreach($properties as $property)
-                                <option value="{{$property->property_id}}"> {{$property->first_line_address}} {{$property->second_line_address}} {{$property->Town}}</option>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 p-lg-5 p-4">
+                    <div class="row customshadow p-4">
+                        <div class="col-lg-12">
+                            <h3 class="Certificate">Enter Job Details</h3>
+                        </div>
+                        <div class="my-3 col-12">
+                            <select name="property_id" class="form-control" id="">
+                                <option>Select Property</option>
+                                @foreach($properties as $item)
+                                <option value="{{$item->id}}">
+                                    {{$item->first_line_address}}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" name="address" id="" required
-                            placeholder=" line Address *" />
-                    </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="tenant_name" id="" required
+                                placeholder="Tenant Name *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="address" required placeholder="Address *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="contact" id="" required
+                                placeholder="Contact *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <label class="form-check-label" for="inlineCheckbox1">Severity</label>
+                            <br>
+                            <div class="d-flex justify-content-around pt-2">
+                                <label class="radio-inline">
+                                    <input type="radio" name="severity" value="Non-Emergency" checked>&nbsp; Emergency
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" value="Non-Emergency" name="severity">&nbsp; Non-Emergency
+                                </label>
+                            </div>
 
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="tenant_name" id="" required
-                            placeholder="Enter Tenant Name    " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="contact" id="" required
-                            placeholder="Enter Contact *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="">Upload Attachment *</label>
-                        <input type="file" class="form-control " name="attachment" id="" required />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="">Description *</label>
-                        <input type="text" class="form-control" name="description" id="" required placeholder="Enter  Text Message" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <div class="form-group">
-                            <label htmlFor="" class="">Category *</label>
-                            <select class="form-control" name="category" id="country-dd">
-                                <option selected disabled>Select Category </option>
-                                @foreach($categories as $cat)
-                                <option value="{{$cat->id}}"> {{$cat->name}}</option>
-                                @endforeach
-                            </select>
                         </div>
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <div class="form-group">
-                            <label htmlFor="" class="">Sub Category *</label>
-                            <select class="form-control" name="subcategory" id="state-dd">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="">Subject </label>
-                        <input type="text" class="form-control" name="subject" id="" required
-                            placeholder="Enter  Subject  " />
+                        <div class="my-3 col-lg-12">
+                                 <select class="form-control" name="category" id="country-dd">
+                                    <option selected disabled>Select Category </option>
+                                    @foreach($categories as $cat)
+                                    <option value="{{$cat->id}}"> {{$cat->name}}</option>
+                                    @endforeach
+                                </select>
+                         </div>
+                        <div class="my-3 col-lg-12">
+                                 <select class="form-control" name="subcategory" id="state-dd">
+                                    <option>Sub category</option>
+                                </select>
+                         </div>
+                        <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="subject" id="" required
+                                placeholder="Enter  Subject  " />
                             <input type="hidden" name="routeStatus" value="{{ $id }}" />
+                        </div>
+                        <div class="col-12 my-3">
+                            <input type="file" class="form-control " name="attachment" title="attachment" id=""
+                                required />
+                        </div>
+                        <div class="col-12 my-3">
+                            <textarea name="description" class="form-control" cols="30" rows="5">Description</textarea>
+                        </div>
+                        <div class="col-12  my-3">
+                            <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>
+                        </div>
                     </div>
-                    <div class="my-3 col-lg-6 text-right">
-                        <button class="btn btn-info success btn-sm">Add Another</button>
-                    </div>
-                </div>
-                <div class="col-4 offset-4  mt-5">
-                    <button id="formbtn" type="submit" class="btn btn-info success btn-block ">Save</button>
                 </div>
             </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -111,7 +108,7 @@
 
 <!-- ajax submition -->
 <script>
-    $(' jobform').submit(function (e) {
+    $('#  jobform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
@@ -132,10 +129,7 @@
             }
         })
     })
-
 </script>
-
-
 
 <!-- select cat -->
 <script>

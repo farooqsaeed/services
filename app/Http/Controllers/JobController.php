@@ -24,8 +24,8 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'pending')->get();
-        $jobcount=count($jobs);
-      
+        $jobcount = count($jobs);
+
         return view('jobs.index', compact(['jobs', 'jobcount']));
     }
     // resolved
@@ -92,7 +92,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-
+         
         $path = null;
         if ($request->hasFile('attachment')) {
             $image = $request->attachment;
@@ -112,7 +112,7 @@ class JobController extends Controller
             'description' => $request->description,
             'subject' => $request->subject,
             'case_no' => "1",
-            'property_id' => $request->property_id,
+            'property_id' =>$request->property_id,
             'category' => $request->category,
             'subCategory' => $request->subcategory,
             'notes' => "nothing to ",
@@ -149,7 +149,8 @@ class JobController extends Controller
     {
         $job = Job::findorFail($id);
         $notes = Jobnote::where('job_id', $job->id)->get();
-        $property = Property::where('property_id', '=', $job->property_id)->first();
+        $property = Property::where('id', '=', $job->property_id)->first();
+         
         if (!empty($property)) {
             return view('jobs.show', compact(['job', 'property', 'notes']));
         } else {

@@ -178,7 +178,7 @@
 
   .dashboard-nav header {
     min-height: 84px;
-    padding: 8px 27px;
+    padding: 0px 27px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -246,7 +246,7 @@
     margin-right: 10px;
   }
 .brand-logo img{
-  width: 150px;
+  width: 100%;
   height: 120px;
  
 }

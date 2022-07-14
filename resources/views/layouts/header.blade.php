@@ -4,7 +4,7 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
 @endphp
 
-<link rel="stylesheet" href="{{URL::asset('assets/css/plumber.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 
 <style>
     .cards .card a {
@@ -49,11 +49,11 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
     form .fa,
     form p {
-        color:#737475 ;
+        color: #737475;
     }
 </style>
 
-<div class="dropdown mt-2 mr-2">
+<div class="dropdown mt-2  ">
     <button class="btn btn-success btn-sm success px-4 dropdown-toggle" type="button" data-toggle="dropdown">Global
         <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -74,17 +74,27 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
         @endforeach
     </ul>
 </div>
-<div class="fa fa-bell mr-2 mt-1">
+<div class="fa fa-bell mx-4 mt-1">
     <p class="mt-1">Notification</p>
 </div>
-<div class="">
+
+<div class="position-relative">
+    <i class="fa fa-ellipsis-v mt-2" id="dots3" aria-hidden="true">
+    </i>
+</div>
+
+<div class="logoutdiv ">
     <form action="{{ URL::to('signout') }}" method="post">
         @csrf
-        <button class="fa fa-sign-out btn" type="submit"><br>
+        <button class="btn btn-block" type="submit"><br>
             <p>Logout</p>
         </button>
     </form>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 <script>
     $(document).ready(function () {
@@ -92,6 +102,11 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
             $(this).next('ul').toggle();
             e.stopPropagation();
             e.preventDefault();
+        });
+
+
+        $("#dots3").click(function () {
+            $(".logoutdiv").toggle();
         });
     });
 </script>

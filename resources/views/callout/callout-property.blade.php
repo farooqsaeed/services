@@ -10,42 +10,33 @@
         <span class="span">&nbsp;&nbsp; Assign Property</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform">
+        <form id="myform" class="addform">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Assign Property to Guard</h3>
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor=""> Callout Name *</label>
-                        <input type="text" class="form-control" name="Guard_Name" value="{{$gaurd->Guard_Name}}"
-                            disabled>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 px-lg-5 p-4">
+                    <div class="row customshadow p-4 ">
+                        <div class="col-lg-12">
+                            <h3 class="Certificate">Assign Property to Guard</h3>
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="Guard_Name" value="{{$gaurd->Guard_Name}}"
+                                disabled>
+                        </div>
+                        <div class="my-3 col-lg-12">
+                             <select name="property_id" class="form-control">
+                                @foreach($properties as $property)
+                                <option value="{{$property->property_id}}">{{$property->first_line_address}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <button class="btn btn-success" type="submit" name="submit" id="formbtn" value="Add">Update</button>
+                        </div>
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor=""> Property *</label>
-                        <select name="property_id" class="form-control">
-                            @foreach($properties as $property)
-                            <option value="{{$property->property_id}}">{{$property->first_line_address}}</option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
             </div>
-            <div class="col-lg-10 offset-lg-1">
-                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
-                    style="display: none;">
-                    <span id="message"></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Update</button>
-            </div>
+
         </form>
     </div>
 </div>
@@ -71,8 +62,6 @@
                 $('#formbtn').text('Update');
             },
             success: function (result) {
-                // $('#message').html(result.result);
-                // $("#msgdiv").css({ display: "block" });
                 $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');

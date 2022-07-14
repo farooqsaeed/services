@@ -12,49 +12,42 @@
         <span class="span">&nbsp;&nbsp;&nbsp; Update Jobs</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform">
+        <form id="myform" class=" addform">
             @csrf
-            <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Update Job Details</h3>
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Address *</label>
-                        <input type="text" class="form-control" value="{{$job->address}}" name="address" id=""
-                            placeholder="line Address *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Tenant Name *</label>
-                        <input type="text" class="form-control" name="tenant_name" id="" value="{{$job->tenant_name}}"
-                            placeholder="Enter Tenant Name" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Contact *</label>
-                        <input type="text" class="form-control" name="contact" id="" placeholder="Enter Contact *"
-                            value="{{$job->contact}}" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Description *</label>
-                        <input type="text" class="form-control" name="description" id=""
-                            placeholder="Enter  Text Message" value="{{$job->description}}" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Subject </label>
-                        <input type="text" class="form-control" name="subject" id="" placeholder="Enter  Subject"
-                            value="{{$job->subject}}" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <div class="text-right">
-                            <button class="btn btn-info success btn-sm">Add Another</button>
+            <div class="row">
+                <!-- {/* Property Details */} -->
+                <div class="col-lg-6 offset-lg-3  p-lg-5 p-4  ">
+                    <div class="row customshadow p-4 ">
+                        <div class="my-3 col-lg-12">
+                            <h3 class="Certificate mb-0">Update Job Details</h3>
                         </div>
-                    </div>
-                    <div class="col-4 offset-4  mt-5">
-                        <button class="btn btn-info success btn-block ">Update</button>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" value="{{$job->address}}" name="address"
+                                placeholder="Address *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="tenant_name" value="{{$job->tenant_name}}"
+                                placeholder="Tenant Name" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="contact" placeholder="Contact no *"
+                                value="{{$job->contact}}" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="description" placeholder="Enter  Text Message"
+                                value="{{$job->description}}" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="subject" placeholder="Enter  Subject"
+                                value="{{$job->subject}}" />
+                        </div>
+                        <div class="my-3 col-lg-12 text-center">
+                            <button class="btn btn-info success px-4">Update</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </form>
     </div>
 </div>
@@ -96,7 +89,6 @@
             }
         })
     })
-
 </script>
 
 

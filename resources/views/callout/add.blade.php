@@ -15,43 +15,30 @@
         <form id="myform" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h3 class="Certificate">Enter Callout Details</h3>
+            <div class="row ">
+                <div class="col-lg-6 offset-lg-3  px-lg-5 p-4  ">
+                    <div class="row customshadow p-4">
+                        <div class="my-3 col-lg-12">
+                            <h3 class="Certificate">Enter Callout Details</h3>
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="Guard_Name" id="" required
+                                placeholder="Full Name *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="tel" class="form-control" name="Guard_Contact" required placeholder="Contact number " />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="Guard_Email"  required placeholder="Email address *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <textarea class="form-control" name="Notes" rows="5">Notes</textarea>
+                        </div>
+                        <div class="col-lg-12 my-3 text-center ">
+                            <button class="btn btn-suc px-5" type="submit" name="submit" id="formbtn">Save</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor=""> Name *</label>
-                        <input type="text" class="form-control" name="Guard_Name" id="" required
-                            placeholder="Enter Full Name *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Mobile No*</label>
-                        <input type="tel" class="form-control" name="Guard_Contact" id="" required placeholder="Enter Contact number " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Email *</label>
-                        <input type="text" class="form-control" name="Guard_Email" id="" required placeholder="Enter Email address *" />
-                    </div>
-
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Notes</label>
-                        <input type="text" class="form-control" name="Notes" id="" placeholder="Enter Notes" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-10 offset-lg-1">
-                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
-                    style="display: none;">
-                    <span id="message"></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Save</button>
             </div>
         </form>
     </div>

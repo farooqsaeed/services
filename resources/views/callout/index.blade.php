@@ -11,24 +11,13 @@
 </style>
 
 <div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0 map_view  ">
-            <a href="/mapview">
-                <div class=" Header d-none  d-sm-block">
-                    <div class="row  ">
-                        <div class="col-lg-3">
-                            <h2>Map View</h2>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
-            <div class="card py-0 my-0 border-0  BreadCrumb_card">
+    <div class="row bg-green">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="py-3 my-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
-                    <div class="d-flex justify-content-between my-0 align-items-center">
+                    <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-comment" aria-hidden="true"></i>
-                            Callout</span>
+                            Callouts</span>
                         <div class="notification mt-3">
                             @include('../layouts/header')
                         </div>
@@ -38,12 +27,12 @@
         </div>
     </div>
     <div class="row  ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0   ">
-            <div class="card py-0 my-0 border-0 border BreadCrumb_card">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0  ">
+            <div class="card py-0 my-0 border-0 BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
-                    <div class="d-flex justify-content-between mt-5 mb-0 ">
-                        <div class="  card-text  ">
-                            <ol class="breadcrumb bg-white ml-lg-3 collapse show">
+                    <div class="d-flex  justify-content-between align-items-baseline mt-5 mb-0 ">
+                        <div class="card-text p-0 ">
+                            <ol class="breadcrumb bg-white   ml-lg-2 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
@@ -52,8 +41,8 @@
                                 </li>
                             </ol>
                         </div>
-                        <div class="  notification">
-                            <div class="mt-n1 " id="collapseExample" role="button">
+                        <div class="notification ">
+                            <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
                             <div id="removeexampletable" class="fa fa-times ml-3"></div>
@@ -62,14 +51,15 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="row">
         <!-- table -->
         <div class="col-lg-12 example_col">
             <table id="callout" class="table border  display text-lg-center" style="width:100%">
                 <div class="addbtn">
                     <a href="callout/create" class=" btn btn-suc btn-sm"> Add Callout </a>
                 </div>
-                <thead  >
+                <thead>
                     <tr>
                         <th> Name</th>
                         <th> Email</th>

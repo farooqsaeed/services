@@ -45,17 +45,19 @@
                         Dashboard
                     </a>
                     <a href="{{URL('property')}}" class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}
-                                            {{ request()->is('property/*') ? 'open active' : '' }}
-                                            ">
+                    {{ request()->is('property/*') ? 'open active' : '' }} ">
                         <i class="fa fa-building"></i> Properties
                     </a>
                     <a href="{{URL('jobs')}}" class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}
-                                        {{ request()->is('jobs/*') ? 'open active' : '' }}    
-                                            ">
+                    {{ request()->is('jobs/*') ? 'open active' : '' }}  
+                    {{ request()->is('job/job') ? 'open active' : '' }}
+                    ">
                         <i class="fa fa-suitcase"></i> Jobs
                     </a>
                     <a href="{{URL('callout')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}">
+                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}
+                         {{ request()->is('callout/*/edit') ? 'open active' : '' }}
+                        ">
                         <i class="fa fa-comment"></i> Callouts
                     </a>
                     <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"

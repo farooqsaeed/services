@@ -3,7 +3,19 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
 
-
+<style>
+    select option {
+        box-shadow: 0px 3px 6px #00000029;
+        background-color: #38BF67;
+        border: 2px solid #737475;
+        border-radius: 10px;
+        color: black;
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 20px;
+    }
+</style>
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
         <span>
@@ -18,18 +30,18 @@
             <div class="col-lg-10 offset-lg-1  mt-lg-4">
                 <div class="menu ">
                     <p class=" mr-3">
-                        <a href="/electrical-check">
+                        <a href="{{url('electrical-check/'.$property->id)}}">
                             Electrical Safety Check
                         </a>
                     </p>
                     <p class="mr-2">
-                        <a href="/gas-check">
+                        <a href="{{url('gas-check/'.$property->id)}}">
                             GAS Safety Check
                         </a>
                     </p>
                     <p class="active mr-2">Fire Safety Check </p>
-                    <p class="mr-2"><a href="/energy-check">Energy Performance Check</a></p>
-                    <p class=""> <a href="/inspection-check"> Inspection Report </a></p>
+                    <p class="mr-2"><a href="{{url('energy-check/'.$property->id)}}">Energy Performance Check</a></p>
+                    <p class=""> <a href="{{url('inspection-check/'.$property->id)}}"> Inspection Report </a></p>
 
                 </div>
                 <div class="row">
@@ -38,18 +50,24 @@
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Date Carried Out</label>
-                        <input type="text" class="form-control" name="date_carried_out" value="" id=""
-                            placeholder="Date Carried Out *" />
+                        <input type="date" class="form-control" name="date_carried_out" value="" required />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Renewal Date (If applicable)</label>
-                        <input type="text" class="form-control" name="renewal_date" id="" value=""
-                            placeholder="Renewal Date *" />
+                        <input type="date" class="form-control" name="renewal_date" id="" value="" />
                     </div>
                     <div class="my-3 col-lg-6">
                         <label htmlFor="">Certificate Number</label>
-                        <input type="text" class="form-control" name="certificate_number" value=""
-                            placeholder="Enter Town " />
+                        <input type="text" class="form-control" name="certificate_number" value="" />
+                    </div>
+                    <div class="col-lg-6"></div>
+                    <div class="my-3 col-lg-6">
+                        <label htmlFor="">Description</label>
+                        <input type="text" class="form-control mt-lg-5" name="description" value="" placeholder="" />
+                    </div>
+                    <div class="my-3 col-lg-6">
+                        <input type="hidden" class="form-control" name="type" value="fire-certificate" />
+                        <input type="hidden" class="form-control" name="property_id" value="{{$property->id}}" />
                     </div>
                     <div class="my-3 mt-lg-5 col-lg-12">
                         <h5>
@@ -57,38 +75,45 @@
                         </h5>
                     </div>
                     <div class="my-3 col-lg-6">
-                        <h6 class="text-secondary">
+                        <h5 class="text-secondary">
                             Present
-                        </h6>
-                        <label htmlFor="">Smoke Alarm</label>
+                        </h5>
                         <br>
-                         &nbsp;&nbsp; <input type="checkbox" name="working" id=""> &nbsp; Working
-                         <br>
-                        <div class="p-3">
-                            <small htmlFor="">&nbsp;&nbsp;&nbsp;&nbsp; Replacement Date (if Applicable)</small>
-                            <input type="text" class="form-control pl-2" name="Replacement" value=""  />
+                        <div class="form-group">
+                            <label for="">Smoke Alarm</label>
+                            <select class="form-control" id="smoke_alarm_select">
+                                <option selected value="working">Working</option>
+                                <option value="notworking">Not Working</option>
+                            </select>
                         </div>
-                        &nbsp;&nbsp; <input type="checkbox" name="working" id=""> &nbsp; Not Working 
-                        <br>
-                        <small htmlFor="">&nbsp;&nbsp;&nbsp;&nbsp; Required-Not present currently</small>
+                        <div id="smoke_alarm_expiry">
+                            <label for="">Replacement</label>
+                            <input type="date" class="form-control pl-2" name="smoke_alarm_expiry" />
+                        </div>
+                        <h5 class="text-secondary mt-3">
+                            Required-Not present Currently
+                        </h5>
                     </div>
                     <div class="my-3 col-lg-6">
-                        <h6 class="text-secondary">
+                        <h5 class="text-secondary">
                             Present
-                        </h6>
-                        <label htmlFor="">Carbon monoxide Alarm</label>
+                        </h5>
                         <br>
-                        &nbsp;&nbsp; <input type="checkbox" name="working" id=""> &nbsp; Working
-                        <br>
-                        <div class="p-3">
-                            <small htmlFor="">&nbsp;&nbsp;&nbsp;&nbsp; Replacement Date (if Applicable)</small>
-                            <input type="text" class="form-control pl-2" name="Replacement" value="" />
+                        <div class="form-group">
+                            <label for="">Carbon mono oxide</label>
+                            <select class="form-control" id="carbon_monoxide_select">
+                                <option selected value="working">Working</option>
+                                <option value="notworking">Not Working</option>
+                            </select>
                         </div>
-                        &nbsp;&nbsp; <input type="checkbox" name="working" id=""> &nbsp; Not Working
-                        <br>
-                        <small htmlFor="">&nbsp;&nbsp;&nbsp;&nbsp; Required-Not present currently</small>
+                        <div id="carbon_monoxide_expiry">
+                            <label for="">Replacement</label>
+                            <input type="date" class="form-control pl-2" name="carbon_monoxide_expiry" />
+                        </div>
+                        <h5 class="text-secondary mt-3">
+                            Required-Not present Currently
+                        </h5>
                     </div>
-
                 </div>
             </div>
             <div class="col-lg-11 text-right p-0">
@@ -104,18 +129,48 @@
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- script for check  -->
+<script>
+    // smoke alert
+    $(document).ready(function () {
+        $("#smoke_alarm_select").change(function () {
+            if ($("#smoke_alarm_select").val() === 'notworking') {
+                $("#smoke_alarm_expiry").hide();
+            }
+            else {
+                $("#smoke_alarm_expiry").show();
+            }
+        });
+    });
+
+    // carbon mono oxide
+    $(document).ready(function () {
+        $("#carbon_monoxide_select").change(function () {
+            if ($("#carbon_monoxide_select").val() === 'notworking') {
+                $("#carbon_monoxide_expiry").hide();
+            }
+            else {
+                $("#carbon_monoxide_expiry").show();
+            }
+        });
+    });
+
+</script>
+
+
 <!-- ajax submition -->
 <script>
-    $('  fire-form').submit(function (e) {
+    $('#fire-form').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
-
-            // url: "",
-
+            url: "{{route('compliance-store')}}",
             data: $('#fire-form').serialize(),
-            type: 'PUT',
+            type: 'POST',
+            error: function (error) {
+                console.log(error);
+            },
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
@@ -123,15 +178,11 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                window.location.replace("/property");
+                window.location = result.url;
             }
         })
     })
 
-</script>
-
-<script>
-    toastr.danger(error);
 </script>
 
 

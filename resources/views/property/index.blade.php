@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
-
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
-
 <link rel="stylesheet" href="{{URL::asset('assets/css/plumbers.css')}}">
 <style>
     .cards .card a {
@@ -48,20 +46,9 @@
     }
 </style>
 <div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0 map_view">
-            <a href="/mapview">
-                <div class=" Header d-none  d-sm-block">
-                    <div class="row  ">
-                        <div class="col-lg-3 ">
-                            <h2>Map View</h2>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
-            <div class="card py-0 my-0 border-0  BreadCrumb_card">
+    <div class="row bg-green">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="  py-3 my-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
                         <span class="card-title my-0 ml-n2"><i class="fa fa-home" aria-hidden="true"></i>
@@ -75,12 +62,12 @@
         </div>
     </div>
     <div class="row  ">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0   ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
             <div class="card py-0 my-0 border-0 border BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
-                    <div class="d-flex  justify-content-between mt-5 mb-0 ">
-                        <div class="card-text p-0 mt-0">
-                            <ol class="breadcrumb bg-white ml-lg-3 collapse show">
+                    <div class="d-flex justify-content-between align-items-baseline mt-5 mb-0 ">
+                        <div class="card-text p-0 ">
+                            <ol class="breadcrumb bg-white ml-lg-2 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
@@ -88,7 +75,7 @@
                                 </li>
                             </ol>
                         </div>
-                        <div class="notification align-self-center">
+                        <div class="notification ">
                             <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
@@ -137,7 +124,11 @@
                         <td class="clickable" data-url="{{url('property/'.$item->id)}}">{{$item->Town}}</td>
                         <td class="clickable" data-url="{{url('property/'.$item->id)}}"> {{$item->Postcode}}</td>
                         <td class="clickable" data-url="{{url('property/'.$item->id)}}"> 8</td>
-                        <td class="clickable" data-url="{{url('property/'.$item->id)}}">{{$item->status}}</td>
+                        <td class="clickable" data-url="{{url('property/'.$item->id)}}">
+                            <div class="badge text-capitalize badge-primary">
+                                {{$item->status}}
+                            </div>
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <a class="btn btn-white btn-sm dropdown-toggle" type="button" id="dropdownMenu2"
@@ -193,7 +184,7 @@
                                 <select name="status" id="" class="form-control">
                                     <option>select</option>
                                     <option value="active">Active</option>
-                                    <option value="pending">Pending</option>
+                                    <option value="suspended">Suspended</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
                             </div>

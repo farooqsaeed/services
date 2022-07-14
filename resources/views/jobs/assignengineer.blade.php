@@ -15,11 +15,22 @@
         <form id="myform" class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="row">
-                    <div class="my-3 col-lg-12 mt-lg-5 ">
-                        <label htmlFor="">Working Hours *</label>
+            <div class="col-lg-6 offset-lg-3 px-lg-5 p-4">
+                <div class="row shadow rounded p-4">
+                    <div class="my-3 col-lg-12">
+                        <h3 class="Certificate">Assign Engineer</h3>
+                    </div>
+                    <div class="my-3 col-lg-12 ">
                         <select name="" id="" class="form-control">
+                            <option>Working Hours</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="my-3 col-lg-12  ">
+                        <select name="" id="" class="form-control">
+                            <option>Area of Coverage *</option>
                             <option value="1">1</option>
                             <option value="1">1</option>
                             <option value="1">1</option>
@@ -29,31 +40,14 @@
                         </select>
                     </div>
                     <div class="my-3 col-lg-12  ">
-                        <label htmlFor="">Area of Coverage *</label>
-                        <select name="" id="" class="form-control">
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                        </select>
-                    </div>
-                    <div class="my-3 col-lg-12  ">
-                        <label htmlFor="">Select Services *</label>
-                        <select name="" id="" class="form-control">
-                            <option value="1">1</option>
-                            <option value="1">1</option>
-                            <option value="1">1</option>
+                         <select name="" id="" class="form-control">
+                            <option>Select Services</option>
                             <option value="1">1</option>
                             <option value="1">1</option>
                             <option value="1">1</option>
                         </select>
                     </div>
-                    <div class="col-lg-4  mt-5">
-                        <button class="btn btn-outline-success btn-block ">Cancel</button>
-                    </div>
-                    <div class="col-lg-4 offset-lg-4  mt-5 text-right  ">
+                    <div class="col-lg-12 mt-5  ">
                         <button class="btn btn-info success btn-block">Save</button>
                     </div>
                 </div>

@@ -2,32 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use Illuminate\Http\Request;
+use App\Models\property_certificate;
 
 class ComplianceController extends Controller
 {
-    public function electrical()
+    public function electrical($id)
     {
-        return view('property.compliance.electrical');
+        $property = Property::findorFail($id);
+        return view('property.compliance.electrical', compact(['property']));
     }
 
-    public function gas()
+    public function gas($id)
     {
-        return view('property.compliance.gas');
+        $property = Property::findorFail($id);
+        return view('property.compliance.gas', compact(['property']));
     }
 
-    public function fire()
+    public function fire($id)
     {
-        return view('property.compliance.fire');
+        $property = Property::findorFail($id);
+        return view('property.compliance.fire', compact(['property']));
     }
 
-    public function inspection()
+    public function inspection($id)
     {
-        return view('property.compliance.inspection');
+        $property = Property::findorFail($id);
+        return view('property.compliance.inspection', compact(['property']));
     }
 
-    public function energy()
+    public function energy($id)
     {
-        return view('property.compliance.energy');
+        $property = Property::findorFail($id);
+        return view('property.compliance.energy', compact(['property']));
     }
+
+
+    public function complianceStore(Request $request)
+    {
+        property_certificate::create($request->all());
+        return response()->json(['url' => url('property/'), 'result' => 'certificate added']);
+     }
 }

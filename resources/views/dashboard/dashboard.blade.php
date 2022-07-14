@@ -8,8 +8,6 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
-
 <style>
   .cards .card a {
     color: white;
@@ -62,35 +60,16 @@
 
 
 <div class="container-fluid">
-  <div class="row ">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0 map_view  ">
-      <a href="/mapview">
-        <div class=" Header d-none  d-sm-block">
-          <div class="row  ">
-            <div class="col-lg-3">
-              <h2>Map View</h2>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
-      <div class="card py-0 my-0 border-0  BreadCrumb_card">
+  <div class="row bg-green  mb-5">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+      <div class="py-3 my-0  BreadCrumb_card">
         <div class="card-body py-0 my-0">
-          <div class="d-flex justify-content-between align-items-center my-0    ">
+          <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
             <span class="card-title my-0 ml-n2"><i class="fa fa-th-large" aria-hidden="true"></i>
               Dashboard</span>
-
             <div class="notification mt-3">
               @include('../layouts/header')
             </div>
-          </div>
-          <div class="card-text p-0 mb-0 mt-0 ml-lg-4">
-            <ol class="breadcrumb bg-white">
-              <li class="breadcrumb-item ml-lg-n3">
-                <a href='/'>&nbsp; Overview </a>
-              </li>
-            </ol>
           </div>
         </div>
       </div>

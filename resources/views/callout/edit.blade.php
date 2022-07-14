@@ -12,48 +12,34 @@
         <span class="span">&nbsp;&nbsp; Edit Callout</span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform">
+        <form id="myform" class="addform">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="mt-5">
-                    <h2 class="Certificate">Edit Callout Details</h2>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3  px-lg-5 p-4">
+                    <div class="row customshadow p-4">
+                        <div class="my-3 col-lg-12">
+                            <h2 class="Certificate">Edit Callout Details</h2>
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="Guard_Name" value="{{$callout->Guard_Name}}"
+                                placeholder="Full Name *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="tel" class="form-control" name="Guard_Contact"
+                                value="{{$callout->Guard_Contact}}" placeholder="Contact number " />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                            <input type="text" class="form-control" name="Guard_Email" value="{{$callout->Guard_Email}}" placeholder="Email address *" />
+                        </div>
+                        <div class="my-3 col-lg-12">
+                             <input type="text" class="form-control" name="Notes" value="{{$callout->Notes}}" placeholder="Notes" />
+                        </div>
+                        <div class="my-3 col-lg-12 text-center">
+                            <button class="btn bg-success px-4" type="submit" name="submit" id="formbtn" value="Add">Update</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor=""> Name *</label>
-                        <input type="text" class="form-control" name="Guard_Name" id=""
-                         value="{{$callout->Guard_Name}}"   placeholder="Enter Full Name *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Mobile No*</label>
-                        <input type="tel" class="form-control" name="Guard_Contact" id="" value="{{$callout->Guard_Contact}}"
-                            placeholder="Enter Contact number " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Email *</label>
-                        <input type="text" class="form-control" name="Guard_Email" id=""
-                          value="{{$callout->Guard_Email}}"  placeholder="Enter Email address *" />
-                    </div>
-
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Notes</label>
-                        <input type="text" class="form-control" name="Notes" id="" value="{{$callout->Notes}}"  placeholder="Enter Notes" />
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-10 offset-lg-1">
-                <div class="alert alert-success alert-dismissible fade show " id="msgdiv" role="alert"
-                    style="display: none;">
-                    <span id="message"></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-4   text-center offset-lg-4 p-0">
-                <button class="btn btn-green btn-block" type="submit" name="submit" id="formbtn"
-                    value="Add">Update</button>
             </div>
         </form>
     </div>

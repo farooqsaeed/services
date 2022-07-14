@@ -212,3 +212,9 @@ hr.divider {
     background-color: rgba(56, 191, 103, 1);
     color: white;
 }
+
+.page-item.active .page-link{
+        background-color: rgba(56, 191, 103, 0.2) !important;
+        border: 1px solid rgba(56, 191, 103, 0.2);
+        color: #6c757d;
+    }
