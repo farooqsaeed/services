@@ -1,13 +1,3 @@
-.menu p {
-    font-size: 13px;
-    font-weight: bold;
-    color: #407c1e;
-    opacity: 0.5;
-}
-.menu p a{
-    color: #407c1e;
-  
-}
 .selected {
     opacity: 1 !important;
     /* border-bottom: 2px solid #407C1E; */
@@ -29,4 +19,92 @@
 
 .Enrolment .fa-chevron-right {
     color: #407c1e;
+}
+
+/* new style */
+.setting .card-text {
+    font-weight: 700;
+    font-size: 13px;
+}
+ 
+
+.setting .card a {
+    color: rgb(59, 59, 59);
+    text-decoration: none;
+}
+
+.setting .card:hover {
+    border: 1px solid rgba(56, 191, 103, 1);
+    color: rgba(56, 191, 103, 1) !important;
+
+}
+
+.setting .card {
+    box-shadow: 0px 0px 2px 1px rgb(241, 241, 241);
+    border-radius: 10px;
+}
+
+.enrollment .card {
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 2px rgb(255, 250, 250);
+}
+
+.enrollment form input {
+    border: none;
+    border-bottom: 2px solid #484b46;
+    border-radius: 0%;
+    height: 0%;
+    padding: 0%;
+}
+.enrollment small {
+    font-size: 10px;
+    line-height: 1%;
+}
+.enrollment label {
+    color: #737475;
+    font-weight: 100;
+}
+
+/* autoforwarding */
+.autoforwarding table td {
+    border: 1px solid rgb(222, 222, 222);
+}
+
+/* detail */
+.companydetails label {
+    color: #737475;
+    font-weight: 100;
+}
+
+/* Compliance */
+.propertycompliance label {
+    font-weight: 100 !important;
+}
+
+.propertycompliance small {
+    font-size: 10px;
+    color: #737475;
+}
+
+.propertycompliance .card-title {
+    color: #737475;
+}
+
+.propertycompliance .checkbox label {
+    font-size: 12px;
+    margin-top: 2px !important;
+}
+
+/* headerr size */
+@media screen and (max-width: 480px) {
+    .propertycompliance .add .span,
+    .companydetails .add .span,
+    .autoforwarding .add .span,
+    .contractorpriority .add .span,
+    .contractorpriority .add .span,
+    .enrollment .add .span 
+
+    {
+        font-size: 28px !important;
+    }
 }

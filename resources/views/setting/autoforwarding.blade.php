@@ -1,157 +1,162 @@
 @extends('layouts.master')
 @section('content')
-<link rel="stylesheet" href="{{URL::asset('assets/css/jobs.css')}}">
-<link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/setting.css')}}">
-<style>
-    table {
-        border-collapse: collapse;
-    }
 
-    tbody {
-        text-align: center;
-        color: #737475;
-        font-weight: 500;
-    }
 
-    th,
-    td {
-        padding: auto !important;
-        margin: auto;
-    }
-
-    .card {
-        border: none;
-    }
-
-    .card .card-header {
-        border-radius: 10px !important;
-        background-color: #333333;
-        color: white;
-        text-align: left;
-        font-weight: bold;
-    }
-</style>
-
-<div class="container-fluid">
-    <div class="row bg-green">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-            <div class="  py-3 my-0  BreadCrumb_card">
-                <div class="card-body py-0 my-0">
-                    <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
-                        <span class="card-title my-0 ml-n2"><i class="fa fa-forward" aria-hidden="true"></i>
-                            Auto forwarding</span>
-                        <div class="notification mt-3">
-                            @include('../layouts/header')
-                        </div>
+<div class="container-fluid addcontractor autoforwarding  p-0">
+    <div class="add  mt-0 d-flex align-items-center">
+        <span>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
+        </span>
+        <span class="span"> &nbsp;&nbsp; Auto Forwarding</span>
+    </div>
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <div class="card-deck">
+                <div class="card customshadow">
+                    <div class="card-body px-5">
+                        <h4 class="card-title d-inline-block">Landlord Approvals</h4>
+                        <span class="d-inline-block float-right">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </span>
+                        <br> <br>
+                        <form>
+                            <select name="" id="" class="form-control my-3">
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-2">
+                                <option>Forward</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Recipient</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Delivery Method</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <br> <br> <br>
+                            <div class="btn btn-suc btn-block mt-2">Save</div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card customshadow">
+                    <div class="card-body px-5">
+                        <h4 class="card-title d-inline-block">Forward to Contractor</h4>
+                        <span class="d-inline-block float-right">
+                            <i class="fa fa-ellipsis-v  " aria-hidden="true"></i>
+                        </span>
+                        <br> <br>
+                        <form>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Target Group</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-2">
+                                <option>Job Type</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Forward Jobs to (Select Contractor)</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Select day range or duration</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <select name="" id="" class="form-control my-3">
+                                <option>Select Time duration</option>
+                                <option value="">Target Group</option>
+                                <option value="">Target Group</option>
+                            </select>
+                            <br>
+                            <div class="btn btn-suc btn-block ">Save</div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row my-lg-5">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
-            <div class="d-flex justify-content-between menu w-100">
-                <p><a href="setting">Enrolment</a></p>
-                <p class="selected"><a href="autoforwarding">Auto forwarding</a></p>
-                <p><a href="contractorpriority">Contractor Priority</a></p>
-                <p><a href="companydetails">Company Details</a></p>
-                <p><a href="autoresponder">Auto Responder</a></p>
-                <p><a href="generalenquiry">General Enquiry</a></p>
-                <p><a href="propertycompliance">Property Compliance</a></p>
-                <p><a href="contractorcompliance">Contractor Compliance</a></p>
-                <p ><a href="licences">Licences</a></p>
-            </div>
+        <div class="col-lg-12 mt-5 px-4">
+            <h4 class="card-title">Landlord Approvals</h4>
+            <table class="table customshadow">
+                <thead>
+                    <tr>
+                        <th>No#</th>
+                        <th>Target Group</th>
+                        <th>Action
+                        </th>
+                        <th>Recipient</th>
+                        <th>Delivery Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>All</td>
+                        <td>All Reported issue</td>
+                        <td>All</td>
+                        <td>Email</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Group A, Group B</td>
+                        <td>All Reported issue</td>
+                        <td>Primary Contact</td>
+                        <td>Text Message</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-12 mt-5 px-4">
+            <h4 class="card-title">Forward to Contractor</h4>
+            <table class="table customshadow">
+                <thead>
+                    <tr>
+                        <th>No#</th>
+                        <th>Target Group</th>
+                        <th>Job Type</th>
+                        <th>Action</th>
+                        <th>Day</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>App Notification</td>
+                        <td>Every Day</td>
+                        <td>24/7</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Group A, Group B</td>
+                        <td>Boiler</td>
+                        <td>All Reported issue</td>
+                        <td>Text Message</td>
+                        <td>06am -08 pm </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card  pb-0">
-                <div class="card-header ">
-                    Landlord Approvals
-                </div>
-                <div class="card-body p-0 mb-0 ">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>No#</td>
-                                <td>Target Group</td>
-                                <td>Action</td>
-                                <td>Recipient</td>
-                                <td>Delivery Method</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>All</td>
-                                <td>All Reported issue</td>
-                                <td>All</td>
-                                <td>Email</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Branch2, Branch3</td>
-                                <td>All Reported issue <br> All Completed jobs</td>
-                                <td>Primary Contact</td>
-                                <td>Text Message</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- row 2 -->
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-            <div class="card  pb-0">
-                <div class="card-header ">
-                    Forward to Contractor
-                </div>
-                <div class="card-body p-0 mb-0 ">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td rowspan="2">No#</td>
-                                <td rowspan="2">Target Group</td>
-                                <td rowspan="2">Job Type</td>
-                                <td rowspan="2">Action <br> <small>Forward Jobs to <br> (Select Contractor)</small></td>
-                                <td colspan="2">Select Day/Time
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Day</td>
-                                <td>Time</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>All</td>
-                                <td>All </td>
-                                <td>App Notification</td>
-                                <td>All day</td>
-                                <td>24/7</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Branch3</td>
-                                <td>Boiler</td>
-                                <td>Email </td>
-                                <td>Every Monday</td>
-                                <td>8-6pm</td>
-                            </tr>
+</div>
 
-                            <tr>
-                                <td>3</td>
-                                <td>Branch2</td>
-                                <td>Electrical</td>
-                                <td>Text Message </td>
-                                <td>Date Range</td>
-                                <td>8-6pm</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    @endsection
+@endsection

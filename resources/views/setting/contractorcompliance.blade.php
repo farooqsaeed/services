@@ -1,86 +1,73 @@
 @extends('layouts.master')
 @section('content')
-<link rel="stylesheet" href="{{URL::asset('assets/css/jobs.css')}}">
-<link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
+
+<link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/setting.css')}}">
+
 <style>
-    table {
-        border-collapse: collapse;
+    #date {
+        width: 49%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
-
-    tbody {
-        text-align: center;
-        color: #737475;
-        font-weight: 500;
-    }
-
-    th,
-    td {
-        padding: auto !important;
-        margin: auto;
-    }
-
-    .table1 {
-        table-layout: fixed;
-    }
-
-    .card {
-        border: none;
-    }
-
-    .card .card-header {
-        border-radius: 10px !important;
-        background-color: #333333;
-        color: white;
-        text-align: left;
-        font-weight: bold;
-    }
-   
 </style>
 
-<div class="container-fluid">
-    <div class="row bg-green">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-            <div class="py-3 my-0  BreadCrumb_card">
-                <div class="card-body py-0 my-0">
-                    <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
-                        <span class="card-title my-0 ml-n2"><i class="fa fa-cogs" aria-hidden="true"></i>
-                        Contractor Compliance </span>
-                        <div class="notification mt-3">
-                            @include('../layouts/header')
+<div class="container-fluid addcontractor contractorpriority  p-0">
+    <div class="add  mt-0 d-flex align-items-center">
+        <span>
+            <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
+        </span>
+        <span class="span"> &nbsp;&nbsp; Contractor Compliance</span>
+    </div>
+    <div class="row p-4">
+        <div class="col-lg-6 offset-lg-3 ">
+            <div class="card customshadow ">
+                <div class="card-body">
+                    <form action="" class="px-5">
+                        <div class="form-group">
+                            <select class="form-control" name="" id="">
+                                <option>Contractor Name</option>
+                                <option>khan baba</option>
+                                <option>khan lala</option>
+                                <option>khan mama</option>
+                            </select>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <select class="form-control" name="" id="">
+                                <option>Complience Name</option>
+                                <option>Excuse </option>
+                                <option>Excuse</option>
+                            </select>
+                        </div>
+                        <div class="w-100 my-3">
+                            <input placeholder="Issue Date" class="d-inline-block  " type="text"
+                                onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                            <input placeholder="Issue Date" class="d-inline-block  " type="text"
+                                onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="" id="">
+                                <option>Select Task</option>
+                                <option> Task 1</option>
+                                <option>Task 2</option>
+                            </select>
+                        </div>
+                        <div class="btn btn-suc btn-suc btn-block mt-5">Save</div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row my-lg-5">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12   ">
-            <div class="d-flex justify-content-between menu w-100">
-                <p><a href="setting">Enrolment</a></p>
-                <p><a href="autoforwarding">Auto forwarding</a></p>
-                <p><a href="contractorpriority">Contractor Priority</a></p>
-                <p><a href="companydetails">Company Details</a></p>
-                <p><a href="autoresponder">Auto Responder</a></p>
-                <p><a href="generalenquiry">General Enquiry</a></p>
-                <p><a href="propertycompliance">Property Compliance</a></p>
-                <p class="selected"><a href="contractorcompliance">Contractor Compliance</a></p>
-                <p><a href="licences">Licences</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-1 pt-0">
-            <div class="cards d-lg-flex justify-content-lg-around align-self-center ">
-                <div class="card w-100" style="box-shadow: none;">
-                    <div class="card-body mt-5 ">
-                        <article class="card-text mt-5"style="color: #020202 !important;">9.8 Contractor Compliance <br> As mentioned in contractor section all contractors will automatically receive alert to renew
-                        certificate. <br> This section will allow agent to set below action <br> Select Task: <br> If certificate has expired notify contractor
-                        [AND] send notification to [recipent email address] <br> If certificate has expired suspend contractor</article>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endsection
+@endsection

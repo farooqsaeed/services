@@ -94,6 +94,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // setting
     Route::get('/setting', function () {
+        return view('setting.index');
+    });
+    Route::get('/enrolment', function () {
         return view('setting.enrolment');
     });
     Route::get('/autoforwarding', function () {
