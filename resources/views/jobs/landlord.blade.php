@@ -5,32 +5,28 @@
 
 
 <div class="container-fluid addcontractor  p-0">
-    <div class="add  mt-0 ">
+    <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span class="span">Landlord Approval </span>
+        <span class="span">&nbsp;&nbsp;&nbsp; Landlord Approval </span>
     </div>
     <div class="p-3">
         <form id="myform" class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  ">
-                <div class="row">
-                    <div class="my-3 col-lg-12 mt-lg-5">
-                        <label htmlFor="">Subject *</label>
-                        <input type="text" class="form-control" required name="" id="" placeholder=" Lorem ipsum " />
-                    </div>
-                    <div class="my-3 col-lg-12">
-                        <label htmlFor="">Descripion</label>
-                        <input type="text" class="form-control mt-5" required name="" id="" placeholder="Enter Descripion" />
-                    </div>
-                    <div class="col-lg-4  mt-5">
-                        <button type="reset" class="btn btn-outline-success btn-block ">Cancel</button>
-                    </div>
-                    <div class="col-lg-4 offset-lg-4  mt-5 text-right  ">
-                        <button class="btn btn-info success btn-block">Save</button>
-                    </div>
+            <div class="col-lg-6 offset-lg-3 shadow rounded">
+                <div class="my-3">
+                    <label htmlFor="">Subject *</label>
+                    <input type="text" class="form-control" required name="" id="" placeholder=" Lorem ipsum " />
+                </div>
+                <div class="my-3">
+                    <label htmlFor="">Descripion</label>
+                    <textarea class="form-control" required name="descripion"
+                        placeholder="Enter Descripion">Enter Descripion</textarea>
+                </div>
+                <div class="my-4 text-right">
+                    <button class="btn btn-info success btn-block">Save</button>
                 </div>
             </div>
         </form>

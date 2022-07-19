@@ -5,7 +5,7 @@
 
 
 <div class="container-fluid addcontractor  p-0">
-    <div class="add  mt-0 ">
+    <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
@@ -15,7 +15,54 @@
         <form id="myform" class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-6 offset-lg-3 px-lg-5 p-4">
+            <div class="col-lg-6 px-lg-5 p-4">
+                <div class="row shadow rounded p-4">
+                    <div class="mt-3 col-lg-12">
+                        <h6 class="Certificate">Select Hours</h5>
+                    </div>
+                    <div class="mt-3 col-lg-12 ">
+                        <div class="btn btn-suc px-4 btn-sm">8 hours</div>
+                        <div class="btn btn-suc px-4 btn-sm">Out Of Hours</div>
+
+                    </div>
+
+                    <div class="my-3 col-lg-12">
+                        <h6 class="Certificate">Assign Engineer</h5>
+                    </div>
+                    <div class="mb-3 col-lg-12 ">
+                        <div class="btn btn-suc px-4 btn-sm">Online</div>
+                        <div class="btn btn-suc px-4 btn-sm">Offline </div>
+
+                    </div>
+
+
+
+                    <div class="my-3 col-lg-12  ">
+                        <select name="" id="" class="form-control">
+                            <option>Area of Coverage *</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="my-3 col-lg-12  ">
+                        <select name="" id="" class="form-control">
+                            <option>Select Services</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 mt-5  ">
+                        <button class="btn btn-info success btn-block">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 px-lg-5 p-4">
                 <div class="row shadow rounded p-4">
                     <div class="my-3 col-lg-12">
                         <h3 class="Certificate">Assign Engineer</h3>
@@ -40,7 +87,7 @@
                         </select>
                     </div>
                     <div class="my-3 col-lg-12  ">
-                         <select name="" id="" class="form-control">
+                        <select name="" id="" class="form-control">
                             <option>Select Services</option>
                             <option value="1">1</option>
                             <option value="1">1</option>

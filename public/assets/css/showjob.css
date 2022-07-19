@@ -1,9 +1,11 @@
 .btn-5869C1,
 .btn-21C5DB,
 .btn-38BF67,
-.btn-warning {
+.btn-warning,
+.btn-engineer {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px !important;
 }
 
 .btn-5869C1 {
@@ -59,11 +61,19 @@ ul {
 }
 
 li {
-    box-shadow: 1px 0px 5px 2px rgb(225, 225, 225);
+    border: 1.5px solid var(--unnamed-color-407c1e);
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #407c1e;
+    border-radius: 13px;
     padding: 10px;
     margin: 10px;
-    border-radius: 5px;
-}
+ }
 .success {
     background: #407c1e !important;
+}
+
+.bg-suc,
+.btn-suc {
+    background-color: #38bf67;
+    color: white;
 }

@@ -28,31 +28,39 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2 ">Enrolment</p>
+                        <p class="card-text mt-lg-2 ">
+                            <a href="enrolment">Enrolment</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">Auto Forwarding</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="autoforwarding">Auto Forwarding</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">Contractor Priority</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="contractorpriority">Contractor Priority</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">Company Details</p>
+                        <p class="card-text mt-lg-2"><a href="companydetails">Company Details</a></p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">License</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="licences">License</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -69,19 +77,25 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">General Enquiry</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="generalenquiry">General Enquiry</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">Contractor Compliance</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="contractorcompliance">Contractor Compliance</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-body">
                         <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">Property Compliance</p>
+                        <p class="card-text mt-lg-2">
+                            <a href="propertycompliance">Property Compliance</a>
+                        </p>
                     </div>
                 </div>
                 <div class="card" style="visibility: hidden;">
