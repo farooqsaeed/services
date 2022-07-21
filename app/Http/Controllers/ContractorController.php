@@ -21,6 +21,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
+        
         $contractors = Contractor::orderBy('id', 'DESC')->get();
         return view('contractors.index', compact(['contractors']));
     }
