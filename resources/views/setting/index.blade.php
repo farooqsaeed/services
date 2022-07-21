@@ -115,7 +115,6 @@
                     </a>
                 </div>
                 <div class="card" style="visibility: hidden;">
-
                 </div>
             </div>
         </div>

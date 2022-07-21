@@ -23,10 +23,11 @@
                         </span>
                         <br> <br>
                         <form>
-                            <select name="" id="" class="form-control my-3">
-                                <option value="">Target Group</option>
-                                <option value="">Target Group</option>
-                                <option value="">Target Group</option>
+                            <select name="target_group" class="form-control my-3">
+                                <option>Target Group</option>
+                                @foreach($groups as $group)
+                                <option value="{{$group->id}}">{{$group->Group_Name}}</option>
+                                @endforeach
                             </select>
                             <select name="" id="" class="form-control my-2">
                                 <option>Forward</option>

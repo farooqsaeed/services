@@ -175,6 +175,7 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
+        return $request->all();
         $update = [
             "address" => $request->address,
             "tenant_name" => $request->tenant_name,

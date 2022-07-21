@@ -92,45 +92,49 @@
                     <div class="my-3 col-lg-6 ">
                         <div class="card customshadow">
                             <div class="card-body">
-                                <div class="form-group row">
-                                    <div class="col-3">
-                                        <label for="">Severity:</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <select class="form-control" name="" id="">
-                                            <option>Non-Emergency</option>
-                                            <option>Emergency</option>
-                                            <option></option>
-                                        </select>
-                                    </div>
+                                <form id="updateJob" action="{{route('jobs.update',$job->id)}}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group row">
+                                        <div class="col-3">
+                                            <label for="">Severity:</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select class="form-control" name="severity" id="">
+                                                <option>Non-Emergency</option>
+                                                <option>Emergency</option>
+                                            </select>
+                                        </div>
 
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-3">
-                                        <label for="">Status:</label>
                                     </div>
-                                    <div class="col-9">
-                                        <select class="form-control" name="" id="">
-                                            <option>New</option>
-                                            <option>Active</option>
-                                            <option>Pending</option>
-                                        </select>
-                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-3">
+                                            <label for="">Status:</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select class="form-control" name="status" id="">
+                                                <option>New</option>
+                                                <option>Active</option>
+                                                <option>Pending</option>
+                                            </select>
+                                        </div>
 
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-3 ">
-                                        <label for="">Assignment:</label>
                                     </div>
-                                    <div class="col-9">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username" aria-describedby="basic-addon1">
-                                            <a class="btn btn-suc" href="{{route('assign.engineer')}}"
-                                                id="basic-addon1"><small>Assign Engineer</small></a>
+                                    <div class="form-group row">
+                                        <div class="col-3 ">
+                                            <label for="">Assignment:</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Username"
+                                                    aria-label="Username" name="assignment"
+                                                    aria-describedby="basic-addon1">
+                                                <a class="btn btn-suc" href="{{route('assign.engineer')}}"
+                                                    id="basic-addon1"><small>Assign Engineer</small></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -173,7 +177,7 @@
                             @csrf
                             <div class="customshadow p-2">
                                 <div class="col-lg-12 my-3">
-                                    <textarea name="note" class="form-control mt-lg-5" required
+                                    <textarea id="note" name="note" class="form-control mt-lg-5" required
                                         rows="5">Notes *</textarea>
                                 </div>
                                 <div class="col-12 text-right  mt-3">
@@ -182,14 +186,13 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                     <div class="col-lg-12 my-3">
                         <h3 class="my-3 font-weight-bold text-secondary">Activity</h3>
                         <div class="customshadow p-3">
                             <label for="">Notes</label>
-                            <ul>
+                            <ul class="jobnote_ul">
                                 @foreach($notes as $note)
                                 <li>
                                     <h6 class="font-weight-bold mb-0">You</h6>
@@ -205,7 +208,7 @@
                                 <div class="btn btn-outline-success btn-block">Close</div>
                             </div>
                             <div class="col-md-3 offset-md-1 my-1">
-                                <div class="btn btn-suc btn-block">Save</div>
+                                <div type="submit" id="updateform" class="btn btn-suc btn-block">Save</div>
                             </div>
                         </div>
                     </div>
@@ -238,6 +241,7 @@
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         var note = $('#note').val();
+
         $.ajax({
             url: "{{URL('job-notes/'.$job->id) }}",
             data: $('#jobnote').serialize(),
@@ -253,13 +257,13 @@
                 $('#jobnote')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
-                $("ul").append("<li>" + note + "</li>");
+
+                $(".jobnote_ul").append("<li>" + note + "</li>");
                 toastr.success(result.result);
             }
         })
     })
 </script>
-
 
 <!-- active class -->
 <script>
@@ -276,6 +280,13 @@
             $(".dropdown-toggle").toggleClass("dropdowntoggle");
         });
     });
+
+    // submit the update form
+    $(document).ready(function () {
+        $("#updateform").click(function () {
+            $('#updateJob').submit();
+        })
+    })
 </script>
 
 

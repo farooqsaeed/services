@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\Groups;
 
 class SettingController extends Controller
 {
@@ -20,7 +22,8 @@ class SettingController extends Controller
 
     public function autoforwarding()
     {
-        return view('setting.autoforwarding');
+        $groups = Group::orderBy('Id', 'DESC')->get();
+        return view('setting.autoforwarding',compact(['groups']));
     }
 
     public function contractorpriority()
