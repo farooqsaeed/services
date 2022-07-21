@@ -36,10 +36,10 @@
                 <div class="card text-center">
                     <a href="{{route('setting.autoforwarding')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <!-- <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
                             <p class="card-text mt-lg-2">
                                 Auto Forwarding
-                            </p>
+                            </p> -->
                         </div>
                     </a>
                 </div>
