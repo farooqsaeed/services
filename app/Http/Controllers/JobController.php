@@ -28,24 +28,21 @@ class JobController extends Controller
 
         return view('jobs.index', compact(['jobs', 'jobcount']));
     }
-    // resolved
-    public function resolvedJob()
-    {
-        $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'resolved')->get();
-        return view('jobs.resolvedjobs', compact(['jobs']));
-    }
 
     // inprogress
     public function inprogressJob()
     {
         $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'in progress')->get();
-        return view('jobs.inprogress', compact(['jobs']));
+        $jobcount = count($jobs);
+        return view('jobs.inprogress', compact(['jobs', 'jobcount']));
     }
+
     // closed
     public function closedJob()
     {
         $jobs = Job::orderBy('id', 'DESC')->where('status', '=', 'closed')->get();
-        return view('jobs.closedjobs', compact(['jobs']));
+        $jobcount = count($jobs);
+        return view('jobs.closedjobs', compact(['jobs', 'jobcount']));
     }
 
     /**
@@ -65,7 +62,6 @@ class JobController extends Controller
         $data['states'] = Subcategory::where("category_id", $request->country_id)->get(["name", "id"]);
         return response()->json($data);
     }
-
 
     public function landlord()
     {
@@ -92,7 +88,6 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-         
         $path = null;
         if ($request->hasFile('attachment')) {
             $image = $request->attachment;
@@ -112,7 +107,7 @@ class JobController extends Controller
             'description' => $request->description,
             'subject' => $request->subject,
             'case_no' => "1",
-            'property_id' =>$request->property_id,
+            'property_id' => $request->property_id,
             'category' => $request->category,
             'subCategory' => $request->subcategory,
             'notes' => "nothing to ",
@@ -120,6 +115,7 @@ class JobController extends Controller
             'job_date' => date('Y:m:d'),
             'landloard_id' => null,
             'show_to_landloard' => 0,
+            'severity' => $request->severity,
             'landloard_approvel' => 'Pending',
             'attachment' => $path
         ]);
@@ -150,7 +146,7 @@ class JobController extends Controller
         $job = Job::findorFail($id);
         $notes = Jobnote::where('job_id', $job->id)->get();
         $property = Property::where('id', '=', $job->property_id)->first();
-         
+
         if (!empty($property)) {
             return view('jobs.show', compact(['job', 'property', 'notes']));
         } else {

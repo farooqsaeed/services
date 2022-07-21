@@ -16,6 +16,7 @@
         position: relative;
         z-index: 99;
         float: right;
+        color: #38BF67;
     }
 
     tr {
@@ -26,19 +27,65 @@
         text-decoration: none !important;
         color: inherit !important;
     }
+
+    .table {
+        border-collapse: separate;
+
+    }
+
+    .table th {
+        border: none;
+    }
+
+    .bg-info {
+        background-color: #5869C1 !important;
+        border-radius: 15px !important;
+    }
+
+    img {
+        width: 25px;
+    }
+
+    .header a {
+        font-size: 15px;
+        text-decoration: none !important;
+        color: rgb(0, 0, 0);
+    }
 </style>
 
-
-<div class="container-fluid">
-    <div class="row  bg-green">
+<div class="container-fluid ">
+    <div class="row bg-green">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
             <div class="py-3 my-0  BreadCrumb_card">
                 <div class="card-body py-0 my-0">
                     <div class="d-flex justify-content-between align-items-center my-0 align-self-center">
-                        <span class="card-title my-0 ml-n2"><i class="fa fa-suitcase" aria-hidden="true"></i>
-                            Jobs</span>
+                        <span class="header card-title my-0 ml-n2  ">
+                            <span>
+                                <a href="{{ url()->previous() }}" class="align-self-center fa fa-chevron-left mr-4 mt-2"
+                                    aria-hidden="true"></a>
+                            </span>
+                            <span class="header-title align-self-center">
+                                In progress Jobs
+                            </span>
+                        </span>
                         <div class="notification mt-3">
-                            @include('../layouts/header')
+                            <div class="fa fa-bell mx-4 mt-1">
+                                <p class="mt-1">Notification</p>
+                            </div>
+
+                            <div class="position-relative">
+                                <i class="fa fa-ellipsis-v mt-2" id="dots3" aria-hidden="true">
+                                </i>
+                            </div>
+
+                            <div class="logoutdiv ">
+                                <form action="{{ URL::to('signout') }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-block" type="submit"><br>
+                                        <p>Logout</p>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,20 +97,20 @@
             <div class="card py-0 my-0 border-0 BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
                     <div class="d-flex  justify-content-between align-items-baseline mt-5 mb-0 ">
-                        <div class="card-text p-0   mt-0">
-                            <ol class="breadcrumb bg-white collapse show">
+                        <div class="card-text p-0 ">
+                            <ol class="breadcrumb bg-white   ml-lg-2 collapse show">
                                 <li class="breadcrumb-item">
                                     <a href="#!">Home</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    Jobs
+                                    <a href="{{route('jobs.index')}}">Jobs</a>
                                 </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                    In progress
+                                    In progress Jobs
                                 </li>
                             </ol>
                         </div>
-                        <div class="notification mt-0">
+                        <div class="notification ">
                             <div class=" mt-n1" id="collapseExample" role="button">
                                 <i id="hideable" class="fa fa-chevron-up " aria-hidden="true"></i>
                             </div>
@@ -75,20 +122,38 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 ">
             <div class="menu p-3">
-                <p class=" ml-3"><a href="{{url('jobs')}}"> New Jobs</a></p>
-                <p class="active mx-2"><a href="{{url('inprogress-job')}}"> In progress Jobs</a></p>
-                <p class="mx-2">Auto Resolved Jobs</p>
-                <p class=" mx-2"><a href="{{url('resolved-job')}}">Resolved Jobs </a></p>
-                <p class=" mx-2"><a href="{{url('closed-job')}}">Closed Jobs </a></p>
-            </div>
-        </div>
-        <div class="col-lg-12 example_col">
-            <table id="jobs" class="table text-center table-bordered display" style="width:100%">
-                <div class="addbtn">
-                    <a href="{{url('jobs/create')}}"><button class="btn btn-success btn-sm success">Add Jobs</button>
+                <div class="btn btn-outline-secondary btn-sm ml-3 pr-lg-4">
+                    <a href="{{url('jobs')}}"> New Jobs&nbsp;&nbsp;&nbsp;
+                        @if($jobcount !==null)
+                        <sup class="badge badge-danger">
+                            <small>0{{ $jobcount}}</small>
+                        </sup>
+                        @endif
                     </a>
                 </div>
-                <thead>
+
+                <div class="btn btn-outline-secondary btn-sm mx-3 pr-lg-4">
+                    <a href="{{url('inprogress-job')}}"> In progress Jobs&nbsp;&nbsp;
+                        <sup class="badge badge-danger">
+                            <small>05</small>
+                        </sup>
+                    </a>
+                </div>
+
+                <div class="btn btn-outline-secondary btn-sm pr-lg-4">
+                    <a href="{{url('closed-job')}}">Closed Jobs </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12 example_col">
+            <table id="jobs" class="table text-lg-center border display" style="width:100%">
+                <div class="addbtn">
+                    <a href="{{url('job')}}/job">
+                        <button class="btn btn-success btn-sm ">Add Jobs</button>
+                    </a>
+                </div>
+                <thead class="border-0">
                     <tr>
                         <th>Case Number</th>
                         <th>Property ID</th>
@@ -106,7 +171,13 @@
                         <td>{{$job->property_id}}</td>
                         <td>{{$job->subject}}</td>
                         <td>Nill</td>
-                        <td>{{$job->severity}}</td>
+                        <td>
+                            @if($job->severity !=='Non-Emergency')
+                            <img src="{{URL::asset('assets/imgs/icons/lighton.png')}}" alt="">
+                            @else
+                            <img src="{{URL::asset('assets/imgs/icons/lightoff.png')}}" alt="">
+                            @endif
+                        </td>
                         <td>
                             <div class="bg-info text-white rounded">
                                 {{$job->status}}
@@ -121,9 +192,6 @@
     </div>
 </div>
 
-<script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
-</script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
@@ -134,4 +202,11 @@
     });
 </script>
 
+
+<!-- logout -->
+<script>
+    $("#dots3").click(function () {
+        $(".logoutdiv").toggle();
+    });
+</script>
 @endsection

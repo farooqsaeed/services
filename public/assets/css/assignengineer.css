@@ -1,0 +1,22 @@
+.tables {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border: none;
+}
+
+tr,
+td {
+    padding: 5px;
+}
+
+.tables button {
+    width: 100%;
+}
+
+.btn {
+    border: 1px solid #407c1e;
+}
+
+
+ 

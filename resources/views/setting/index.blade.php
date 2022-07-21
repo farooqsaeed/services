@@ -26,77 +26,93 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card-deck my-5 px-lg-4">
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2 ">
-                            <a href="enrolment">Enrolment</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.licences')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2 ">Enrolment</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="autoforwarding">Auto Forwarding</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.autoforwarding')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                Auto Forwarding
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="contractorpriority">Contractor Priority</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.contractorpriority')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                Contractor Priority
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2"><a href="companydetails">Company Details</a></p>
-                    </div>
+                    <a href="{{route('setting.companydetails')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">Company Details</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="licences">License</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.licences')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                License
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
             <div class="card-deck px-lg-4">
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2 ">
-                            <a href="autoforwarding ">Auto Responder</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.autoresponder')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2 ">
+                                Auto Responder
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="generalenquiry">General Enquiry</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.generalenquiry')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                General Enquiry
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="contractorcompliance">Contractor Compliance</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.contractorcompliance')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                Contractor Compliance
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card text-center">
-                    <div class="card-body">
-                        <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
-                        <p class="card-text mt-lg-2">
-                            <a href="propertycompliance">Property Compliance</a>
-                        </p>
-                    </div>
+                    <a href="{{route('setting.propertycompliance')}}">
+                        <div class="card-body">
+                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <p class="card-text mt-lg-2">
+                                Property Compliance
+                            </p>
+                        </div>
+                    </a>
                 </div>
                 <div class="card" style="visibility: hidden;">
 

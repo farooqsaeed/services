@@ -4,7 +4,24 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/showjob.css')}}">
 
 
-<div class="container-fluid addcontractor  p-0">
+<style>
+    .dropdowntoggle {
+        background-color: white;
+        color: green;
+        border: 1px solid green;
+    }
+
+    .fixedPosition {
+        position: fixed;
+        bottom: 0px !important;
+        left: 0%;
+        right: 0;
+        margin-top: 20px;
+        z-index: 1;
+    }
+</style>
+
+<div class="container-fluid addcontractor jobshow p-0 position-relative">
     <div class="add mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
@@ -20,16 +37,34 @@
                         <div class="d-flex justify-content-between flex-wrap">
                             <h3 class="Certificate">Job Details</h3>
                             <div>
-                                <div class="btn btn-21C5DB btn-sm">
+                                <div class="btn btn-21C5DB btn-sm d-inline-block">
                                     <a title="edit job" href="{{URL('landlord-approval/'.$job->id) }}">
                                         Landlord Approval</a>
                                 </div>
-                                <div class="btn btn-engineer btn-sm">Assign Engineer</div>
-                                <div class="btn btn-38BF67 btn-sm">
-                                    <a title="edit job" href="{{ url('jobs/'.$job->id.'/edit') }}">Edit Jobs
-                                    </a>
+                                <div class="btn btn-engineer btn-sm d-inline-block">Get Quote</div>
+
+                                <div class="btn btn-38BF67 btn-sm text-white d-inline-block"> Close Jobs
                                 </div>
-                                <div class="btn btn-5869C1 btn-sm">Get Quote</div>
+                                <div class="dropdown d-inline-block">
+                                    <div class="btn btn-suc btn-sm dropdown-toggle" type="button" id="triggerId"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </div>
+                                    <div class="dropdown-menu " aria-labelledby="triggerId">
+                                        <a class="dropdown-item active" href="#">
+                                            <small>
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                                Duplicate
+                                            </small>
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <small>
+                                                <i class="fa fa-download" aria-hidden="true"></i>
+                                                Download
+                                            </small>
+
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +72,8 @@
                         <div class="card customshadow">
                             <div class="card-body">
                                 <p class="text-title">Case Number:
-                                    <span> {{$job->case_no}}</span>
+                                    <span>
+                                        {{$job->case_no}}</span>
                                 </p>
                                 <p class="text-title">Property Address:
                                     <span>{{$property->first_line_address}}
@@ -83,16 +119,15 @@
 
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-3">
+                                    <div class="col-3 ">
                                         <label for="">Assignment:</label>
                                     </div>
                                     <div class="col-9">
                                         <div class="input-group">
-                                            <input type="text" placeholder="1000001" class="form-control">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-suc btn-sm" type="button">Assign
-                                                    Engineer</button>
-                                            </div>
+                                            <input type="text" class="form-control" placeholder="Username"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                            <a class="btn btn-suc" href="{{route('assign.engineer')}}"
+                                                id="basic-addon1"><small>Assign Engineer</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -101,6 +136,19 @@
                     </div>
                     <div class="col-lg-12 my-3">
                         <div class="customshadow p-3">
+                            <p class="text-title">Issue Report:</p>
+                            <span>
+                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1831.svg')}}" alt="">
+                            </span><i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                            <span>
+                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1811.svg')}}" alt="">
+                            </span><i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                            <span>
+                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1893.svg')}}" alt="">
+                            </span>
+                            <br> <br>
                             <p class="text-title">Description: </p>
                             <span> {{$job->description}} Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                 Perferendis ducimus hic eaque autem explicabo molestiae fugiat,
@@ -149,6 +197,16 @@
                                 </li>
                                 @endforeach
                             </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12  fixedPosition  ">
+                        <div class="row ">
+                            <div class="col-md-3 offset-md-4 my-1">
+                                <div class="btn btn-outline-success btn-block">Close</div>
+                            </div>
+                            <div class="col-md-3 offset-md-1 my-1">
+                                <div class="btn btn-suc btn-block">Save</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,9 +258,25 @@
             }
         })
     })
+</script>
+
+
+<!-- active class -->
+<script>
+    $(".dropdown .dropdown-menu .dropdown-item").hover(function () {
+        $(this).addClass('active')
+            .siblings().removeClass('active')
+    });
 
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(".dropdown .dropdown-toggle").click(function () {
+            $(".dropdown-toggle").toggleClass("dropdowntoggle");
+        });
+    });
+</script>
 
 
 @endsection

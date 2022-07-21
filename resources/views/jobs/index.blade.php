@@ -152,7 +152,10 @@
                 <tbody>
                     @foreach($jobs as $job)
                     <tr data-url="{{url('jobs/'.$job->id)}}">
-                        <td>{{$job->case_no}}</td>
+                        <td>
+                           {{-- <!-- #{{ Helper::getCustomerID( $job->case_no)}} --> --}}
+
+                            {{$job->case_no}}</td>
                         <td>{{$job->property_id}}</td>
                         <td>{{$job->subject}}</td>
                         <td>Nill</td>
@@ -176,9 +179,6 @@
         </div>
     </div>
 </div>
-
-<script rel="script" src="{{URL::asset('assets/js/calender.js')}}">
-</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 

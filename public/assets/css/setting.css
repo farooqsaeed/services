@@ -26,7 +26,6 @@
     font-weight: 700;
     font-size: 13px;
 }
- 
 
 .setting .card a {
     color: rgb(59, 59, 59);
@@ -36,7 +35,10 @@
 .setting .card:hover {
     border: 1px solid rgba(56, 191, 103, 1);
     color: rgba(56, 191, 103, 1) !important;
+}
 
+.setting .card:hover a {
+    color: rgba(56, 191, 103, 1) !important;
 }
 
 .setting .card {
@@ -102,9 +104,7 @@
     .autoforwarding .add .span,
     .contractorpriority .add .span,
     .contractorpriority .add .span,
-    .enrollment .add .span 
-
-    {
+    .enrollment .add .span {
         font-size: 28px !important;
     }
 }

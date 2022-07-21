@@ -11,7 +11,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\GaurdController;
 use App\Http\Controllers\ComplianceController;
-
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,13 +61,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
     Route::post('job-notes/{id}', [JobController::class, 'store_note']);
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
-    Route::get('assignengineer', [JobController::class, 'assignengineer']);
+    Route::get('assignengineer', [JobController::class, 'assignengineer'])->name('assign.engineer');
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);
 
 
     Route::get('inprogress-job', [JobController::class, 'inprogressJob']);
-    Route::get('resolved-job', [JobController::class, 'resolvedJob']);
-
     Route::get('closed-job', [JobController::class, 'closedJob']);
 
 
@@ -92,37 +90,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('assign-property/{id}', [GaurdController::class, 'assign_property']);
     Route::post('store_call_property/{id}', [GaurdController::class, 'store_call_property']);
 
+
+
     // setting
-    Route::get('/setting', function () {
-        return view('setting.index');
-    });
-    Route::get('/enrolment', function () {
-        return view('setting.enrolment');
-    });
-    Route::get('/autoforwarding', function () {
-        return view('setting.autoforwarding');
-    });
-    Route::get('/contractorpriority', function () {
-        return view('setting.contractorpriority');
-    });
-    Route::get('/companydetails', function () {
-        return view('setting.companydetails');
-    });
-    Route::get('/autoresponder', function () {
-        return view('setting.autoresponder');
-    });
-    Route::get('/generalenquiry', function () {
-        return view('setting.generalenquiry');
-    });
-    Route::get('/propertycompliance', function () {
-        return view('setting.propertycompliance');
-    });
-    Route::get('/contractorcompliance', function () {
-        return view('setting.contractorcompliance');
-    });
-    Route::get('/licences', function () {
-        return view('setting.licences');
-    });
+    Route::get('setting', [SettingController::class, 'index']);
+    Route::get('enrolment', [SettingController::class, 'Enrollment'])->name('setting.enrolment');
+    Route::get('autoforwarding', [SettingController::class, 'autoforwarding'])->name('setting.autoforwarding');
+    Route::get('contractorpriority', [SettingController::class, 'contractorpriority'])->name('setting.contractorpriority');
+    Route::get('companydetails', [SettingController::class, 'companydetails'])->name('setting.companydetails');
+    Route::get('autoresponder', [SettingController::class, 'autoresponder'])->name('setting.autoresponder');
+    Route::get('generalenquiry', [SettingController::class, 'generalenquiry'])->name('setting.generalenquiry');
+    Route::get('propertycompliance', [SettingController::class, 'propertycompliance'])->name('setting.propertycompliance');
+    Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
+    Route::get('licences', [SettingController::class, 'licences'])->name('setting.licences');
+
 
     // map view
     Route::get('mapview', function () {
