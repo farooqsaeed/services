@@ -17,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->integer('job_id');
             $table->integer('contractor_id');
+            $table->string('approval_status')->nullable();
+            $table->string('job_status')->nullable();
+            $table->string('visit_date')->nullable();
+            $table->string('visit_time')->nullable();
+            $table->string('visit_status')->nullable();
             $table->timestamps();
         });
     }

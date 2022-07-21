@@ -18,9 +18,11 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('target_group');
             $table->string('job_type');
-            $table->string('action');
-            $table->string('selected_day');
-            $table->string('selected_time');
+            $table->integer('contractor_id');
+            $table->string('start_day');
+            $table->string('end_day');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->timestamps();
         });
     }

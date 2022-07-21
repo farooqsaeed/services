@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->nullable()->unique();
             $table->string('password');
-            $table->string('unique_id');
+            $table->string('unique_id')->nullable();
             $table->string('group_name')->nullable();
             $table->string('user_type');
-            $table->string('status')->default('Pending');
+            $table->integer('business_id')->nullable();
+            $table->date('trial_until')->nullable();
             $table->timestamps();
         });
     }

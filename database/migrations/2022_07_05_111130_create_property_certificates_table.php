@@ -33,7 +33,9 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('property_certificates');
+        // lat
+        // lng,name,pic,rating,
 
-        // https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=&key=AIzaSyCSdrFyxyy9tqE-cEy76e4pszwI-Y1cMG0
+        // https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AeJbb3eeGWNo9cObOAT3qKskDsbo-ra4TWCBizcp3LUacjEQSBrri91XT7ZfxhmH4-NTjyEG3ogurTAimJMAF0GPMwB6GXXb5Adcaytq4mbvFcgkUznd0UvzHTLogjJW2XIRotHjcVvV7xp8VhqilL-JWOvrAluXmhr_7Cj_fxE7BMcpwv5-&key=AIzaSyCSdrFyxyy9tqE-cEy76e4pszwI-Y1cMG0
     }
 };
