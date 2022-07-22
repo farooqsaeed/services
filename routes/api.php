@@ -29,6 +29,7 @@ use App\Http\Controllers\ApiController\UserController;
 Route::apiResources([
        'contractor' => ContractorController::class,
        'tenant' => TenantController::class,
+       'jobs' => JobController::class,
 ]);
 
 // check user status
