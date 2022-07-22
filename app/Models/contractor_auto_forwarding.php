@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class contractor_auto_forwarding extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
 }

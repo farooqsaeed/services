@@ -80,6 +80,24 @@ class JobController extends Controller
         return view('jobs.assignengineer');
     }
 
+    public function StoreAssignEngineer(Request $request)
+    {
+        return $request->all();
+        return view('jobs.assignengineer');
+    }
+
+    // quote
+    public function getQuote()
+    {
+        return view('jobs.get-quote');
+    }
+
+    public function StoreGetQuote(Request $request)
+    {
+        return $request->all();
+        return view('jobs.assignengineer');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

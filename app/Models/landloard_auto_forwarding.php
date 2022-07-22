@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class landloard_auto_forwarding extends Model
 {
+    protected
+        $guarded = ['id'];
     use HasFactory;
 }

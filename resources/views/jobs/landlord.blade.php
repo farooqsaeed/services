@@ -12,16 +12,28 @@
         <span class="span">&nbsp;&nbsp;&nbsp; Landlord Approval </span>
     </div>
     <div class="p-3">
-        <form id="myform" class="row addform p-2">
+        <form id="myform" class="row addform p-3">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-6 offset-lg-3 px-5 shadow pt-3 rounded">
-                <div class="my-3">  
+                <div class="my-3">
+                    <input type="email" class="form-control" required name="" id="" placeholder="Email *" />
+                </div>
+                <div class="my-3">
                     <input type="text" class="form-control" required name="" id="" placeholder="Subject *" />
                 </div>
                 <div class="my-3">
-                    <textarea class="form-control" required name="descripion"
-                    rows="6">Descripion</textarea>
+                    <textarea class="form-control" required name="descripion" rows="6">Descripion</textarea>
+                </div>
+                <div class="my-3">
+                    <label for="">Attachments</label>
+                </div>
+                <div class="my-3 d-flex justify-content-around">
+                    <input type="text" class="form-control">
+                    <input type="text" class="form-control mx-1">
+                    <input type="text" class="form-control">
+                    <input type="text" class="form-control ml-1">
+
                 </div>
                 <div class="my-4 text-right">
                     <button class="btn btn-info success btn-block">Save</button>

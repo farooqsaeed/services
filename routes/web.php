@@ -49,29 +49,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store-assign-job', [ContractorController::class, 'StoreAssignJob']);
 
 
-
     // jobs
     Route::resource('jobs', JobController::class);
-    Route::get(
-        'job/{id}',
-        [JobController::class, 'create']
-    );
+    Route::get('job/{id}', [JobController::class, 'create']);
 
     Route::get('landlord', [JobController::class, 'landlord']);
     Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
     Route::post('job-notes/{id}', [JobController::class, 'store_note']);
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
+
+    // assign engineer
     Route::get('assignengineer', [JobController::class, 'assignengineer'])->name('assign.engineer');
+    Route::post('store-assignengineer', [JobController::class, 'StoreAssignEngineer'])->name('store.assign.engineer');
+
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);
-
-
     Route::get('inprogress-job', [JobController::class, 'inprogressJob']);
     Route::get('closed-job', [JobController::class, 'closedJob']);
 
-
-    Route::get('/openjobs', function () {
-        return view('jobs.openjobs');
-    });
+    // get quote
+    Route::get('get-quote', [JobController::class, 'getQuote'])->name('get.quote');
+    Route::post('store-get-quote', [JobController::class, 'StoreGetQuote'])->name('store.get.quote');
 
 
     // events
@@ -90,12 +87,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('assign-property/{id}', [GaurdController::class, 'assign_property']);
     Route::post('store_call_property/{id}', [GaurdController::class, 'store_call_property']);
 
-
-
     // setting
     Route::get('setting', [SettingController::class, 'index']);
     Route::get('enrolment', [SettingController::class, 'Enrollment'])->name('setting.enrolment');
+
+    // autoforwarding
     Route::get('autoforwarding', [SettingController::class, 'autoforwarding'])->name('setting.autoforwarding');
+
+    Route::post('landlord-approvals', [SettingController::class, 'LandlordApprovals'])->name('store.landlord.approvals');
+
+    Route::post('contractor-approvals', [SettingController::class, 'ContractorApprovals'])->name('store.contractor.approvals');
+
+
     Route::get('contractorpriority', [SettingController::class, 'contractorpriority'])->name('setting.contractorpriority');
     Route::get('companydetails', [SettingController::class, 'companydetails'])->name('setting.companydetails');
     Route::get('autoresponder', [SettingController::class, 'autoresponder'])->name('setting.autoresponder');
@@ -103,12 +106,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('propertycompliance', [SettingController::class, 'propertycompliance'])->name('setting.propertycompliance');
     Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
     Route::get('licences', [SettingController::class, 'licences'])->name('setting.licences');
-
-
-    // map view
-    Route::get('mapview', function () {
-        return view('mapview.mapview');
-    });
 
     // Property
     Route::resource('property', PropertyController::class);

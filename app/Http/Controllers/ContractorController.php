@@ -21,7 +21,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        
+
         $contractors = Contractor::orderBy('id', 'DESC')->get();
         return view('contractors.index', compact(['contractors']));
     }
@@ -34,7 +34,7 @@ class ContractorController extends Controller
     public function create()
     {
         $groups = Group::orderby('id', 'DESC')
-        ->get();
+            ->get();
         return view('contractors.add', compact(['groups']));
     }
     /**
@@ -109,8 +109,8 @@ class ContractorController extends Controller
             }
         }
 
-        $contractor=Contractor::findorFail($id);
-        return view('contractors.show',compact(['contractor', 'tenant_property']));
+        $contractor = Contractor::findorFail($id);
+        return view('contractors.show', compact(['contractor', 'tenant_property']));
     }
 
     /**
@@ -177,21 +177,20 @@ class ContractorController extends Controller
 
 
     public function assignJob($id)
-    {    
+    {
         $contractor_id = Contractor::findorFail($id);
         $jobs = Job::all();
-         return view('contractors.assign_job', compact(['jobs', 'contractor_id']));
+        return view('contractors.assign_job', compact(['jobs', 'contractor_id']));
     }
 
     public function StoreAssignJob(Request $request)
-    {   
-         $data=[
-            'contractor_id'=>$request->contractor_id,
+    {
+        $data = [
+            'contractor_id' => $request->contractor_id,
             'job_id' => $request->job_id,
         ];
         Contractor_job::create($data);
         return response()->json(['success' => "Contractors added Successfully "]);
-
     }
 
     // multiple delete
@@ -202,5 +201,4 @@ class ContractorController extends Controller
         $order->delete();
         return response()->json(['success' => "contractors have been deleted "]);
     }
-
 }

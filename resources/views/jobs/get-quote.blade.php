@@ -18,7 +18,7 @@
         font-weight: bold;
     }
 
-    .modal input[type="checkbox"] {
+    input[type="checkbox"] {
         accent-color: #38BF67;
     }
 
@@ -37,10 +37,10 @@
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
-        <span class="span">&nbsp;&nbsp;&nbsp; Assign Engineer</span>
+        <span class="span">&nbsp;&nbsp;&nbsp; Get Quote</span>
     </div>
     <div class="p-3">
-        <form id="assign_engineer_form" method="post" action="{{route('store.assign.engineer')}}" class="row addform ">
+        <form id="get_quote_form" action="{{route('store.get.quote')}}" method="post" class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-6 px-lg-5 p-4">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- 2nd column -->
             <div class="col-lg-6 px-lg-5 p-4">
                 <div class="row shadow rounded p-4">
                     <div class="mt-3 col-lg-12">
@@ -253,8 +253,8 @@
 
                     </div>
                     <div class="col-lg-12 my-3 p-3">
-                        <button type="submit" data-toggle="modal" data-target="#modelId"
-                            class="btn btn-suc btn-block">Assign</button>
+                        <!-- <div data-toggle="modal" data-target="#modelId_quote" class="btn btn-suc btn-block">Assign</div> -->
+                        <button type="submit" class="btn btn-suc btn-block">Assign</button>
                     </div>
                 </div>
             </div>
@@ -262,7 +262,7 @@
     </div>
     <div>
         <!-- Modal -->
-        <div class="modal fade modal" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        <div class="modal fade modal" id="modelId_quote" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -358,18 +358,18 @@
 
 <!-- ajax submition -->
 <script>
-    $(' assign_engineer_form').submit(function (e) {
+    $('  myform').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
             url: "{{URL('contractors')}}",
-            data: $('#assign_engineer_form').serialize(),
+            data: $('#myform').serialize(),
             type: 'POST',
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
-                $('#assign_engineer_form')['0'].reset();
+                $('#myform')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
             }
@@ -393,7 +393,19 @@
         });
     });
 
+    // Group
+    $(function () {
+        $('.Group td button').click(function () {
+            $(this).addClass('btn-suc').siblings().removeClass('btn-suc');
+        });
+    });
 
+    // Radius
+    $(function () {
+        $('.Radius div').click(function () {
+            $(this).addClass('btn-suc').siblings().removeClass('btn-suc');
+        });
+    });
 
 </script>
 

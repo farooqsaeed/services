@@ -45,8 +45,7 @@ class TenantController extends Controller
         $isexpire = 0;
         $startDate = date('Y-m-d', intval("$request->tenancy_start_date"));
         $endDate = date('Y-m-d', intval("$request->tenancy_last_date"));
-
-
+ 
 
         if ($startDate <= $endDate) {
             $isexpire = "No";

@@ -142,15 +142,15 @@
                         <div class="customshadow p-3">
                             <p class="text-title">Issue Report:</p>
                             <span>
-                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1831.svg')}}" alt="">
+                                <img src="{{URL::asset('assets/imgs/icons/Group 1831.svg')}}" alt="">
                             </span><i class="fa fa-chevron-right" aria-hidden="true"></i>
 
                             <span>
-                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1811.svg')}}" alt="">
+                                <img src="{{URL::asset('assets/imgs/icons/Group 1811.svg')}}" alt="">
                             </span><i class="fa fa-chevron-right" aria-hidden="true"></i>
 
                             <span>
-                                <img src="{{URL::asset('assets/imgs/icons/icon/Group 1893.svg')}}" alt="">
+                                <img src="{{URL::asset('assets/imgs/icons/Group 1893.svg')}}" alt="">
                             </span>
                             <br> <br>
                             <p class="text-title">Description: </p>
