@@ -27,7 +27,7 @@
         <form id="fire-form" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  mt-lg-4">
+            <div class="col-lg-10 offset-lg-1">
                 <div class="menu ">
                     <p class=" mr-3">
                         <a href="{{url('electrical-check/'.$property->id)}}">
@@ -44,36 +44,37 @@
                     <p class=""> <a href="{{url('inspection-check/'.$property->id)}}"> Inspection Report </a></p>
 
                 </div>
-                <div class="row">
-                    <div class="mt-3 col-lg-12">
+            </div>
+            <div class="col-lg-6 customshadow offset-lg-3  mt-lg-4">
+                <div class="row px-5">
+                    <div class="mt-3 col-lg-12 text-center">
                         <h3>Fire Safety Check</h3>
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Date Carried Out</label>
-                        <input type="date" class="form-control" name="date_carried_out" value="" required />
+                    <div class="my-3 col-lg-12">
+                        <input type="date" class="form-control" name="date_carried_out" placeholder="Date Carried Out"
+                            required />
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Renewal Date (If applicable)</label>
-                        <input type="date" class="form-control" name="renewal_date" id="" value="" />
+                    <div class="my-3 col-lg-12">
+                        <input type="date" class="form-control" name="renewal_date" placeholder="Renewal Date"
+                            required />
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Certificate Number</label>
-                        <input type="text" class="form-control" name="certificate_number" value="" />
+                    <div class="my-3 col-lg-12">
+                        <input type="text" class="form-control" name="certificate_number" placeholder="Certificate Number" required />
                     </div>
-                    <div class="col-lg-6"></div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Description</label>
-                        <input type="text" class="form-control mt-lg-5" name="description" value="" placeholder="" />
+                    <div class="my-3 col-lg-12">  
+                        <textarea name="description" class="form-control" id="" cols="30" rows="5" placeholder="Description"></textarea>
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <button type="submit" class="btn btn-suc btn-block">Upload</button>
                     </div>
                     <div class="my-3 col-lg-6">
                         <input type="hidden" class="form-control" name="type" value="fire-certificate" />
                         <input type="hidden" class="form-control" name="property_id" value="{{$property->id}}" />
                     </div>
-                    <div class="my-3 mt-lg-5 col-lg-12">
-                        <h5>
-                            Provide Additional Info
-                        </h5>
-                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 customshadow offset-lg-3  mt-lg-4">
+                <div class="row px-5">
                     <div class="my-3 col-lg-6">
                         <h5 class="text-secondary">
                             Present
@@ -90,9 +91,9 @@
                             <label for="">Replacement</label>
                             <input type="date" class="form-control pl-2" name="smoke_alarm_expiry" />
                         </div>
-                        <h5 class="text-secondary mt-3">
+                        <h6 class="text-secondary mt-3">
                             Required-Not present Currently
-                        </h5>
+                        </h6>
                     </div>
                     <div class="my-3 col-lg-6">
                         <h5 class="text-secondary">
@@ -110,15 +111,14 @@
                             <label for="">Replacement</label>
                             <input type="date" class="form-control pl-2" name="carbon_monoxide_expiry" />
                         </div>
-                        <h5 class="text-secondary mt-3">
+                        <h6 class="text-secondary mt-3">
                             Required-Not present Currently
-                        </h5>
+                        </h6>
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <div class="btn btn-suc btn-block">Save</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-11 text-right p-0">
-                <button class="btn success btn-sm text-white px-3" type="submit" name="submit" id="formbtn"
-                    value="Add">Upload</button>
             </div>
         </form>
     </div>

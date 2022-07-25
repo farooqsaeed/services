@@ -32,11 +32,10 @@
     cursor: pointer;
 }
 .logoutdiv {
-    display: none;
+    visibility: hidden;
     position: absolute;
-    top: 40%;
-    right: 5%;
-
+    top: 70%;
+    right: 3%;
     background: transparent url("img/Rectangle 1522.png") 0% 0% no-repeat
         padding-box;
     box-shadow: 0px 3px 6px #00000029;
@@ -59,14 +58,13 @@
     font-size: 15px !important;
     font-weight: 100 !important;
 }
-
+  
 .btn-suc {
     background-color: #38bf67;
 }
 
-.bg-green{
+.bg-green {
     background-color: rgba(56, 191, 103, 0.2);
-    
 }
 
 .border-bottom {

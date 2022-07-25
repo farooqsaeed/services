@@ -39,8 +39,10 @@ class UserController extends Controller
     {
         $roles = Role::orderBy('id', 'DESC')->get();
         $groups = Group::orderBy('id', 'DESC')->get();
-        return view('user.add', 
-            compact(['roles', 'groups']));
+        return view(
+            'user.add',
+            compact(['roles', 'groups'])
+        );
     }
 
     public function change_password()
@@ -158,11 +160,12 @@ class UserController extends Controller
 
     public function signin()
     {
-    
+
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             return redirect('/dashboard');
         } else {
-            return back()->with('error', 'Your username or password is incorrect!');
+            return back()->with('error', 'Username or Password is incorrect!');
+          
         }
     }
 
@@ -176,26 +179,23 @@ class UserController extends Controller
     {
         // code 1
         $today = date("Y-m-d H:i:s");
-        $user = trail::where('user_id','=',Auth::User()->id)->first();
+        $user = trail::where('user_id', '=', Auth::User()->id)->first();
 
-        if ($today >= $user->expireydate ) {
-            return redirect('/')->with('error','trail period has expired');
+        if ($today >= $user->expireydate) {
+            return redirect('/')->with('error', 'trail period has expired');
         }
-        
+
         // code 2
         $users = trail::all();
 
         foreach ($users as $user) {
-            if ($today >= $user->expireydate ) {
-               $info = User::where('id','=',$user->user_id)->first();
-               if (!empty($info)) {
-                   $email = $info->email;
-                   // write email code to send email to user
-               }
+            if ($today >= $user->expireydate) {
+                $info = User::where('id', '=', $user->user_id)->first();
+                if (!empty($info)) {
+                    $email = $info->email;
+                    // write email code to send email to user
+                }
             }
         }
-
-
-
     }
 }

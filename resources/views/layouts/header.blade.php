@@ -1,7 +1,6 @@
 @php
 use App\Models\Group;
 $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
-
 @endphp
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
@@ -83,13 +82,14 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
     </i>
 </div>
 
-<div class="logoutdiv ">
+<div class="logoutdiv">
+
     <form action="{{ URL::to('signout') }}" method="post">
         @csrf
-        <button class="btn btn-block" type="submit"><br>
+        <button class="btn btn-block" type="submit">
             <p>Logout</p>
         </button>
-    </form>
+
 </div>
 
 
@@ -106,7 +106,11 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
 
         $("#dots3").click(function () {
-            $(".logoutdiv").toggle();
+            if ($('.logoutdiv').css('visibility') == 'hidden')
+                $('.logoutdiv').css('visibility', 'visible');
+            else
+                $('.logoutdiv').css('visibility', 'hidden');
+
         });
     });
 </script>

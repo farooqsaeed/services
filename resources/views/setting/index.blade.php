@@ -28,7 +28,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.licences')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/enrollment.png')}}" alt="">
                             <p class="card-text mt-lg-2 ">Enrolment</p>
                         </div>
                     </a>
@@ -36,17 +36,17 @@
                 <div class="card text-center">
                     <a href="{{route('setting.autoforwarding')}}">
                         <div class="card-body">
-                              <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/forward.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 Auto Forwarding
-                            </p>  
+                            </p>
                         </div>
                     </a>
                 </div>
                 <div class="card text-center">
                     <a href="{{route('setting.contractorpriority')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/contractor.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 Contractor Priority
                             </p>
@@ -56,7 +56,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.companydetails')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/company.png')}}" alt="">
                             <p class="card-text mt-lg-2">Company Details</p>
                         </div>
                     </a>
@@ -64,7 +64,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.licences')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/lisence.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 License
                             </p>
@@ -77,7 +77,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.autoresponder')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/responder.png')}}" alt="">
                             <p class="card-text mt-lg-2 ">
                                 Auto Responder
                             </p>
@@ -87,7 +87,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.generalenquiry')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/enquiry.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 General Enquiry
                             </p>
@@ -97,7 +97,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.contractorcompliance')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/contractorcomp.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 Contractor Compliance
                             </p>
@@ -107,7 +107,7 @@
                 <div class="card text-center">
                     <a href="{{route('setting.propertycompliance')}}">
                         <div class="card-body">
-                            <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+                            <img src="{{URL::asset('assets/imgs/icons/propertycomp.png')}}" alt="">
                             <p class="card-text mt-lg-2">
                                 Property Compliance
                             </p>

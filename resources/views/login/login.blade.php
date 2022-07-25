@@ -10,11 +10,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="{{URL::asset('assets/css/login.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/login.css')}}">
 
 </head>
 <style>
-    
+
 </style>
 
 <body>
@@ -28,15 +28,27 @@
                 <div class="card  py-3">
                     <h2 class="card-title text-center pt-3">Log In</h2>
                     <div class="card-body mx-3">
+
+                        @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Failed!</strong> {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
                         <form action="{{ URL::to('signin') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="">User Name:</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter User Name">
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Enter User Name">
                             </div>
                             <div class="form-group py-3">
                                 <label for="">Password:</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password:">
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Enter Password:">
                             </div>
                             <div class="form-group text-right">
                                 <small id="helpId" class="form-text text-muted">Forget Password?</small>

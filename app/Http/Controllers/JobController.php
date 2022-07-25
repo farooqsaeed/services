@@ -86,6 +86,14 @@ class JobController extends Controller
         return view('jobs.assignengineer');
     }
 
+    public function EngineerResponse()
+    {
+        return view('jobs.engineer-response');
+    }
+
+    
+
+
     // quote
     public function getQuote()
     {
@@ -124,7 +132,7 @@ class JobController extends Controller
             'contact' => $request->contact,
             'description' => $request->description,
             'subject' => $request->subject,
-            'case_no' => "1",
+            'case_no' => $request->case_no,
             'property_id' => $request->property_id,
             'category' => $request->category,
             'subCategory' => $request->subcategory,

@@ -22,6 +22,10 @@
                             <h3 class="Certificate">Enter Job Details</h3>
                         </div>
                         <div class="my-3 col-12">
+                            <input type="text" class="form-control" name="case_no" id="" required
+                                placeholder="Case No *" />
+                        </div>
+                        <div class="my-3 col-12">
                             <select name="property_id" class="form-control" id="">
                                 <option>Select Property</option>
                                 @foreach($properties as $item)
@@ -40,7 +44,10 @@
                         </div>
                         <div class="my-3 col-12">
                             <input type="text" class="form-control" name="contact" id="" required
-                                placeholder="Contact *" />
+                                placeholder="Contact Number *" />
+                        </div>
+                        <div class="my-3 col-12">
+                            <input type="email" class="form-control" name="email" id="" placeholder="E-mail *" />
                         </div>
                         <div class="my-3 col-12">
                             <label class="form-check-label" for="inlineCheckbox1">Severity</label>
@@ -56,21 +63,21 @@
 
                         </div>
                         <div class="my-3 col-lg-12">
-                                 <select class="form-control" name="category" id="country-dd">
-                                    <option selected disabled>Select Category </option>
-                                    @foreach($categories as $cat)
-                                    <option value="{{$cat->id}}"> {{$cat->name}}</option>
-                                    @endforeach
-                                </select>
-                         </div>
+                            <select class="form-control" name="category" id="country-dd">
+                                <option selected disabled>Select Category </option>
+                                @foreach($categories as $cat)
+                                <option value="{{$cat->id}}"> {{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="my-3 col-lg-12">
-                                 <select class="form-control" name="subcategory" id="state-dd">
-                                    <option>Sub category</option>
-                                </select>
-                         </div>
+                            <select class="form-control" name="subcategory" id="state-dd">
+                                <option>Sub category</option>
+                            </select>
+                        </div>
                         <div class="my-3 col-12">
                             <input type="text" class="form-control" name="subject" id="" required
-                                placeholder="Enter  Subject  " />
+                                placeholder="Subject  " />
                             <input type="hidden" name="routeStatus" value="{{ $id }}" />
                         </div>
                         <div class="col-12 my-3">
@@ -90,7 +97,7 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     $('#gridCheck1').on('click', function () {
@@ -103,8 +110,6 @@
         }
     });
 </script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- ajax submition -->
 <script>

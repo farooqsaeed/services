@@ -4,7 +4,7 @@
 
 
 <div class="container-fluid addcontractor p-0">
-    <div class="add  mt-0 ">
+    <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>

@@ -61,6 +61,9 @@ Route::group(['middleware' => ['auth']], function () {
     // assign engineer
     Route::get('assignengineer', [JobController::class, 'assignengineer'])->name('assign.engineer');
     Route::post('store-assignengineer', [JobController::class, 'StoreAssignEngineer'])->name('store.assign.engineer');
+    // engineer response
+    Route::get('engineer-response', [JobController::class, 'EngineerResponse'])->name('engineer.response');
+    
 
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);
     Route::get('inprogress-job', [JobController::class, 'inprogressJob']);
@@ -98,7 +101,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('contractor-approvals', [SettingController::class, 'ContractorApprovals'])->name('store.contractor.approvals');
 
-
     Route::get('contractorpriority', [SettingController::class, 'contractorpriority'])->name('setting.contractorpriority');
     Route::get('companydetails', [SettingController::class, 'companydetails'])->name('setting.companydetails');
     Route::get('autoresponder', [SettingController::class, 'autoresponder'])->name('setting.autoresponder');
@@ -107,6 +109,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
     Route::get('licences', [SettingController::class, 'licences'])->name('setting.licences');
 
+    Route::post('store-company-detail', [SettingController::class, 'store_company_details'])->name('store.company.detail');
+
+    
     // Property
     Route::resource('property', PropertyController::class);
     Route::delete('delete-properties', [PropertyController::class, 'delete_proterties']);

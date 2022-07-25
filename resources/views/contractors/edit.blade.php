@@ -4,7 +4,7 @@
 
 
 <div class="container-fluid addcontractor p-0">
-    <div class="add  mt-0 ">
+    <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
@@ -77,7 +77,7 @@
                     <div class="my-3 col-6">
                         <label htmlFor="" class="mt-3">Postal Code</label>
                         <input type="text" class="form-control" name="postal_code" id="" placeholder="Enter street name"
-                        required value="{{$contractor->postal_code}}" />
+                            required value="{{$contractor->postal_code}}" />
                     </div>
                 </div>
             </div>
@@ -122,8 +122,9 @@
         $('#formbtn').text('Please wait...');
 
         $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') 
-        }
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
         });
 
         $.ajax({
@@ -143,7 +144,7 @@
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
-                location.href=(result.url);
+                location.href = (result.url);
             }
         })
     })

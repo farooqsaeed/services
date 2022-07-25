@@ -19,4 +19,35 @@ td {
 }
 
 
- 
+  td .on {
+        width: 20%;
+    }
+
+    td .off {
+        width: 20%;
+    }
+
+    .text-secondary {
+        color: #B1B1B1 !important;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    input[type="checkbox"] {
+        accent-color: #38BF67;
+    }
+
+    .btn-group {
+        background-color: white;
+    }
+
+    .btn-group .active {
+        background-color: #38BF67;
+        color: white !important;
+    }
+
+    #engineer_response .badge{
+        padding:10px 15px;
+        border-radius: 20px;
+        font-weight: 100;
+    }

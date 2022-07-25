@@ -15,7 +15,7 @@
         <form id="gas-form" class="row addform">
             @csrf
             <!-- {/* Property Details */} -->
-            <div class="col-lg-10 offset-lg-1  mt-lg-4">
+            <div class="col-lg-12 offset-lg-1 mt-lg-4">
                 <div class="menu ">
                     <p class=" mr-3">
                         <a href="{{url('electrical-check/'.$property->id)}}">
@@ -28,35 +28,34 @@
                     <p class=""><a href="{{url('inspection-check/'.$property->id)}}">Inspection Report</a></p>
 
                 </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Date Carried Out</label>
-                        <input type="date" class="form-control" name="date_carried_out" value="" required />
+            </div>
+            <div class="col-lg-6 offset-lg-3 mt-3 ">
+                <div class="row rounded shadow bg-white px-5 py-3">
+                    <div class="my-3 text-center col-lg-12">
+                        <h5>GAS Safety Check</h5>
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Renewal Date</label>
-                        <input type="date" class="form-control" name="renewal_date" required value="" />
+                    <div class="my-3 col-lg-12">
+                         <input type="date" class="form-control" name="date_carried_out" placeholder="Date Carried Out"  value="" required />
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Certificate Number</label>
-                        <input type="text" class="form-control" name="certificate_number" value=""
-                            placeholder="Enter Town " />
+                    <div class="my-3 col-lg-12">
+                         <input type="date" class="form-control" name="renewal_date" placeholder="Renewal Date" required value="" />
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <input type="hidden" class="form-control mt-lg-5" name="property_id" id="property_id"
+                    <div class="my-3 col-lg-12">
+                        <input type="text" class="form-control" name="certificate_number" placeholder="Certificate Number" />
+                    </div>
+                    <div class=" col-lg-12">
+                        <input type="hidden" class="form-control " name="property_id" id="property_id"
                             value="{{$property->id}}" />
-                        <input type="hidden" class="form-control mt-lg-5" name="type" value="gas-check" />
+                        <input type="hidden" class="form-control " name="type" value="gas-check" />
                     </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mb-lg-5">Description</label>
-                        <input type="text" class="form-control mt-lg-5" name="description" value="" placeholder="" />
+                    <div class="my-3 col-lg-12">
+                         <textarea class="form-control " name="description" cols="30" rows="5" placeholder="Description"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="btn btn-suc btn-block">Save</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-11 text-right p-0">
-                <button class="btn success btn-sm text-white px-3" type="submit" name="submit" id="formbtn"
-                    value="Add">Upload</button>
-            </div>
+            </div> 
         </form>
     </div>
 </div>

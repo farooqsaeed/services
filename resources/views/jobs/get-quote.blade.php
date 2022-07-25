@@ -39,7 +39,7 @@
         </span>
         <span class="span">&nbsp;&nbsp;&nbsp; Get Quote</span>
     </div>
-    <div class="p-3">
+    <div class="p-3"> 
         <form id="get_quote_form" action="{{route('store.get.quote')}}" method="post" class="row addform ">
             @csrf
             <!-- {/* Property Details */} -->
@@ -160,13 +160,18 @@
                         <input type="search" placeholder="search engineer" name="" class="form-control" id="">
                     </div>
                     <div class="my-3 col-lg-12 ">
-                        <table class="table text-left table-bordered">
+                        <table class="table text-left">
                             <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <input type="checkbox" name="" id=""> Select All
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="engineer_id[]" value="6">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">Ali khan</td>
                                     <td>
                                         <img class="off" src="{{URL::asset('assets/imgs/icons/mobileoff.png')}}" alt="">
                                     </td>
@@ -178,7 +183,7 @@
                                     <td>
                                         <input type="checkbox" name="engineer_id[]" value="5">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">Akbar Ali</td>
                                     <td>
                                         <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
                                     </td>
@@ -190,7 +195,7 @@
                                     <td>
                                         <input type="checkbox" name="engineer_id[]" value="4">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">khan Akbar</td>
                                     <td>
                                         <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
                                     </td>
@@ -202,7 +207,7 @@
                                     <td>
                                         <input type="checkbox" name="engineer_id[]" value="3">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">ahmad Akbar</td>
                                     <td>
                                         <img class="off" src="{{URL::asset('assets/imgs/icons/mobileoff.png')}}" alt="">
                                     </td>
@@ -226,7 +231,7 @@
                                     <td>
                                         <input type="checkbox" name="engineer_id[]" value="2">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">Ali ahmad</td>
                                     <td>
                                         <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
                                     </td>
@@ -242,19 +247,23 @@
                     </div>
                     <div class="col-lg-12 d-flex justify-content-around">
                         <div>
-                            <span class="badge badge-success">P1</span> <small>Use as first Choice</small>
+                            <input type="checkbox" name="" id="">
+                            <small class="badge badge-success">P1</small> <small>Use as first Choice</small>
                         </div>
                         <div>
-                            <span class="badge badge-success">P1</span> <small>Use as second choice</small>
+                            <input type="checkbox" name="" id="">
+                            <small class="badge badge-success">P1</small> <small>Use as second choice</small>
                         </div>
                         <div>
-                            <span class="badge badge-success">P1</span> <small> Use as third choice</small>
+
+                            <input type="checkbox" name="" id="">
+                            <small class="badge badge-success">P1</small> <small> Use as third choice</small>
                         </div>
 
                     </div>
                     <div class="col-lg-12 my-3 p-3">
                         <!-- <div data-toggle="modal" data-target="#modelId_quote" class="btn btn-suc btn-block">Assign</div> -->
-                        <button type="submit" class="btn btn-suc btn-block">Assign</button>
+                        <button type="submit" class="btn btn-suc btn-block">Next</button>
                     </div>
                 </div>
             </div>
