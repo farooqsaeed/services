@@ -101,4 +101,16 @@ class JobController extends Controller
     {
         //
     }
+
+    public function JobDetails($id)
+    {
+        $result = Job::where('id','=',$id)->select('id','subject','description','attachment','address','contact','tenant_name','case_no')->first();
+
+        return json_encode([
+            'status'=>1,
+            'message'=>'Record found successfully',
+            'success'=>$result,
+        ]);
+
+    }
 }

@@ -20,7 +20,7 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

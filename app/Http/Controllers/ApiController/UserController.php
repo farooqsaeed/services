@@ -150,8 +150,7 @@ class UserController extends Controller
 
                  $contractor = Contractor::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
-                            ->orWhere('email','=',$request->email)
-                            ->orWhere('mobile_no','=',$request->mobile_no);
+                          ->orWhere('mobile_no','=',$request->mobile_no);
                     })->first();
 
                  if (!empty($contractor)) {
@@ -169,8 +168,7 @@ class UserController extends Controller
 
                  $tenant = Tenant::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
-                            ->orWhere('email','=',$request->email)
-                            ->orWhere('mobile_no','=',$request->mobile_no);
+                          ->orWhere('mobile_no','=',$request->mobile_no);
                     })->first();
                  if (!empty($tenant)) {
                       $token = $tenant->createToken('api-token')->plainTextToken;
