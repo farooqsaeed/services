@@ -151,7 +151,7 @@ class UserController extends Controller
                  $contractor = Contractor::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
                           ->orWhere('mobile_no','=',$request->mobile_no);
-                    })->first();
+                    })->select('business_name','first_name','last_name','email','landline_no','mobile_no','house_no','street_name','town_city','postal_code','area_of_coverage','social_id','id')->first();
 
                  if (!empty($contractor)) {
 
