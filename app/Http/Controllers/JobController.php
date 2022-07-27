@@ -7,6 +7,8 @@ use App\Models\Job;
 use App\Models\Property;
 use App\Models\landlord;
 use App\Models\Category;
+use App\Models\Contractor;
+use App\Models\Contractor_job;
 use App\Models\Jobnote;
 use App\Models\Subcategory;
 use Illuminate\Support\Facades\Validator;
@@ -75,15 +77,27 @@ class JobController extends Controller
         return redirect()->back();
     }
 
-    public function assignengineer()
+    public function assignengineer($id)
     {
-        return view('jobs.assignengineer');
+        $job = Job::findorFail($id);
+        $contractors = Contractor::orderBy('Id', 'DESC')->get();
+        return view('jobs.assignengineer', compact(['job', 'contractors']));
     }
 
     public function StoreAssignEngineer(Request $request)
     {
-        return $request->all();
-        return view('jobs.assignengineer');
+
+        Contractor_job::create([
+            'job_id' => $request->job_id,
+            'contractor_id' => $request->contractor_id,
+            'approval_status' => 'Pending',
+            'job_status' => 'Pending',
+            'visit_date' => 'Pending',
+            'visit_time' => 'Pending',
+            'visit_status' => 'Pending',
+        ]);
+        return redirect()->back();
+
     }
 
     public function EngineerResponse()
@@ -91,7 +105,7 @@ class JobController extends Controller
         return view('jobs.engineer-response');
     }
 
-    
+
 
 
     // quote
@@ -102,6 +116,9 @@ class JobController extends Controller
 
     public function StoreGetQuote(Request $request)
     {
+
+
+
         return $request->all();
         return view('jobs.assignengineer');
     }

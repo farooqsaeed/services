@@ -129,7 +129,7 @@
                                                 <input type="text" class="form-control" placeholder="Username"
                                                     aria-label="Username" name="assignment"
                                                     aria-describedby="basic-addon1">
-                                                <a class="btn btn-suc" href="{{route('assign.engineer')}}"
+                                                <a class="btn btn-suc" href="{{route('assign.engineer',$job->id)}}"
                                                     id="basic-addon1"><small>Assign Engineer</small></a>
                                             </div>
                                         </div>

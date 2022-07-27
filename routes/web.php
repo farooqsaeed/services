@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
 
     // assign engineer
-    Route::get('assignengineer', [JobController::class, 'assignengineer'])->name('assign.engineer');
+    Route::get('assignengineer/{id}', [JobController::class, 'assignengineer'])->name('assign.engineer');
     Route::post('store-assignengineer', [JobController::class, 'StoreAssignEngineer'])->name('store.assign.engineer');
     // engineer response
     Route::get('engineer-response', [JobController::class, 'EngineerResponse'])->name('engineer.response');

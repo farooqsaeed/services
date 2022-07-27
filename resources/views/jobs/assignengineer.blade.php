@@ -3,34 +3,6 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/assignengineer.css')}}">
-<style>
-    td .on {
-        width: 20%;
-    }
-
-    td .off {
-        width: 20%;
-    }
-
-    .text-secondary {
-        color: #B1B1B1 !important;
-        font-size: 13px;
-        font-weight: bold;
-    }
-
-    .modal input[type="checkbox"] {
-        accent-color: #38BF67;
-    }
-
-    .btn-group {
-        background-color: white;
-    }
-
-    .btn-group .active {
-        background-color: #38BF67;
-        color: white !important;
-    }
-</style>
 
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 d-flex align-items-center">
@@ -162,80 +134,29 @@
                     <div class="my-3 col-lg-12 ">
                         <table class="table text-left table-bordered">
                             <tbody>
+                                @foreach($contractors as $contractor)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="engineer_id[]" value="6">
+                                        <input type="checkbox" name="contractor_id" value="{{$contractor->id}}">
                                     </td>
-                                    <td colspan="2">Ali Akbar</td>
+                                    <td colspan="2">{{$contractor->business_name}}</td>
                                     <td>
+                                        @if($contractor->isMobile===0)
                                         <img class="off" src="{{URL::asset('assets/imgs/icons/mobileoff.png')}}" alt="">
+                                        @else
+                                        <img class="off" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
+                                        @endif
                                     </td>
                                     <td>
                                         <span class="badge badge-success">P2</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="engineer_id[]" value="5">
-                                    </td>
-                                    <td colspan="2">Ali Akbar</td>
-                                    <td>
-                                        <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">P2</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="engineer_id[]" value="4">
-                                    </td>
-                                    <td colspan="2">Ali Akbar</td>
-                                    <td>
-                                        <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">P2</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="engineer_id[]" value="3">
-                                    </td>
-                                    <td colspan="2">Ali Akbar</td>
-                                    <td>
-                                        <img class="off" src="{{URL::asset('assets/imgs/icons/mobileoff.png')}}" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">P2</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="engineer_id[]" value="1">
-                                    </td>
-                                    <td colspan="2">Ali Akbar</td>
-                                    <td>
-                                        <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">P1</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="engineer_id[]" value="2">
-                                    </td>
-                                    <td colspan="2">Ali Akbar</td>
-                                    <td>
-                                        <img class="on" src="{{URL::asset('assets/imgs/icons/mobileon.png')}}" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">P3</span>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="hidden" name="job_id" value="{{$job->id}}" />
                     </div>
                     <div class="my-3 col-lg-12">
                         <h6>Note</h6>
@@ -397,4 +318,13 @@
 
 </script>
 
+
+
+<!-- assign engineer toggle checkbox buttons -->
+
+<script>
+    $('table input').on('change', function () {
+            $('table input').not(this).prop('checked', false);
+        });
+</script>
 @endsection

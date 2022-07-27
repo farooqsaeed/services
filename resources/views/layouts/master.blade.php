@@ -41,32 +41,43 @@
                     <!-- <div class="nav-item-divider"></div> -->
                     <a class="dashboard-nav-item {{ Request::path() ==  'dashboard' ? 'open active' : ''  }}"
                         href="/dashboard">
-                        <i class="fa fa-th-large" aria-hidden="true"></i>
+                        <i class="fa " aria-hidden="true">
+                            <img src="{{URL::asset('assets/imgs/icons/dashb.png')}}" alt="" width="20" srcset="">
+                        </i>
                         Dashboard
                     </a>
                     <a href="{{URL('property')}}" class="dashboard-nav-item  {{ Request::path() ==  'property' ? 'open active' : ''  }}
                     {{ request()->is('property/*') ? 'open active' : '' }} ">
-                        <i class="fa fa-building"></i> Properties
+                        <i class="fa">
+                            <img src="{{URL::asset('assets/imgs/icons/properties.png')}}" alt="" width="20" srcset="">
+                        </i> Properties
                     </a>
                     <a href="{{URL('jobs')}}" class="dashboard-nav-item  {{ Request::path() ==  'jobs' ? 'active' : ''  }}
                     {{ request()->is('jobs/*') ? 'open active' : '' }}  
                     {{ request()->is('job/job') ? 'open active' : '' }}
                     ">
-                        <i class="fa fa-suitcase"></i> Jobs
+                        <i class="fa">
+                            <img src="{{URL::asset('assets/imgs/icons/jobs.png')}}" alt="" width="20" srcset="">
+                        </i> Jobs
                     </a>
-                    <a href="{{URL('callout')}}"
-                        class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}
+                    <a href="{{URL('callout')}}" class="dashboard-nav-item  {{ Request::path() ==  'callout' ? ' active' : ''  }}
                          {{ request()->is('callout/*/edit') ? 'open active' : '' }}
                         ">
-                        <i class="fa fa-comment"></i> Callouts
+                        <i class="fa ">
+                            <img src="{{URL::asset('assets/imgs/icons/callout.png')}}" alt="" width="20" srcset="">
+                        </i> Callouts
                     </a>
                     <a class="dashboard-nav-item  {{ Request::path() ==  'contractors' ? ' active' : ''  }}"
                         href="{{URL('contractors')}}">
-                        <i class="fa fa-user"></i> Contractors
+                        <i class="fa">
+                            <img src="{{URL::asset('assets/imgs/icons/contract.png')}}" alt="" width="20" srcset="">
+                        </i> Contractors
                     </a>
                     <a href="{{URL('setting')}}" class="dashboard-nav-item  {{ Request::path() ==  'setting' ? 'active' : ''  }}
                     {{ request()->is('setting/*') ? 'open active' : '' }} 
-                    "> <i class="fa fa-cogs"></i> Settings
+                    "> <i class="fa">
+                        <img src="{{URL::asset('assets/imgs/icons/setting.png')}}" alt="" width="20" srcset="">
+                    </i> Settings
                     </a>
                     <!-- <div class="dashboard-nav-dropdown ">
                         <a href="/groups" class="dashboard-nav-item dashboard-nav-dropdown-toggle {{ Request::path() ==  'groups' ? 'open active' : ''  }}
