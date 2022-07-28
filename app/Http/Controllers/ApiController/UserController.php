@@ -146,6 +146,9 @@ class UserController extends Controller
 
     public function IsRegister(Request $request)
     {
+        if (empty($request->social_id) || empty($request->mobile_no)) {
+            return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Contractor','message'=>'user not found!']);
+        }
         if ($request->usertype=='Contractor') {
 
                  $contractor = Contractor::where(function ($query) use ($request) {
@@ -160,7 +163,7 @@ class UserController extends Controller
                      return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Contractor','token'=>$token,'success'=>$contractor]);
                  }else{
 
-                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Contractor','success'=>
+                    return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Contractor','success'=>
                         $contractor]);
                  }
 
@@ -175,7 +178,7 @@ class UserController extends Controller
 
                       return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Tenant','token'=>$token,'success'=>$tenant]);
                   }else{
-                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
+                    return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
                   }
             }
     }

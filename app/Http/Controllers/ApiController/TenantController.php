@@ -62,7 +62,11 @@ class TenantController extends Controller
 
         $token = $user->createToken('api-token')->plainTextToken;
 
-        return json_encode(['status'=>1,'message'=>'user registered successfully','token'=>$token,'success'=>$user]);
+        return json_encode([
+            'status'=>1,
+            'message'=>'user registered successfully',
+            'token'=>$token,
+            'success'=>$user]);
     }
 
     /**
