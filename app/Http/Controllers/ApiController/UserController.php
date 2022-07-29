@@ -146,7 +146,7 @@ class UserController extends Controller
 
     public function IsRegister(Request $request)
     {
-        if (empty($request->social_id) || empty($request->mobile_no)) {
+        if (empty($request->social_id) || $request->social_id==null || empty($request->mobile_no) || $request->mobile_no==null) {
             return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Contractor','message'=>'user not found!']);
         }
         if ($request->usertype=='Contractor') {
