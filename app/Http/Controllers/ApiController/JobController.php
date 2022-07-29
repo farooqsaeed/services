@@ -65,15 +65,15 @@ class JobController extends Controller
         $dueJobResult = Job::whereIn('id',$due_jobs_arr)->select('id','tenant_name','category','address','job_date','job_time')->get();
         $poolJobResult = Job::whereIn('id',$pool_jobs_arr)->select('id','tenant_name','category','address','job_date','job_time')->get();
 
-        if (count($openJobResult)==0 || count($dueJobResult)==0 || count($poolJobResult)==0) {
+        if (count($openJobResult)==0 && count($dueJobResult)==0 && count($poolJobResult)==0) {
             return json_encode(['status'=>0,'message'=>'record not found!']);
         }
 
         return json_encode([
             'status'=>1,
             'message'=>'Record found successfully',
-            'statistics' => array('due' => count($dueJobResult),'pool'=>count($poolJobResult),'open'=>count($openJobResult) ),
-            'DueJobs'=>$dueJobResult,
+            'statistics' => array('due' => count($poolJobResult),'pool'=>count($poolJobResult),'open'=>count($openJobResult) ),
+            'DueJobs'=>$poolJobResult,
             'PoolJobs'=>$poolJobResult,
             'OpenJobs'=>$openJobResult
         ]);
@@ -100,5 +100,17 @@ class JobController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function JobDetails($id)
+    {
+        $result = Job::where('id','=',$id)->select('id','subject','description','attachment','address','contact','tenant_name','case_no')->first();
+
+        return json_encode([
+            'status'=>1,
+            'message'=>'Record found successfully',
+            'success'=>$result,
+        ]);
+
     }
 }

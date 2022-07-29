@@ -146,13 +146,15 @@ class UserController extends Controller
 
     public function IsRegister(Request $request)
     {
+        if (empty($request->social_id) || $request->social_id==null || empty($request->mobile_no) || $request->mobile_no==null) {
+            return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Contractor','message'=>'user not found!']);
+        }
         if ($request->usertype=='Contractor') {
 
                  $contractor = Contractor::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
-                            ->orWhere('email','=',$request->email)
-                            ->orWhere('mobile_no','=',$request->mobile_no);
-                    })->first();
+                          ->orWhere('mobile_no','=',$request->mobile_no);
+                    })->select('business_name','first_name','last_name','email','landline_no','mobile_no','house_no','street_name','town_city','postal_code','area_of_coverage','social_id','id')->first();
 
                  if (!empty($contractor)) {
 
@@ -161,7 +163,7 @@ class UserController extends Controller
                      return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Contractor','token'=>$token,'success'=>$contractor]);
                  }else{
 
-                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Contractor','success'=>
+                    return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Contractor','success'=>
                         $contractor]);
                  }
 
@@ -169,15 +171,14 @@ class UserController extends Controller
 
                  $tenant = Tenant::where(function ($query) use ($request) {
                       $query->where('social_id','=',$request->social_id)
-                            ->orWhere('email','=',$request->email)
-                            ->orWhere('mobile_no','=',$request->mobile_no);
+                          ->orWhere('mobile_no','=',$request->mobile_no);
                     })->first();
                  if (!empty($tenant)) {
                       $token = $tenant->createToken('api-token')->plainTextToken;
 
                       return json_encode(['status'=>1,'IsRegister'=>true,'usertype'=>'Tenant','token'=>$token,'success'=>$tenant]);
                   }else{
-                    return json_encode(['status'=>1,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
+                    return json_encode(['status'=>0,'IsRegister'=>false,'usertype'=>'Tenant','success'=>$tenant]);
                   }
             }
     }
