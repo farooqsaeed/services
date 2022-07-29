@@ -52,7 +52,7 @@
                          <textarea class="form-control " name="description" cols="30" rows="5" placeholder="Description"></textarea>
                     </div>
                     <div class="col-lg-12">
-                        <div class="btn btn-suc btn-block">Save</div>
+                        <button type="submit" class="btn btn-suc btn-block">Save</button>
                     </div>
                 </div>
             </div> 

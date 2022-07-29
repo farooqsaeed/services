@@ -35,7 +35,7 @@
                             required value="" />
                     </div>
                     <div class="my-3 col-lg-12">
-                        <input type="date" class="form-control" name="renewal_date" id="" placeholder="Renewal Date"
+                        <input type="date" class="form-control" name="renewal_date" id="" placeholder="Renewal Date" required
                             value="" />
                     </div>
                     <div class="my-3 col-lg-12">

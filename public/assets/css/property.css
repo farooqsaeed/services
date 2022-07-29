@@ -209,30 +209,29 @@ label {
 .btn-21C5DB,
 .btn-38BF67,
 .btn-warn {
-     font-weight: bold;
+    font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-5869C1 {
     background-color: white;
     text-decoration: underline;
-    color: #38BF67;
+    color: #38bf67;
 }
 
 .btn-21C5DB {
     background-color: rgba(56, 191, 103, 0.4);
-    color: #38BF67;
-
+    color: #38bf67;
 }
 
 .btn-38BF67 {
     color: white;
-    background-color: #38BF67;
+    background-color: #38bf67;
 }
-.btn-warn{
+.btn-warn {
     background-color: white;
-    border: 2px solid #38BF67;
-    color: #38BF67;
+    border: 2px solid #38bf67;
+    color: #38bf67;
 }
 .text-title {
     color: #737475;
@@ -270,24 +269,21 @@ label {
 }
 
 .menu p {
-    color:  #B1B1B1;
+    color: #b1b1b1;
     opacity: 0.7;
     font-size: 12px;
 }
 
-.menu p a{
-
-    color:  #B1B1B1;
- }
+.menu p a {
+    color: #b1b1b1;
+}
 .menu .active {
     text-decoration: underline;
-    color:#737475 !important;
+    color: #737475 !important;
     opacity: 1 !important;
-
 }
-.bg-green{
+.bg-green {
     background-color: rgba(56, 191, 103, 0.2);
-    
 }
 #property_paginate .pagination .page-item.active .page-link {
     background: transparent !important;
@@ -310,7 +306,21 @@ label {
 }
 
 .btn-suc {
-    background-color: #38BF67;
+    background-color: #38bf67;
     color: white;
 }
 
+.Chat .contractor .border_rounded {
+    border: 2px solid #407c1e !important;
+    border-radius: 13px;
+}
+
+.Chat .border_rounded_you {
+    background: var(--unnamed-color-407c1e) 0% 0% no-repeat padding-box;
+    border: 1.5px solid var(--unnamed-color-407c1e);
+    background: #407c1e 0% 0% no-repeat padding-box;
+    border: 2px solid #407c1e;
+    border-radius: 13px;
+    opacity: 1;
+    color: white;
+}

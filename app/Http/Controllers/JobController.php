@@ -56,6 +56,8 @@ class JobController extends Controller
     {
         $categories = Category::orderBy('name')->get();
         $properties = Property::orderBy('id', 'desc')->get();
+
+        return $categories;
         return view('jobs.add', compact(['properties', 'categories', 'id']));
     }
 
@@ -65,9 +67,10 @@ class JobController extends Controller
         return response()->json($data);
     }
 
-    public function landlord()
+    public function landlord($id)
     {
-        return view('jobs.landlord');
+        $job = Job::findOrfail($id);
+        return view('jobs.landlord', compact(['job']));
     }
 
     public function destroylandlord($id)
@@ -86,7 +89,6 @@ class JobController extends Controller
 
     public function StoreAssignEngineer(Request $request)
     {
-
         Contractor_job::create([
             'job_id' => $request->job_id,
             'contractor_id' => $request->contractor_id,
@@ -97,7 +99,6 @@ class JobController extends Controller
             'visit_status' => 'Pending',
         ]);
         return redirect()->back();
-
     }
 
     public function EngineerResponse()
@@ -105,20 +106,16 @@ class JobController extends Controller
         return view('jobs.engineer-response');
     }
 
-
-
-
     // quote
     public function getQuote()
     {
-        return view('jobs.get-quote');
+        $contractors = Contractor::orderBy('Id', 'DESC')->get();
+
+        return view('jobs.get-quote', compact(['contractors']));
     }
 
     public function StoreGetQuote(Request $request)
     {
-
-
-
         return $request->all();
         return view('jobs.assignengineer');
     }

@@ -46,6 +46,7 @@
     -webkit-backdrop-filter: blur(5px);
     width: 202px;
     height: 60px;
+    z-index: 100;
 }
 
 .logoutdiv button p {
@@ -58,7 +59,7 @@
     font-size: 15px !important;
     font-weight: 100 !important;
 }
-  
+
 .btn-suc {
     background-color: #38bf67;
 }
@@ -80,4 +81,48 @@
     position: absolute;
     bottom: 0;
     left: 4%;
+}
+
+.cards .card a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    background: transparent 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 2px solid #407c1e;
+    border-radius: 10px;
+    opacity: 1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 2%;
+}
+
+.dropdown-menu ul li a:hover {
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    border-radius: 2px;
+    color: #407c1e !important;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    background-color: white !important;
+    top: 120%;
+    left: 0%;
+    padding: 5px;
+    margin-top: 2px;
+}
+
+form .fa,
+form p {
+    color: #737475;
 }

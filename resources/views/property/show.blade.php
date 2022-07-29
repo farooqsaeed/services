@@ -42,7 +42,7 @@
             @csrf
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
-                <div class="row  ">
+                <div class="row">
                     <div class="col-lg-12 mt-4">
                         <div class="d-flex justify-content-between mb-2">
                             <span>
@@ -63,7 +63,19 @@
                                     {{ $property->second_line_address}}
                                 </span>
                             </p>
-                            <p style="min-height: 120px !important;" class="text-title">Notes: <br>
+
+                            <p class="text-title">Unique Code: <br>
+                            <div class="d-flex justify-content-between">
+                                <span id="uniquecode" style="font-size: 14px;color: #737475;font-weight: 100;">
+                                    {{$property->property_id}}
+                                </span>
+                                <div type="button" onclick="copy_data()" class="btn btn-warn btn-sm">
+                                    <i class="fa fa-clone" aria-hidden="true"></i>
+                                    Copy
+                                </div>
+                            </div>
+                            </p>
+                            <p class="text-title">Notes: <br>
                                 <span> {{$property->Notes}}</span>
                             </p>
                             <div class="w-100 text-right">
@@ -72,6 +84,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Compliance Report -->
                     <div class="col-lg-6 mb-3">
                         <div class="col_border p-3">
                             <p class="text-title">Compliance Report: <br>
@@ -96,7 +109,7 @@
                     <!-- Landlord Info. * -->
                     <div class="col-lg-12 mt-lg-3">
                         <h5 class="Certificate">Landlord Info. *</h5>
-                        <table class="table text-center  table-bordered  table-inverse  ">
+                        <table class="table text-center bg-white rounded shadow border">
                             <thead class="thead-inverse">
                                 <tr class="">
                                     <th>Name</th>
@@ -134,7 +147,7 @@
                     <!-- Tenant Info. * -->
                     <div class="col-lg-12 mt-lg-3">
                         <h5 class="Certificate">Tenant Info. *</h5>
-                        <table class="table text-center  table-bordered  table-inverse  ">
+                        <table class="table text-center bg-white rounded shadow border">
                             <thead class="thead-inverse">
                                 <tr class="">
                                     <th>Name</th>
@@ -176,11 +189,10 @@
                             </tbody>
                         </table>
                     </div>
-
                     <!-- Associated jobs *-->
                     <div class="col-lg-12 mt-lg-3">
-                        <h3 class="Certificate">Associated jobs *</h3>
-                        <table class="table text-center  table-bordered  table-inverse  ">
+                        <h5 class="Certificate">Associated jobs *</h5>
+                        <table class="table text-center bg-white rounded shadow border">
                             <thead class="thead-inverse">
                                 <tr class="">
                                     <th>Case No.</th>
@@ -210,13 +222,59 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Chat History -->
+                    <div class="col-lg-12 mt-lg-3">
+                        <h5 class="Certificate">Chat History</h5>
+                        <div class="card Chat bg-white rounded shadow ">
+                            <div class="contractor card-body p-3">
+                                <div class="border_rounded p-2">
+                                    <div class="d-flex justify-content-between ">
+                                        <h6 class="card-title m-0">Contractor</h6>
+                                        <small class="card-text font-weight-bold">24 Sep, 2022
+                                            &nbsp;&nbsp; 02:44 pm
+                                        </small>
+                                    </div>
+                                    <small>
+                                        Lorem ipsum dolor sit amet, cons etetur sadip scing elitr, sed diam nonumy eir
+                                        mod
+                                        tempor invidunt ut labore et dolore
+                                        magna aliq uyam erat, sed diam vol uptua. At vero eos et accusam et justo duo
+                                        dolores et ea rebum. Stet clita kasd
+                                        gube rgren, no sea takimata san ctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                                        dolor sit amet, consetetur sadip scing
+                                        elitr.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="you card-body p-3">
+                                <div class="border_rounded_you p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="card-title m-0">
+                                            YOU
+                                        </h6>
+                                        <small class="card-text font-weight-bold">
+                                            24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm
+                                        </small>
+                                    </div>
+                                    <small>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                        eirmod tempor invidunt ut labore et dolore
+                                        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                                        dolores et ea rebum. Stet clita kasd
+                                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                                        dolor sit amet, consetetur sadipscing
+                                        elitr.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     $('#gridCheck1').on('click', function () {
@@ -229,8 +287,6 @@
         }
     });
 </script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- ajax submition -->
 <script>
@@ -251,7 +307,20 @@
             }
         })
     })
+</script>
 
+
+<script>
+
+    function copy_data() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("uniquecode")); //changed here
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+        alert("data copied");
+    }
 </script>
 
 @endsection

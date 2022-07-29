@@ -117,6 +117,15 @@
                                 value="0" />
                         </div>
                         <div class="my-3 col-6">
+                            <select name="priority" class="form-control" required>
+                                <option> Priority</option>
+                                <option value="P1">1st Priority</option>
+                                <option value="P2">2nd Priority</option>
+                                <option value="P3">3rd Priority</option>
+                            </select>
+                            <input type="hidden" disabled class="form-control" name="isMobile" id="isMobile" value="0" />
+                        </div>
+                        <div class="my-3 col-6">
                             <div class="d-flex Working justify-content-between mt-2">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value="6-to-8" name="timing"

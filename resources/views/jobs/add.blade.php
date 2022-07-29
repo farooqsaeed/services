@@ -3,10 +3,17 @@
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
+<style>
 
+     input[type="radio"] {
+        accent-color: #000;
+ 
+
+    }
+</style>
 
 <div class="container-fluid addcontractor  p-0">
-    <div class="add  mt-0 ">
+    <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>

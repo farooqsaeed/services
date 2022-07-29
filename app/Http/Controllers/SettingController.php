@@ -104,9 +104,19 @@ class SettingController extends Controller
     }
     public function contractorcompliance()
     {
-        return view('setting.contractorcompliance');
+        $contractors = Contractor::orderBy('Id', 'desc')->get();
+        return view('setting.contractorcompliance', compact(['contractors']));
     }
 
+    public function storeContractorCompliance(Request $request)
+    {
+        return $request->all();
+        return view('setting.contractorcompliance', compact(['contractors']));
+    }
+
+
+
+    
     public function licences()
     {
         return view('setting.licences');

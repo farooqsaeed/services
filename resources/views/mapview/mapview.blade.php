@@ -1,137 +1,24 @@
 @extends('layouts.master')
 @section('content')
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="{{URL::asset('assets/css/contractors.css')}}">
-<link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
+
 <link rel="stylesheet" href="{{URL::asset('assets/css/mapview.css')}}">
-
-<style>
-    .cards .card-body p {
-        font-size: 15px;
-    }
-
-    #searchbtn {
-        width: 30px !important;
-    }
-
-    #card {
-        position: absolute;
-        right: 20px;
-        top: 75px;
-        height: 100vw;
-        box-shadow: 0px 3px 6px #00000029;
-        border: 2px solid #407C1E;
-        opacity: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        display: flex;
-        flex-direction: column;
-        visibility: hidden;
-    }
-
-    #sorting {
-        position: absolute;
-        right: 250px;
-        top: 50px;
-        height: 40vw;
-        box-shadow: 0px 3px 6px #00000029;
-        border: 2px solid #407C1E;
-        opacity: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        display: flex;
-        flex-direction: column;
-        visibility: hidden;
-    }
-
-
-    @media screen and (max-width: 480px) {
-        #card {
-            right: 15px;
-            top: 220px;
-        }
-    }
-
-    .message_img {
-        width: 53px;
-        height: 63px;
-        border-radius: 14px;
-    }
-
-    #card .msg_info .sender {
-        color: #407C1E;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-    }
-
-    #card .message {
-        font-size: 7px;
-    }
-
-    .message1 {
-        width: 100%;
-        display: flex;
-        background-color: #E6FCDA;
-        border-radius: 6px;
-    }
-
-    #card .minutes {
-        font-size: 10px;
-        padding-top: 0% !important;
-        margin-top: -10px;
-        color: #737475;
-        font-weight: 700;
-    }
-
-    .fa-rotate-45 {
-        -webkit-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
-
-    .success {
-        background: #407C1E;
-        color: white;
-    }
-
-    .pl-5 li {
-        list-style: none;
-        border-radius: 5px;
-        margin-right: 20px;
-        padding: 5px;
-    }
-
-    .pl-5 ul .active {
-        list-style: none;
-        background-color: #407C1E;
-        color: white !important;
-        border-radius: 5px;
-        margin-right: 20px;
-        padding: 3px;
-    }
-
-    hr {
-        border-top: 1px solid #407C1E;
-    }
-</style>
-
 
 <div class="container-fluid  pr-0">
     <div class="row ">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-lg-0 pt-0 position-relative ">
             <div class="topnav py-2">
-                <div>
+                <div class="d-flex align-items-center">
                     <a class="fa fa-chevron-left mt-1" href=""></a>
-                    <a href="">
-                        <h5>Map View</h5>
-                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp; <h5 class="mt-2">Map View</h5>
+
                 </div>
                 <div class="search-container d-none  d-sm-block">
                     <form>
-                        <i id="fa-align-left" class=" fa fa-align-left text-white float-left mt-4 fa-rotate-45"
-                            aria-hidden="true"></i>
+                        <!-- <i  class=" fa fa-align-left mt-4 fa-rotate-45"
+                            aria-hidden="true"></i> -->
+                            <i  id="fa-align-left" class="bi bi-filter-right mt-1 fa-2x float-left "></i>
                         <button id="searchbtn" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -158,10 +45,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="message1  p-1 my-3">
-                <div class="  text-center">
-                    <img src="{{URL::asset('assets/imgs/img/user/user1.png')}}" class="message_img mt-1" alt=""
-                        srcSet="" />
+            <div class="message1 p-1 my-3">
+                <div class="text-center">
+                    <img src="{{URL::asset('assets/imgs/img/user/user1.png')}}" class="message_img " alt="" srcSet="" />
                 </div>
                 <div class="pl-2 mb-0">
                     <p class="msg_info pb-0 mb-0">
@@ -181,8 +67,7 @@
 
             <div class="message1  p-1 my-3">
                 <div class="  text-center">
-                    <img src="{{URL::asset('assets/imgs/img/user/user2.png')}}" class="message_img mt-1" alt=""
-                        srcSet="" />
+                    <img src="{{URL::asset('assets/imgs/img/user/user2.png')}}" class="message_img " alt="" srcSet="" />
                 </div>
                 <div class="pl-2 mb-0">
                     <p class="msg_info pb-0 mb-0">
@@ -202,8 +87,7 @@
 
             <div class="message1  p-1 my-3">
                 <div class="  text-center">
-                    <img src="{{URL::asset('assets/imgs/img/user/user2.png')}}" class="message_img mt-1" alt=""
-                        srcSet="" />
+                    <img src="{{URL::asset('assets/imgs/img/user/user2.png')}}" class="message_img " alt="" srcSet="" />
                 </div>
                 <div class="pl-2 mb-0">
                     <p class="msg_info pb-0 mb-0">
@@ -255,8 +139,8 @@
                         <i class="fa rounded success p-1 fa-bullseye" aria-hidden="true"> </i>
                         <div>&nbsp; &nbsp; <b> Skills</b></div>
                     </div>
-                    <div class="pl-5">
-                        <ul>
+                    <div class="pl-4">
+                        <ul class="search_ul">
                             <li class="active m-2">Electrician</li>
                             <li class="m-2">Plumber</li>
                             <li class="m-2">Locksmith</li>
@@ -320,6 +204,16 @@
         });
 
 
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $('.search_ul li').mouseover(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+        });
     </script>
 
     @endsection

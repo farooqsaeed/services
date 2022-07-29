@@ -44,7 +44,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('update-status/{id}', [ContractorController::class, 'updateStatus']);
     Route::delete('delete-contractors', [ContractorController::class, 'delete_contractors']);
     Route::put('property-status/{id}', [PropertyController::class, 'updateStatus']);
-
     Route::get('assign-job/{id}', [ContractorController::class, 'assignJob'])->name('contractor.assign.job');
     Route::post('store-assign-job', [ContractorController::class, 'StoreAssignJob']);
 
@@ -52,10 +51,15 @@ Route::group(['middleware' => ['auth']], function () {
     // jobs
     Route::resource('jobs', JobController::class);
     Route::get('job/{id}', [JobController::class, 'create']);
-
-    Route::get('landlord', [JobController::class, 'landlord']);
-    Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
     Route::post('job-notes/{id}', [JobController::class, 'store_note']);
+
+    Route::get('landlord/{id}', [JobController::class, 'landlord'])->name('landlord');
+    Route::post('landlord', [JobController::class, 'SaveLandlord'])->name('save.landlord');
+
+
+    Route::get('landlord-approval/{id}', [JobController::class, 'update_landlord']);
+    Route::post('landlord-approvals', [SettingController::class, 'LandlordApprovals'])->name('store.landlord.approvals');
+
     Route::delete('landlord/{id}', [JobController::class, 'destroylandlord']);
 
     // assign engineer
@@ -63,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store-assignengineer', [JobController::class, 'StoreAssignEngineer'])->name('store.assign.engineer');
     // engineer response
     Route::get('engineer-response', [JobController::class, 'EngineerResponse'])->name('engineer.response');
-    
+
 
     Route::post('fetch-sub', [JobController::class, 'fetchSub']);
     Route::get('inprogress-job', [JobController::class, 'inprogressJob']);
@@ -91,14 +95,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store_call_property/{id}', [GaurdController::class, 'store_call_property']);
 
     // setting
-    Route::get('setting', [SettingController::class, 'index']);
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::get('enrolment', [SettingController::class, 'Enrollment'])->name('setting.enrolment');
 
     // autoforwarding
     Route::get('autoforwarding', [SettingController::class, 'autoforwarding'])->name('setting.autoforwarding');
-
-    Route::post('landlord-approvals', [SettingController::class, 'LandlordApprovals'])->name('store.landlord.approvals');
-
+ 
     Route::post('contractor-approvals', [SettingController::class, 'ContractorApprovals'])->name('store.contractor.approvals');
 
     Route::get('contractorpriority', [SettingController::class, 'contractorpriority'])->name('setting.contractorpriority');
@@ -107,11 +109,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('generalenquiry', [SettingController::class, 'generalenquiry'])->name('setting.generalenquiry');
     Route::get('propertycompliance', [SettingController::class, 'propertycompliance'])->name('setting.propertycompliance');
     Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
+
+    
+    Route::post('store-contractor-compliance', [SettingController::class, 'storeContractorCompliance'])->name('store.contractor.compliance');
+
+
     Route::get('licences', [SettingController::class, 'licences'])->name('setting.licences');
 
     Route::post('store-company-detail', [SettingController::class, 'store_company_details'])->name('store.company.detail');
 
-    
+
     // Property
     Route::resource('property', PropertyController::class);
     Route::delete('delete-properties', [PropertyController::class, 'delete_proterties']);
@@ -153,6 +160,12 @@ Route::group(['middleware' => ['auth']], function () {
     // dashboard
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
+    });
+
+
+    // dashboard
+    Route::get('/mapview', function () {
+        return view('mapview.mapview');
     });
 });
 

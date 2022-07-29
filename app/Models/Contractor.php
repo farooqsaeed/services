@@ -30,6 +30,7 @@ class Contractor extends Model
         'Recommendation',
         'notes',
         'logo',
+        'priority',
         'social_id'
     ];
 
