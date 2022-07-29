@@ -32,6 +32,9 @@ Route::apiResources([
        'jobs' => JobController::class,
 ]);
 
+Route::get('jobdetail/{id}', [JobController::class, 'JobDetails'])->name('jobdetail');
+
+
 // check user status
 Route::post('user/status',[UserController::class,'UserStatus']);
 // store attachment

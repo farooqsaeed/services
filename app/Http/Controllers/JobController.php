@@ -56,8 +56,7 @@ class JobController extends Controller
     {
         $categories = Category::orderBy('name')->get();
         $properties = Property::orderBy('id', 'desc')->get();
-
-        return $categories;
+ 
         return view('jobs.add', compact(['properties', 'categories', 'id']));
     }
 
