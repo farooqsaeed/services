@@ -5,53 +5,6 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
 <link rel="stylesheet" href="{{URL::asset('assets/css/header.css')}}">
 
-<style>
-    .cards .card a {
-        color: white;
-        text-decoration: none;
-    }
-
-    .dropdown-menu {
-        background: transparent 0% 0% no-repeat padding-box;
-        box-shadow: 0px 3px 6px #00000029;
-        border: 2px solid #407C1E;
-        border-radius: 10px;
-        opacity: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        padding: 2%;
-    }
-
-    .dropdown-menu ul li a:hover {
-        text-decoration: none;
-        border-radius: 2px;
-    }
-
-    .dropdown-menu li a {
-        text-decoration: none;
-        border-radius: 2px;
-        color: #407C1E !important;
-
-    }
-
-    .dropdown-submenu {
-        position: relative;
-    }
-
-    .dropdown-submenu .dropdown-menu {
-        background-color: white !important;
-        top: 120%;
-        left: 0%;
-        padding: 5px;
-        margin-top: 2px;
-    }
-
-    form .fa,
-    form p {
-        color: #737475;
-    }
-</style>
-
 <div class="dropdown mt-2  ">
     <button class="btn btn-success btn-sm success px-4 dropdown-toggle" type="button" data-toggle="dropdown">Global
         <span class="caret"></span></button>
@@ -84,14 +37,19 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
 
 <div class="logoutdiv">
 
-    <form action="{{ URL::to('signout') }}" method="post">
+    <form action="{{ URL::to('signout') }}" method="post" class="px-2 py-1">
         @csrf
-        <button class="btn btn-block" type="submit">
-            <p>Logout</p>
+        <button class="btn btn-block m-0 p-0">
+            <a href="{{route('setting.index')}}">
+                <p class="m-0">Setting</p>
+            </a>
         </button>
-
+        <button class="btn btn-block m-0 p-0" type="submit">
+            <p class="m-0">Logout</p>
+        </button>
+        
+    </form>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -103,7 +61,6 @@ $groups= Group::with('subgroup')->orderBy('id', 'DESC')->get();
             e.stopPropagation();
             e.preventDefault();
         });
-
 
         $("#dots3").click(function () {
             if ($('.logoutdiv').css('visibility') == 'hidden')

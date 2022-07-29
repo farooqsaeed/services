@@ -5,7 +5,7 @@
 
 
 <div class="container-fluid addcontractor  p-0">
-    <div class="add  mt-0 ">
+    <div class="add mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
         </span>
@@ -17,47 +17,43 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  mt-lg-4">
                 <div class="menu ">
-                    <p class=" mr-3">
-                        <a href="{{url('electrical-check/'.$property->id)}}">
-                            Electrical Safety Check
-                        </a>
-                    </p>
+                    <p class="mr-3">Electrical Safety Check </p>
                     <p class="mr-2"><a href="{{url('gas-check/'.$property->id)}}">GAS Safety Check</a></p>
                     <p class="mr-2"><a href="{{url('fire-check/'.$property->id)}}">Fire Safety Check</a></p>
-                    <p class="mr-2"><a href="{{url('energy-check/'.$property->id)}}">Energy Performance Check</a></p>
-                    <p class="active">Inspection Report</p>
-
-                </div>
-                <div class="row">
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Date Carried Out</label>
-                        <input type="text" class="form-control" name="date_carried_out" value="" id=""
-                            placeholder="Date Carried Out *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Renewal Date</label>
-                        <input type="text" class="form-control" name="renewal_date" id="" value=""
-                            placeholder="Renewal Date *" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="">Certificate Number</label>
-                        <input type="text" class="form-control" name="certificate_number" value=""
-                            placeholder="Enter Town " />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <input type="hidden" class="form-control mt-lg-5" name="property_id"
-                            value="{{$property->id}}" />
-                        <input type="hidden" class="form-control mt-lg-5" name="type" value="inspection-check" />
-                    </div>
-                    <div class="my-3 col-lg-6">
-                        <label htmlFor="" class="mb-lg-5">Description</label>
-                        <input type="text" class="form-control mt-lg-5" name="description" value="" placeholder="" />
-                    </div>
+                    <p class=" mr-2"> <a href="{{url('energy-check/'.$property->id)}}">Energy Performance Check</a></p>
+                    <p class="active"><a href="{{url('inspection-check/'.$property->id)}}">Inspection Report</a></p>
                 </div>
             </div>
-            <div class="col-lg-11 text-right p-0">
-                <button class="btn success btn-sm text-white px-3" type="submit" name="submit" id="formbtn"
-                    value="Add">Upload</button>
+            <div class="col-lg-6  offset-lg-3">
+                <div class="row shadow rounded bg-white px-5">
+                    <div class="mt-3 py-3 col-lg-12 text-center">
+                        <h5>Inspection Report</h5>
+                    </div>
+
+                    <div class="my-3 col-lg-12">
+                        <input type="date" class="form-control" name="date_carried_out" placeholder="Date Carried Out"
+                            required value="" />
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <input type="date" class="form-control" name="renewal_date" id="" placeholder="Renewal Date"
+                            required value="" />
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <input type="text" class="form-control" name="certificate_number" value=""
+                            placeholder="Certificate Number" />
+                    </div>
+                    <div class=" col-lg-12">
+                        <input type="hidden" class="form-control" name="property_id" value="{{$property->id}}" />
+                        <input type="hidden" class="form-control " name="type" value="inspection-check" />
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <textarea name="description" id="" cols="30" class="form-control" rows="5"
+                            placeholder="Description"></textarea>
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <button type="submit" class="btn btn-suc btn-block">Upload</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -92,6 +88,6 @@
 
 </script>
 
- 
+
 
 @endsection

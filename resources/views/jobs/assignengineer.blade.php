@@ -48,8 +48,8 @@
                             </label>
                         </div>
                     </div>
-                    <!-- Filter by Group -->
-                    <div class="my-3 col-lg-12">
+                    <!-- Filter by Category -->
+                    <div class="mt-3 col-lg-12">
                         <h6 class="Certificate">Filter by Category</h5>
                     </div>
                     <div class="mb-3 col-lg-12 Group">
@@ -96,10 +96,10 @@
                     </div>
 
                     <!-- Filter by Radius -->
-                    <div class="my-3 col-lg-12">
+                    <div class="mt-3 col-lg-12">
                         <h6 class="Certificate">Filter by Radius</h5>
                     </div>
-                    <div class="mb-3 col-lg-12 ">
+                    <div class=" col-lg-12 ">
                         <div class="form-group Radius">
                             <select class="form-control" name="radius" id="">
                                 <option value="Electrician">Electrician</option>
@@ -110,7 +110,7 @@
                     </div>
 
                     <!-- Filter by Group -->
-                    <div class="my-3 col-lg-12">
+                    <div class="mt-3 col-lg-12">
                         <h6 class="Certificate">Filter by Group</h5>
                     </div>
                     <div class="mb-3 col-lg-12 ">
@@ -119,6 +119,15 @@
                             <option value="Khan Electric">Khan Electric</option>
                             <option value="Khan Electric">Khan Electric</option>
                         </select>
+                    </div>
+                    <div class="my-3 col-lg-12">
+                        <h6 class="Certificate">Map View</h5>
+                    </div>
+                    <div class="mb-3 col-lg-12 ">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.050112397286!2d73.04786871476432!3d33.707652180701125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfb0f4f77379%3A0xf8c50b8651f56d02!2sThe%20Centaurus%20Mall%20Islamabad!5e0!3m2!1sen!2s!4v1658917391015!5m2!1sen!2s"
+                            width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -273,8 +282,6 @@
 </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- ajax submition -->
@@ -318,13 +325,13 @@
 
 </script>
 
-
-
 <!-- assign engineer toggle checkbox buttons -->
 
 <script>
     $('table input').on('change', function () {
-            $('table input').not(this).prop('checked', false);
-        });
+        $('table input').not(this).prop('checked', false);
+    });
 </script>
+
+
 @endsection

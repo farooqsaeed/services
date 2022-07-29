@@ -25,8 +25,6 @@
         color: white !important;
     }
 
-
-
     .addbtn {
         position: relative;
         z-index: 99;
@@ -61,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="row  ">
+    <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
             <div class="card py-0 my-0 border-0 border BreadCrumb_card">
                 <div class="card-body py-0 my-0 border-bottom mb-3">
@@ -95,8 +93,7 @@
         <div class="col-lg-12 example_col">
             <table id="property" class="table border text-center display" style="width:100%">
                 <div class="addbtn">
-                    <a href="{{URL('property/create')}}"><button class="btn btn-suc btn-sm">Add
-                            Property</button></a>
+                    <a href="{{route('property.create')}}" class="btn btn-suc btn-sm"> Add Property </a>
                     <button id="deleteallselected" type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </div>
                 <thead>

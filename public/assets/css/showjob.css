@@ -101,3 +101,14 @@ li {
     background-color: #38bf67 !important;
     color: white !important;
 }
+
+.jobnote_ul li {
+    /* UI Properties */
+    background: var(--unnamed-color-38bf67) 0% 0% no-repeat padding-box;
+    border: 1.5px solid var(--unnamed-color-407c1e);
+    background: #38bf67 0% 0% no-repeat padding-box;
+    border: 2px solid #407c1e;
+    border-radius: 13px;
+    opacity: 1;
+    color: white;
+}

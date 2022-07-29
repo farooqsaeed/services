@@ -22,7 +22,7 @@
     }
 </style>
 
-<div class="container-fluid addcontractor contractorpriority  p-0">
+<div class="container-fluid addcontractor contractorpriority p-0">
     <div class="add  mt-0 d-flex align-items-center">
         <span>
             <a href="{{ url()->previous() }}" class="fa fa-chevron-left mr-4" aria-hidden="true"></a>
@@ -33,13 +33,13 @@
         <div class="col-lg-6 offset-lg-3 ">
             <div class="card customshadow ">
                 <div class="card-body">
-                    <form action="" class="px-5">
+                    <form action="{{route('store.contractor.compliance')}}" method="post" class="px-5">
                         <div class="form-group">
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="contractor_id" id="">
                                 <option>Contractor Name</option>
-                                <option>khan baba</option>
-                                <option>khan lala</option>
-                                <option>khan mama</option>
+                                @foreach($contractors as $contractor)
+                                    <option value="{{$contractor->id}}">{{$contractor->business_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -50,10 +50,10 @@
                             </select>
                         </div>
                         <div class="w-100 my-3">
-                            <input placeholder="Issue Date" class="d-inline-block  " type="text"
-                                onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
-                            <input placeholder="Issue Date" class="d-inline-block  " type="text"
-                                onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                            <input placeholder="Issue Date" class="form-control d-inline-block " type="date" required>
+                        </div>
+                        <div class="w-100 my-3">
+                            <input placeholder="Expiry Date" class="form-control d-inline-block " type="date" required>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="" id="">
@@ -62,7 +62,7 @@
                                 <option>Task 2</option>
                             </select>
                         </div>
-                        <div class="btn btn-suc btn-suc btn-block mt-5">Save</div>
+                        <button type="submit" class="btn btn-suc btn-suc btn-block mt-5">Save</button>
                     </form>
                 </div>
             </div>

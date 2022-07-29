@@ -218,3 +218,7 @@ hr.divider {
         border: 1px solid rgba(56, 191, 103, 0.2);
         color: #6c757d;
     }
+
+ input[type="radio"] {
+        accent-color: #38BF67;
+    }

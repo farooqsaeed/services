@@ -19,6 +19,26 @@
         margin-top: 20px;
         z-index: 1;
     }
+
+    .custom-file-input~.custom-file-label::after {
+        content: "Choose File" !important;
+        background: transparent url('img/Rectangle 775.png') 0% 0% no-repeat padding-box;
+        border: 1px solid #407C1E;
+        border-radius: 5px;
+        color: #407C1E;
+    }
+
+    .custom-file-label {
+        background: transparent url('img/Upload Attachment *.png') 0% 0% no-repeat padding-box;
+        opacity: 0.8;
+
+    }
+
+    .jobnote_email_ul li article,
+    .jobnote_ul li article {
+        font-size: 12px;
+        line-height: 1;
+    }
 </style>
 
 <div class="container-fluid addcontractor jobshow p-0 position-relative">
@@ -33,15 +53,16 @@
             <!-- {/* Property Details */} -->
             <div class="col-lg-10 offset-lg-1  ">
                 <div class="row">
-                    <div class="my-3  col-lg-12 mt-4">
+                    <div class="my-3 col-lg-12 mt-4">
                         <div class="d-flex justify-content-between flex-wrap">
                             <h3 class="Certificate">Job Details</h3>
                             <div>
                                 <div class="btn btn-21C5DB btn-sm d-inline-block">
-                                    <a title="edit job" href="{{URL('landlord-approval/'.$job->id) }}">
+                                    <a title="edit job" href="{{route('landlord',$job->id) }}">
                                         Landlord Approval</a>
                                 </div>
-                                <div class="btn btn-engineer btn-sm d-inline-block">Get Quote</div>
+                                <a href="{{route('get.quote')}}" style="text-decoration: none;color: #38BF67;"
+                                    class="btn btn-engineer btn-sm d-inline-block">Get Quote</a>
 
                                 <div class="btn btn-38BF67 btn-sm text-white d-inline-block"> Close Jobs
                                 </div>
@@ -58,17 +79,22 @@
                                         </a>
                                         <a class="dropdown-item" href="#">
                                             <small>
-                                                <i class="fa fa-download" aria-hidden="true"></i>
-                                                Download
+                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                Job Summery
                                             </small>
-
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <small>
+                                                <i class="fa fa-print" aria-hidden="true"></i>
+                                                Print
+                                            </small>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="my-3 col-lg-6">
+                    <div class="my-3 col-lg-6 ">
                         <div class="card customshadow">
                             <div class="card-body">
                                 <p class="text-title">Case Number:
@@ -83,13 +109,20 @@
                                 <p class="text-title">Reported By:
                                     <span> Nill</span>
                                 </p>
+                                <p class="text-title">Mobile No:
+                                    <span> {{$job->contact}}</span>
+                                </p>
+
+                                <p class="text-title">Email Address:
+                                    <span> Nill</span>
+                                </p>
                                 <p class="text-title">Job Reported Through:
                                     <span> Mobile</span>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="my-3 col-lg-6 ">
+                    <div class="my-3 col-lg-6 d-flex align-self-stretch">
                         <div class="card customshadow">
                             <div class="card-body">
                                 <form id="updateJob" action="{{route('jobs.update',$job->id)}}" method="post">
@@ -130,7 +163,9 @@
                                                     aria-label="Username" name="assignment"
                                                     aria-describedby="basic-addon1">
                                                 <a class="btn btn-suc" href="{{route('assign.engineer',$job->id)}}"
-                                                    id="basic-addon1"><small>Assign Engineer</small></a>
+                                                    id="basic-addon1">
+                                                    <small>Assign Engineer</small>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -172,36 +207,166 @@
 
                         </div>
                     </div>
+                    <!-- message to -->
+                    <div class="col-lg-12 mt-3">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="btn btn-suc btn-block">To</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <select class="form-control" name="" id="">
+                                        <option>
+                                            1. Contractor
+                                        </option>
+                                        <option>
+                                            2. Tenant
+                                        </option>
+                                        <option>3. Landlord</option>
+                                        <option value="">4. Internal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Recipient Name" class="form-control" name="" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- message form -->
                     <div class="col-lg-12">
                         <form id="jobnote">
                             @csrf
                             <div class="customshadow p-2">
                                 <div class="col-lg-12 my-3">
                                     <textarea id="note" name="note" class="form-control mt-lg-5" required
-                                        rows="5">Notes *</textarea>
+                                        rows="4">Notes *</textarea>
+                                </div>
+                                <div class="col-lg-12 my-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input">
+                                        <label class="custom-file-label">Upload Attachment</label>
+                                    </div>
                                 </div>
                                 <div class="col-12 text-right  mt-3">
-                                    <button id="formbtn" type="submit" class="btn btn-info success btn-sm  px-4">Add
-                                        Notes
+                                    <button id="formbtn" type="submit" class="btn btn-suc btn-sm  px-4">
+                                        Save
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
+
+                </div>
+
+                <div class="row">
+                    <!-- Activity -->
                     <div class="col-lg-12 my-3">
-                        <h3 class="my-3 font-weight-bold text-secondary">Activity</h3>
+                        <h5 class="my-3 font-weight-bold text-secondary">Activity</h5>
                         <div class="customshadow p-3">
-                            <label for="">Notes</label>
+                            <!-- contractor  -->
+                            <ul class="jobnote_email_ul">
+                                <li>
+                                    <div class="d-flex justify-content-between ">
+                                        <h6 class="font-weight-bold mb-0">Contractor</h6>
+                                        <small>24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm </small>
+                                    </div>
+                                    <article> Lorem ipsum dolor sit amet, conse tetur sadip scing elitr, sed diam nonumy
+                                        eirmod tempor invi dunt ut labore et dolore
+                                        magna aliq uyam erat, sed diam volu ptua. At vero eos et accusam et justo duo
+                                        dolores et ea rebum. Stet clita kasd
+                                        gubergren, no sea taki mata san ctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                                        dolor sit amet, conse tetur sadip scing
+                                        elitr. </article>
+                                </li>
+                            </ul>
+                            <!-- your note -->
                             <ul class="jobnote_ul">
                                 @foreach($notes as $note)
                                 <li>
-                                    <h6 class="font-weight-bold mb-0">You</h6>
-                                    {{$note->note}}
+                                    <div class="d-flex justify-content-between ">
+                                        <h6 class="font-weight-bold mb-0">You</h6>
+                                        <small>24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm </small>
+                                    </div>
+                                    <article>
+                                        {{$note->note}}
+                                    </article>
                                 </li>
                                 @endforeach
                             </ul>
+                            <!-- Email -->
+                            <ul class="jobnote_email_ul">
+                                <li>
+                                    <div class="d-flex justify-content-between ">
+                                        <h6 class="font-weight-bold mb-0">E-mail &nbsp;&nbsp; <small
+                                                style="color: #737475;opacity: 0.3;font-weight: 100;">muneer21020@gmail.com</small>
+                                        </h6>
+                                        <small>24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm </small>
+                                    </div>
+                                    <article>Lorem ipsum dolor sit amet, conse tetur sadip scing elitr, sed diam nonumy
+                                        eirmod tempor invidunt ut labore et dolore
+                                        magna aliq uyam erat, sed diam volu ptua. At vero eos et accu sam et justo duo
+                                        dolores et ea rebum. Stet clita kasd
+                                        gube rgren, no sea taki mata san ctus est Lorem ipsum dolor sit amet. Lorem
+                                        ipsum dolor sit amet, conse tetur sadi pscing
+                                        elitr.</article>
+                                </li>
+                            </ul>
+                            <!-- Resolution Notes -->
+                            <ul class="jobnote_email_ul">
+                                <li>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold mb-0">Resolution Notes
+                                        </h6>
+                                        <small>24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm </small>
+                                    </div>
+                                    <article>
+                                        Lorem ipsum dolor sit amet, conse tetur sadi pscing elitr, sed diam nonumy
+                                        eirmod tempor invi dunt ut labore et dolore
+                                        magna aliq uyam erat, sed diam volu ptua. At vero eos et accusam et justo duo
+                                        dolores et ea rebum. Stet clita kasd
+                                        guber gren, no sea taki mata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                                        dolor sit amet, conse tetur sadip scing
+                                        elitr.
+                                    </article>
+                                    <div class="row my-3 p-2">
+                                        <div class="col-2">
+                                            <small class="font-weight-bold">
+                                                Attachment:
+                                            </small>
+                                        </div>
+                                        <div class="col-2 p-1">
+                                            <input type="text" class="w-100" />
+                                        </div>
+                                        <div class="col-2 p-1">
+                                            <input type="text" class="w-100" />
+                                        </div>
+                                        <div class="col-2 p-1">
+                                            <input type="text" class="w-100" />
+                                        </div>
+                                        <div class="col-2 p-1">
+                                            <input type="text" class="w-100" />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Job Status -->
+                            <ul class="jobnote_email_ul">
+                                <li>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h6 class="font-weight-bold mb-0">Job Status
+                                        </h6>
+                                        <small>24 Sep, 2022 &nbsp;&nbsp;&nbsp; 02:44 pm </small>
+                                    </div>
+                                    <div>
+                                        <div class="btn btn-block btn-danger btn-sm">PENDING</div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                    <!-- footer btns -->
                     <div class="col-md-12  fixedPosition  ">
                         <div class="row ">
                             <div class="col-md-3 offset-md-4 my-1">
@@ -216,6 +381,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
