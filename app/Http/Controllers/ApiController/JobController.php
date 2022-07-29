@@ -109,11 +109,14 @@ class JobController extends Controller
     {
         $job = Job::where('id', '=', $id)->select('id', 'case_no', 'severity', 'subject', 'attachment', 'description', 'address', 'contact', 'tenant_name','job_date','job_time')->first();
 
-        $contractor_jobs = Contractor_job::where('job_id', '=', $id)->first();
+        $contractor_jobs = Contractor_job::where('job_id', '=', 141)->first();
         if (!empty($contractor_jobs)) {
             $contractor = Contractor::where('id', '=', $contractor_jobs->contractor_id)->select('business_name')->first();
         } else {
-            return "no contractor is assigned";
+            return json_encode([
+                'status' => 0,
+                'message' => 'Record not found',
+            ]);
         }
  
         $result= array_merge($job->toArray(), $contractor->toArray());
