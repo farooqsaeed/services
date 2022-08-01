@@ -32,8 +32,10 @@ Route::apiResources([
        'jobs' => JobController::class,
 ]);
 
+// job details
 Route::get('jobdetail/{id}', [JobController::class, 'JobDetails'])->name('jobdetail');
-
+// contractor jobs
+Route::get('contractor/jobs/{id}', [JobController::class, 'ContractorJobs']);
 
 // check user status
 Route::post('user/status',[UserController::class,'UserStatus']);
