@@ -182,7 +182,12 @@ class PropertyController extends Controller
     {
         $property = Property::findorFail($id);
         $tenant_property = tenant_property::where('property_id', $property->property_id)->first();
-
+        $jobs=Job::where('property_id', $property->id)->get();
+        foreach($jobs as $job)
+        {
+ 
+            $job->delete();
+        }
         $tenant_property->delete();
         $property->delete();
         return Redirect()->back();
