@@ -31,7 +31,8 @@ Route::apiResources([
        'tenant' => TenantController::class,
        'jobs' => JobController::class,
 ]);
-
+// date wise job
+Route::get('datewise/job/{id}',[JobController::class,'datewisejobs']);
 // job details
 Route::get('jobdetail/{id}', [JobController::class, 'JobDetails'])->name('jobdetail');
 // contractor jobs
