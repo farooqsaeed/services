@@ -11,6 +11,7 @@ use App\Models\Tenant;
 use App\Models\Contractor;
 use App\Models\Document;
 use App\Models\UniqueId;
+use App\Models\Property;
 use Validator;
 
 class UserController extends Controller
@@ -138,6 +139,10 @@ class UserController extends Controller
         $Check = UniqueId::where('uid','=',$request->unique_id)->where('usertype','=',$request->type)->first();
 
         if (!empty($Check)) {
+            if ($Check->usertype=='Tenant') {
+               $address = Property::where('id','=',$Check->property_id)->select('first_line_address','Town','house_no','Postcode')->first();
+               return json_encode(['status'=>1,'usertype'=>$Check->usertype,'Address'=>$address]);
+            }
             return json_encode(['status'=>1,'usertype'=>$Check->usertype]);
         }else{
             return json_encode(['status'=>0,'message'=>'user not found!']);
