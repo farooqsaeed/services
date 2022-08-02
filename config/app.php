@@ -177,11 +177,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\PermissionsServiceProvider::class,
-<<<<<<< Updated upstream
-        L5Swagger\L5SwaggerServiceProvider::class,
-        
-=======
->>>>>>> Stashed changes
 
     ],
 
