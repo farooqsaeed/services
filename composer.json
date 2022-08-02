@@ -27,7 +27,7 @@
         },
         "files": [
 
-        "app/helpers.php"
+        "app/helper/helper.php"
 
     ]
     },

@@ -62,11 +62,11 @@ class JobController extends Controller
             $open_jobs_arr[] = $open_job->id;
         }
 
-        $openJobResult = Job::whereIn('jobs.id',$open_jobs_arr)->leftJoin('categories', 'jobs.category', '=','categories.id')->select('jobs.id','jobs.attachment','categories.name','jobs.tenant_name','jobs.address','jobs.job_date','jobs.job_time','jobs.job_time','jobs.status')->get();
+        $openJobResult = Job::whereIn('jobs.id', $open_jobs_arr)->leftJoin('categories', 'jobs.category', '=', 'categories.id')->select('jobs.id', 'jobs.attachment', 'categories.name', 'jobs.tenant_name', 'jobs.address', 'jobs.job_date', 'jobs.job_time', 'jobs.job_time', 'jobs.status')->get();
 
-        $dueJobResult = Job::whereIn('jobs.id',$due_jobs_arr)->leftJoin('categories', 'jobs.category', '=','categories.id')->select('jobs.id','jobs.attachment','categories.name','jobs.tenant_name','jobs.address','jobs.job_date','jobs.job_time','jobs.job_time','jobs.status')->get();
+        $dueJobResult = Job::whereIn('jobs.id', $due_jobs_arr)->leftJoin('categories', 'jobs.category', '=', 'categories.id')->select('jobs.id', 'jobs.attachment', 'categories.name', 'jobs.tenant_name', 'jobs.address', 'jobs.job_date', 'jobs.job_time', 'jobs.job_time', 'jobs.status')->get();
 
-        $poolJobResult = Job::whereIn('jobs.id',$pool_jobs_arr)->leftJoin('categories','jobs.category', '=','categories.id')->select('jobs.id','jobs.attachment','categories.name','jobs.tenant_name','jobs.address','jobs.job_date','jobs.job_time','jobs.job_time','jobs.status')->get();
+        $poolJobResult = Job::whereIn('jobs.id', $pool_jobs_arr)->leftJoin('categories', 'jobs.category', '=', 'categories.id')->select('jobs.id', 'jobs.attachment', 'categories.name', 'jobs.tenant_name', 'jobs.address', 'jobs.job_date', 'jobs.job_time', 'jobs.job_time', 'jobs.status')->get();
 
         if (count($openJobResult) == 0 && count($dueJobResult) == 0 && count($poolJobResult) == 0) {
             return json_encode(['status' => 0, 'message' => 'record not found!']);
@@ -107,7 +107,7 @@ class JobController extends Controller
 
     public function JobDetails($id)
     {
-        $job = Job::where('id', '=', $id)->select('id', 'case_no', 'severity', 'subject', 'attachment', 'description', 'address', 'contact', 'tenant_name','job_date','job_time')->first();
+        $job = Job::where('id', '=', $id)->select('id', 'case_no', 'severity', 'subject', 'attachment', 'description', 'address', 'contact', 'tenant_name', 'job_date', 'job_time')->first();
 
         $contractor_jobs = Contractor_job::where('job_id', '=', $id)->first();
 
@@ -120,8 +120,8 @@ class JobController extends Controller
                 'message' => 'Record not found',
             ]);
         }
- 
-        $result= array_merge($job->toArray(), $contractor->toArray());
+
+        $result = array_merge($job->toArray(), $contractor->toArray());
 
         return json_encode([
             'status' => 1,

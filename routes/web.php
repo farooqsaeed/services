@@ -96,27 +96,39 @@ Route::group(['middleware' => ['auth']], function () {
 
     // setting
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+
     Route::get('enrolment', [SettingController::class, 'Enrollment'])->name('setting.enrolment');
+    Route::put('store-enrolment', [SettingController::class, 'StoreEnrollment'])->name('store.enrolment');
+
 
     // autoforwarding
     Route::get('autoforwarding', [SettingController::class, 'autoforwarding'])->name('setting.autoforwarding');
- 
+
     Route::post('contractor-approvals', [SettingController::class, 'ContractorApprovals'])->name('store.contractor.approvals');
 
     Route::get('contractorpriority', [SettingController::class, 'contractorpriority'])->name('setting.contractorpriority');
+
+    Route::get('set-contractorpriority', [SettingController::class, 'SetContractorPriority'])->name('setting.setcontractorpriority');
+
+    Route::put('set_contractor_priority', [SettingController::class, 'set_contractor_priority'])->name('setting.set.contractor.priority');
+
     Route::get('companydetails', [SettingController::class, 'companydetails'])->name('setting.companydetails');
+
     Route::get('autoresponder', [SettingController::class, 'autoresponder'])->name('setting.autoresponder');
+
+    Route::put('store-auto-responder', [SettingController::class, 'StoreAutoResponder'])->name('store.auto.responder');
+
     Route::get('generalenquiry', [SettingController::class, 'generalenquiry'])->name('setting.generalenquiry');
     Route::get('propertycompliance', [SettingController::class, 'propertycompliance'])->name('setting.propertycompliance');
     Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
 
-    
+
     Route::post('store-contractor-compliance', [SettingController::class, 'storeContractorCompliance'])->name('store.contractor.compliance');
 
 
     Route::get('licences', [SettingController::class, 'licences'])->name('setting.licences');
 
-    Route::post('store-company-detail', [SettingController::class, 'store_company_details'])->name('store.company.detail');
+    Route::put('store-company-detail', [SettingController::class, 'store_company_details'])->name('store.company.detail');
 
 
     // Property

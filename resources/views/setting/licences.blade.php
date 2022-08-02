@@ -19,7 +19,7 @@
                 License 1 <br> Archive Property= ¼ License or perhaps archive properties are deleted after 30 or 90 days <br> Need to understand
                 system’s impact if we keep inactive property.
             </h6>
-        </div>
+         </div>
     </div>
 </div>
 
