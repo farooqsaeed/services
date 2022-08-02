@@ -113,11 +113,11 @@ class JobController extends Controller
 
 
         if (!empty($contractor_jobs)) {
-            $contractor = Contractor::where('id', '=', $contractor_jobs->contractor_id)->select('business_name')->first();
+            $contractor = Contractor::where('id','=',$contractor_jobs->contractor_id)->select('business_name')->first();
         } else {
             return json_encode([
                 'status' => 0,
-                'message' => 'Record not found',
+                'message' => 'Record Not Found',
             ]);
         }
 
@@ -127,6 +127,53 @@ class JobController extends Controller
             'status' => 1,
             'message' => 'Record found successfully',
             'success' => $result,
+        ]);
+    }
+
+    public function ContractorJobs($id)
+    {
+       $idlist = array();
+       $results = Contractor_job::where('contractor_id','=',$id)->get();
+       foreach ($results as $result) {
+          $idlist[] = $result->job_id;
+       }
+
+       $response = Job::whereIn('jobs.id',$idlist)->leftJoin('categories','jobs.category', '=','categories.id')->select('jobs.id','jobs.attachment','categories.name','jobs.tenant_name','jobs.address','jobs.job_date','jobs.job_time','jobs.job_time','jobs.status')->get();
+       if (count($response)==0) {
+           return json_encode([
+            'status' => 0,
+            'message' => 'Record Not Found',
+        ]);
+       }
+
+       return json_encode([
+            'status' => 1,
+            'message' => 'Record found successfully',
+            'success' => $response,
+        ]);
+
+    }
+
+    public function datewisejobs($date)
+    {
+        $idlist = array();
+       $results = Contractor_job::where('contractor_id','=',Auth::User()->id)->get();
+       foreach ($results as $result) {
+          $idlist[] = $result->job_id;
+       }
+
+       $response = Job::whereIn('jobs.id',$idlist)->leftJoin('categories','jobs.category', '=','categories.id')->whereDate('created_at','=',$date)->select('jobs.id','jobs.attachment','categories.name','jobs.tenant_name','jobs.address','jobs.job_date','jobs.job_time','jobs.job_time','jobs.status')->get();
+       if (count($response)==0) {
+           return json_encode([
+            'status' => 0,
+            'message' => 'Record Not Found',
+        ]);
+       }
+
+       return json_encode([
+            'status' => 1,
+            'message' => 'Record found successfully',
+            'success' => $response,
         ]);
     }
 }

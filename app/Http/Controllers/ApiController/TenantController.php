@@ -34,7 +34,7 @@ class TenantController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'mobile_no' => 'required|unique:tenants',
-            'email' => 'required|unique:tenants',
+            'email' => 'unique:tenants',
             'house_no' => 'required',
             'street_name' => 'required',
             'town'=> 'required',
