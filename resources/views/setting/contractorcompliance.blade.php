@@ -34,6 +34,7 @@
             <div class="card customshadow ">
                 <div class="card-body">
                     <form action="{{route('store.contractor.compliance')}}" method="post" class="px-5">
+                        @csrf
                         <div class="form-group">
                             <select class="form-control" name="contractor_id" id="">
                                 <option>Contractor Name</option>
@@ -43,20 +44,20 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="compliencename" id="">
                                 <option>Complience Name</option>
                                 <option>Excuse </option>
                                 <option>Excuse</option>
                             </select>
                         </div>
                         <div class="w-100 my-3">
-                            <input placeholder="Issue Date" class="form-control d-inline-block " type="date" required>
+                            <input placeholder="Issue Date" class="form-control d-inline-block" name="issuedate"  type="date" required>
                         </div>
                         <div class="w-100 my-3">
-                            <input placeholder="Expiry Date" class="form-control d-inline-block " type="date" required>
+                            <input placeholder="Expiry Date" class="form-control d-inline-block" name="expirydate"  type="date" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="" id="">
+                            <select class="form-control" name="task" id="">
                                 <option>Select Task</option>
                                 <option> Task 1</option>
                                 <option>Task 2</option>

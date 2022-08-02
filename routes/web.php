@@ -120,8 +120,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('generalenquiry', [SettingController::class, 'generalenquiry'])->name('setting.generalenquiry');
     Route::get('propertycompliance', [SettingController::class, 'propertycompliance'])->name('setting.propertycompliance');
-    Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
 
+    Route::get('contractorcompliance', [SettingController::class, 'contractorcompliance'])->name('setting.contractorcompliance');
 
     Route::post('store-contractor-compliance', [SettingController::class, 'storeContractorCompliance'])->name('store.contractor.compliance');
 

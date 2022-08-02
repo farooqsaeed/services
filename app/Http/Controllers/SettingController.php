@@ -108,7 +108,6 @@ class SettingController extends Controller
 
     public function store_company_details(Request $request)
     {
-
         $path = null;
         if ($request->hasFile('logo')) {
             $image = $request->logo;
@@ -123,17 +122,27 @@ class SettingController extends Controller
         }
 
         $user = Auth::user();
-        $setting = setting::where('user_id', $user->id)->get();
-        
-        return $setting;
-        $update = [
-            'opening_hour' => $request->opening_hour,
-            'closing_hour' => $request->closing_hour,
-            'phone' => $request->phone,
-            'logo' => $path,
-            'user_id' => $user->id
-        ];
-        $setting->update($update);
+        $setting = setting::where('user_id', $user->id)->first();
+
+        if (!empty($setting)) {
+            $update = [
+                'opening_hour' => $request->opening_hour,
+                'closing_hour' => $request->closing_hour,
+                'phone' => $request->phone,
+                'logo' => $path,
+                'user_id' => $user->id
+            ];
+            $setting->update($update);
+        } else {
+            $create = [
+                'opening_hour' => $request->opening_hour,
+                'closing_hour' => $request->closing_hour,
+                'phone' => $request->phone,
+                'logo' => $path,
+                'user_id' => $user->id
+            ];
+            setting::create($create);
+        }
         return view('setting.companydetails');
     }
 
@@ -142,21 +151,31 @@ class SettingController extends Controller
     {
         $user = Auth::user();
         $setting = setting::where('user_id', $user->id)->first();
-        return view('setting.autoresponder', compact(['setting']));
+
+        return view(
+            'setting.autoresponder',
+            compact(['setting'])
+        );
     }
 
     public function StoreAutoResponder(Request $request)
     {
         $user = Auth::user();
         $setting = setting::where('user_id', $user->id)->first();
-        $update = [
-            "email_description" => $request->email_description,
-        ];
-        setting::where('user_id', $user->id)->update($update);
-        return json_encode([
-            'status' => 1,
-            'success' => 'Setting updated Successfully!',
-        ]);
+
+        if (!empty($setting)) {
+            $update = [
+                "email_description" => $request->email_description,
+            ];
+            $setting->update($update);
+        } else {
+            $create = [
+                "email_description" => $request->email_description,
+                'user_id' => $user->id,
+            ];
+            setting::create($create);
+        }
+        return view('setting.autoresponder');
     }
 
     public function generalenquiry()
