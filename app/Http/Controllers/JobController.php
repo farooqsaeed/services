@@ -56,7 +56,7 @@ class JobController extends Controller
     {
         $categories = Category::orderBy('name')->get();
         $properties = Property::orderBy('id', 'desc')->get();
- 
+
         return view('jobs.add', compact(['properties', 'categories', 'id']));
     }
 
@@ -185,7 +185,6 @@ class JobController extends Controller
         $job = Job::findorFail($id);
         $notes = Jobnote::where('job_id', $job->id)->get();
         $property = Property::where('id', '=', $job->property_id)->first();
-
         if (!empty($property)) {
             return view('jobs.show', compact(['job', 'property', 'notes']));
         } else {

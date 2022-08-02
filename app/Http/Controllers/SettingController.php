@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Contractor;
 use App\Models\contractor_auto_forwarding;
 use App\Models\Group;
@@ -24,7 +25,20 @@ class SettingController extends Controller
 
     public function Enrollment()
     {
-        return view('setting.enrolment');
+        $user = Auth::user();
+        $setting = setting::where('user_id', $user->id)->first();
+        return view('setting.enrolment', compact(['setting']));
+    }
+
+    public function StoreEnrollment(Request $request)
+    {
+        $user = Auth::user();
+        $setting = setting::where('user_id', $user->id)->first();
+        $update = [
+            'welcome_message' => $request->welcome_message,
+        ];
+        $setting->update($update);
+        return response()->json(['result' => 'Successfully added']);
     }
 
     public function autoforwarding()
@@ -52,7 +66,39 @@ class SettingController extends Controller
 
     public function contractorpriority()
     {
-        return view('setting.contractorpriority');
+        $user = Auth()->user();
+        $setting = setting::where('user_id', $user->id)->select('id', 'level_one', 'description_one', 'level_second', 'description_second', 'level_third', 'description_third')->first();
+        return view('setting.contractorpriority', compact(['setting']));
+    }
+
+    public function SetContractorPriority()
+    {
+        $user = Auth()->user();
+        $setting = setting::where('user_id', $user->id)->select('id', 'level_one', 'description_one', 'level_second', 'description_second', 'level_third', 'description_third')->first();
+        return view('setting.set_contractorpriority', compact(['setting']));
+    }
+
+    public function set_contractor_priority(Request $request)
+    {
+        $user = Auth()->user();
+        $setting = setting::where('user_id', $user->id)->first();
+        if (!empty($setting)) {
+            $update = [
+                "level_one" => $request->level_one,
+                "description_one" => $request->description_one,
+                "level_second" => $request->level_second,
+                "description_second" => $request->description_second,
+                "level_third" => $request->level_third,
+                "description_third" => $request->description_third,
+            ];
+            setting::where('user_id', $user->id)->update($update);
+        } else {
+            return json_encode([
+                'status' => 0,
+                'success' => 'User not found!',
+            ]);
+        }
+        return redirect("/contractorpriority")->with(['result', 'Setting updated successfully']);
     }
 
     public function companydetails()
@@ -76,24 +122,43 @@ class SettingController extends Controller
             $path = 'upload/Image/' . $fullPath;
         }
 
-        $user = Auth()->user();
-        setting::create([
+        $user = Auth::user();
+        $setting = setting::where('user_id', $user->id)->get();
+        
+        return $setting;
+        $update = [
             'opening_hour' => $request->opening_hour,
             'closing_hour' => $request->closing_hour,
             'phone' => $request->phone,
             'logo' => $path,
             'user_id' => $user->id
-        ]);
-
+        ];
+        $setting->update($update);
         return view('setting.companydetails');
     }
 
 
-
     public function autoresponder()
     {
-        return view('setting.autoresponder');
+        $user = Auth::user();
+        $setting = setting::where('user_id', $user->id)->first();
+        return view('setting.autoresponder', compact(['setting']));
     }
+
+    public function StoreAutoResponder(Request $request)
+    {
+        $user = Auth::user();
+        $setting = setting::where('user_id', $user->id)->first();
+        $update = [
+            "email_description" => $request->email_description,
+        ];
+        setting::where('user_id', $user->id)->update($update);
+        return json_encode([
+            'status' => 1,
+            'success' => 'Setting updated Successfully!',
+        ]);
+    }
+
     public function generalenquiry()
     {
         return view('setting.generalenquiry');
@@ -114,11 +179,9 @@ class SettingController extends Controller
         return view('setting.contractorcompliance', compact(['contractors']));
     }
 
-
-
-    
     public function licences()
     {
-        return view('setting.licences');
+        $category = Category::findorFail(1);
+        return view('setting.licences', compact(['category']));
     }
 }

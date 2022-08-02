@@ -26,7 +26,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card-deck my-5 px-lg-4">
                 <div class="card text-center">
-                    <a href="{{route('setting.licences')}}">
+                    <a href="{{route('setting.enrolment')}}">
                         <div class="card-body">
                             <img src="{{URL::asset('assets/imgs/icons/enrollment.png')}}" alt="">
                             <p class="card-text mt-lg-2 ">Enrolment</p>
