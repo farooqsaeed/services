@@ -189,6 +189,7 @@ class SettingController extends Controller
     public function contractorcompliance()
     {
         $contractors = Contractor::orderBy('Id', 'desc')->get();
+        return $contractors;
         return view('setting.contractorcompliance', compact(['contractors']));
     }
 

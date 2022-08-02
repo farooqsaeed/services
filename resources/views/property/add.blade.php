@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{URL::asset('assets/css/addcontractors.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/property.css')}}">
- 
+
 
 <div class="container-fluid addcontractor  p-0">
     <div class="add  mt-0 ">
@@ -31,7 +31,7 @@
                 </div>
             </form> -->
         </div>
-        <form id="myform">
+        <form id="property_form" method="post" action="{{route('property.store')}}">
             @csrf
             <div class="row">
                 <!-- {/* Property Details */} -->
@@ -139,13 +139,16 @@
                         </div>
                         <div class="my-3 col-lg-6">
                             <label htmlFor="">Town *</label>
-                            <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town "
-                                value="null" />
+                            <input type="text" class="form-control" name="Town" id="town" placeholder="Enter Town "/>
                         </div>
                         <div class="my-3 col-lg-6">
-
+                            <label htmlFor="">house no *</label>
+                            <input type="text" class="form-control" name="house_no" id="house_no"
+                                placeholder="House no*" />
+                            <label htmlFor="">country *</label>
+                            <input type="text" class="form-control" name="country" id="country"
+                                placeholder="country *" />
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -153,7 +156,8 @@
             <div class="col-lg-10 offset-lg-1">
                 <div class="row">
                     <div class="my-3 col-lg-4 ">
-                        <a href="{{ url()->previous() }}" type="reset" class="btn btn-outline-success btn-block">Cancel</a>
+                        <a href="{{ url()->previous() }}" type="reset"
+                            class="btn btn-outline-success btn-block">Cancel</a>
                     </div>
                     <div class="my-3 col-lg-4 offset-lg-4 text-right">
                         <button type="submit" id="formbtn" class="btn btn-success   btn-block">SAVE</button>
@@ -163,11 +167,7 @@
         </form>
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 
 <!-- ajax submition -->
 <script>
@@ -187,6 +187,8 @@
         $('#secondline').val(resultObject.line_2)
         $('#town').val(resultObject.town_or_city)
         $('#postcode').val(postcode)
+        $('#country').val(resultObject.country)
+        $('#house_no').val(resultObject.building_number)
         console.log(resultObject)
     });
 
@@ -213,13 +215,13 @@
     }
 
     // form submition
-    $('#myform').submit(function (e) {
+    $(' property_form').submit(function (e) {
         e.preventDefault();
         $('#formbtn').attr('disabled', true);
         $('#formbtn').text('Please wait...');
         $.ajax({
             url: "{{URL('property')}}",
-            data: $('#myform').serialize(),
+            data: $('#property_form').serialize(),
             type: 'POST',
             error: function (request, status, error) {
                 toastr.warning(request.responseText);
@@ -229,7 +231,7 @@
             success: function (result) {
                 $('#message').html(result.result);
                 $("#msgdiv").css({ display: "block" });
-                $('#myform')['0'].reset();
+                $('#property_form')['0'].reset();
                 $('#formbtn').attr('disabled', false);
                 $('#formbtn').text('Add');
                 toastr.success(result.result);
@@ -272,4 +274,5 @@
         $(this).parents(".landlord-wraper").remove();
     });
 </script>
+
 @endsection

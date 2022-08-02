@@ -42,33 +42,33 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
 
-        $Property = new Property;
-        $Property->property_id = random_int(100000, 900000);
-        $Property->first_line_address = 'first address';
-        $Property->second_line_address = 'second address';
-        $Property->Town = 'town';
+        $create_property = [
+            'property_id' => random_int(100000, 900000),
+            'first_line_address' => $request->first_line_address,
+            'second_line_address' => $request->second_line_address,
+            'Town' => $request->Town,
+            'house_no' => $request->house_no,
+            'country' => $request->country,
+            'Postcode' => $request->Postcode,
 
-        // $Property->first_line_address = $request->first_line_address;
-        // $Property->second_line_address = $request->second_line_address;
-        // $Property->Town = $request->Town;
-
-        $Property->Notes = $request->Notes;
-        $Property->Postcode = $request->Postcode;
-        $Property->status = 'pending';
-        $Property->group_id = 1;
-        $Property->group_name = 1;
-        $Property->group_type = 1;
-        $Property->save();
+            'Notes' => $request->Notes,
+            'status' => 'pending',
+            'group_id' => 1,
+            'group_name' => 1,
+            'group_type' => 1
+        ];
+        $Property = Property::create($create_property);
 
         // landlord
         if (!empty($request->full_name1[0])) {
             foreach ($request->full_name1 as $key => $name) {
-                $landlord = new landlord;
-                $landlord->property_id = $Property->property_id;
-                $landlord->full_name = $name;
-                $landlord->email = $request->email1[$key];
-                $landlord->contact_no = $request->contact_no[$key];
-                $landlord->save();
+                $create_landlord = [
+                    'property_id' => $Property->property_id,
+                    'full_name' => $name,
+                    'email' => $request->email1[$key],
+                    'contact_no' => $request->contact_no[$key],
+                ];
+                $landlord = landlord::create($create_landlord);
             }
         }
 
@@ -103,8 +103,6 @@ class PropertyController extends Controller
             'property_id' => $Property->id,
             'grouptype' => null,
         ]);
-
-
         return response()->json(['result' => 'Property has been added!']);
     }
 
@@ -182,10 +180,8 @@ class PropertyController extends Controller
     {
         $property = Property::findorFail($id);
         $tenant_property = tenant_property::where('property_id', $property->property_id)->first();
-        $jobs=Job::where('property_id', $property->id)->get();
-        foreach($jobs as $job)
-        {
- 
+        $jobs = Job::where('property_id', $property->id)->get();
+        foreach ($jobs as $job) {
             $job->delete();
         }
         $tenant_property->delete();
@@ -201,9 +197,8 @@ class PropertyController extends Controller
         $order->delete();
         return response()->json(['success' => "contractors have been deleted "]);
     }
-
+    
     // update status
-
     public function updateStatus(Request $request, $id)
     {
         $update = [

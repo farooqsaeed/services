@@ -19,7 +19,9 @@ class Property extends Model
         'group_name',
         'group_type',
         'Notes',
-        'status'
+        'status',
+        'country',
+        'house_no'
     ];
 
     /**
